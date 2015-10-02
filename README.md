@@ -5,7 +5,7 @@ Basic idea is to have everything in this repo. Even commit the submissions.
 ## Setup
 
 ````
-make cherrypy
+make
 ./run_server.sh
 ````
 
