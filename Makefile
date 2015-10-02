@@ -1,9 +1,15 @@
 CHERRYPY_URL = https://pypi.python.org/packages/source/C/CherryPy/CherryPy-3.8.0.tar.gz
 
-all: cherrypy submitters records
+all: cherrypy submitters submitter_uuids records
+
+submitter_uuids:
+	# store the mapping between public and private ID
+	# THIS DIRECTORY SHOULD NOT BE EXPOSED
+	mkdir -p $@
 
 submitters:
-	# store form submissions for retrieval here
+	# store public reference to latest record for a submitter here
+	# (subdir per submitter)
 	mkdir -p $@
 
 records:
