@@ -1,6 +1,6 @@
 # The survey
 
-Basic idea is to have it everything in this repo. Even commit the submissions.
+Basic idea is to have everything in this repo. Even commit the submissions.
 
 ## Setup
 
