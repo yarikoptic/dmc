@@ -55,7 +55,7 @@ $(document).ready(function() {
                             $.ajax({
                                 type: "POST",
                                 contentType: 'application/json',
-                                url: "http://127.0.0.1:8080",
+                                url: "http://localhost:8080/submit",
                                 data: JSON.stringify(val),
                                 success: function(msg) { alert('Yay ' + msg) },
                                 error: function(xhr, ajaxOptions, thrownError) {

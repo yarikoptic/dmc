@@ -9,6 +9,6 @@ make cherrypy
 ./run_server.sh
 ````
 
-go to localhost:8080/form
+go to localhost:8080
 
 
