@@ -23,51 +23,58 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-    $("#field1").alpaca({
-        "schema": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "title": "Name"
-                },
-                "age": {
-                    "type": "number",
-                    "title": "Aged"
+  $("#survey").alpaca({
+      /* Useful, for when we pre-seed updated profiles
+      "dataSource": "./survey_data",
+      */
+      "schemaSource": "./survey_schema",
+      "optionsSource": "./survey_options",
+      "view": {
+        "wizard": {
+          "bindings": {
+            "employer": 1,
+            "position": 1,
+            "country": 1,
+            "methods": 1,
+            "gender": 2
+          },
+        "steps": [{
+          "title": "Demographics",
+          "description": "Whoooo are you. Who Who; who who!?"
+        }, {
+          "title": "Computational Research Environment",
+          "description": "Let's Compare Widgets"
+        }, {
+          "title": "Research Output",
+          "description": "Let's Go Out Tonight"
+        }]
+      }
+    },
+    "options": {
+      "form": {
+        "buttons": {
+          "submit": {
+            "title": "Sub",
+            "click": function() {
+              var val = this.getValue();
+              $.ajax({
+                type: "POST",
+                contentType: 'application/json',
+                url: "http://localhost:8080/submit",
+                data: JSON.stringify(val),
+                success: function(msg) { alert('Yay ' + msg) },
+                error: function(xhr, ajaxOptions, thrownError) {
+                  alert(xhr.status);
+                  alert(ajaxOptions);
+                  alert(thrownError);
                 }
+              });
             }
-        },
-        "data": {
-            "name": "Conan the Barbarian",
-            "age": 32
+          }
         }
-
-        /** add in this section to experiment with a form button */
-        ,"options": {
-            "form": {
-                "buttons": {
-                    "submit": {
-                        "title": "Sub",
-                        "click": function() {
-                            var val = this.getValue();
-                            $.ajax({
-                                type: "POST",
-                                contentType: 'application/json',
-                                url: "http://localhost:8080/submit",
-                                data: JSON.stringify(val),
-                                success: function(msg) { alert('Yay ' + msg) },
-                                error: function(xhr, ajaxOptions, thrownError) {
-                                       alert(xhr.status);
-                                       alert(ajaxOptions);
-                                       alert(thrownError);
-                                }
-                            });
-                        }
-                    }
-                }
-            }
-        }
-    });
+      }
+    }
+  });
 });
 </script>
 </body>

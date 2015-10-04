@@ -1,0 +1,83 @@
+{
+    "title": "NeuroDebian Software Survey",
+    "description": "A survey, but with ego.",
+    "type": "object",
+    "properties":{
+        "employer":{
+          "title": "Employer",
+          "description":"Select what fits most:",
+          "required": true,
+          "type": "string",
+          "enum":[
+            "Private University",
+            "Public University",
+            "Research Institution",
+            "Company"
+          ]
+        },
+        "position":{
+          "title": "Position",
+          "description":"Select what fits most:",
+          "required": true,
+          "type": "string",
+          "enum":[
+            "B.Sc/M.Sc",
+            "PhD Student",
+            "Research Assistant",
+            "Technical Staff",
+            "Postdoc",
+            "Professor/PI/Supervisor",
+            "Other"
+          ]
+        },
+        "country":{
+          "title": "Country",
+          "description":"In what country is the lab that you primarily work for",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "Afghanistan",
+            "Åland Islands",
+            "Albania",
+            "Algeria",
+            "American Samoa",
+            "Andorra",
+            "Angola",
+            "Anguilla",
+            "Antarctica",
+            "Antigua and Barbuda",
+            "Argentina",
+            "Armenia",
+            "Aruba",
+            "Australia",
+            "Etc"
+          ]
+        },
+        "methods":{
+            "title": "Research Methods",
+            "description": "",
+            "type": "select",
+            "multiple": true,
+            "size": 3,
+            "required": true,
+            "enum":[
+                "Behavioral Experiments/Psychophysics",
+                "Genetics",
+                "Brain Imaging (MRI)",
+                "Invasive Electrophysiology",
+                "Non-Invasive Electrophysiology",
+                "Spectroscopy",
+                "Computational Modeling/Simulations",
+                "Distributed Computing"
+            ]
+        },
+        "gender":{
+            "title": "Gender",
+            "type": "string",
+            "enum":[
+                "Male",
+                "Female"
+            ]
+        }
+    }
+}

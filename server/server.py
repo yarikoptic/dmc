@@ -27,6 +27,14 @@ class SurveyDB(object):
         return open('client/survey_form.html').read()
 
     @cherrypy.expose
+    def survey_schema(self):
+        return open('client/survey_schema.json').read()
+
+    @cherrypy.expose
+    def survey_options(self):
+        return open('client/survey_options.json').read()
+
+    @cherrypy.expose
     @cherrypy.tools.json_in(force=True)
     def submit(self):
         # this is the form content as decoded JSON, aka a dict
