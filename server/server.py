@@ -12,7 +12,7 @@ def is_valid_submission(d):
     if 'submitter_id' in d:
         sid = d['submitter_id']
         if '/' in sid:
-            # is not a UUID
+            # is not a UUID, but could be a path
             return False
         if not os.path.exists(opj('submitter_uuids', sid)):
             # this thing claims it is a recurring submission
@@ -33,6 +33,22 @@ class SurveyDB(object):
     @cherrypy.expose
     def survey_options(self):
         return open('client/survey_options.json').read()
+
+    @cherrypy.expose
+    def get_rid(self, sid=None):
+        """Retrieve the latest record submitted given personal ID"""
+        if sid is None:
+            # when called without clue, just be happy -- silently
+            return None
+        sfilename = opj('submitter_uuids', sid)
+        if not os.path.exists(sfilename):
+            return None
+        submitter_id = open(sfilename).read()
+        rec_path = opj('submitters', submitter_id, 'record')
+        if not os.path.exists(rec_path):
+            return None
+        record_id = os.path.split(os.path.realpath(rec_path))[-1]
+        return record_id
 
     @cherrypy.expose
     @cherrypy.tools.json_in(force=True)
