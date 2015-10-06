@@ -4,6 +4,7 @@ import uuid
 import hashlib
 import json
 import base64
+import datetime
 
 opj = os.path.join
 
@@ -102,6 +103,10 @@ class SurveyDB(object):
             del data['submitter_uuid']
         # and replace with submitter ID hash
         data['submitter_id'] = submitter_id
+
+        # record submite date -- no time, we don't need that in the
+        # public records
+        data['submit_date'] = datetime.date.today().isoformat()
 
         rec_path = opj(submitters_dir, 'record')
         if os.path.exists(rec_path):
