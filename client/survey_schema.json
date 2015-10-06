@@ -301,6 +301,84 @@
                 "Distributed Computing"
             ]
         },
+        "personal_device":{
+            "title": "Personal Device",
+            "description": "Personal device most used for research computing",
+            "type": "select",
+            "required": true,
+            "enum":[
+                "Phone/Tablet",
+                "Laptop",
+                "Commodity Desktop",
+                "High-performance Desktop"
+            ]
+        },
+        "personal_OS":{
+            "title": "What OS are you using for your personal IT environment",
+            "description": "Personal device most used for research computing",
+            "type": "select",
+            "required": true,
+            "enum":[
+                "Windows",
+                "Mac OS",
+                "Linux",
+                "Other"
+            ]
+        },
+        "responsible":{
+            "title": "Are you the admin?",
+            "description": "Are you the person primarily responsible for maintaining this computer",
+            "type": "string",
+            "enum":[
+                "Yes",
+                "No"
+            ]
+        },
+        "hours":{
+            "title": "Hours/Month spent admin-ing",
+            "description": "How many hours/month do you personally spend on maintenance of your personal research computing environment",
+            "type": "integer",
+            "minimum": 0
+        },
+        "institute_device":{
+            "title": "Institutional Device",
+            "description": "Institutional device most used for research computing",
+            "type": "select",
+            "required": true,
+            "enum":[
+                "None",
+                "Phone/Tablet",
+                "Laptop",
+                "Commodity Desktop",
+                "High-performance Desktop",
+                "Server/Cluster"
+            ]
+        },
+        "institute_OS":{
+            "title": "What OS are you using for your institutional IT environment running",
+            "description": "Personal device most used for research computing",
+            "type": "select",
+            "required": true,
+            "enum":[
+                "Windows",
+                "Mac OS",
+                "Linux",
+                "Other"
+            ]
+        },
+        "personal_institute_usage":{
+            "title": "Fraction of use “personal” vs. “institutional” (research computing only)",
+            "description": "Fraction of use “personal” vs. “institutional” (research computing only)",
+            "type": "select",
+            "required": true,
+            "enum":[
+                "0/100",
+                "30/70",
+                "50/50",
+                "70/30",
+                "100/0"
+            ]
+        },
         "gender":{
             "title": "Gender",
             "type": "string",
@@ -309,5 +387,10 @@
                 "Female"
             ]
         }
+    },
+    "dependencies": {
+        "hours": ["responsible"],
+        "institute_OS": ["institute_device"],
+        "personal_institute_usage": ["institute_device"]
     }
 }

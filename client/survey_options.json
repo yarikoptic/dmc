@@ -1,15 +1,19 @@
 {
-    "fields":{
-        "photo":{
-            "type": "file",
-            "styled": true
+    "fields": {
+        "hours": {
+            "dependencies": {
+                "responsible": ["Yes"]
+            }
         },
-        "member":{
-            "rightLabel": "Alpaca Club Member"
+        "institute_OS":{
+            "dependencies": {
+                "institute_device": ["Phone/Tablet", "Laptop", "Commodity Desktop", "High-performance Desktop", "Server/Cluster"]
+             }
         },
-        "address":{
-            "type": "address",
-            "addressValidation": true
+        "personal_institute_usage":{
+            "dependencies": {
+                "institute_device": ["Phone/Tablet", "Laptop", "Commodity Desktop", "High-performance Desktop", "Server/Cluster"]
+             }
         }
     }
 }
