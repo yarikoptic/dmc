@@ -3,6 +3,7 @@ import cherrypy
 import uuid
 import hashlib
 import json
+import base64
 
 opj = os.path.join
 
@@ -19,6 +20,19 @@ def is_valid_submission(d):
             # but we don't know about the one it references
             return False
     return True
+
+def generate_submitter_id(sid):
+    """Generate a new public submitter ID"""
+    # generate a new ID, add extra randomness so it cannot be
+    # guessed from the UUID itself
+    sid = hashlib.md5(
+        '%s%s' % (sid, uuid.uuid4())).hexdigest()
+    # now shorten in to 6 chars with base64 + safety net
+    for start in xrange(0, len(sid) - 4):
+        id_ = base64.urlsafe_b64encode(sid[start:start + 4])[:6]
+        if not os.path.exists(opj('submitters', id_)):
+            return id_
+    raise RuntimeError("we have serious issues with lack of randomness")
 
 
 class SurveyDB(object):
@@ -71,14 +85,7 @@ class SurveyDB(object):
                 # we expect an MD5 sum
                 raise ValueError("this should not happen")
         else:
-            # generate a new ID, add extra randomness so it cannot be
-            # guessed from the UUID itself
-            # XXX this is the place to make the submitter IDs shorter
-            # we talked about some algorithm like the ones URL shorteners
-            # use, to keep the resulting reference URL compact
-            # even MD5 is too long
-            submitter_id = hashlib.md5(
-                '%s%s' % (submitter_uuid, uuid.uuid4())).hexdigest()
+            submitter_id = generate_submitter_id(submitter_uuid)
             # and store for later
             with open(submitter_file, 'w') as _file:
                 _file.write(submitter_id)
