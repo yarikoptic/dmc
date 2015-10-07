@@ -415,12 +415,155 @@
                 "100/0"
             ]
         },
-        "gender":{
-            "title": "Gender",
+        "publications_number":{
+            "title": "Number of publications in the last 5 years?",
+            "description": "How many peer-reviewed publications did you (co-)author in the last 5 years?",
+            "type": "integer",
+            "minimum": 0
+        },
+        "publications_number_open_access":{
+            "title": "Number of open-access publications in the last 5 years?",
+            "description": "How many of those publication are published in open-access journals or with an applied open-access option?",
+            "type": "integer",
+            "minimum": 0
+        },
+        "publications_number_preprint_server":{
+            "title": "Number available on a public preprint server?",
+            "description": "How many of your non-open-access publications from the last 5 years are currently available from a public preprint server (e.g. arXiv.org)?",
+            "type": "integer",
+            "minimum": 0
+        },
+        "blog":{
+            "title": "How often do you use social media to share about your research?",
+            "description": "How often do you blog/facebook/g+ openly about your research activities/projects?",
             "type": "string",
             "enum":[
-                "Male",
-                "Female"
+                "Never",
+                "Daily",
+                "Weekly",
+                "Monthly",
+                "Yearly"
+            ]
+        },
+        "lab_collaborations":{
+            "title": "How many different labs did you personally collaborate with in the last 5 years?",
+            "description": "Estimates are ok",
+            "type": "integer",
+            "minimum": 0
+        },
+        "data_shared":{
+            "title": "Have you ever shared some of your data with anyone outside your lab?",
+            "description": "Have you ever shared some of your data with anyone outside your lab?",
+            "type": "string",
+            "enum":[
+                "Yes",
+                "No"
+            ]
+        },
+        "data_shared_collaborations":{
+            "title": "How many collaborators outside your own lab did you provide with some of your data in the last 5 years?",
+            "type": "integer",
+            "minimum": 0
+        },
+        "data_shared_publicly":{
+            "title": "How many datasets did you share publicly?",
+            "type": "integer",
+            "minimum": 0
+        },
+        "data_published_solely":{
+            "title": "Have you ever published a manuscript solely dedicated to the description of one of your datasets?",
+            "description": "Data in brief, data descriptor, data note, etc?",
+            "type": "string",
+            "enum":[
+                "Yes",
+                "No"
+            ]
+        },
+        "data_IRB":{
+            "title": "Does your IRB consent form have provisions for public sharing/deposition to archives of the collected data?",
+            "type": "string",
+            "enum":[
+                "Yes",
+                "No"
+            ]
+        },
+        "data_consumed":{
+            "title": "Have you ever used data in your own research that somebody from outside your lab acquired?",
+            "type": "string",
+            "enum":[
+                "Yes",
+                "No"
+            ]
+        },
+        "data_consumed_collaborations":{
+            "title": "From how many collaborators outside your own lab did you get data for your own research in the last 5 years?",
+            "type": "integer",
+            "minimum": 0
+        },
+        "data_consumed_public":{
+            "title": "How many publicly shared datasets did you use for any purpose (research, teaching, etc)?",
+            "type": "integer",
+            "minimum": 0
+        },
+        "data_read_solely":{
+            "title": "Have your ever read any data descriptor/paper for any of publicly available datasets?",
+            "description": "Data in brief, data descriptor, data note, etc?",
+            "type": "string",
+            "enum":[
+                "Yes",
+                "No"
+            ]
+        },
+        "code_shared":{
+            "title": "Have you ever shared a piece of software/script/algorithm implementation with anyone outside your own lab?",
+            "type": "string",
+            "enum":[
+                "Yes",
+                "No"
+            ]
+        },
+        "code_shared_method":{
+            "title": "How did you share it?",
+            "type": "string",
+            "enum":[
+                "Compiled code privately (e.g. email)",
+                "Compiled code publicly (e.g. website)",
+                "Source code privately (e.g. email)",
+                "Source code publicly (e.g. GitHub, etc)"
+            ]
+        },
+        "tool_manuscripts":{
+            "title": "What do you use primarily for composing manuscripts/reports?",
+            "type": "string",
+            "enum":[
+                "Microsoft Word",
+                "Libre/OpenOffice",
+                "Google Docs (or other online suite)",
+                "LaTex",
+                "Other"
+            ]
+        },
+        "tool_languages":{
+            "title": "What programming languages/analysis environments do you use",
+            "type": "string",
+            "multiple": true,
+            "size": 3,
+            "required": true,
+            "enum":[
+                "MATLAB",
+                "Python",
+                "shell scripting",
+                "C/C++",
+                "SPSS",
+                "Perl",
+                "Octave",
+                "Mathematica",
+                "Java",
+                "Ruby",
+                "Fortran",
+                "Maple",
+                "Scilab",
+                "Other"
             ]
         }
     },
@@ -431,6 +574,14 @@
         "institute_OS": ["institute_device"],
         "institute_OS_linux": ["institute_OS"],
         "institute_OS_other": ["institute_OS"],
-        "personal_institute_usage": ["institute_device"]
+        "personal_institute_usage": ["institute_device"],
+        "publications_number_open_access": ["publications_number"],
+        "publications_number_preprint_server": ["publications_number"],
+        "data_shared_collaborations": ["data_shared"],
+        "data_shared_publicly": ["data_shared"],
+        "data_published_solely": ["data_shared"],
+        "data_consumed_collaborations": ["data_consumed"],
+        "data_consumed_public": ["data_consumed"],
+        "code_shared_method": ["code_shared"]
     }
 }

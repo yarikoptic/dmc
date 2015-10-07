@@ -34,6 +34,36 @@
             "dependencies": {
                 "institute_device": ["Phone/Tablet", "Laptop", "Commodity Desktop", "High-performance Desktop", "Server/Cluster"]
              }
+        },
+        "data_shared_collaborations": {
+            "dependencies": {
+                "data_shared": ["Yes"]
+            }
+        },
+        "data_shared_publicly": {
+            "dependencies": {
+                "data_shared": ["Yes"]
+            }
+        },
+        "data_shared_solely": {
+            "dependencies": {
+                "data_shared": ["Yes"]
+            }
+        },
+        "data_consumed_collaborations": {
+            "dependencies": {
+                "data_consumed": ["Yes"]
+            }
+        },
+        "data_consumed_public": {
+            "dependencies": {
+                "data_consumed": ["Yes"]
+            }
+        },
+        "code_shared_method": {
+            "dependencies": {
+                "code_shared": ["Yes"]
+            }
         }
     }
 }
