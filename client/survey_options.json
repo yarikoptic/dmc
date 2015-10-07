@@ -1,5 +1,15 @@
 {
     "fields": {
+        "personal_OS_linux": {
+            "dependencies": {
+                "personal_OS": ["Linux"]
+             }
+        },
+        "personal_OS_other": {
+            "dependencies": {
+                "personal_OS": ["Other"]
+             }
+        },
         "hours": {
             "dependencies": {
                 "responsible": ["Yes"]
@@ -8,6 +18,16 @@
         "institute_OS":{
             "dependencies": {
                 "institute_device": ["Phone/Tablet", "Laptop", "Commodity Desktop", "High-performance Desktop", "Server/Cluster"]
+             }
+        },
+        "institute_OS_linux": {
+            "dependencies": {
+                "institute_OS": ["Linux"]
+             }
+        },
+        "institute_OS_other": {
+            "dependencies": {
+                "institute_OS": ["Other"]
              }
         },
         "personal_institute_usage":{

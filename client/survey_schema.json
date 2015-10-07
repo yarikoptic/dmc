@@ -325,6 +325,24 @@
                 "Other"
             ]
         },
+        "personal_OS_linux":{
+            "title": "Which Linux Distro?",
+            "description": "It's just like choosing your icecream flavor; including the political implications.",
+            "type": "string",
+            "enum":[
+                "RedHat/CentOS/Scientific Linux",
+                "Debian",
+                "Ubuntu/Mint",
+                "Fedora",
+                "Arch",
+                "Other"
+            ]
+        },
+        "personal_OS_other":{
+            "title": "What 'Other' OS?",
+            "description": "We love non-conformists. :-)",
+            "type": "string"
+        },
         "responsible":{
             "title": "Are you the admin?",
             "description": "Are you the person primarily responsible for maintaining this computer",
@@ -366,6 +384,24 @@
                 "Other"
             ]
         },
+        "institute_OS_linux":{
+            "title": "Which Linux Distro?",
+            "description": "It's just like choosing your icecream flavor; including the political implications.",
+            "type": "string",
+            "enum":[
+                "RedHat/CentOS/Scientific Linux",
+                "Debian",
+                "Ubuntu/Mint",
+                "Fedora",
+                "Arch",
+                "Other"
+            ]
+        },
+        "institute_OS_other":{
+            "title": "What 'Other' OS?",
+            "description": "We love non-conformists. :-)",
+            "type": "string"
+        },
         "personal_institute_usage":{
             "title": "Fraction of use “personal” vs. “institutional” (research computing only)",
             "description": "Fraction of use “personal” vs. “institutional” (research computing only)",
@@ -389,8 +425,12 @@
         }
     },
     "dependencies": {
+        "personal_OS_linux": ["personal_OS"],
+        "personal_OS_other": ["personal_OS"],
         "hours": ["responsible"],
         "institute_OS": ["institute_device"],
+        "institute_OS_linux": ["institute_OS"],
+        "institute_OS_other": ["institute_OS"],
         "personal_institute_usage": ["institute_device"]
     }
 }
