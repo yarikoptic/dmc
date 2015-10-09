@@ -1,5 +1,9 @@
 {
     "fields": {
+        "methods": {
+            "multiple": true,
+            "size": 8
+        },
         "personal_OS_linux": {
             "dependencies": {
                 "personal_OS": ["Linux"]

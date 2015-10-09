@@ -287,8 +287,6 @@
             "title": "Research Methods",
             "description": "",
             "type": "select",
-            "multiple": true,
-            "size": 3,
             "required": true,
             "enum":[
                 "Behavioral Experiments/Psychophysics",
