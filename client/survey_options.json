@@ -10,6 +10,10 @@
                 "personal_OS": ["Other"]
              }
         },
+        "responsible": {
+            "removeDefaultNone": true,
+            "vertical": false
+        },
         "hours": {
             "dependencies": {
                 "responsible": ["Yes"]
@@ -35,6 +39,10 @@
                 "institute_device": ["Phone/Tablet", "Laptop", "Commodity Desktop", "High-performance Desktop", "Server/Cluster"]
              }
         },
+        "data_shared": {
+            "removeDefaultNone": true,
+            "vertical": false
+        },
         "data_shared_collaborations": {
             "dependencies": {
                 "data_shared": ["Yes"]
@@ -45,10 +53,20 @@
                 "data_shared": ["Yes"]
             }
         },
-        "data_shared_solely": {
+        "data_published_solely": {
+            "removeDefaultNone": true,
+            "vertical": false,
             "dependencies": {
                 "data_shared": ["Yes"]
             }
+        },
+        "data_IRB": {
+            "removeDefaultNone": true,
+            "vertical": false
+        },
+        "data_consumed": {
+            "removeDefaultNone": true,
+            "vertical": false
         },
         "data_consumed_collaborations": {
             "dependencies": {
@@ -59,6 +77,14 @@
             "dependencies": {
                 "data_consumed": ["Yes"]
             }
+        },
+        "data_read_solely": {
+            "removeDefaultNone": true,
+            "vertical": false
+        },
+        "code_shared": {
+            "removeDefaultNone": true,
+            "vertical": false
         },
         "code_shared_method": {
             "dependencies": {
