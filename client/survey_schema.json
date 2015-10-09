@@ -542,7 +542,7 @@
             ]
         },
         "code_shared_method":{
-            "title": "How did you share it?",
+            "title": "What's your preferred method of sharing code?",
             "type": "string",
             "required": true,
             "enum":[
