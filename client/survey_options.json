@@ -136,6 +136,10 @@
         "tool_manuscripts": {
             "noneLabel": "— Select —",
             "removeDefaultNone": false
+        },
+        "tool_languages": {
+            "multiple": true,
+            "size": 14
         }
     },
     "hideInitValidationError": true

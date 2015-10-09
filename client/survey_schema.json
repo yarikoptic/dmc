@@ -567,8 +567,6 @@
         "tool_languages":{
             "title": "What programming languages/analysis environments do you use",
             "type": "string",
-            "multiple": true,
-            "size": 3,
             "required": true,
             "enum":[
                 "MATLAB",
