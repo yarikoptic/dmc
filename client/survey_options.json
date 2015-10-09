@@ -91,5 +91,6 @@
                 "code_shared": ["Yes"]
             }
         }
-    }
+    },
+    "hideInitValidationError": true
 }
