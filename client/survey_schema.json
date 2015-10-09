@@ -327,6 +327,7 @@
             "title": "Which Linux Distro?",
             "description": "It's just like choosing your icecream flavor; including the political implications.",
             "type": "string",
+            "required": true,
             "enum":[
                 "RedHat/CentOS/Scientific Linux",
                 "Debian",
@@ -339,12 +340,14 @@
         "personal_OS_other":{
             "title": "What 'Other' OS?",
             "description": "We love non-conformists. :-)",
-            "type": "string"
+            "type": "string",
+            "required": true
         },
         "responsible":{
             "title": "Are you the admin?",
             "description": "Are you the person primarily responsible for maintaining this computer",
             "type": "string",
+            "required": true,
             "enum":[
                 "Yes",
                 "No"
@@ -354,7 +357,8 @@
             "title": "Hours/Month spent admin-ing",
             "description": "How many hours/month do you personally spend on maintenance of your personal research computing environment",
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "required": true
         },
         "institute_device":{
             "title": "Institutional Device",
@@ -386,6 +390,7 @@
             "title": "Which Linux Distro?",
             "description": "It's just like choosing your icecream flavor; including the political implications.",
             "type": "string",
+            "required": true,
             "enum":[
                 "RedHat/CentOS/Scientific Linux",
                 "Debian",
@@ -398,7 +403,8 @@
         "institute_OS_other":{
             "title": "What 'Other' OS?",
             "description": "We love non-conformists. :-)",
-            "type": "string"
+            "type": "string",
+            "required": true
         },
         "personal_institute_usage":{
             "title": "Fraction of use “personal” vs. “institutional” (research computing only)",
@@ -417,24 +423,28 @@
             "title": "Number of publications in the last 5 years?",
             "description": "How many peer-reviewed publications did you (co-)author in the last 5 years?",
             "type": "integer",
+            "required": true,
             "minimum": 0
         },
         "publications_number_open_access":{
             "title": "Number of open-access publications in the last 5 years?",
             "description": "How many of those publication are published in open-access journals or with an applied open-access option?",
             "type": "integer",
+            "required": true,
             "minimum": 0
         },
         "publications_number_preprint_server":{
             "title": "Number available on a public preprint server?",
             "description": "How many of your non-open-access publications from the last 5 years are currently available from a public preprint server (e.g. arXiv.org)?",
             "type": "integer",
+            "required": true,
             "minimum": 0
         },
         "blog":{
             "title": "How often do you use social media to share about your research?",
             "description": "How often do you blog/facebook/g+ openly about your research activities/projects?",
             "type": "string",
+            "required": true,
             "enum":[
                 "Never",
                 "Daily",
@@ -447,12 +457,14 @@
             "title": "How many different labs did you personally collaborate with in the last 5 years?",
             "description": "Estimates are ok",
             "type": "integer",
+            "required": true,
             "minimum": 0
         },
         "data_shared":{
             "title": "Have you ever shared some of your data with anyone outside your lab?",
             "description": "Have you ever shared some of your data with anyone outside your lab?",
             "type": "string",
+            "required": true,
             "enum":[
                 "Yes",
                 "No"
@@ -461,17 +473,20 @@
         "data_shared_collaborations":{
             "title": "How many collaborators outside your own lab did you provide with some of your data in the last 5 years?",
             "type": "integer",
+            "required": true,
             "minimum": 0
         },
         "data_shared_publicly":{
             "title": "How many datasets did you share publicly?",
             "type": "integer",
+            "required": true,
             "minimum": 0
         },
         "data_published_solely":{
             "title": "Have you ever published a manuscript solely dedicated to the description of one of your datasets?",
             "description": "Data in brief, data descriptor, data note, etc?",
             "type": "string",
+            "required": true,
             "enum":[
                 "Yes",
                 "No"
@@ -480,6 +495,7 @@
         "data_IRB":{
             "title": "Does your IRB consent form have provisions for public sharing/deposition to archives of the collected data?",
             "type": "string",
+            "required": true,
             "enum":[
                 "Yes",
                 "No"
@@ -488,6 +504,7 @@
         "data_consumed":{
             "title": "Have you ever used data in your own research that somebody from outside your lab acquired?",
             "type": "string",
+            "required": true,
             "enum":[
                 "Yes",
                 "No"
@@ -496,17 +513,20 @@
         "data_consumed_collaborations":{
             "title": "From how many collaborators outside your own lab did you get data for your own research in the last 5 years?",
             "type": "integer",
+            "required": true,
             "minimum": 0
         },
         "data_consumed_public":{
             "title": "How many publicly shared datasets did you use for any purpose (research, teaching, etc)?",
             "type": "integer",
+            "required": true,
             "minimum": 0
         },
         "data_read_solely":{
             "title": "Have your ever read any data descriptor/paper for any of publicly available datasets?",
             "description": "Data in brief, data descriptor, data note, etc?",
             "type": "string",
+            "required": true,
             "enum":[
                 "Yes",
                 "No"
@@ -515,6 +535,7 @@
         "code_shared":{
             "title": "Have you ever shared a piece of software/script/algorithm implementation with anyone outside your own lab?",
             "type": "string",
+            "required": true,
             "enum":[
                 "Yes",
                 "No"
@@ -523,6 +544,7 @@
         "code_shared_method":{
             "title": "How did you share it?",
             "type": "string",
+            "required": true,
             "enum":[
                 "Compiled code privately (e.g. email)",
                 "Compiled code publicly (e.g. website)",
@@ -533,6 +555,7 @@
         "tool_manuscripts":{
             "title": "What do you use primarily for composing manuscripts/reports?",
             "type": "string",
+            "required": true,
             "enum":[
                 "Microsoft Word",
                 "Libre/OpenOffice",

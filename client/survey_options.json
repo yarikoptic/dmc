@@ -1,10 +1,32 @@
 {
     "fields": {
+        "employer": {
+            "noneLabel": "— Select —",
+            "removeDefaultNone": false
+        },
+        "position": {
+            "noneLabel": "— Select —",
+            "removeDefaultNone": false
+        },
+        "country": {
+            "noneLabel": "— Select —",
+            "removeDefaultNone": false
+        },
         "methods": {
             "multiple": true,
             "size": 8
         },
+        "personal_device": {
+            "noneLabel": "— Select —",
+            "removeDefaultNone": false
+        },
+        "personal_OS": {
+            "noneLabel": "— Select —",
+            "removeDefaultNone": false
+        },
         "personal_OS_linux": {
+            "noneLabel": "— Select —",
+            "removeDefaultNone": false,
             "dependencies": {
                 "personal_OS": ["Linux"]
              }
@@ -23,12 +45,20 @@
                 "responsible": ["Yes"]
             }
         },
+        "institute_device": {
+            "noneLabel": "— Select —",
+            "removeDefaultNone": false
+        },
         "institute_OS":{
+            "noneLabel": "— Select —",
+            "removeDefaultNone": false,
             "dependencies": {
                 "institute_device": ["Phone/Tablet", "Laptop", "Commodity Desktop", "High-performance Desktop", "Server/Cluster"]
              }
         },
         "institute_OS_linux": {
+            "noneLabel": "— Select —",
+            "removeDefaultNone": false,
             "dependencies": {
                 "institute_OS": ["Linux"]
              }
@@ -39,9 +69,15 @@
              }
         },
         "personal_institute_usage":{
+            "noneLabel": "— Select —",
+            "removeDefaultNone": false,
             "dependencies": {
                 "institute_device": ["Phone/Tablet", "Laptop", "Commodity Desktop", "High-performance Desktop", "Server/Cluster"]
              }
+        },
+        "blog": {
+            "noneLabel": "— Select —",
+            "removeDefaultNone": false
         },
         "data_shared": {
             "removeDefaultNone": true,
@@ -91,9 +127,15 @@
             "vertical": false
         },
         "code_shared_method": {
+            "noneLabel": "— Select —",
+            "removeDefaultNone": false,
             "dependencies": {
                 "code_shared": ["Yes"]
             }
+        },
+        "tool_manuscripts": {
+            "noneLabel": "— Select —",
+            "removeDefaultNone": false
         }
     },
     "hideInitValidationError": true
