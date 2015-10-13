@@ -12,7 +12,10 @@ main {
  */
 
 #content {
+  float: right;
   line-height: 26px;
+  padding-right: 5em;
+  width: 500px;
 }
 
 #site-footer {
