@@ -30,6 +30,7 @@
   <div class="container" id="main-container">
     <main id="content">
       <form class="form-horizontal">
+      <fieldset>
         <div class="form-group">
           <label for="employer" class="col-sm-4 control-label">Employer:</label>
           <div class="col-sm-8">
@@ -330,6 +331,13 @@
           </div>
         </div>
         <div class="form-group">
+          <div class="col-xs-offset-6 col-xs-6 text-right">
+            <button type="button" class="btn btn-next">Next</button>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset hidden>
+        <div class="form-group">
           <label for="personal_device" class="col-sm-4 control-label">Research/Work Device:</label>
           <div class="col-sm-8">
             <select id="personal_device" class="form-control" aria-describedby="personal_device-help">
@@ -460,6 +468,16 @@
             <span id="personal_institute_usage-help" class="help-block">Fraction of use "personal" vs. "institutional" (research computing only)</span>
           </div>
         </div>
+        <div class="form-group">
+          <div class="col-xs-6 text-left">
+            <button type="button" class="btn btn-previous">Previous</button>
+          </div>
+          <div class="col-xs-6 text-right">
+            <button type="button" class="btn btn-next">Next</button>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset hidden>
         <div class="form-group">
           <label for="publications_number" class="col-sm-4 control-label">Publications in last 5 years</label>
           <div class="col-sm-8">
@@ -599,6 +617,16 @@
           </div>
         </div>
         <div class="form-group">
+          <div class="col-xs-6 text-left">
+            <button type="button" class="btn btn-previous">Previous</button>
+          </div>
+          <div class="col-xs-6 text-right">
+            <button type="button" class="btn btn-next">Next</button>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset hidden>
+        <div class="form-group">
           <label for="tool_manuscripts" class="col-sm-4 control-label">Manuscript composer</label>
           <div class="col-sm-8">
             <select id="tool_manuscripts" class="form-control" aria-describedby="tool_manuscripts-help">
@@ -635,10 +663,14 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-8">
-            <button type="submit" class="btn btn-default">Submit</button>
+          <div class="col-xs-6 text-left">
+            <button type="button" class="btn btn-previous">Previous</button>
+          </div>
+          <div class="col-xs-6 text-right">
+            <button type="button" class="btn btn-next">Next</button>
           </div>
         </div>
+      </fieldset>
       </form>
     </main><!-- /content -->
   </div><!--/.container /#main-container -->
@@ -654,6 +686,26 @@
   <script src="js/bootstrap.3.3.5.min.js"></script>
   <script>
   $(document).ready(function() {
+    /*
+       Navigation
+     */
+    // make next buttons work
+    $('#content .btn-next').on('click', function() {
+        var parent_fieldset = $(this).parents('fieldset');
+        parent_fieldset.fadeOut(400, function() {
+          $(this).next().fadeIn();
+        });
+    });
+    // make prev buttons work
+    $('#content .btn-previous').on('click', function() {
+        $(this).parents('fieldset').fadeOut(400, function() {
+            $(this).prev().fadeIn();
+        });
+    });
+
+    /*
+       Field dependencies
+     */
     $("#personal_OS").change(function() {
       if ( $(this).val() == 'Linux') {
         $("#personal_OS_linux-group").show("slow");
