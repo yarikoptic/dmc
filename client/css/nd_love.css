@@ -1,0 +1,34 @@
+/*
+ *  Hacks/bug workarounds
+ */
+
+/* IE9->11 "support" HTML5 and arbitrary tags, and yet fail on <main>. Classic. */
+main {
+  display: block;
+}
+
+/*
+ *  Styling
+ */
+
+#content {
+  line-height: 26px;
+}
+
+#site-footer {
+  background: #EEE;
+  border-top: 1px dotted #999;
+  margin-top: 40px;
+  padding: 35px 0;
+  text-align: center;
+}
+#site-footer p {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
