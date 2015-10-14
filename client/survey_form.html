@@ -372,7 +372,7 @@
         <div id="personal_OS_linux-group" class="form-group" hidden >
           <label for="personal_OS_linux" class="col-sm-4 control-label">Linux Distro</label>
           <div class="col-sm-8">
-            <select id="personal_OS_linux" class="form-control" aria-describedby="personal_OS_linux-help">
+            <select id="personal_OS_linux" class="form-control" aria-describedby="personal_OS_linux-help" required>
               <option value="" disabled selected hidden >— Select —</option>
               <option>Debian</option>
               <option>Ubuntu/Mint</option>
@@ -389,7 +389,7 @@
         <div id="personal_OS_other-group" class="form-group" hidden >
           <label for="personal_OS_other" class="col-sm-4 control-label">"Other" OS</label>
           <div class="col-sm-8">
-            <input id="personal_OS_other" type="text" class="form-control" aria-describedby="personal_OS_other-help">
+            <input id="personal_OS_other" type="text" class="form-control" aria-describedby="personal_OS_other-help" required>
             <div class="help-block with-errors"></div>
             <span id="personal_OS_other-help" class="help-block"><em>Alright.</em> You get righteous-cool-points; we love non-conformists.</span>
           </div>
@@ -409,7 +409,7 @@
         <div id="hours-group" class="form-group" hidden >
           <label for="hours" class="col-sm-4 control-label">Hours/month of Toil</label>
           <div class="col-sm-8">
-            <input id="hours" type="number" min="0" step="1" class="form-control" aria-describedby="hours-help">
+            <input id="hours" type="number" min="0" step="1" class="form-control" aria-describedby="hours-help" required>
             <div class="help-block with-errors"></div>
             <span id="hours-help" class="help-block">How many hours per month do you personally spend maintaining this device?</span>
           </div>
@@ -442,7 +442,7 @@
         <div id="institute_OS-group" class="form-group" hidden >
           <label for="institute_OS" class="col-sm-4 control-label">OS</label>
           <div class="col-sm-8">
-            <select id="institute_OS" class="form-control" aria-describedby="institute_OS-help">
+            <select id="institute_OS" class="form-control" aria-describedby="institute_OS-help" required>
               <option value="" disabled selected hidden >— Select —</option>
               <option>Linux</option>
               <option>OS X</option>
@@ -457,7 +457,7 @@
         <div id="institute_OS_linux-group" class="form-group" hidden >
           <label for="institute_OS_linux" class="col-sm-4 control-label">Linux Distro</label>
           <div class="col-sm-8">
-            <select id="institute_OS_linux" class="form-control" aria-describedby="institute_OS_linux-help">
+            <select id="institute_OS_linux" class="form-control" aria-describedby="institute_OS_linux-help" required>
               <option value="" disabled selected hidden >— Select —</option>
               <option>Debian</option>
               <option>Ubuntu/Mint</option>
@@ -474,7 +474,7 @@
         <div id="institute_OS_other-group" class="form-group" hidden >
           <label for="institute_OS_other" class="col-sm-4 control-label">"Other" OS</label>
           <div class="col-sm-8">
-            <input id="institute_OS_other" type="text" class="form-control" aria-describedby="institute_OS_other-help">
+            <input id="institute_OS_other" type="text" class="form-control" aria-describedby="institute_OS_other-help" required>
             <div class="help-block with-errors"></div>
             <span id="institute_OS_other-help" class="help-block"><em>Alright.</em> You get righteous-cool-points; we love non-conformists.</span>
           </div>
@@ -482,7 +482,7 @@
         <div id="personal_institute_usage-group" class="form-group" hidden >
           <label for="personal_institute_usage" class="col-sm-4 control-label">P/I Ratio</label>
           <div class="col-sm-8">
-            <select id="personal_institute_usage" class="form-control" aria-describedby="personal_institute_usage-help">
+            <select id="personal_institute_usage" class="form-control" aria-describedby="personal_institute_usage-help" required>
               <option value="" disabled selected hidden >— Select —</option>
               <option>0/100</option>
               <option>30/70</option>
@@ -515,7 +515,7 @@
         <div id="publications_number_open_access-group" class="form-group" hidden >
           <label for="publications_number_open_access" class="col-sm-4 control-label"># Open Access</label>
           <div class="col-sm-8">
-            <input id="publications_number_open_access" type="number" min="0" step="1" class="form-control" aria-describedby="publications_number_open_access-help">
+            <input id="publications_number_open_access" type="number" min="0" step="1" class="form-control" aria-describedby="publications_number_open_access-help" required>
             <div class="help-block with-errors"></div>
             <span id="publications_number_open_access-help" class="help-block">How many of those are openly/freely available? (open access, preprint servers (arXiv.org), etc)</span>
           </div>
@@ -556,7 +556,7 @@
         <div id="collaborations_data-group" class="form-group" hidden >
           <label for="collaborations_data" class="col-sm-4 control-label">Exchange of Data</label>
           <div class="col-sm-8">
-            <input id="collaborations_data" type="number" min="0" step="1" class="form-control" aria-describedby="collaborations_data-help">
+            <input id="collaborations_data" type="number" min="0" step="1" class="form-control" aria-describedby="collaborations_data-help" required>
             <div class="help-block with-errors"></div>
             <span id="collaborations_data-help" class="help-block">How many of those involved the exchange of research data?</span>
           </div>
@@ -564,7 +564,7 @@
         <div id="collaborations_data_provided-group" class="form-group" hidden >
           <label for="collaborations_data_provided" class="col-sm-4 control-label">Provided Data</label>
           <div class="col-sm-8">
-            <input id="collaborations_data_provided" type="number" min="0" step="1" class="form-control" aria-describedby="collaborations_data_provided-help">
+            <input id="collaborations_data_provided" type="number" min="0" step="1" class="form-control" aria-describedby="collaborations_data_provided-help" required>
             <div class="help-block with-errors"></div>
             <span id="collaborations_data_provided-help" class="help-block">How many involved you <em>providing</em> data?</span>
           </div>
@@ -606,7 +606,7 @@
         <div id="data_shared_publicly_num-group" class="form-group" hidden >
           <label for="data_shared_publicly_num" class="col-sm-4 control-label">How many in the last 5 years?</label>
           <div class="col-sm-8">
-            <input id="data_shared_publicly_num" type="number" min="0" step="1" class="form-control" aria-describedby="data_shared_publicly_num-help">
+            <input id="data_shared_publicly_num" type="number" min="0" step="1" class="form-control" aria-describedby="data_shared_publicly_num-help" required>
             <div class="help-block with-errors"></div>
             <span id="data_shared_publicly_num-help" class="help-block">How many datasets have you shared publicly in the last 5 years?</span>
           </div>
@@ -614,7 +614,7 @@
         <div id="data_published_paper-group" class="form-group" hidden >
           <label for="data_published_paper" class="col-sm-4 control-label">Published a Data Paper?</label>
           <div class="col-sm-8">
-            <select id="data_published_paper" class="form-control" aria-describedby="data_published_paper-help">
+            <select id="data_published_paper" class="form-control" aria-describedby="data_published_paper-help" required>
               <option value="" disabled selected hidden >— Select —</option>
               <option>Yes</option>
               <option>No</option>
@@ -632,7 +632,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="code_shared" class="col-sm-4 control-label">Shared Code?</label>
+          <label for="code_shared" class="col-sm-4 control-label">Share Code?</label>
           <div class="col-sm-8">
             <select id="code_shared" class="form-control" aria-describedby="code_shared-help" required>
               <option value="" disabled selected hidden >— Select —</option>
@@ -646,7 +646,7 @@
         <div id="code_shared_method-group" class="form-group" hidden >
           <label for="code_shared_method" class="col-sm-4 control-label">Sharing Method</label>
           <div class="col-sm-8">
-            <select id="code_shared_method" class="form-control" aria-describedby="code_shared_method-help">
+            <select id="code_shared_method" class="form-control" aria-describedby="code_shared_method-help" required>
               <option value="" disabled selected hidden >— Select —</option>
               <option>Compiled code privately (e.g. email)</option>
               <option>Compiled code publicly (e.g. website)</option>
