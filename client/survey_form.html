@@ -784,12 +784,11 @@
         e.preventDefault();
         e.target.selected = !e.target.selected; // invert selected state
         $(this).focus();
-    }).mousemove(function(e){ e.preventDefault() }); // prevents bug where all are delected when clicking and moving
+    }).mousemove(function(e){ e.preventDefault() }); // prevents bug where all are deselected when both clicking and moving
 
     // Submit form as JSON
     $("#survey").submit(function() {
       var val = this.getValue();
-      console.log("lmnop");
       $.ajax({
         type: "POST",
         contentType: 'application/json',
