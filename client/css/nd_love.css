@@ -8,13 +8,23 @@ main {
 }
 
 /*
+ *  Element Overrides
+ */
+
+body {
+  background-color: #555;
+}
+
+/*
  *  Styling
  */
 
 #content {
+  background: #FFF;
+  border-radius: 0.5em;
   float: right;
   line-height: 26px;
-  padding-right: 5em;
+  padding: 3em;
   width: 500px;
 }
 
