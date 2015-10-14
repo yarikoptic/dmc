@@ -500,14 +500,7 @@
           <label for="publications_number_open_access" class="col-sm-4 control-label"># Open Access</label>
           <div class="col-sm-8">
             <input id="publications_number_open_access" type="number" min="0" step="1" class="form-control" aria-describedby="publications_number_open_access-help">
-            <span id="publications_number_open_access-help" class="help-block">How many of those publication are published in open-access journals or with an applied open-access option?</span>
-          </div>
-        </div>
-        <div id="publications_number_preprint_server-group" class="form-group" hidden >
-          <label for="publications_number_preprint_server" class="col-sm-4 control-label"># public preprint server</label>
-          <div class="col-sm-8">
-            <input id="publications_number_preprint_server" type="number" min="0" step="1" class="form-control" aria-describedby="publications_number_preprint_server-help">
-            <span id="publications_number_preprint_server-help" class="help-block">How many of your non-open-access publications from the last 5 years are currently available from a public preprint server (e.g. arXiv.org)?</span>
+            <span id="publications_number_open_access-help" class="help-block">How many of those are openly/freely available? (open access, preprint servers (arXiv.org), etc)</span>
           </div>
         </div>
         <div class="form-group">
@@ -525,35 +518,24 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="lab_collaborations" class="col-sm-4 control-label">Labs Collaborated with in last 5 years</label>
+          <label for="collaborations" class="col-sm-4 control-label">Collaborations in the last 5 years</label>
           <div class="col-sm-8">
-            <input id="lab_collaborations" type="number" min="0" step="1" class="form-control" aria-describedby="lab_collaborations-help">
-            <span id="lab_collaborations-help" class="help-block">How many different labs did you personally collaborate with in the last 5 years?</span>
+            <input id="collaborations" type="number" min="0" step="1" class="form-control" aria-describedby="collaborations-help">
+            <span id="collaborations-help" class="help-block">How many collaborations (outside of your own lab) did you personally have in the last 5 years?</span>
           </div>
         </div>
-        <div class="form-group">
-          <label for="data_shared_collaborations" class="col-sm-4 control-label">Labs shared data with</label>
+        <div id="collaborations_data-group" class="form-group" hidden >
+          <label for="collaborations_data" class="col-sm-4 control-label">Exchange of Data</label>
           <div class="col-sm-8">
-            <input id="data_shared_collaborations" type="number" min="0" step="1" class="form-control" aria-describedby="data_shared_collaborations-help">
-            <span id="data_shared_collaborations-help" class="help-block">How many collaborators outside your own lab did you provide with some of your data in the last 5 years?</span>
+            <input id="collaborations_data" type="number" min="0" step="1" class="form-control" aria-describedby="collaborations_data-help">
+            <span id="collaborations_data-help" class="help-block">How many of those involved the exchange of research data?</span>
           </div>
         </div>
-        <div id="data_shared_publicly-group" class="form-group" hidden >
-          <label for="data_shared_publicly" class="col-sm-4 control-label">How many datasets did you share publicly?</label>
+        <div id="collaborations_data_provided-group" class="form-group" hidden >
+          <label for="collaborations_data_provided" class="col-sm-4 control-label">Provided Data</label>
           <div class="col-sm-8">
-            <input id="data_shared_publicly" type="number" min="0" step="1" class="form-control" aria-describedby="data_shared_publicly-help">
-            <span id="data_shared_publicly-help" class="help-block">How many datasets did you share publicly in the last 5 years?</span>
-          </div>
-        </div>
-        <div id="data_published_solely-group" class="form-group" hidden >
-          <label for="data_published_solely" class="col-sm-4 control-label">Published a Data Paper?</label>
-          <div class="col-sm-8">
-            <select id="data_published_solely" class="form-control" aria-describedby="data_published_solely-help">
-              <option value="" disabled selected hidden>— Select —</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-            <span id="data_published_solely-help" class="help-block">Have you ever published a manuscript solely dedicated to the description of one of your datasets? (Data in brief, data descriptor, data note, etc)</span>
+            <input id="collaborations_data_provided" type="number" min="0" step="1" class="form-control" aria-describedby="collaborations_data_provided-help">
+            <span id="collaborations_data_provided-help" class="help-block">How many involved you <em>providing</em> data?</span>
           </div>
         </div>
         <div class="form-group">
@@ -564,43 +546,43 @@
               <option>Yes</option>
               <option>No</option>
             </select>
-            <span id="data_IRB-help" class="help-block">Does your IRB consent form have provisions for public sharing/deposition to archives of the collected data?</span>
+            <span id="data_IRB-help" class="help-block">Does your IRB consent form have provisions for public sharing/deposition to archive the collected data?</span>
           </div>
         </div>
         <div class="form-group">
-          <label for="data_consumed" class="col-sm-4 control-label">Used Outside Data?</label>
+          <label for="data_shared_publicly_ever" class="col-sm-4 control-label">Ever Published Data</label>
           <div class="col-sm-8">
-            <select id="data_consumed" class="form-control" aria-describedby="data_consumed-help">
+            <select id="data_shared_publicly_ever" class="form-control" aria-describedby="data_shared_publicly_ever-help">
               <option value="" disabled selected hidden>— Select —</option>
               <option>Yes</option>
               <option>No</option>
             </select>
-            <span id="data_consumed-help" class="help-block">Have you ever used data in your own research that somebody from outside your lab acquired?</span>
+            <span id="data_shared_publicly_ever-help" class="help-block">Have you ever publicly shared research data?</span>
           </div>
         </div>
-        <div id="data_consumed_collaborations-group" class="form-group" hidden >
-          <label for="data_consumed_collaborations" class="col-sm-4 control-label">Data from Collaborators</label>
+        <div id="data_shared_publicly_num-group" class="form-group" hidden>
+          <label for="data_shared_publicly_num" class="col-sm-4 control-label">How many in the last 5 years?</label>
           <div class="col-sm-8">
-            <input id="data_consumed_collaborations" type="number" min="0" step="1" class="form-control" aria-describedby="data_consumed_collaborations-help">
-            <span id="data_consumed_collaborations-help" class="help-block">From how many collaborators outside your own lab did you get data for your own research in the last 5 years?</span>
+            <input id="data_shared_publicly_num" type="number" min="0" step="1" class="form-control" aria-describedby="data_shared_publicly_num-help">
+            <span id="data_shared_publicly_num-help" class="help-block">How many datasets have you shared publicly in the last 5 years?</span>
           </div>
         </div>
-        <div id="data_consumed_public-group" class="form-group" hidden >
+        <div id="data_published_paper-group" class="form-group" hidden >
+          <label for="data_published_paper" class="col-sm-4 control-label">Published a Data Paper?</label>
+          <div class="col-sm-8">
+            <select id="data_published_paper" class="form-control" aria-describedby="data_published_paper-help">
+              <option value="" disabled selected hidden>— Select —</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+            <span id="data_published_paper-help" class="help-block">Have you ever published a manuscript solely dedicated to the description of one of your datasets? (Data in brief, data descriptor, data note, etc)</span>
+          </div>
+        </div>
+        <div id="data_consumed_public-group" class="form-group">
           <label for="data_consumed_public" class="col-sm-4 control-label">Data from Public Datasets</label>
           <div class="col-sm-8">
             <input id="data_consumed_public" type="number" min="0" step="1" class="form-control" aria-describedby="data_consumed_public-help">
-            <span id="data_consumed_public-help" class="help-block">How many publicly shared datasets did you use for any purpose (research, teaching, etc)?</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="data_read_solely" class="col-sm-4 control-label">Read data descriptor/paper?</label>
-          <div class="col-sm-8">
-            <select id="data_read_solely" class="form-control" aria-describedby="data_read_solely-help">
-              <option value="" disabled selected hidden>— Select —</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-            <span id="data_read_solely-help" class="help-block">Have your ever read any data descriptor/paper for any publicly available datasets? (Data in brief, data descriptor, data note, etc)</span>
+            <span id="data_consumed_public-help" class="help-block">How many publicly shared datasets have you used for any purpose (research, teaching, etc)?</span>
           </div>
         </div>
         <div class="form-group">
@@ -611,7 +593,7 @@
               <option>Yes</option>
               <option>No</option>
             </select>
-            <span id="code_shared-help" class="help-block">Have you ever shared a piece of software/script/algorithm implementation with anyone outside your own lab?</span>
+            <span id="code_shared-help" class="help-block">Have you ever shared software/script/algorithm with anyone outside your own lab?</span>
           </div>
         </div>
         <div id="code_shared_method-group" class="form-group" hidden >
@@ -803,28 +785,31 @@
     $("#publications_number").change(function() {
       if ( $(this).val() > 0) {
         $("#publications_number_open_access-group").show("slow");
-        $("#publications_number_preprint_server-group").show("slow");
       } else {
         $("#publications_number_open_access-group").hide("slow");
-        $("#publications_number_preprint_server-group").hide("slow");
       }
     });
-    $("#data_shared_collaborations").change(function() {
+    $("#collaborations").change(function() {
       if ( $(this).val() > 0) {
-        $("#data_shared_publicly-group").show("slow");
-        $("#data_shared_solely-group").show("slow");
+        $("#collaborations_data-group").show("slow");
       } else {
-        $("#data_shared_publicly-group").hide("slow");
-        $("#data_shared_solely-group").hide("slow");
+        $("#collaborations_data-group").hide("slow");
       }
     });
-    $("#data_consumed").change(function() {
-      if ( $(this).val() == "Yes") {
-        $("#data_consumed_collaborations-group").show("slow");
-        $("#data_consumed_public-group").show("slow");
+    $("#collaborations_data").change(function() {
+      if ( $(this).val() > 0) {
+        $("#collaborations_data_provided-group").show("slow");
       } else {
-        $("#data_consumed_collaborations-group").hide("slow");
-        $("#data_consumed_public-group").hide("slow");
+        $("#collaborations_data_provided-group").hide("slow");
+      }
+    });
+    $("#data_shared_publicly_ever").change(function() {
+      if ( $(this).val() == "Yes") {
+        $("#data_shared_publicly_num-group").show("slow");
+        $("#data_published_paper-group").show("slow");
+      } else {
+        $("#data_shared_publicly_num-group").hide("slow");
+        $("#data_published_paper-group").hide("slow");
       }
     });
     $("#code_shared").change(function() {
