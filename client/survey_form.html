@@ -29,7 +29,7 @@
 
   <div class="container" id="main-container">
     <main id="content">
-      <form id="survey" class="form-horizontal">
+      <form id="survey" data-toggle="validator" class="form-horizontal">
       <fieldset>
         <div class="form-group">
           <label for="employer" class="col-sm-4 control-label">Employer</label>
@@ -41,6 +41,7 @@
               <option>Research Institution</option>
               <option>Company</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="employer-help" class="help-block">Select what fits best</span>
           </div>
         </div>
@@ -57,7 +58,8 @@
               <option>Professor/PI/Supervisor</option>
               <option>Other</option>
             </select>
-            <span id="title" class="help-block">Select what fits best</span>
+            <div class="help-block with-errors"></div>
+            <span id="title-help" class="help-block">Select what fits best</span>
           </div>
         </div>
         <div class="form-group">
@@ -311,6 +313,7 @@
               <option>Zambia</option>
               <option>Zimbabwe</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="country-help" class="help-block">In what country is the lab that you primarily work for?</span>
           </div>
         </div>
@@ -327,6 +330,7 @@
               <option>Non-Invasive Electrophysiology</option>
               <option>Spectroscopy</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="methods-help" class="help-block">Multiple select</span>
           </div>
         </div>
@@ -347,6 +351,7 @@
               <option>Desktop</option>
               <option>High-performance Workstation</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="personal_device-help" class="help-block">Which type of device is "yours" at work to use daily for research-related tasks?</span>
           </div>
         </div>
@@ -360,6 +365,7 @@
               <option>Windows</option>
               <option>Other</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="personal_OS-help" class="help-block">What OS does the above device run?</span>
           </div>
         </div>
@@ -376,6 +382,7 @@
               <option>Other</option>
               <option>Don't know</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="personal_OS_linux-help" class="help-block">It's just like choosing your favorite ice cream — riddled with political implications.</span>
           </div>
         </div>
@@ -383,6 +390,7 @@
           <label for="personal_OS_other" class="col-sm-4 control-label">"Other" OS</label>
           <div class="col-sm-8">
             <input id="personal_OS_other" type="text" class="form-control" aria-describedby="personal_OS_other-help">
+            <div class="help-block with-errors"></div>
             <span id="personal_OS_other-help" class="help-block"><em>Alright.</em> You get righteous-cool-points; we love non-conformists.</span>
           </div>
         </div>
@@ -394,6 +402,7 @@
               <option>Yes</option>
               <option>No</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="maintainer-help" class="help-block">Are you the person primarily responsible for maintaining this device?</span>
           </div>
         </div>
@@ -401,6 +410,7 @@
           <label for="hours" class="col-sm-4 control-label">Hours/month of Toil</label>
           <div class="col-sm-8">
             <input id="hours" type="number" min="0" step="1" class="form-control" aria-describedby="hours-help">
+            <div class="help-block with-errors"></div>
             <span id="hours-help" class="help-block">How many hours per month do you personally spend maintaining this device?</span>
           </div>
         </div>
@@ -425,6 +435,7 @@
               <option>Grid/Cloud</option>
               <option>Other</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="institute_device-help" class="help-block">What type of shared, infrastructural device do you most use for research computing?</span>
           </div>
         </div>
@@ -439,6 +450,7 @@
               <option>Other</option>
               <option>Don't know</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="institute_OS-help" class="help-block">What OS does the above device run?</span>
           </div>
         </div>
@@ -455,6 +467,7 @@
               <option>Other</option>
               <option>Don't know</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="institute_OS_linux-help" class="help-block">It's just like choosing your favorite ice cream — riddled with political implications.</span>
           </div>
         </div>
@@ -462,6 +475,7 @@
           <label for="institute_OS_other" class="col-sm-4 control-label">"Other" OS</label>
           <div class="col-sm-8">
             <input id="institute_OS_other" type="text" class="form-control" aria-describedby="institute_OS_other-help">
+            <div class="help-block with-errors"></div>
             <span id="institute_OS_other-help" class="help-block"><em>Alright.</em> You get righteous-cool-points; we love non-conformists.</span>
           </div>
         </div>
@@ -476,6 +490,7 @@
               <option>70/30</option>
               <option>100/0</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="personal_institute_usage-help" class="help-block">Fraction of use "personal" vs. "institutional" (research computing only)</span>
           </div>
         </div>
@@ -493,6 +508,7 @@
           <label for="publications_number" class="col-sm-4 control-label">Publications in last 5 years</label>
           <div class="col-sm-8">
             <input id="publications_number" type="number" min="0" step="1" class="form-control" aria-describedby="publications_number-help">
+            <div class="help-block with-errors"></div>
             <span id="publications_number-help" class="help-block">How many peer-reviewed publications did you (co-)author in the last 5 years?</span>
           </div>
         </div>
@@ -500,6 +516,7 @@
           <label for="publications_number_open_access" class="col-sm-4 control-label"># Open Access</label>
           <div class="col-sm-8">
             <input id="publications_number_open_access" type="number" min="0" step="1" class="form-control" aria-describedby="publications_number_open_access-help">
+            <div class="help-block with-errors"></div>
             <span id="publications_number_open_access-help" class="help-block">How many of those are openly/freely available? (open access, preprint servers (arXiv.org), etc)</span>
           </div>
         </div>
@@ -514,6 +531,7 @@
               <option>Monthly</option>
               <option>Yearly</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="social_media-help" class="help-block">How often do you use social media (blog/FaceBook/g+/etc) to share about your research?</span>
           </div>
         </div>
@@ -531,6 +549,7 @@
           <label for="collaborations" class="col-sm-4 control-label">Collaborations in the last 5 years</label>
           <div class="col-sm-8">
             <input id="collaborations" type="number" min="0" step="1" class="form-control" aria-describedby="collaborations-help">
+            <div class="help-block with-errors"></div>
             <span id="collaborations-help" class="help-block">How many collaborations (outside of your own lab) did you personally have in the last 5 years?</span>
           </div>
         </div>
@@ -538,6 +557,7 @@
           <label for="collaborations_data" class="col-sm-4 control-label">Exchange of Data</label>
           <div class="col-sm-8">
             <input id="collaborations_data" type="number" min="0" step="1" class="form-control" aria-describedby="collaborations_data-help">
+            <div class="help-block with-errors"></div>
             <span id="collaborations_data-help" class="help-block">How many of those involved the exchange of research data?</span>
           </div>
         </div>
@@ -545,6 +565,7 @@
           <label for="collaborations_data_provided" class="col-sm-4 control-label">Provided Data</label>
           <div class="col-sm-8">
             <input id="collaborations_data_provided" type="number" min="0" step="1" class="form-control" aria-describedby="collaborations_data_provided-help">
+            <div class="help-block with-errors"></div>
             <span id="collaborations_data_provided-help" class="help-block">How many involved you <em>providing</em> data?</span>
           </div>
         </div>
@@ -566,6 +587,7 @@
               <option>Yes</option>
               <option>No</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="data_IRB-help" class="help-block">Does your IRB consent form have provisions for public sharing/deposition to archive the collected data?</span>
           </div>
         </div>
@@ -577,6 +599,7 @@
               <option>Yes</option>
               <option>No</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="data_shared_publicly_ever-help" class="help-block">Have you ever publicly shared research data?</span>
           </div>
         </div>
@@ -584,6 +607,7 @@
           <label for="data_shared_publicly_num" class="col-sm-4 control-label">How many in the last 5 years?</label>
           <div class="col-sm-8">
             <input id="data_shared_publicly_num" type="number" min="0" step="1" class="form-control" aria-describedby="data_shared_publicly_num-help">
+            <div class="help-block with-errors"></div>
             <span id="data_shared_publicly_num-help" class="help-block">How many datasets have you shared publicly in the last 5 years?</span>
           </div>
         </div>
@@ -595,6 +619,7 @@
               <option>Yes</option>
               <option>No</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="data_published_paper-help" class="help-block">Have you ever published a manuscript solely dedicated to the description of one of your datasets? (Data in brief, data descriptor, data note, etc)</span>
           </div>
         </div>
@@ -602,6 +627,7 @@
           <label for="data_consumed_public" class="col-sm-4 control-label">Data from Public Datasets</label>
           <div class="col-sm-8">
             <input id="data_consumed_public" type="number" min="0" step="1" class="form-control" aria-describedby="data_consumed_public-help">
+            <div class="help-block with-errors"></div>
             <span id="data_consumed_public-help" class="help-block">How many publicly shared datasets have you used for any purpose (research, teaching, etc)?</span>
           </div>
         </div>
@@ -613,6 +639,7 @@
               <option>Yes</option>
               <option>No</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="code_shared-help" class="help-block">Have you ever shared software/script/algorithm with anyone outside your own lab?</span>
           </div>
         </div>
@@ -626,6 +653,7 @@
               <option>Source code privately (e.g. email)</option>
               <option>Source code publicly (e.g. GitHub, etc)</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="code_shared_method-help" class="help-block">What's your preferred method of sharing code?</span>
           </div>
         </div>
@@ -650,6 +678,7 @@
               <option>Microsoft Word</option>
               <option>Other</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="tool_manuscripts-help" class="help-block">What tool do you primarily use to write manuscripts/reports?</span>
           </div>
         </div>
@@ -672,6 +701,7 @@
               <option>SPSS</option>
               <option>Other</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="tool_languages-help" class="help-block">What programming languages/analysis environments do you use</span>
           </div>
         </div>
@@ -686,6 +716,7 @@
               <option>A lot</option>
               <option>It's a requirement</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="openness_sw-help" class="help-block">How much does the "openness" of a software tool influence your decision to use it?</span>
           </div>
         </div>
@@ -700,6 +731,7 @@
               <option>A lot</option>
               <option>It's a requirement</option>
             </select>
+            <div class="help-block with-errors"></div>
             <span id="openness_hw-help" class="help-block">How much does the "openness" of a hardware tool influence your decision to <em>purchase</em> it?</span>
           </div>
         </div>
