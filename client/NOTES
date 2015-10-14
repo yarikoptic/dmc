@@ -1,0 +1,5 @@
+Validator does not validate hidden fields. So it is (for example) safe to mark
+hidden, dependent input fields as "required." On the flip side, however, this
+means that once a tab is passed, it no longer affects validation. So if
+checking for validity on Submit, it'll only be validating the visible (last)
+tab.
