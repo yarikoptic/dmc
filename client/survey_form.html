@@ -706,6 +706,13 @@
         });
     });
 
+    // Allow multi-select without using ctrl
+    $("select[multiple]").mousedown(function(e){
+        e.preventDefault();
+        e.target.selected = !e.target.selected; // invert selected state
+        $(this).focus();
+    }).mousemove(function(e){ e.preventDefault() }); // prevents bug where all are delected when clicking and moving
+
     /*
        Field dependencies
      */
