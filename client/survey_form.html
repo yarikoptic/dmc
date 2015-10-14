@@ -29,7 +29,7 @@
 
   <div class="container" id="main-container">
     <main id="content">
-      <form class="form-horizontal">
+      <form id="survey" class="form-horizontal">
       <fieldset>
         <div class="form-group">
           <label for="employer" class="col-sm-4 control-label">Employer</label>
@@ -678,7 +678,7 @@
             <button type="button" class="btn btn-previous">Previous</button>
           </div>
           <div class="col-xs-6 text-right">
-            <button type="button" class="btn btn-next">Next</button>
+            <button type="submit" class="btn btn-next">Submit</button>
           </div>
         </div>
       </fieldset>
@@ -722,6 +722,27 @@
         e.target.selected = !e.target.selected; // invert selected state
         $(this).focus();
     }).mousemove(function(e){ e.preventDefault() }); // prevents bug where all are delected when clicking and moving
+
+    // Submit form as JSON
+    $("#survey").submit(function() {
+      var val = this.getValue();
+      console.log("lmnop");
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json',
+        url: "http://localhost:8080/submit",
+        data: JSON.stringify(val),
+        success: function(data) {
+          alert(data);
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(xhr.status);
+          alert(ajaxOptions);
+          alert(thrownError);
+        }
+      });
+      return false; // don't actually submit the form
+    });
 
     /*
        Field dependencies
