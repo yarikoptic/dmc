@@ -32,7 +32,7 @@
       <form class="form-horizontal">
       <fieldset>
         <div class="form-group">
-          <label for="employer" class="col-sm-4 control-label">Employer:</label>
+          <label for="employer" class="col-sm-4 control-label">Employer</label>
           <div class="col-sm-8">
             <select id="employer" class="form-control" aria-describedby="employer-help">
               <option value="" disabled selected hidden>— Select —</option>
@@ -45,7 +45,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="title" class="col-sm-4 control-label">Title:</label>
+          <label for="title" class="col-sm-4 control-label">Title</label>
           <div class="col-sm-8">
             <select id="title" class="form-control" aria-describedby="title-help">
               <option value="" disabled selected hidden>— Select —</option>
@@ -61,7 +61,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="country" class="col-sm-4 control-label">Country:</label>
+          <label for="country" class="col-sm-4 control-label">Country</label>
           <div class="col-sm-8">
             <select id="country" class="form-control" aria-describedby="country-help">
               <option value="" disabled selected hidden>— Select —</option>
@@ -315,7 +315,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="methods" class="col-sm-4 control-label">Research Methods:</label>
+          <label for="methods" class="col-sm-4 control-label">Research Methods</label>
           <div class="col-sm-8">
             <select id="methods" multiple size="8" class="form-control" aria-describedby="methods-help">
               <option>Behavioral Experiments/Psychophysics</option>
@@ -338,7 +338,7 @@
       </fieldset>
       <fieldset hidden>
         <div class="form-group">
-          <label for="personal_device" class="col-sm-4 control-label">Research/Work Device:</label>
+          <label for="personal_device" class="col-sm-4 control-label">Research/Work Device</label>
           <div class="col-sm-8">
             <select id="personal_device" class="form-control" aria-describedby="personal_device-help">
               <option value="" disabled selected hidden>— Select —</option>
@@ -351,7 +351,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="personal_OS" class="col-sm-4 control-label">OS:</label>
+          <label for="personal_OS" class="col-sm-4 control-label">OS</label>
           <div class="col-sm-8">
             <select id="personal_OS" class="form-control" aria-describedby="personal_OS-help">
               <option value="" disabled selected hidden>— Select —</option>
@@ -364,7 +364,7 @@
           </div>
         </div>
         <div id="personal_OS_linux-group" class="form-group" hidden >
-          <label for="personal_OS_linux" class="col-sm-4 control-label">Linux Distro:</label>
+          <label for="personal_OS_linux" class="col-sm-4 control-label">Linux Distro</label>
           <div class="col-sm-8">
             <select id="personal_OS_linux" class="form-control" aria-describedby="personal_OS_linux-help">
               <option value="" disabled selected hidden>— Select —</option>
@@ -374,12 +374,13 @@
               <option>Fedora</option>
               <option>Arch</option>
               <option>Other</option>
+              <option>Don't know</option>
             </select>
             <span id="personal_OS_linux-help" class="help-block">It's just like choosing your favorite ice cream — riddled with political implications.</span>
           </div>
         </div>
         <div id="personal_OS_other-group" class="form-group" hidden >
-          <label for="personal_OS_other" class="col-sm-4 control-label">"Other" OS:</label>
+          <label for="personal_OS_other" class="col-sm-4 control-label">"Other" OS</label>
           <div class="col-sm-8">
             <input id="personal_OS_other" type="text" class="form-control" aria-describedby="personal_OS_other-help">
             <span id="personal_OS_other-help" class="help-block"><em>Alright.</em> You get righteous-cool-points; we love non-conformists.</span>
@@ -397,7 +398,7 @@
           </div>
         </div>
         <div id="hours-group" class="form-group" hidden >
-          <label for="hours" class="col-sm-4 control-label">Hours/month of Toil:</label>
+          <label for="hours" class="col-sm-4 control-label">Hours/month of Toil</label>
           <div class="col-sm-8">
             <input id="hours" type="number" min="0" step="1" class="form-control" aria-describedby="hours-help">
             <span id="hours-help" class="help-block">How many hours per month do you personally spend maintaining this device?</span>
@@ -420,7 +421,7 @@
           </div>
         </div>
         <div id="institute_OS-group" class="form-group" hidden >
-          <label for="institute_OS" class="col-sm-4 control-label">OS:</label>
+          <label for="institute_OS" class="col-sm-4 control-label">OS</label>
           <div class="col-sm-8">
             <select id="institute_OS" class="form-control" aria-describedby="institute_OS-help">
               <option value="" disabled selected hidden>— Select —</option>
@@ -428,12 +429,13 @@
               <option>OS X</option>
               <option>Windows</option>
               <option>Other</option>
+              <option>Don't know</option>
             </select>
             <span id="institute_OS-help" class="help-block">What OS does the above device run?</span>
           </div>
         </div>
         <div id="institute_OS_linux-group" class="form-group" hidden >
-          <label for="institute_OS_linux" class="col-sm-4 control-label">Linux Distro:</label>
+          <label for="institute_OS_linux" class="col-sm-4 control-label">Linux Distro</label>
           <div class="col-sm-8">
             <select id="institute_OS_linux" class="form-control" aria-describedby="institute_OS_linux-help">
               <option value="" disabled selected hidden>— Select —</option>
@@ -443,19 +445,20 @@
               <option>Fedora</option>
               <option>Arch</option>
               <option>Other</option>
+              <option>Don't know</option>
             </select>
             <span id="institute_OS_linux-help" class="help-block">It's just like choosing your favorite ice cream — riddled with political implications.</span>
           </div>
         </div>
         <div id="institute_OS_other-group" class="form-group" hidden >
-          <label for="institute_OS_other" class="col-sm-4 control-label">"Other" OS:</label>
+          <label for="institute_OS_other" class="col-sm-4 control-label">"Other" OS</label>
           <div class="col-sm-8">
             <input id="institute_OS_other" type="text" class="form-control" aria-describedby="institute_OS_other-help">
             <span id="institute_OS_other-help" class="help-block"><em>Alright.</em> You get righteous-cool-points; we love non-conformists.</span>
           </div>
         </div>
         <div id="personal_institute_usage-group" class="form-group" hidden >
-          <label for="personal_institute_usage" class="col-sm-4 control-label">P/I Ratio:</label>
+          <label for="personal_institute_usage" class="col-sm-4 control-label">P/I Ratio</label>
           <div class="col-sm-8">
             <select id="personal_institute_usage" class="form-control" aria-describedby="personal_institute_usage-help">
               <option value="" disabled selected hidden>— Select —</option>
