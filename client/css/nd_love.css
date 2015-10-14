@@ -11,8 +11,14 @@ main {
  *  Element Overrides
  */
 
+html {
+  min-height: 100%;
+  position: relative;
+}
+
 body {
   background-color: #555;
+  margin: 0 0 2em 0; /* bottom = footer height */
 }
 
 /*
@@ -24,16 +30,21 @@ body {
   border-radius: 0.5em;
   float: right;
   line-height: 26px;
-  padding: 3em;
+  margin-bottom: 70px;
+  padding: 40px;
   width: 500px;
 }
 
 #site-footer {
   background: #EEE;
+  bottom: 0;
   border-top: 1px dotted #999;
+  height: 2em;
   margin-top: 40px;
   padding: 35px 0;
+  position: absolute;
   text-align: center;
+  width: 100%;
 }
 #site-footer p {
   margin-bottom: 0;
