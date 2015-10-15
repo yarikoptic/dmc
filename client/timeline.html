@@ -54,23 +54,117 @@
         </div>
       </div>
     </li>
-    <li id="sexual-healing-group" class="timeline-inverted" hidden>
+    <li id="personal_device-group" class="timeline-inverted" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
-          <label for="sexual-healing" class="timeline-title control-label">Marvin Gaye</label>
-          <p><small id="sexual-healing-help" class="text-muted help-block">I'm hot just like an oven</small></p>
+          <label for="personal_device" class="timeline-title control-label">Research/Work Device</label>
+          <p><small id="personal_device-help" class="text-muted help-block">Which type of device is "yours" at work to use daily for research-related tasks?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="sexual-healing" aria-describedby="sexual-healing-help"
+          <select id="personal_device" aria-describedby="personal_device-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden>— Select —</option>
-            <option>Let's Make Love Tonight</option>
-            <option>I Think I'm Capsizing</option>
-            <option>The Wave Are Rising</option>
-            <option>Please Don't Procrastinate</option>
+            <option>Phone/Tablet</option>
+            <option>Laptop</option>
+            <option>Desktop</option>
+            <option>High-performance Workstation</option>
           </select>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+    </li>
+    <li id="personal_OS-group" hidden>
+      <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+      <div class="timeline-panel form-group">
+        <div class="timeline-heading">
+          <label for="personal_OS" class="timeline-title control-label">OS</label>
+          <p><small id="personal_OS-help" class="text-muted help-block">What OS does the above device run?</small></p>
+        </div>
+        <div class="timeline-body">
+          <select id="personal_OS" aria-describedby="personal_OS-help"
+                  class="form-control"
+                  required>
+            <option value="" disabled selected hidden>— Select —</option>
+            <option>Linux</option>
+            <option>OS X</option>
+            <option>Windows</option>
+            <option>Other</option>
+          </select>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+    </li>
+    <li id="personal_OS_linux-group" data-next="#maintainer-group" hidden>
+      <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+      <div class="timeline-panel form-group">
+        <div class="timeline-heading">
+          <label for="personal_OS_linux" class="timeline-title control-label">Linux Distro</label>
+          <p><small id="personal_OS_linux-help" class="text-muted help-block"></small>It's just like choosing your favorite ice cream — riddled with political implications.</p>
+        </div>
+        <div class="timeline-body">
+          <select id="personal_OS_linux_linux" aria-describedby="personal_OS_linux_linux-help"
+                  class="form-control"
+                  required>
+            <option value="" disabled selected hidden>— Select —</option>
+            <option>Debian</option>
+            <option>Ubuntu/Mint</option>
+            <option>RedHat/CentOS/Scientific Linux</option>
+            <option>Fedora</option>
+            <option>Arch</option>
+            <option>Other</option>
+            <option>Don't know</option>
+          </select>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+    </li>
+    <li id="personal_OS_other-group" data-next="#maintainer-group" hidden>
+      <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+      <div class="timeline-panel form-group">
+        <div class="timeline-heading">
+          <label for="personal_OS_other" class="timeline-title control-label">Other OS</label>
+          <p><small id="personal_OS_other-help" class="text-muted help-block"></small><em>Alright.</em> You get righteous-cool-points; we love non-conformists.</p>
+        </div>
+        <div class="timeline-body">
+          <input id="personal_OS_other" aria-describedby="personal_OS_other-help"
+                 class="form-control"
+                 type="text" required>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+    </li>
+    <li id="maintainer-group" class="timeline-inverted" hidden>
+      <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+      <div class="timeline-panel form-group">
+        <div class="timeline-heading">
+          <label for="maintainer" class="timeline-title control-label">Maintainer</label>
+          <p><small id="maintainer-help" class="text-muted help-block"></small>Are you the person primarily responsible for maintaining this device?</p>
+        </div>
+        <div class="timeline-body">
+          <select id="maintainer" aria-describedby="maintainer-help"
+                  class="form-control"
+                  required>
+            <option value="" disabled selected hidden>— Select —</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+    </li>
+    <li id="hours-group" class="timeline-inverted" hidden>
+      <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+      <div class="timeline-panel form-group">
+        <div class="timeline-heading">
+          <label for="hours" class="timeline-title control-label">Hours/month of Toil</label>
+          <p><small id="hours-help" class="text-muted help-block"></small>How many hours per month do you personally spend maintaining this device?</p>
+        </div>
+        <div class="timeline-body">
+          <input id="hours" aria-describedby="hours-help"
+                 class="form-control"
+                 type="number" min="0" step="1" required>
           <div class="help-block with-errors"></div>
         </div>
       </div>
