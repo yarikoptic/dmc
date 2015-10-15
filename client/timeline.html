@@ -385,7 +385,7 @@
         </div>
       </div>
     </li>
-    <li id="personal_OS-group" hidden>
+    <li id="personal_OS-group" data-next="#maintainer-group" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
@@ -445,7 +445,7 @@
         </div>
       </div>
     </li>
-    <li id="maintainer-group" class="timeline-inverted" hidden>
+    <li id="maintainer-group" class="timeline-inverted" data-next="#institute_device-group" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
@@ -479,7 +479,7 @@
         </div>
       </div>
     </li>
-    <li id="institute_device-group" class="timeline-inverted" hidden>
+    <li id="institute_device-group" class="timeline-inverted" data-next="#publications_number-group" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
@@ -501,7 +501,7 @@
         </div>
       </div>
     </li>
-    <li id="institute_OS-group" hidden>
+    <li id="institute_OS-group" data-next="#personal_institute_usage-group" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
@@ -522,7 +522,7 @@
         </div>
       </div>
     </li>
-    <li id="institute_OS_linux-group" data-next="#maintainer-group" hidden>
+    <li id="institute_OS_linux-group" data-next="#personal_institute_usage-group" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
@@ -546,7 +546,7 @@
         </div>
       </div>
     </li>
-    <li id="institute_OS_other-group" data-next="#maintainer-group" hidden>
+    <li id="institute_OS_other-group" data-next="#personal_institute_usage-group" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
@@ -583,7 +583,7 @@
         </div>
       </div>
     </li>
-    <li id="publications_number-group" hidden>
+    <li id="publications_number-group" data-next="#social_media-group" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
@@ -635,7 +635,7 @@
         </div>
       </div>
     </li>
-    <li id="collaborations-group" hidden>
+    <li id="collaborations-group" data-next="#data_IRB-group" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
@@ -650,7 +650,7 @@
         </div>
       </div>
     </li>
-    <li id="collaborations_data-group" hidden>
+    <li id="collaborations_data-group" data-next="#data_IRB-group" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
@@ -665,7 +665,7 @@
         </div>
       </div>
     </li>
-    <li id="collaborations_data_provided-group" hidden>
+    <li id="collaborations_data_provided-group" data-next="#data_IRB-group" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
@@ -699,7 +699,7 @@
         </div>
       </div>
     </li>
-    <li id="data_shared_publicly_ever-group" hidden>
+    <li id="data_shared_publicly_ever-group" data-next="#data_consumed_public-group" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
@@ -922,11 +922,14 @@
 <script>
 $(document).ready(function() {
   // Allow multi-select without using ctrl
+  // TODO: fix this; it doens't fire onChange
+  /*
   $("select[multiple]").mousedown(function(e){
       e.preventDefault();
       e.target.selected = !e.target.selected; // invert selected state
       $(this).focus();
   }).mousemove(function(e){ e.preventDefault() }); // prevents bug where all are deselected when both clicking and moving
+  */
 
   // Submit form as JSON
   $("#survey").submit(function() {
@@ -965,6 +968,90 @@ $(document).ready(function() {
       $("#personal_OS_linux-group").hide("slow");
       $("#personal_OS_other-group").hide("slow");
       $parent_li.attr('data-next', '#maintainer-group');
+    }
+  });
+  $("#maintainer").change(function() {
+    var $parent_li = $(this).parents('li');
+    if ( $(this).val() == 'Yes') {
+      $parent_li.attr('data-next', '#hours-group');
+    } else {
+      $("#hours-group").hide("slow");
+      $parent_li.attr('data-next', '#institute_device-group');
+    }
+  });
+  $("#institute_device").change(function() {
+    var $parent_li = $(this).parents('li');
+    if ( $(this).val() !== "None") {
+      $parent_li.attr('data-next', '#institute_OS-group');
+    } else {
+      $("#institute_OS-group").hide("slow");
+      $("#institute_OS_linux-group").hide("slow");
+      $("#institute_OS_other-group").hide("slow");
+      $("#personal_institute_usage-group").hide("slow");
+      $parent_li.attr('data-next', '#publications_number-group');
+    }
+  });
+  $("#institute_OS").change(function() {
+    var $this = $(this);
+    var $parent_li = $this.parents('li');
+
+    if ($this.val() == 'Linux') {
+      $("#institute_OS_other-group").hide("slow");
+      $parent_li.attr('data-next', '#institute_OS_linux-group');
+    } else if ($this.val() == 'Other') {
+      $("#institute_OS_linux-group").hide("slow");
+      $parent_li.attr('data-next', '#institute_OS_other-group');
+    } else {
+      $("#institute_OS_linux-group").hide("slow");
+      $("#institute_OS_other-group").hide("slow");
+      $parent_li.attr('data-next', '#personal_institute_usage-group');
+    }
+  });
+  $("#publications_number").change(function() {
+    var $parent_li = $(this).parents('li');
+    if ( $(this).val() > 0) {
+      $parent_li.attr('data-next', '#publications_number_open_access-group');
+    } else {
+      $("#publications_number_open_access-group").hide("slow");
+      $parent_li.attr('data-next', '#social_media-group');
+    }
+  });
+  $("#collaborations").change(function() {
+    var $parent_li = $(this).parents('li');
+    if ( $(this).val() > 0) {
+      $parent_li.attr('data-next', '#collaborations_data-group');
+    } else {
+      $("#collaborations_data-group").hide("slow");
+      $("#collaborations_data_provided-group").hide("slow");
+      $parent_li.attr('data-next', '#data_IRB-group');
+    }
+  });
+  $("#collaborations_data").change(function() {
+    var $parent_li = $(this).parents('li');
+    if ( $(this).val() > 0) {
+      $parent_li.attr('data-next', '#collaborations_data_provided-group');
+    } else {
+      $("#collaborations_data_provided-group").hide("slow");
+      $parent_li.attr('data-next', '#data_IRB-group');
+    }
+  });
+  $("#data_shared_publicly_ever").change(function() {
+    var $parent_li = $(this).parents('li');
+    if ( $(this).val() == "Yes") {
+      $parent_li.attr('data-next', '#data_shared_publicly_num-group');
+    } else {
+      $("#data_shared_publicly_num-group").hide("slow");
+      $("#data_published_paper-group").hide("slow");
+      $parent_li.attr('data-next', '#data_consumed_public-group');
+    }
+  });
+  $("#code_shared").change(function() {
+    var $parent_li = $(this).parents('li');
+    if ( $(this).val() == "Yes") {
+      $parent_li.attr('data-next', '#code_shared_method-group');
+    } else {
+      $("#code_shared_method-group").hide("slow");
+      $parent_li.attr('data-next', '#tool_manuscripts-group');
     }
   });
 
