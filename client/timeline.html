@@ -210,14 +210,20 @@ $(document).ready(function() {
     var $this = $(this);
     $this.change(function (e) {
       // TODO: check validity
+      var $root = $('html, body');
       var $parent_li = $this.parents('li');
       var data_next = $parent_li.attr('data-next');
+      var $next_q;
 
-      if (data_next !== undefined) { // if there's a specific question that should be next
-        $(data_next).fadeIn(100);
+      // if there's no next-question explicitly set, then just go to next in DOM
+      if (data_next == undefined) {
+        $next_q = $parent_li.next();
       } else {
-        $parent_li.next().fadeIn(100);
+        $next_q = $(data_next);
       }
+
+      $next_q.fadeIn(2000);
+      $root.animate({ scrollTop: $next_q.offset().top }, 1500);
     });
   });
 
