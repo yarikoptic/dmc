@@ -17,8 +17,8 @@ html {
 }
 
 body {
+  margin: 0 0 1.5em 0; /* bottom = footer height */
   background-color: #555;
-  margin: 0 0 2em 0; /* bottom = footer height */
 }
 
 /*
@@ -39,14 +39,16 @@ body {
   background: #EEE;
   bottom: 0;
   border-top: 1px dotted #999;
-  height: 2em;
+  height: 1.5em;
   margin-top: 40px;
-  padding: 35px 0;
+  padding: 0;
   position: absolute;
   text-align: center;
   width: 100%;
 }
 #site-footer p {
+  font-size: 1em;
+  line-height: 1em;
   margin-bottom: 0;
 }
 
