@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="NeuroDebian Software Survey" />
+  <meta name="author" content="NeuroDebian" />
+
+  <title>NeuroDebian Software Survey</title>
+
+  <link rel="stylesheet" href="css/bootstrap.3.3.5.min.css" />
+  <link rel="stylesheet" href="css/timeline.css" />
+
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <header>
+    <div class="jumbotron text-center" id="overview">
+      <div class="container">
+        <h1><a href="/">NeuroDebian Software Survey</a></h1>
+      </div>
+    </div>
+  </header>
+
+<div class="container">
+  <div class="page-header">
+    <h1 id="timeline">Timeline</h1>
+  </div>
+  <form id="survey" data-toggle="validator">
+  <ul class="timeline">
+    <li id="employer-group">
+      <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+      <div class="timeline-panel form-group">
+        <div class="timeline-heading">
+          <label for="employer" class="timeline-title control-label">Employer</label>
+          <p><small id="employer-help" class="text-muted help-block">Select what fits best</small></p>
+        </div>
+        <div class="timeline-body">
+          <select id="employer" aria-describedby="employer-help"
+                  class="form-control"
+                  required>
+            <option value="" disabled selected hidden>— Select —</option>
+            <option>Public University</option>
+            <option>Private University</option>
+            <option>Research Institution</option>
+            <option>Company</option>
+          </select>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+    </li>
+    <li id="sexual-healing-group" class="timeline-inverted">
+      <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+      <div class="timeline-panel form-group">
+        <div class="timeline-heading">
+          <label for="sexual-healing" class="timeline-title control-label">Marvin Gaye</label>
+          <p><small id="sexual-healing-help" class="text-muted help-block">I'm hot just like an oven</small></p>
+        </div>
+        <div class="timeline-body">
+          <select id="sexual-healing" aria-describedby="sexual-healing-help"
+                  class="form-control"
+                  required>
+            <option value="" disabled selected hidden>— Select —</option>
+            <option>Let's Make Love Tonight</option>
+            <option>I Think I'm Capsizing</option>
+            <option>The Wave Are Rising</option>
+            <option>Please Don't Procrastinate</option>
+          </select>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</form>
+</div>
+  <footer id="site-footer">
+    <div class="container">
+      <p class="text-center text-muted"><small>
+        © NeuroDebian 2015 &nbsp;&bull;&nbsp; Code Freely available on GitHub
+      </small></p>
+    </div>
+  </footer>
+
+  <!-- javascript -->
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/bootstrap.3.3.5.min.js"></script>
+  <script src="js/validator.0.9.0.min.js"></script>
+</body>
+</html>
+
