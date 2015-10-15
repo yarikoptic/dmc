@@ -187,7 +187,36 @@
 
 <script>
 $(document).ready(function() {
-  //
+  // Allow multi-select without using ctrl
+  $("select[multiple]").mousedown(function(e){
+      e.preventDefault();
+      e.target.selected = !e.target.selected; // invert selected state
+      $(this).focus();
+  }).mousemove(function(e){ e.preventDefault() }); // prevents bug where all are deselected when both clicking and moving
+
+  // Submit form as JSON
+  $("#survey").submit(function() {
+    var val = this.getValue();
+    $.ajax({
+      type: "POST",
+      contentType: 'application/json',
+      url: "http://localhost:8080/submit",
+      data: JSON.stringify(val),
+      success: function(data) {
+        alert(data);
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(ajaxOptions);
+        alert(thrownError);
+      }
+    });
+    return false; // don't actually submit the form
+  });
+
+ /*
+  *  Field dependencies
+  */
   $("#personal_OS").change(function() {
     var $this = $(this);
     var $parent_li = $this.parents('li');
@@ -205,7 +234,10 @@ $(document).ready(function() {
     }
   });
 
-  // all inputs, upon completion, will show the next question
+ /*
+  *  Navigation
+  *  All inputs, upon completion/validation, will show/scroll-to the next question
+  */
   $("select, input").each(function () {
     var $this = $(this);
     $this.change(function (e) {
@@ -226,7 +258,6 @@ $(document).ready(function() {
       $root.animate({ scrollTop: $next_q.offset().top }, 1500);
     });
   });
-
 });
 </script>
 </body>
