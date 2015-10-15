@@ -38,18 +38,6 @@ def generate_submitter_id(sid):
 
 class SurveyDB(object):
     @cherrypy.expose
-    def index(self):
-        return open('client/survey_form.html').read()
-
-    @cherrypy.expose
-    def survey_schema(self):
-        return open('client/survey_schema.json').read()
-
-    @cherrypy.expose
-    def survey_options(self):
-        return open('client/survey_options.json').read()
-
-    @cherrypy.expose
     def get_rid(self, sid=None):
         """Retrieve the latest record submitted given personal ID"""
         if sid is None:
@@ -145,4 +133,4 @@ class SurveyDB(object):
 
 
 if __name__ == '__main__':
-    cherrypy.quickstart(SurveyDB())
+    cherrypy.quickstart(SurveyDB(), '/', 'server/survey.conf')
