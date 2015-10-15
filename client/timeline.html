@@ -54,7 +54,7 @@
         </div>
       </div>
     </li>
-    <li id="sexual-healing-group" class="timeline-inverted">
+    <li id="sexual-healing-group" class="timeline-inverted" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
@@ -92,7 +92,15 @@
 <script src="js/validator.0.9.0.min.js"></script>
 
 <script>
-
+$(document).ready(function() {
+  $("select, input").each(function () {
+    var $this = $(this);
+    $this.change(function (e) {
+      // TODO: check validity
+      $this.parents('li').next().fadeIn("slow");
+    });
+  });
+});
 </script>
 </body>
 </html>
