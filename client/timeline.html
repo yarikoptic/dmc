@@ -414,7 +414,7 @@
           <p><small id="personal_OS_linux-help" class="text-muted help-block"></small>It's just like choosing your favorite ice cream — riddled with political implications.</p>
         </div>
         <div class="timeline-body">
-          <select id="personal_OS_linux_linux" aria-describedby="personal_OS_linux_linux-help"
+          <select id="personal_OS_linux" aria-describedby="personal_OS_linux-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden>— Select —</option>
@@ -530,7 +530,7 @@
           <p><small id="institute_OS_linux-help" class="text-muted help-block"></small>It's just like choosing your favorite ice cream — riddled with political implications.</p>
         </div>
         <div class="timeline-body">
-          <select id="institute_OS_linux_linux" aria-describedby="institute_OS_linux_linux-help"
+          <select id="institute_OS_linux" aria-describedby="institute_OS_linux-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden>— Select —</option>
@@ -569,8 +569,8 @@
           <p><small id="personal_institute_usage-help" class="text-muted help-block">Fraction of use "personal" vs. "institutional" (research computing only)</small></p>
         </div>
         <div class="timeline-body">
-          <select id="personal_institute_usage"
-                  class="form-control" aria-describedby="personal_institute_usage-help"
+          <select id="personal_institute_usage" aria-describedby="personal_institute_usage-help"
+                  class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
             <option>0/100</option>
@@ -591,9 +591,9 @@
           <p><small id="publications_number-help" class="text-muted help-block">How many peer-reviewed publications did you (co-)author in the last 5 years?</small></p>
         </div>
         <div class="timeline-body">
-          <input id="publications_number" type="number" min="0" step="1"
-               class="form-control" aria-describedby="publications_number-help"
-               required>
+          <input id="publications_number" aria-describedby="publications_number-help"
+                 class="form-control"
+                 type="number" min="0" step="1" required>
           <div class="help-block with-errors"></div>
         </div>
       </div>
@@ -606,9 +606,9 @@
           <p><small id="publications_number_open_access-help" class="text-muted help-block">How many of those are openly/freely available? (open access, preprint servers (arXiv.org), etc)</small></p>
         </div>
         <div class="timeline-body">
-          <input id="publications_number_open_access_open_access" type="number" min="0" step="1"
-                 class="form-control" aria-describedby="publications_number_open_access_open_access-help"
-                 required>
+          <input id="publications_number_open_access" aria-describedby="publications_number_open_access-help"
+                 class="form-control"
+                 type="number" min="0" step="1" required>
           <div class="help-block with-errors"></div>
         </div>
       </div>
@@ -658,9 +658,9 @@
           <p><small id="collaborations_data-help" class="text-muted help-block">How many of those involved the exchange of research data?</small></p>
         </div>
         <div class="timeline-body">
-          <input id="collaborations_data_data" type="number" min="0" step="1"
-                 class="form-control" aria-describedby="collaborations_data_data-help"
-                 required>
+          <input id="collaborations_data" aria-describedby="collaborations_data-help"
+                 class="form-control"
+                 type="number" min="0" step="1" required>
           <div class="help-block with-errors"></div>
         </div>
       </div>
@@ -673,9 +673,9 @@
           <p><small id="collaborations_data_provided-help" class="text-muted help-block">How many involved you <em>providing</em> data?</small></p>
         </div>
         <div class="timeline-body">
-          <input id="collaborations_data_provided_provided" type="number" min="0" step="1"
-                 class="form-control" aria-describedby="collaborations_data_provided_provided-help"
-                 required>
+          <input id="collaborations_data_provided" aria-describedby="collaborations_data_provided-help"
+                 class="form-control"
+                 type="number" min="0" step="1" required>
           <div class="help-block with-errors"></div>
         </div>
       </div>
@@ -794,8 +794,8 @@
           <p><small id="code_shared_method-help" class="text-muted help-block">What's your preferred method of sharing code?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="code_shared_method_method"
-                  class="form-control" aria-describedby="code_shared_method_method-help"
+          <select id="code_shared_method" aria-describedby="code_shared_method-help"
+                  class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
             <option>Compiled code privately (e.g. email)</option>
