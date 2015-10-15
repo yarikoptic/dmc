@@ -22,6 +22,7 @@ def is_valid_submission(d):
             return False
     return True
 
+
 def generate_submitter_id(sid):
     """Generate a new public submitter ID"""
     # generate a new ID, add extra randomness so it cannot be
@@ -37,18 +38,6 @@ def generate_submitter_id(sid):
 
 
 class SurveyDB(object):
-    @cherrypy.expose
-    def index(self):
-        return open('client/survey_form.html').read()
-
-    @cherrypy.expose
-    def survey_schema(self):
-        return open('client/survey_schema.json').read()
-
-    @cherrypy.expose
-    def survey_options(self):
-        return open('client/survey_options.json').read()
-
     @cherrypy.expose
     def get_rid(self, sid=None):
         """Retrieve the latest record submitted given personal ID"""
@@ -145,4 +134,10 @@ class SurveyDB(object):
 
 
 if __name__ == '__main__':
-    cherrypy.quickstart(SurveyDB())
+    conf = {
+        '/': {'tools.staticdir.on': True,
+                'tools.staticdir.root': os.path.abspath(os.curdir),
+                'tools.staticdir.dir': 'client',
+                'tools.staticdir.index': 'survey_form.html'}
+    }
+    cherrypy.quickstart(SurveyDB(), config=conf)
