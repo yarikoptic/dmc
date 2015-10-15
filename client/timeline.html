@@ -187,13 +187,40 @@
 
 <script>
 $(document).ready(function() {
+  //
+  $("#personal_OS").change(function() {
+    var $this = $(this);
+    var $parent_li = $this.parents('li');
+
+    if ($this.val() == 'Linux') {
+      $("#personal_OS_other-group").hide("slow");
+      $parent_li.attr('data-next', '#personal_OS_linux-group');
+    } else if ($this.val() == 'Other') {
+      $("#personal_OS_linux-group").hide("slow");
+      $parent_li.attr('data-next', '#personal_OS_other-group');
+    } else {
+      $("#personal_OS_linux-group").hide("slow");
+      $("#personal_OS_other-group").hide("slow");
+      $parent_li.attr('data-next', '#maintainer-group');
+    }
+  });
+
+  // all inputs, upon completion, will show the next question
   $("select, input").each(function () {
     var $this = $(this);
     $this.change(function (e) {
       // TODO: check validity
-      $this.parents('li').next().fadeIn("slow");
+      var $parent_li = $this.parents('li');
+      var data_next = $parent_li.attr('data-next');
+
+      if (data_next !== undefined) { // if there's a specific question that should be next
+        $(data_next).fadeIn(100);
+      } else {
+        $parent_li.next().fadeIn(100);
+      }
     });
   });
+
 });
 </script>
 </body>
