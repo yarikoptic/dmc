@@ -163,3 +163,11 @@ License: SIL OFL 1.1
  CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE
  THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.
  -------------------------------------------------------------------------
+
+Files: client/css/font-awesome*
+Copyright: Font Awesome
+License: MIT
+
+Files: client/fonts/fontawesome-*
+Copyright: Font Awesome
+License: SIL OFL 1.1
