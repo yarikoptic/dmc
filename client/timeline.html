@@ -348,7 +348,7 @@
           <p><small id="methods-help" class="text-muted help-block">Select all that apply</small></p>
         </div>
         <div class="timeline-body">
-           <select id="methods" name="methods" aria-describedby="methods-help"
+           <select id="methods" name="methods[]" aria-describedby="methods-help"
                    class="form-control"
                    multiple size="8" required>
             <option>Behavioral Experiments/Psychophysics</option>
@@ -838,7 +838,7 @@
           <p><small id="tool_languages-help" class="text-muted help-block">What programming languages/analysis environments do you use?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="tool_languages" name="tool_languages" aria-describedby="tool_languages-help"
+          <select id="tool_languages" name="tool_languages[]" aria-describedby="tool_languages-help"
                   class="form-control"
                   multiple size="14" required>
             <option>C/C++</option>
@@ -945,23 +945,23 @@ $(document).ready(function() {
   }).mousemove(function(e){ e.preventDefault() }); // prevents bug where all are deselected when both clicking and moving
 
   // Submit form as JSON
-  $("#survey").submit(function() {
-    var val = $(this).val();
+  $("#survey").submit(function(e) {
+    var json = { json: $(this).serializeJSON() };
+
     $.ajax({
       type: "POST",
       contentType: 'application/json',
-      url: "http://localhost:8080/submit",
-      data: JSON.stringify(val),
+      url: "/submit",
+      data: JSON.stringify(json),
       success: function(data) {
+        // TODO: Shout hurrah, or something, upon success
         alert(data);
       },
       error: function(xhr, ajaxOptions, thrownError) {
-        alert(xhr.status);
-        alert(ajaxOptions);
-        alert(thrownError);
+        alert("Keanu 'Whoa'. '" + xhr.status + "' error; that's /not/ supposed to happen.\nPlease report this error to NeuroDebian.\nAnd it shall be fixed.");
       }
     });
-    return false; // don't actually submit the form
+    e.preventDefault(); // suppress browser submit
   });
 
  /*
