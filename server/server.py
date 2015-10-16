@@ -5,12 +5,15 @@ import hashlib
 import json
 import base64
 import datetime
+import qrcode
 
 opj = os.path.join
 
 priv_id_dirname = 'submitter_uuids'
 pub_id_dirname = 'submitters'
 rec_dirname = 'records'
+retrieve_form_url = 'http://openneuro.net/?uuid=%(uuid)s'
+retrieve_results_url = 'http://openneuro.net/?q=%(id)s'
 
 def is_valid_submission(d):
     """Perform all possible tests and return flag"""
@@ -91,12 +94,16 @@ class SurveyDB(object):
             # and store for later
             with open(submitter_file, 'w') as _file:
                 _file.write(submitter_id)
+            qrcode.make(retrieve_form_url % dict(uuid=submitter_uuid)
+                ).save('%s.png' % submitter_file)
 
         # this directory will contain stuff like badges, computed
         # stats, ...
         submitters_dir = opj(pub_id_dirname, submitter_id)
         if not os.path.exists(submitters_dir):
             os.makedirs(submitters_dir)
+            qrcode.make(retrieve_results_url % dict(id=submitter_id)
+                ).save(opj(submitters_dir, 'qrcode.png'))
 
         # prep record for storage
         # 1st kill the UUID as the records will be public
