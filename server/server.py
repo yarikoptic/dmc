@@ -8,6 +8,9 @@ import datetime
 
 opj = os.path.join
 
+priv_id_dirname = 'submitter_uuids'
+pub_id_dirname = 'submitters'
+rec_dirname = 'records'
 
 def is_valid_submission(d):
     """Perform all possible tests and return flag"""
@@ -16,7 +19,7 @@ def is_valid_submission(d):
         if '/' in sid:
             # is not a UUID, but could be a path
             return False
-        if not os.path.exists(opj('submitter_uuids', sid)):
+        if not os.path.exists(opj(priv_id_dirname, sid)):
             # this thing claims it is a recurring submission
             # but we don't know about the one it references
             return False
@@ -32,7 +35,7 @@ def generate_submitter_id(sid):
     # now shorten in to 6 chars with base64 + safety net
     for start in xrange(0, len(sid) - 4):
         id_ = base64.urlsafe_b64encode(sid[start:start + 4])[:6]
-        if not os.path.exists(opj('submitters', id_)):
+        if not os.path.exists(opj(pub_id_dirname, id_)):
             return id_
     raise RuntimeError("we have serious issues with lack of randomness")
 
@@ -44,11 +47,11 @@ class SurveyDB(object):
         if sid is None:
             # when called without clue, just be happy -- silently
             return None
-        sfilename = opj('submitter_uuids', sid)
+        sfilename = opj(priv_id_dirname, sid)
         if not os.path.exists(sfilename):
             return None
         submitter_id = open(sfilename).read()
-        rec_path = opj('submitters', submitter_id, 'record')
+        rec_path = opj(pub_id_dirname, submitter_id, 'record')
         if not os.path.exists(rec_path):
             return None
         record_id = os.path.split(os.path.realpath(rec_path))[-1]
@@ -59,6 +62,7 @@ class SurveyDB(object):
     def submit(self):
         # this is the form content as decoded JSON, aka a dict
         data = cherrypy.request.json
+
         if not is_valid_submission(data):
             # XXX should be an error of some kind
             return "Not like that my friend"
@@ -75,7 +79,7 @@ class SurveyDB(object):
         # which record came from whom
         # this is also the ID people can use to retrieve the 'latest'
         # result
-        submitter_file = opj('submitter_uuids', submitter_uuid)
+        submitter_file = opj(priv_id_dirname, submitter_uuid)
         if os.path.exists(submitter_file):
             # we have a previous submission for this UUID, retrieve the ID
             submitter_id = open(submitter_file).read()
@@ -90,7 +94,7 @@ class SurveyDB(object):
 
         # this directory will contain stuff like badges, computed
         # stats, ...
-        submitters_dir = opj('submitters', submitter_id)
+        submitters_dir = opj(pub_id_dirname, submitter_id)
         if not os.path.exists(submitters_dir):
             os.makedirs(submitters_dir)
 
@@ -118,14 +122,14 @@ class SurveyDB(object):
         # record is final, serialize and store using its identity as the name
         record = json.dumps(data)
         record_id = hashlib.md5(record).hexdigest()
-        with open(opj('records', record_id), 'w') as _file:
+        with open(opj(rec_dirname, record_id), 'w') as _file:
             _file.write(record)
 
         # finally populate public data for this submitter
         # for now place the latest record in here
         if os.path.exists(rec_path):
             os.unlink(rec_path)
-        os.symlink(opj('..', '..', 'records', record_id), rec_path)
+        os.symlink(opj('..', '..', rec_dirname, record_id), rec_path)
 
         # return private and public IDs to the submitter, they
         # need to be displayed for future reference
