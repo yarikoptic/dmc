@@ -1076,7 +1076,7 @@ $(document).ready(function() {
   // shows next question
   // $field = accepts object pointing to field
   // delay == integer of ms since last input/change to wait until firing event
-  function nextQuestion($field, delay=500) {
+  function nextQuestion($field, delay) {
     var $parent_li = $field.parents('li');
 
     clearTimeout($field.data('timer'));
