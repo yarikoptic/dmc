@@ -138,6 +138,6 @@ if __name__ == '__main__':
         '/': {'tools.staticdir.on': True,
                 'tools.staticdir.root': os.path.abspath(os.curdir),
                 'tools.staticdir.dir': 'client',
-                'tools.staticdir.index': 'survey_form.html'}
+                'tools.staticdir.index': 'timeline.html'}
     }
     cherrypy.quickstart(SurveyDB(), config=conf)
