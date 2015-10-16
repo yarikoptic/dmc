@@ -65,7 +65,7 @@ class SurveyDB(object):
     @cherrypy.tools.json_in(force=True)
     def submit(self):
         # this is the form content as decoded JSON, aka a dict
-        data = cherrypy.request.json
+        data = json.loads(cherrypy.request.json['json'])
 
         if not is_valid_submission(data):
             # XXX should be an error of some kind
