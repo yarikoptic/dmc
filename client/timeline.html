@@ -1073,12 +1073,17 @@ $(document).ready(function() {
   */
   var $root = $('html, body');
 
-  $("select, input").each(function () {
-    var $this = $(this);
-    var $parent_li = $this.parents('li');
+  // shows next question
+  // $field = accepts object pointing to field
+  // delay == integer of ms since last input/change to wait until firing event
+  function nextQuestion($field, delay=500) {
+    var $parent_li = $field.parents('li');
 
-    $this.change(function (e) {
-      if ($this[0].validity.valid) {
+    clearTimeout($field.data('timer'));
+    $field.data('timer', setTimeout(function(){
+      $field.removeData('timer');
+
+      if ($field[0].validity.valid) {
         var data_next = $parent_li.attr('data-next');
         var $next_q;
 
@@ -1092,7 +1097,26 @@ $(document).ready(function() {
         $next_q.fadeIn(2000);
         $root.animate({ scrollTop: $next_q.offset().top }, 2000);
       }
-    });
+    }, delay));
+  }
+
+  $('input').on('input', function(){
+    // give text inputs plenty of time before scrolling; the user might be fixing a typo, etc
+    nextQuestion($(this), 1500);
+  });
+  $("select").each(function () {
+    var $this = $(this);
+
+    if ($this.attr('multiple') == undefined) {
+      $this.change(function (e) {
+        nextQuestion($(this), 500);
+      });
+    } else {
+      // for multiple selects, give use more time to click another, before going to next question
+      $this.change(function (e) {
+        nextQuestion($(this), 1500);
+      });
+    }
   });
 
  /*
