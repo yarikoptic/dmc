@@ -41,7 +41,7 @@
           <p><small id="employer-help" class="text-muted help-block">Select what fits best</small></p>
         </div>
         <div class="timeline-body">
-          <select id="employer" aria-describedby="employer-help"
+          <select id="employer" name="employer" aria-describedby="employer-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden>— Select —</option>
@@ -62,7 +62,7 @@
           <p><small id="position-help" class="text-muted help-block">Select what fits best</small></p>
         </div>
         <div class="timeline-body">
-          <select id="position" aria-describedby="position-help"
+          <select id="position" name="position" aria-describedby="position-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden>— Select —</option>
@@ -86,8 +86,8 @@
           <p><small id="country-help" class="text-muted help-block">In what country is the lab that you primarily work for?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="country"
-                  class="form-control" aria-describedby="country-help"
+          <select id="country" name="country" aria-describedby="country-help"
+                  class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
             <option>Afghanistan</option>
@@ -348,9 +348,9 @@
           <p><small id="methods-help" class="text-muted help-block">Select all that apply</small></p>
         </div>
         <div class="timeline-body">
-           <select id="methods" multiple size="8"
-                   class="form-control" aria-describedby="methods-help"
-                   required>
+           <select id="methods" name="methods[]" aria-describedby="methods-help"
+                   class="form-control"
+                   multiple size="8">
             <option>Behavioral Experiments/Psychophysics</option>
             <option>Brain Imaging (MRI)</option>
             <option>Computational Modeling/Simulations</option>
@@ -372,7 +372,7 @@
           <p><small id="personal_device-help" class="text-muted help-block">Which type of device is "yours" at work to use daily for research-related tasks?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="personal_device" aria-describedby="personal_device-help"
+          <select id="personal_device" name="personal_device" aria-describedby="personal_device-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden>— Select —</option>
@@ -393,7 +393,7 @@
           <p><small id="personal_OS-help" class="text-muted help-block">What OS does the above device run?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="personal_OS" aria-describedby="personal_OS-help"
+          <select id="personal_OS" name="personal_OS" aria-describedby="personal_OS-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden>— Select —</option>
@@ -415,7 +415,7 @@
           <p><small id="personal_OS_linux-help" class="text-muted help-block"></small>It's just like choosing your favorite ice cream — riddled with political implications.</p>
         </div>
         <div class="timeline-body">
-          <select id="personal_OS_linux" aria-describedby="personal_OS_linux-help"
+          <select id="personal_OS_linux" name="personal_OS_linux" aria-describedby="personal_OS_linux-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden>— Select —</option>
@@ -439,7 +439,7 @@
           <p><small id="personal_OS_other-help" class="text-muted help-block"></small><em>Alright.</em> You get righteous-cool-points; we love non-conformists. What is it?</p>
         </div>
         <div class="timeline-body">
-          <input id="personal_OS_other" aria-describedby="personal_OS_other-help"
+          <input id="personal_OS_other" name="personal_OS_other" aria-describedby="personal_OS_other-help"
                  class="form-control"
                  type="text" required>
           <div class="help-block with-errors"></div>
@@ -454,7 +454,7 @@
           <p><small id="maintainer-help" class="text-muted help-block"></small>Are you the person primarily responsible for maintaining this device?</p>
         </div>
         <div class="timeline-body">
-          <select id="maintainer" aria-describedby="maintainer-help"
+          <select id="maintainer" name="maintainer" aria-describedby="maintainer-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden>— Select —</option>
@@ -473,7 +473,7 @@
           <p><small id="hours-help" class="text-muted help-block"></small>How many hours per month do you personally spend maintaining this device?</p>
         </div>
         <div class="timeline-body">
-          <input id="hours" aria-describedby="hours-help"
+          <input id="hours" name="hours" aria-describedby="hours-help"
                  class="form-control"
                  type="number" min="0" step="1" required>
           <div class="help-block with-errors"></div>
@@ -488,7 +488,7 @@
           <p><small id="institute_device-help" class="text-muted help-block">What type of shared, infrastructural device do you most use for research computing?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="institute_device" aria-describedby="institute_device-help"
+          <select id="institute_device" name="institute_device" aria-describedby="institute_device-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden>— Select —</option>
@@ -510,7 +510,7 @@
           <p><small id="institute_OS-help" class="text-muted help-block">What OS does the above device run?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="institute_OS" aria-describedby="institute_OS-help"
+          <select id="institute_OS" name="institute_OS" aria-describedby="institute_OS-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden>— Select —</option>
@@ -531,7 +531,7 @@
           <p><small id="institute_OS_linux-help" class="text-muted help-block"></small>It's just like choosing your favorite ice cream — riddled with political implications.</p>
         </div>
         <div class="timeline-body">
-          <select id="institute_OS_linux" aria-describedby="institute_OS_linux-help"
+          <select id="institute_OS_linux" name="institute_OS_linux" aria-describedby="institute_OS_linux-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden>— Select —</option>
@@ -555,7 +555,7 @@
           <p><small id="institute_OS_other-help" class="text-muted help-block"></small><em>Alright.</em> You get righteous-cool-points; we love non-conformists. What is it?</p>
         </div>
         <div class="timeline-body">
-          <input id="institute_OS_other" aria-describedby="institute_OS_other-help"
+          <input id="institute_OS_other" name="institute_OS_other" aria-describedby="institute_OS_other-help"
                  class="form-control"
                  type="text" required>
           <div class="help-block with-errors"></div>
@@ -570,7 +570,7 @@
           <p><small id="personal_institute_usage-help" class="text-muted help-block">Fraction of use "your device" vs. "shared infrastructure" (research computing only)</small></p>
         </div>
         <div class="timeline-body">
-          <select id="personal_institute_usage" aria-describedby="personal_institute_usage-help"
+          <select id="personal_institute_usage" name="personal_institute_usage" aria-describedby="personal_institute_usage-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
@@ -592,7 +592,7 @@
           <p><small id="publications_number-help" class="text-muted help-block">How many peer-reviewed publications did you (co-)author in the last 5 years?</small></p>
         </div>
         <div class="timeline-body">
-          <input id="publications_number" aria-describedby="publications_number-help"
+          <input id="publications_number" name="publications_number" aria-describedby="publications_number-help"
                  class="form-control"
                  type="number" min="0" step="1" required>
           <div class="help-block with-errors"></div>
@@ -607,7 +607,7 @@
           <p><small id="publications_number_open_access-help" class="text-muted help-block">How many of those are openly/freely available? (open access publication, or from preprint servers like arXiv.org, etc)</small></p>
         </div>
         <div class="timeline-body">
-          <input id="publications_number_open_access" aria-describedby="publications_number_open_access-help"
+          <input id="publications_number_open_access" name="publications_number_open_access" aria-describedby="publications_number_open_access-help"
                  class="form-control"
                  type="number" min="0" step="1" required>
           <div class="help-block with-errors"></div>
@@ -622,8 +622,8 @@
           <p><small id="social_media-help" class="text-muted help-block">How often do you use social media (blog/FaceBook/g+/etc) to share about your research?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="social_media"
-                  class="form-control" aria-describedby="social_media-help"
+          <select id="social_media" name="social_media" aria-describedby="social_media-help"
+                  class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
             <option>Never</option>
@@ -644,9 +644,9 @@
           <p><small id="collaborations-help" class="text-muted help-block">How many collaborations (outside of your own lab) did you personally have in the last 5 years?</small></p>
         </div>
         <div class="timeline-body">
-          <input id="collaborations" type="number" min="0" step="1"
-                 class="form-control" aria-describedby="collaborations-help"
-                 required>
+          <input id="collaborations" name="collaborations" aria-describedby="collaborations-help"
+                 class="form-control"
+                 type="number" min="0" step="1" required>
           <div class="help-block with-errors"></div>
         </div>
       </div>
@@ -659,7 +659,7 @@
           <p><small id="collaborations_data-help" class="text-muted help-block">How many of those involved the exchange of research data?</small></p>
         </div>
         <div class="timeline-body">
-          <input id="collaborations_data" aria-describedby="collaborations_data-help"
+          <input id="collaborations_data" name="collaborations_data" aria-describedby="collaborations_data-help"
                  class="form-control"
                  type="number" min="0" step="1" required>
           <div class="help-block with-errors"></div>
@@ -674,7 +674,7 @@
           <p><small id="collaborations_data_provided-help" class="text-muted help-block">How many involved you <em>providing</em> data?</small></p>
         </div>
         <div class="timeline-body">
-          <input id="collaborations_data_provided" aria-describedby="collaborations_data_provided-help"
+          <input id="collaborations_data_provided" name="collaborations_data_provided" aria-describedby="collaborations_data_provided-help"
                  class="form-control"
                  type="number" min="0" step="1" required>
           <div class="help-block with-errors"></div>
@@ -689,8 +689,8 @@
           <p><small id="data_IRB-help" class="text-muted help-block">Does your consent form have provisions for public sharing/deposition of the collected data?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="data_IRB"
-                  class="form-control" aria-describedby="data_IRB-help"
+          <select id="data_IRB" name="data_IRB" aria-describedby="data_IRB-help"
+                  class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
             <option>Yes</option>
@@ -708,8 +708,8 @@
           <p><small id="data_shared_publicly_ever-help" class="text-muted help-block">Have you ever made your research data publicly available?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="data_shared_publicly_ever"
-                  class="form-control" aria-describedby="data_shared_publicly_ever-help"
+          <select id="data_shared_publicly_ever" name="data_shared_publicly_ever" aria-describedby="data_shared_publicly_ever-help"
+                  class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
             <option>Yes</option>
@@ -727,9 +727,9 @@
           <p><small id="data_shared_publicly_num-help" class="text-muted help-block">How many datasets have you shared publicly in the last 5 years?</small></p>
         </div>
         <div class="timeline-body">
-          <input id="data_shared_publicly_num" type="number" min="0" step="1"
-                 class="form-control" aria-describedby="data_shared_publicly_num-help"
-                 required>
+          <input id="data_shared_publicly_num" name="data_shared_publicly_num" aria-describedby="data_shared_publicly_num-help"
+                 class="form-control"
+                 type="number" min="0" step="1" required>
           <div class="help-block with-errors"></div>
         </div>
       </div>
@@ -742,8 +742,8 @@
           <p><small id="data_published_paper-help" class="text-muted help-block">Have you ever published a manuscript solely dedicated to the description of one of your datasets? (Data in brief, data descriptor, data note, etc)</small></p>
         </div>
         <div class="timeline-body">
-          <select id="data_published_paper"
-                  class="form-control" aria-describedby="data_published_paper-help"
+          <select id="data_published_paper" name="data_published_paper" aria-describedby="data_published_paper-help"
+                  class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
             <option>Yes</option>
@@ -761,9 +761,9 @@
           <p><small id="data_consumed_public-help" class="text-muted help-block">How many publicly shared datasets have you used for any purpose (research, teaching, etc)?</small></p>
         </div>
         <div class="timeline-body">
-          <input id="data_consumed_public" type="number" min="0" step="1"
-                 class="form-control" aria-describedby="data_consumed_public-help"
-                 required>
+          <input id="data_consumed_public" name="data_consumed_public" aria-describedby="data_consumed_public-help"
+                 class="form-control"
+                 type="number" min="0" step="1" required>
           <div class="help-block with-errors"></div>
         </div>
       </div>
@@ -776,8 +776,8 @@
           <p><small id="code_shared-help" class="text-muted help-block">Have you ever shared software/scripts/algorithms with anyone outside of your own lab?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="code_shared"
-                  class="form-control" aria-describedby="code_shared-help"
+          <select id="code_shared" name="code_shared" aria-describedby="code_shared-help"
+                  class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
             <option>Yes</option>
@@ -795,7 +795,7 @@
           <p><small id="code_shared_method-help" class="text-muted help-block">What's your preferred method of sharing code?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="code_shared_method" aria-describedby="code_shared_method-help"
+          <select id="code_shared_method" name="code_shared_method" aria-describedby="code_shared_method-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
@@ -816,8 +816,8 @@
           <p><small id="tool_manuscripts-help" class="text-muted help-block">What tool do you primarily use to write manuscripts/reports?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="tool_manuscripts"
-                  class="form-control" aria-describedby="tool_manuscripts-help"
+          <select id="tool_manuscripts" name="tool_manuscripts" aria-describedby="tool_manuscripts-help"
+                  class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
             <option>Google Docs (or other online suite)</option>
@@ -838,9 +838,9 @@
           <p><small id="tool_languages-help" class="text-muted help-block">What programming languages/analysis environments do you use?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="tool_languages" multiple size="14"
-                  class="form-control" aria-describedby="tool_languages-help"
-                  required>
+          <select id="tool_languages" name="tool_languages[]" aria-describedby="tool_languages-help"
+                  class="form-control"
+                  multiple size="14">
             <option>C/C++</option>
             <option>Fortran</option>
             <option>Java</option>
@@ -868,8 +868,8 @@
           <p><small id="openness_sw-help" class="text-muted help-block">How much does the "openness" of a software tool influence your decision to use it?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="openness_sw"
-                  class="form-control" aria-describedby="openness_sw-help"
+          <select id="openness_sw" name="openness_sw" aria-describedby="openness_sw-help"
+                  class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
             <option>Not at all</option>
@@ -890,8 +890,8 @@
           <p><small id="openness_hw-help" class="text-muted help-block">How much does the "openness" of a hardware tool influence your decision to <em>purchase</em> it?</small></p>
         </div>
         <div class="timeline-body">
-          <select id="openness_hw"
-                  class="form-control" aria-describedby="openness_hw-help"
+          <select id="openness_hw" name="openness_hw" aria-describedby="openness_hw-help"
+                  class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
             <option>Not at all</option>
@@ -904,7 +904,7 @@
         </div>
       </div>
     </li>
-    <li id="submit_hw-group" class="timeline-inverted" hidden>
+    <li id="submit-group" class="timeline-inverted" hidden>
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
@@ -932,36 +932,36 @@
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.3.3.5.min.js"></script>
 <script src="js/validator.0.9.0.min.js"></script>
+<script src="js/jquery.serialize-object.2.5.0.min.js"></script>
 
 <script>
 $(document).ready(function() {
   // Allow multi-select without using ctrl
-  // TODO: fix this; it doens't fire onChange
   $("select[multiple]").mousedown(function(e){
-      e.preventDefault();
-      e.target.selected = !e.target.selected; // invert selected state
-      $(this).trigger("change");
-      $(this).focus();
+    e.preventDefault();
+    e.target.selected = !e.target.selected; // invert selected state
+    $(this).trigger("change");
+    $(this).focus();
   }).mousemove(function(e){ e.preventDefault() }); // prevents bug where all are deselected when both clicking and moving
 
   // Submit form as JSON
-  $("#survey").submit(function() {
-    var val = $(this).val();
+  $("#survey").submit(function(e) {
+    var json = { json: $(this).serializeJSON() };
+
     $.ajax({
       type: "POST",
       contentType: 'application/json',
-      url: "http://localhost:8080/submit",
-      data: JSON.stringify(val),
+      url: "/submit",
+      data: JSON.stringify(json),
       success: function(data) {
+        // TODO: Shout hurrah, or something, upon success
         alert(data);
       },
       error: function(xhr, ajaxOptions, thrownError) {
-        alert(xhr.status);
-        alert(ajaxOptions);
-        alert(thrownError);
+        alert("Keanu 'Whoa'. '" + xhr.status + "' error; that's /not/ supposed to happen.\nPlease report this error to NeuroDebian.\nAnd it shall be fixed.");
       }
     });
-    return false; // don't actually submit the form
+    e.preventDefault(); // suppress browser submit
   });
 
  /*
@@ -1074,12 +1074,17 @@ $(document).ready(function() {
   */
   var $root = $('html, body');
 
-  $("select, input").each(function () {
-    var $this = $(this);
-    var $parent_li = $this.parents('li');
+  // shows next question
+  // $field = accepts object pointing to field
+  // delay == integer of ms since last input/change to wait until firing event
+  function nextQuestion($field, delay) {
+    var $parent_li = $field.parents('li');
 
-    $this.change(function (e) {
-      if ($this[0].validity.valid) {
+    clearTimeout($field.data('timer'));
+    $field.data('timer', setTimeout(function(){
+      $field.removeData('timer');
+
+      if ($field[0].validity.valid) {
         var data_next = $parent_li.attr('data-next');
         var $next_q;
 
@@ -1093,7 +1098,26 @@ $(document).ready(function() {
         $next_q.fadeIn(2000);
         $root.animate({ scrollTop: $next_q.offset().top }, 2000);
       }
-    });
+    }, delay));
+  }
+
+  $('input').on('input', function(){
+    // give text inputs plenty of time before scrolling; the user might be fixing a typo, etc
+    nextQuestion($(this), 1500);
+  });
+  $("select").each(function () {
+    var $this = $(this);
+
+    if ($this.attr('multiple') == undefined) {
+      $this.change(function (e) {
+        nextQuestion($(this), 500);
+      });
+    } else {
+      // for multiple selects, give use more time to click another, before going to next question
+      $this.change(function (e) {
+        nextQuestion($(this), 1500);
+      });
+    }
   });
 
  /*
