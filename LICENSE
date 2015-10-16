@@ -57,3 +57,7 @@ License: MIT
 Files: client/js/jquery*
 Copyright: jQuery
 License: MIT
+
+Files: client/js/jquery.serialize-object*
+Copyright (c) 2014, Paul Macek
+License: BSD-3-Clause
