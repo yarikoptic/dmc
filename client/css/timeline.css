@@ -8,6 +8,56 @@ main {
 }
 
 /*
+ *  Fonts
+/*
+
+/* Font Licensed under OFL 1.1 */
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Libre Baskerville'), local('LibreBaskerville-Regular'), url(../fonts/librebaskerville.woff) format('woff');
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Libre Baskerville'), local('LibreBaskerville-Italic'), url(../fonts/librebaskerville_italic.woff) format('woff');
+}
+
+/* Font Licensed under Apache 2.0 */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Open Sans'), local('OpenSans'), url(../fonts/opensans.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(../fonts/opensans_bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(../fonts/opensans_italic.woff) format('woff');
+}
+
+/*
+ *  Element overrides
+ */
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6, .timeline-title {
+  font-family: 'Libre Baskerville', serif;
+  letter-spacing: -0.025em;
+}
+
+/*
  *  Styling
  */
 #banner_image {
