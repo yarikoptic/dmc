@@ -60,7 +60,6 @@ main {
   border-radius: 2px;
   padding: 20px;
   position: relative;
-  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
 }
 
@@ -101,10 +100,7 @@ main {
   margin-left: -25px;
   background-color: #999;
   z-index: 100;
-  border-top-right-radius: 50%;
-  border-top-left-radius: 50%;
-  border-bottom-right-radius: 50%;
-  border-bottom-left-radius: 50%;
+  border-radius: 50%;
 }
 
 .timeline > li.timeline-inverted > .timeline-panel {
