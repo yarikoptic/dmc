@@ -23,7 +23,7 @@
   <div id="banner_image"></div>
   <div id="flyer" class="text-center">
     <h1>How Do <em>You</em> Science?</h1>
-    <button type="button" class="btn btn-default btn-lg">Tell Us</button>
+    <button type="button" id="tell_us" class="btn btn-default btn-lg">Tell Us</button>
   </div>
 </header>
 
@@ -934,6 +934,10 @@
 
 <script>
 $(document).ready(function() {
+  $("#tell_us").click(function() {
+    $root.animate({ scrollTop: $('#survey').offset().top }, 1000);
+  });
+
   // Allow multi-select without using ctrl
   $("select[multiple]").mousedown(function(e){
     e.preventDefault();
