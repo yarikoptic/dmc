@@ -31,7 +31,7 @@
   <div class="page-header">
     <h1 id="timeline">Timeline</h1>
   </div>
-  <form id="survey" data-toggle="validator">
+  <form id="survey">
   <ul class="timeline">
     <li id="employer-group">
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
@@ -1073,12 +1073,14 @@ $(document).ready(function() {
   *  Navigation
   *  All inputs, upon completion/validation, will show/scroll-to the next question
   */
+  var $root = $('html, body');
+
   $("select, input").each(function () {
     var $this = $(this);
+    var $parent_li = $this.parents('li');
+
     $this.change(function (e) {
       if ($this[0].validity.valid) {
-        var $root = $('html, body');
-        var $parent_li = $this.parents('li');
         var data_next = $parent_li.attr('data-next');
         var $next_q;
 
@@ -1090,10 +1092,27 @@ $(document).ready(function() {
         }
 
         $next_q.fadeIn(2000);
-        $root.animate({ scrollTop: $next_q.offset().top }, 1500);
+        $root.animate({ scrollTop: $next_q.offset().top }, 2000);
       }
     });
   });
+
+ /*
+  *  Validation
+  */
+  $('#survey').validator();
+
+  // on valid/invalid, change the badge color
+  $('#survey').on('valid.bs.validator', function (e) {
+    var $parent_li = $('#' + e.relatedTarget.id + '-group');
+    $parent_li.children('.timeline-badge').addClass('success');
+    $parent_li.children('.timeline-badge').removeClass('danger');
+  })
+  $('#survey').on('invalid.bs.validator', function (e) {
+    var $parent_li = $('#' + e.relatedTarget.id + '-group');
+    $parent_li.children('.timeline-badge').addClass('danger');
+    $parent_li.children('.timeline-badge').removeClass('success');
+  })
 });
 </script>
 </body>
