@@ -566,19 +566,19 @@
       <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
-          <label for="personal_institute_usage" class="timeline-title control-label">P/I Ratio</label>
-          <p><small id="personal_institute_usage-help" class="text-muted help-block">Fraction of use "personal" vs. "institutional" (research computing only)</small></p>
+          <label for="personal_institute_usage" class="timeline-title control-label">Usage Ratio</label>
+          <p><small id="personal_institute_usage-help" class="text-muted help-block">Fraction of use "your device" vs. "shared infrastructure" (research computing only)</small></p>
         </div>
         <div class="timeline-body">
           <select id="personal_institute_usage" aria-describedby="personal_institute_usage-help"
                   class="form-control"
                   required>
             <option value="" disabled selected hidden >— Select —</option>
-            <option>0/100</option>
-            <option>30/70</option>
-            <option>50/50</option>
-            <option>70/30</option>
-            <option>100/0</option>
+            <option>  0% mine /100% shared</option>
+            <option> 30% mine / 70% shared</option>
+            <option> 50% mine / 50% shared</option>
+            <option> 70% mine / 30% shared</option>
+            <option>100% mine /  0% shared</option>
           </select>
           <div class="help-block with-errors"></div>
         </div>
