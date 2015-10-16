@@ -937,13 +937,12 @@
 $(document).ready(function() {
   // Allow multi-select without using ctrl
   // TODO: fix this; it doens't fire onChange
-  /*
   $("select[multiple]").mousedown(function(e){
       e.preventDefault();
       e.target.selected = !e.target.selected; // invert selected state
+      $(this).trigger("change");
       $(this).focus();
   }).mousemove(function(e){ e.preventDefault() }); // prevents bug where all are deselected when both clicking and moving
-  */
 
   // Submit form as JSON
   $("#survey").submit(function() {
