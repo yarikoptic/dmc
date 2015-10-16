@@ -1100,7 +1100,7 @@ $(document).ready(function() {
  /*
   *  Validation
   */
-  $('#survey').validator();
+  $('#survey').validator({disable: false});
 
   // on valid/invalid, change the badge color
   $('#survey').on('valid.bs.validator', function (e) {
