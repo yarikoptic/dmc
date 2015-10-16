@@ -1,3 +1,16 @@
+/*
+ *  Hacks/bug workarounds
+ */
+
+/* IE9->11 "support" HTML5 and arbitrary tags, and yet fail on <main>. Classic. */
+main {
+  display: block;
+}
+
+/*
+ *  Timeline CSS
+ */
+
 .timeline {
   list-style: none;
   padding: 20px 0 20px;
