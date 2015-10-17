@@ -961,8 +961,7 @@ $(document).ready(function() {
       url: "/submit",
       data: JSON.stringify(json),
       success: function(data) {
-        // TODO: Shout hurrah, or something, upon success
-        alert(data);
+        window.location = data;
       },
       error: function(xhr, ajaxOptions, thrownError) {
         alert("Keanu 'Whoa'. '" + xhr.status + "' error; that's /not/ supposed to happen.\nPlease report this error to NeuroDebian.\nAnd it shall be fixed.");

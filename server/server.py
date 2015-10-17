@@ -5,7 +5,6 @@ import hashlib
 import json
 import base64
 import datetime
-import qrcode
 
 opj = os.path.join
 
@@ -18,9 +17,7 @@ retrieve_form_url = 'http://openneuro.net/s?uuid=%(uuid)s'
 retrieve_results_url = 'http://openneuro.net/p?id=%(id)s'
 # landing page upon successful submission
 # shows how to get to the results and how to update a record later on
-# (qrcode and such...)
-#success_url = 'http://openneuro.net/r?uuid=%(uuid)s&id=%(id)s'
-success_url = '/r?uuid=%(uuid)s&id=%(id)s'
+success_url = '/s?uuid=%(uuid)s&pubid=%(id)s'
 
 
 def is_valid_submission(d):
@@ -102,18 +99,12 @@ class SurveyDB(object):
             # and store for later
             with open(submitter_file, 'w') as _file:
                 _file.write(submitter_id)
-            qrcode.make(
-                retrieve_form_url % dict(uuid=submitter_uuid)).save(
-                    '%s.png' % submitter_file)
 
         # this directory will contain stuff like badges, computed
         # stats, ...
         submitters_dir = opj(pub_id_dirname, submitter_id)
         if not os.path.exists(submitters_dir):
             os.makedirs(submitters_dir)
-            qrcode.make(
-                retrieve_results_url % dict(id=submitter_id)).save(
-                    opj(submitters_dir, 'qrcode.png'))
 
         # prep record for storage
         # 1st kill the UUID as the records will be public
@@ -156,9 +147,23 @@ class SurveyDB(object):
 
 if __name__ == '__main__':
     conf = {
+        # root for the form itself
         '/': {'tools.staticdir.on': True,
-                'tools.staticdir.root': os.path.abspath(os.curdir),
-                'tools.staticdir.dir': 'client',
-                'tools.staticdir.index': 'timeline.html'}
+              'tools.staticdir.root': os.path.abspath(os.curdir),
+              'tools.staticdir.dir': 'client',
+              'tools.staticdir.index': 'timeline.html'},
+        # submission landing page (reuse same dir)
+        '/s': {'tools.staticdir.on': True,
+               'tools.staticdir.root': os.path.abspath(os.curdir),
+               'tools.staticdir.dir': 'client',
+               'tools.staticdir.index': 'success.html'},
+        # fully expose public submitter data (for badges, etc.)
+        '/p': {'tools.staticdir.on': True,
+               'tools.staticdir.root': os.path.abspath(os.curdir),
+               'tools.staticdir.dir': 'submitters'},
+        # fully expose individual records
+        '/r': {'tools.staticdir.on': True,
+               'tools.staticdir.root': os.path.abspath(os.curdir),
+               'tools.staticdir.dir': 'records'}
     }
     cherrypy.quickstart(SurveyDB(), config=conf)
