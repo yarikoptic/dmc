@@ -968,6 +968,19 @@ $(document).ready(function() {
   });
 
  /*
+  *  Inter-field dependencies
+  */
+  $("#publications_number").change(function() {
+    $("#publications_number_open_access").attr('max', $(this).val());
+  });
+  $("#collaborations").change(function() {
+    $("#collaborations_data").attr('max', $(this).val());
+  });
+  $("#collaborations_data").change(function() {
+    $("#collaborations_data_provided").attr('max', $(this).val());
+  });
+
+ /*
   *  Field dependencies
   */
   $("#personal_OS").change(function() {
