@@ -1022,7 +1022,7 @@ $(document).ready(function() {
       $parent_li.attr('data-next', '#personal_institute_usage-group');
     }
   });
-  $("#publications_number").change(function() {
+  $("#publications_number").on('input', (function() {
     var $parent_li = $(this).parents('li');
     if ( $(this).val() > 0) {
       $parent_li.attr('data-next', '#publications_number_open_access-group');
@@ -1030,8 +1030,8 @@ $(document).ready(function() {
       $("#publications_number_open_access-group").hide("slow");
       $parent_li.attr('data-next', '#social_media-group');
     }
-  });
-  $("#collaborations").change(function() {
+  }));
+  $("#collaborations").on('input', (function() {
     var $parent_li = $(this).parents('li');
     if ( $(this).val() > 0) {
       $parent_li.attr('data-next', '#collaborations_data-group');
@@ -1040,8 +1040,8 @@ $(document).ready(function() {
       $("#collaborations_data_provided-group").hide("slow");
       $parent_li.attr('data-next', '#data_IRB-group');
     }
-  });
-  $("#collaborations_data").change(function() {
+  }));
+  $("#collaborations_data").on('input', (function() {
     var $parent_li = $(this).parents('li');
     if ( $(this).val() > 0) {
       $parent_li.attr('data-next', '#collaborations_data_provided-group');
@@ -1049,7 +1049,7 @@ $(document).ready(function() {
       $("#collaborations_data_provided-group").hide("slow");
       $parent_li.attr('data-next', '#data_IRB-group');
     }
-  });
+  }));
   $("#data_shared_publicly_ever").change(function() {
     var $parent_li = $(this).parents('li');
     if ( $(this).val() == "Yes") {
