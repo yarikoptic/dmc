@@ -20,9 +20,32 @@
 </head>
 
 <body>
-
-<div id="uuidqrcode"></div>
-<div id="pubidqrcode"></div>
+<div class="container">
+<div class="row">
+  <div class="col-md-12">
+    <h1>Thank you!</h1>
+    <p>You submission has been received. Here is what you get:</p>
+  </div>
+</div><!-- .row -->
+<div class="row">
+  <div class="col-md-6">
+    <h3>Personal URL</h3>
+    <div id="updateinfo">
+        <p>Use this URL to update your record in the future. Keep it safe!</p>
+        <a href="" id="uuidurl"></a>
+        <div title="Scan to get URL" id="uuidqrcode"></div>
+    </div>
+  </div><!-- .col -->
+  <div class="col-md-6">
+    <h3>Sharing URL</h3>
+    <div id="retrieveinfo">
+        <p>Use this URL to see how &ldquo;you science&rdquo; in comparison to others. Share it with anyone you like!</p>
+        <a href="" id="puburl"></a>
+        <div title="Scan to get URL" id="pubidqrcode"></div>
+    </div>
+  </div><!-- .col -->
+</div><!-- .row -->
+</div><!-- .container -->
 
 
 <!-- javascript -->
@@ -38,8 +61,14 @@ function getUrlVar(key){
 
 $(document).ready(function() {
     <!-- compose actual URLs -->
-    $("#uuidqrcode").qrcode({"text": "http://howdoyouscience.net/?uuid=" + getUrlVar("uuid")});
-    $("#pubidqrcode").qrcode({"text": "http://howdoyouscience.net/p/?pubid=" + getUrlVar("pubid")});
+    var priv_url = "http://howdoyouscience.net/?uuid=" + getUrlVar("uuid");
+    var pub_url = "http://howdoyouscience.net/p/?pubid=" + getUrlVar("pubid");
+    $("#uuidurl").html(priv_url);
+    $("#uuidurl").attr("href", priv_url);
+    $("#puburl").html(pub_url);
+    $("#puburl").attr("href", pub_url);
+    $("#uuidqrcode").qrcode({"text": priv_url});
+    $("#pubidqrcode").qrcode({"text": pub_url});
 });
 
 </script>
