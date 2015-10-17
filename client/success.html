@@ -38,8 +38,8 @@ function getUrlVar(key){
 
 $(document).ready(function() {
     <!-- compose actual URLs -->
-    $("#uuidqrcode").qrcode({"text": getUrlVar("uuid")});
-    $("#pubidqrcode").qrcode({"text": getUrlVar("pubid")});
+    $("#uuidqrcode").qrcode({"text": "http://howdoyouscience.net/?uuid=" + getUrlVar("uuid")});
+    $("#pubidqrcode").qrcode({"text": "http://howdoyouscience.net/p/?pubid=" + getUrlVar("pubid")});
 });
 
 </script>
