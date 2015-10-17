@@ -12,8 +12,15 @@ opj = os.path.join
 priv_id_dirname = 'submitter_uuids'
 pub_id_dirname = 'submitters'
 rec_dirname = 'records'
-retrieve_form_url = 'http://openneuro.net/?uuid=%(uuid)s'
-retrieve_results_url = 'http://openneuro.net/?q=%(id)s'
+# "private" access to update a submitters record
+retrieve_form_url = 'http://openneuro.net/s?uuid=%(uuid)s'
+# "public" access to a submitters record
+retrieve_results_url = 'http://openneuro.net/p?id=%(id)s'
+# landing page upon successful submission
+# shows how to get to the results and how to update a record later on
+# (qrcode and such...)
+#success_url = 'http://openneuro.net/r?uuid=%(uuid)s&id=%(id)s'
+success_url = '/r?uuid=%(uuid)s&id=%(id)s'
 
 
 def is_valid_submission(d):
@@ -144,7 +151,7 @@ class SurveyDB(object):
         # return private and public IDs to the submitter, they
         # need to be displayed for future reference
         # record ID is not needed, can be obtained via submitter_id
-        return str((submitter_uuid, submitter_id))
+        return success_url % dict(uuid=submitter_uuid, id=submitter_id)
 
 
 if __name__ == '__main__':
