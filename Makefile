@@ -11,6 +11,7 @@ submitters:
 	# store public reference to latest record for a submitter here
 	# (subdir per submitter)
 	mkdir -p $@
+	ln -fs ../client/stats.html $@/stats.html
 
 records:
 	# store result records here

@@ -156,7 +156,8 @@ if __name__ == '__main__':
         # fully expose public submitter data (for badges, etc.)
         '/p': {'tools.staticdir.on': True,
                'tools.staticdir.root': os.path.abspath(os.curdir),
-               'tools.staticdir.dir': 'submitters'},
+               'tools.staticdir.dir': 'submitters',
+               'tools.staticdir.index': 'stats.html'},
         # fully expose individual records
         '/r': {'tools.staticdir.on': True,
                'tools.staticdir.root': os.path.abspath(os.curdir),
