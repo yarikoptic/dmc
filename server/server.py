@@ -11,10 +11,6 @@ opj = os.path.join
 priv_id_dirname = 'submitter_uuids'
 pub_id_dirname = 'submitters'
 rec_dirname = 'records'
-# "private" access to update a submitters record
-retrieve_form_url = 'http://openneuro.net/s?uuid=%(uuid)s'
-# "public" access to a submitters record
-retrieve_results_url = 'http://openneuro.net/p?id=%(id)s'
 # landing page upon successful submission
 # shows how to get to the results and how to update a record later on
 success_url = '/s?uuid=%(uuid)s&pubid=%(id)s'
