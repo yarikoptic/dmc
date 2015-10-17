@@ -1108,8 +1108,14 @@ $(document).ready(function() {
   }
 
   $('input').on('input', function(){
-    // give text inputs plenty of time before scrolling; the user might be fixing a typo, etc
-    nextQuestion($(this), 1500);
+    var $this = $(this);
+
+    if ($this.attr('type') == 'text') {
+      // give text inputs a bit more time; might be fixing a typo, etc
+      nextQuestion($(this), 1500);
+    } else {
+      nextQuestion($(this), 1000);
+    }
   });
   $("select").each(function () {
     var $this = $(this);
