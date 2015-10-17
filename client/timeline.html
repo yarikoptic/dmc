@@ -349,7 +349,7 @@
         <div class="timeline-body">
            <select id="methods" name="methods[]" aria-describedby="methods-help"
                    class="form-control"
-                   multiple size="8">
+                   multiple size="9">
             <option>Behavioral Experiments/Psychophysics</option>
             <option>Brain Imaging (MRI)</option>
             <option>Computational Modeling/Simulations</option>
@@ -358,6 +358,7 @@
             <option>Invasive Electrophysiology</option>
             <option>Non-Invasive Electrophysiology</option>
             <option>Spectroscopy</option>
+            <option>Other</option>
           </select>
           <div class="help-block with-errors"></div>
         </div>
@@ -468,8 +469,8 @@
       <div class="timeline-badge"><i class="fa fa-flask"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
-          <label for="hours" class="timeline-title control-label">Hours/month of Toil</label>
-          <p><small id="hours-help" class="text-muted help-block"></small>How many hours per month do you personally spend maintaining this device?</p>
+          <label for="hours" class="timeline-title control-label">Hours/month</label>
+          <p><small id="hours-help" class="text-muted help-block">How many hours per month do you personally spend maintaining this device?</small></p>
         </div>
         <div class="timeline-body">
           <input id="hours" name="hours" aria-describedby="hours-help"
@@ -565,8 +566,8 @@
       <div class="timeline-badge"><i class="fa fa-flask"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
-          <label for="personal_institute_usage" class="timeline-title control-label">Usage Ratio</label>
-          <p><small id="personal_institute_usage-help" class="text-muted help-block">Fraction of use "your device" vs. "shared infrastructure" (research computing only)</small></p>
+          <label for="personal_institute_usage" class="timeline-title control-label">Usage Pattern</label>
+          <p><small id="personal_institute_usage-help" class="text-muted help-block">Percentage of time you use "your device" vs. "shared infrastructure" (research computing only)</small></p>
         </div>
         <div class="timeline-body">
           <select id="personal_institute_usage" name="personal_institute_usage" aria-describedby="personal_institute_usage-help"
@@ -603,7 +604,7 @@
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
           <label for="publications_number_open_access" class="timeline-title control-label"># Open Access</label>
-          <p><small id="publications_number_open_access-help" class="text-muted help-block">How many of those are openly/freely available? (open access publication or from preprint servers like arXiv.org, etc)</small></p>
+          <p><small id="publications_number_open_access-help" class="text-muted help-block">How many of those are openly/freely available? (as an open access publication or on preprint servers like arXiv.org, etc)</small></p>
         </div>
         <div class="timeline-body">
           <input id="publications_number_open_access" name="publications_number_open_access" aria-describedby="publications_number_open_access-help"
@@ -618,7 +619,7 @@
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
           <label for="social_media" class="timeline-title control-label">Social Media</label>
-          <p><small id="social_media-help" class="text-muted help-block">How often do you use social media (blog/FaceBook/g+/etc) to share about your research?</small></p>
+          <p><small id="social_media-help" class="text-muted help-block">How often do you use social media (blog/Facebook/Google+/etc) to share about your research?</small></p>
         </div>
         <div class="timeline-body">
           <select id="social_media" name="social_media" aria-describedby="social_media-help"
@@ -670,7 +671,7 @@
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
           <label for="collaborations_data_provided" class="timeline-title control-label">Provided Data</label>
-          <p><small id="collaborations_data_provided-help" class="text-muted help-block">How many involved you <em>providing</em> data?</small></p>
+          <p><small id="collaborations_data_provided-help" class="text-muted help-block">How many of those involved you <em>providing</em> data?</small></p>
         </div>
         <div class="timeline-body">
           <input id="collaborations_data_provided" name="collaborations_data_provided" aria-describedby="collaborations_data_provided-help"
@@ -811,7 +812,7 @@
       <div class="timeline-badge"><i class="fa fa-flask"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
-          <label for="tool_manuscripts" class="timeline-title control-label">Manuscript composer</label>
+          <label for="tool_manuscripts" class="timeline-title control-label">Manuscript Composer</label>
           <p><small id="tool_manuscripts-help" class="text-muted help-block">What tool do you primarily use to write manuscripts/reports?</small></p>
         </div>
         <div class="timeline-body">
@@ -833,7 +834,7 @@
       <div class="timeline-badge"><i class="fa fa-flask"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
-          <label for="tool_languages" class="timeline-title control-label">Fav Languages/Analysis Flaves</label>
+          <label for="tool_languages" class="timeline-title control-label">Languages/Analysis</label>
           <p><small id="tool_languages-help" class="text-muted help-block">What programming languages/analysis environments do you use?</small></p>
         </div>
         <div class="timeline-body">
