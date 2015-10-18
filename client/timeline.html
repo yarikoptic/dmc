@@ -359,20 +359,34 @@
           <label for="methods" class="timeline-title control-label">Research Methods</label>
           <p><small id="methods-help" class="text-muted help-block">Select all that apply</small></p>
         </div>
-        <div class="timeline-body">
-           <select id="methods" name="methods[]" aria-describedby="methods-help"
-                   class="form-control"
-                   multiple size="9" required>
-            <option>Behavioral Experiments/Psychophysics</option>
-            <option>Brain Imaging (MRI)</option>
-            <option>Computational Modeling/Simulations</option>
-            <option>Distributed Computing</option>
-            <option>Genetics</option>
-            <option>Invasive Electrophysiology</option>
-            <option>Non-Invasive Electrophysiology</option>
-            <option>Spectroscopy</option>
-            <option>Other</option>
-          </select>
+        <div id="methods" class="timeline-body">
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Behavioral Experiments/Psychophysics"> Behavioral Experiments/Psychophysics
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Brain Imaging (MRI)"> Brain Imaging (MRI)
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Computational Modeling/Simulations"> Computational Modeling/Simulations
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Distributed Computing"> Distributed Computing
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Genetics"> Genetics
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Invasive Electrophysiology"> Invasive Electrophysiology
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Non-Invasive Electrophysiology"> Non-Invasive Electrophysiology
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Spectroscopy"> Spectroscopy
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Other"> Other
+          </label></div>
           <div class="help-block with-errors"></div>
         </div>
       </div>
@@ -850,29 +864,61 @@
           <label for="tool_languages" class="timeline-title control-label">Languages/Analysis</label>
           <p><small id="tool_languages-help" class="text-muted help-block">What programming languages/analysis environments do you use?</small></p>
         </div>
-        <div class="timeline-body">
-          <select id="tool_languages" name="tool_languages[]" aria-describedby="tool_languages-help"
-                  class="form-control"
-                  multiple size="18" required>
-            <option>C/C++</option>
-            <option>Fortran</option>
-            <option>IDL</option>
-            <option>Java</option>
-            <option>Lua</option>
-            <option>Maple</option>
-            <option>Mathcad</option>
-            <option>Mathematica</option>
-            <option>MATLAB</option>
-            <option>Octave</option>
-            <option>Perl</option>
-            <option>Python</option>
-            <option>R</option>
-            <option>Ruby</option>
-            <option>Scilab</option>
-            <option>Shell scripting</option>
-            <option>SPSS</option>
-            <option>Other</option>
-          </select>
+        <div id="tool_languages" class="timeline-body">
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="C/C++"> C/C++
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Fortran"> Fortran
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="IDL"> IDL
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Java"> Java
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Lua"> Lua
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Maple"> Maple
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Mathcad"> Mathcad
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Mathematica"> Mathematica
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="MATLAB"> MATLAB
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Octave"> Octave
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Perl"> Perl
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Python"> Python
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="R"> R
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Ruby"> Ruby
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Scilab"> Scilab
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Shell Scripting"> Shell Scripting
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="SPSS"> SPSS
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Other"> Other
+          </label></div>
           <div class="help-block with-errors"></div>
         </div>
       </div>
@@ -950,16 +996,11 @@
 <script src="js/bootstrap.3.3.5.min.js"></script>
 <script src="js/validator.0.9.0.min.js"></script>
 <script src="js/jquery.serialize-object.2.5.0.min.js"></script>
+<script src="js/subsequence-search.0.3.4.min.js"></script>
+<script src="software_choices.json"></script>
 
 <script>
 $(document).ready(function() {
-  // Allow multi-select without using ctrl
-  $("select[multiple]").mousedown(function(e){
-    e.preventDefault();
-    e.target.selected = !e.target.selected; // invert selected state
-    $(this).trigger("change");
-    $(this).focus();
-  }).mousemove(function(e){ e.preventDefault() }); // prevents bug where all are deselected when both clicking and moving
 
   // Submit form as JSON
   $("#submit").on('click keypress', function(e) {
@@ -1161,6 +1202,11 @@ $(document).ready(function() {
   $("select").on('change', function () {
     nextQuestion($(this), 500);
   });
+  $("#tool_languages input").on('change', function () {
+    nextQuestion($(this), 2000);
+  });
+  $("#methods input").on('change', function () {
+    nextQuestion($(this), 2000);
   });
 
  /*
