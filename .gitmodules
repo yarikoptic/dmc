@@ -1,0 +1,3 @@
+[submodule "private"]
+	path = private
+	url = medusa.ovgu.de:/home/data/psyinf/git/howdoyouscience_private/
