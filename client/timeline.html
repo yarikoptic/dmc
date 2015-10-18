@@ -967,6 +967,30 @@
         </div>
       </div>
     </li>
+    <li id="software_list-group" hidden>
+      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
+      <div class="timeline-panel form-group">
+        <div class="timeline-heading">
+          <label for="software_list_input" class="timeline-title control-label">Software</label>
+          <p><small id="software_list_input-help" class="text-muted help-block">Which research software do you use?</small></p>
+        </div>
+        <div class="timeline-body">
+        <!-- The input field intentionally does not have the "name" attribute.
+             It is only to help building the list. We have no intent to use its
+             contents ever. -->
+          <input id="software_list_input" aria-describedby="software_list_input-help"
+                 class="form-control"
+                 type="text" list="software_list_suggestions">
+          <datalist id="software_list_suggestions">
+            <!-- Select is here purely for fallback purposes -->
+            <select style="display: none;">
+            </select>
+          </datalist>
+          <div id="software_list"></div>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+    </li>
     <li id="submit-group" class="timeline-inverted" hidden>
       <div class="timeline-badge"><i class="fa fa-flask"></i></div>
       <div class="timeline-panel form-group">
@@ -981,7 +1005,7 @@
       </div>
     </li>
   </ul>
-</div>
+  </div>
 </main>
 <footer id="site-footer">
   <div class="container">
@@ -1001,6 +1025,28 @@
 
 <script>
 $(document).ready(function() {
+  var $input_field = $('#software_list_input');
+  var $software_field = $('#software_list');
+  var $suggestions = $('#software_list_suggestions');
+
+  function addToSoftwareList(item) {
+    $software_field.append('<div class="checkbox"><label data-val="' + item + '">' +
+                           '<input type="checkbox" checked name="software_list[]" onChange="this.parentNode.parentNode.removeChild(this.parentNode);" ' +
+                           'value="' +  item + '"> ' + item + '</label></div>');
+    $input_field.val('');
+  }
+
+  // software_choices is defined in software_choices.js
+  software_choices.forEach(function(i){
+    $suggestions.append('<option value="' + i + '">');
+  });
+
+  $input_field.change(function(e) {
+    if ($(this).val() !== '') {
+      addToSoftwareList($(this).val());
+    }
+  });
+
 
   // Submit form as JSON
   $("#submit").on('click keypress', function(e) {
