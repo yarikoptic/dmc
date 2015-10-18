@@ -8,9 +8,9 @@ import datetime
 
 opj = os.path.join
 
-priv_id_dirname = 'submitter_uuids'
-pub_id_dirname = 'submitters'
-rec_dirname = 'records'
+priv_id_dirname = 'private/uuids'
+pub_id_dirname = 'public/submitters'
+rec_dirname = 'public/records'
 # landing page upon successful submission
 # shows how to get to the results and how to update a record later on
 success_url = '/s?uuid=%(uuid)s&pubid=%(id)s'
@@ -46,22 +46,6 @@ def generate_submitter_id(sid):
 
 class SurveyDB(object):
     @cherrypy.expose
-    def get_rid(self, sid=None):
-        """Retrieve the latest record submitted given personal ID"""
-        if sid is None:
-            # when called without clue, just be happy -- silently
-            return None
-        sfilename = opj(priv_id_dirname, sid)
-        if not os.path.exists(sfilename):
-            return None
-        submitter_id = open(sfilename).read()
-        rec_path = opj(pub_id_dirname, submitter_id, 'record')
-        if not os.path.exists(rec_path):
-            return None
-        record_id = os.path.split(os.path.realpath(rec_path))[-1]
-        return record_id
-
-    @cherrypy.expose
     @cherrypy.tools.json_in(force=True)
     def submit(self):
         # this is the form content as decoded JSON, aka a dict
@@ -83,24 +67,20 @@ class SurveyDB(object):
         # which record came from whom
         # this is also the ID people can use to retrieve the 'latest'
         # result
-        submitter_file = opj(priv_id_dirname, submitter_uuid)
-        if os.path.exists(submitter_file):
-            # we have a previous submission for this UUID, retrieve the ID
-            submitter_id = open(submitter_file).read()
-            if not len(submitter_id) == 32:
-                # we expect an MD5 sum
-                raise ValueError("this should not happen")
+        submitter_link = opj(priv_id_dirname, submitter_uuid)
+        if os.path.exists(submitter_link):
+            # we have a previous submission for this UUID
+            # the ID is the dirname where the link points to
+            submitter_id = os.path.split(os.path.realpath(submitter_link))[-1]
         else:
             submitter_id = generate_submitter_id(submitter_uuid)
-            # and store for later
-            with open(submitter_file, 'w') as _file:
-                _file.write(submitter_id)
-
-        # this directory will contain stuff like badges, computed
-        # stats, ...
-        submitters_dir = opj(pub_id_dirname, submitter_id)
-        if not os.path.exists(submitters_dir):
-            os.makedirs(submitters_dir)
+            # this directory will contain stuff like badges, computed
+            # stats, ...
+            submitters_dir = opj(pub_id_dirname, submitter_id)
+            if not os.path.exists(submitters_dir):
+                os.makedirs(submitters_dir)
+            # associate public submitter dir with UUID by a symlink
+            os.symlink(opj('..', '..', submitters_dir), submitter_link)
 
         # prep record for storage
         # 1st kill the UUID as the records will be public
@@ -133,7 +113,7 @@ class SurveyDB(object):
         # for now place the latest record in here
         if os.path.exists(rec_path):
             os.unlink(rec_path)
-        os.symlink(opj('..', '..', rec_dirname, record_id), rec_path)
+        os.symlink(opj('..', '..', '..', rec_dirname, record_id), rec_path)
 
         # return private and public IDs to the submitter, they
         # need to be displayed for future reference
@@ -156,12 +136,17 @@ if __name__ == '__main__':
         # fully expose public submitter data (for badges, etc.)
         '/p': {'tools.staticdir.on': True,
                'tools.staticdir.root': os.path.abspath(os.curdir),
-               'tools.staticdir.dir': 'submitters',
+               'tools.staticdir.dir': 'public/submitters',
                'tools.staticdir.index': 'stats.html'},
         # fully expose individual records
         '/r': {'tools.staticdir.on': True,
                'tools.staticdir.root': os.path.abspath(os.curdir),
-               'tools.staticdir.dir': 'records'}
+               'tools.staticdir.dir': 'public/records'},
+        # expose uuid folder, doesn't allow reverse matching of IDs
+        # without server access
+        '/u': {'tools.staticdir.on': True,
+               'tools.staticdir.root': os.path.abspath(os.curdir),
+               'tools.staticdir.dir': 'private/uuids'}
     }
     if os.getuid() == 0:
         # we are serious

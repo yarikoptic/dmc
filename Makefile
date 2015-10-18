@@ -1,19 +1,21 @@
 CHERRYPY_URL = https://pypi.python.org/packages/source/C/CherryPy/CherryPy-3.8.0.tar.gz
 
-all: cherrypy submitters submitter_uuids records
+all: cherrypy public/submitters private/uuids public/records
 
-submitter_uuids:
+private/uuids:
 	# store the mapping between public and private ID
 	# THIS DIRECTORY SHOULD NOT BE EXPOSED
+	git submodule init
+	git submodule update
 	mkdir -p $@
 
-submitters:
+public/submitters:
 	# store public reference to latest record for a submitter here
 	# (subdir per submitter)
 	mkdir -p $@
-	ln -fs ../client/stats.html $@/stats.html
+	ln -fs ../../client/stats.html $@/stats.html
 
-records:
+public/records:
 	# store result records here
 	mkdir -p $@
 
