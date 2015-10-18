@@ -980,13 +980,14 @@
              contents ever. -->
           <input id="software_list_input" aria-describedby="software_list_input-help"
                  class="form-control"
-                 type="text" list="software_list_suggestions">
+                 type="text" list="software_list_suggestions" placeholder="Search For/Add Software">
           <datalist id="software_list_suggestions">
             <!-- Select is here purely for fallback purposes -->
             <select style="display: none;">
             </select>
           </datalist>
           <div id="software_list"></div>
+          <p><small class="text-muted help-block">Uncheck to remove an item from the list.</small></p>
           <div class="help-block with-errors"></div>
         </div>
       </div>
@@ -1030,7 +1031,7 @@ $(document).ready(function() {
   var $suggestions = $('#software_list_suggestions');
 
   function addToSoftwareList(item) {
-    $software_field.append('<div class="checkbox"><label data-val="' + item + '">' +
+    $software_field.append('<div class="checkbox"><label>' +
                            '<input type="checkbox" checked name="software_list[]" onChange="this.parentNode.parentNode.removeChild(this.parentNode);" ' +
                            'value="' +  item + '"> ' + item + '</label></div>');
     $input_field.val('');
