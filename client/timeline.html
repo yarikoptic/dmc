@@ -1120,9 +1120,9 @@ $(document).ready(function() {
   function nextQuestion($field, delay) {
     var $parent_li = $field.parents('li');
 
-    clearTimeout($field.data('timer'));
-    $field.data('timer', setTimeout(function(){
-      $field.removeData('timer');
+    clearTimeout($parent_li.data('timer'));
+    $parent_li.data('timer', setTimeout(function(){
+      $parent_li.removeData('timer');
 
       if ($field[0].validity.valid) {
         var data_next = $parent_li.attr('data-next');
@@ -1148,29 +1148,19 @@ $(document).ready(function() {
     }, delay));
   }
 
-  $('input').on('input', function(){
+  $('input').on('input', function() {
     var $this = $(this);
 
     if ($this.attr('type') == 'text') {
       // give text inputs a bit more time; might be fixing a typo, etc
-      nextQuestion($(this), 1500);
+      nextQuestion($this, 1500);
     } else {
-      nextQuestion($(this), 1000);
+      nextQuestion($this, 1000);
     }
   });
-  $("select").each(function () {
-    var $this = $(this);
-
-    if ($this.attr('multiple') == undefined) {
-      $this.change(function (e) {
-        nextQuestion($(this), 500);
-      });
-    } else {
-      // for multiple selects, give use more time to click another, before going to next question
-      $this.change(function (e) {
-        nextQuestion($(this), 1500);
-      });
-    }
+  $("select").on('change', function () {
+    nextQuestion($(this), 500);
+  });
   });
 
  /*
