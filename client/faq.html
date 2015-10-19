@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="How-do-you-science survey" />
+  <meta name="author" content="Psychoinformatics lab" />
+
+  <title>FAQ — How Do You Science?</title>
+
+  <link rel="stylesheet" href="/css/bootstrap.3.3.5.min.css" />
+  <link rel="stylesheet" href="/css/timeline.css" />
+  <link rel="stylesheet" href="/css/faq.css" />
+  <link rel="stylesheet" href="/css/font-awesome.4.4.0.min.css">
+
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+<div class="container">
+<div class="row">
+  <div class="col-md-12">
+    <h1>Question, ey?</h1>
+    <dl>
+      <dt>How do you protect the privacy of my data?</dt>
+      <dd>
+
+      <p>We <strong>don't</strong>, <em>you</em> do!</p>
+
+      <p><strong>Any data</strong> you enter into the survey form <strong>will
+          be made public</strong>. If you are not comfortable with sharing your
+      data, do not enter it.</p>
+
+      <p>That being said, <strong>we do not ask you for any information that
+          identifies you</strong>. You don't need an email or account to use
+      this site, nor do we want any of that information from you. We don't use
+      cookies or other means to track visitors. Using this website involves no
+      3rd-party online services, no Google analytics, no ads, nothing (take a
+       look at the <a
+           href="https://github.com/psychoinformatics-de/dmc">code</a>, and see
+       for yourself).</p>
+
+      <p>We will assign two random <strong>identifiers</strong> to a new
+      submission. One to <strong>update</strong> your submission,
+      and another one to <strong>access statistics</strong> computed based upon
+      the submission. You should keep the first one to yourself, and share
+      the latter one with anybody you desire.</p>
+
+      <p>Remember, we do not track people. If you lose your access URL, we will
+      have no way of helping you get them back. <strong>Keep it safe!</strong></p>
+      </dd>
+
+      <dt>You said all data is public. Where is it?</dt>
+
+      <dd>Data is kept in a <a
+          href="https://github.com/psychoinformatics-de/dmc_data">Git
+          repository on Github</a>. It is pushed there in batches every few
+      days.</dd>
+
+    </dl>
+  </div>
+</div><!-- .row -->
+</div><!-- .container -->
+
+<!-- javascript -->
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/bootstrap.3.3.5.min.js"></script>
+
+<script>
+function getUrlVar(key){
+    var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search); 
+    return result && unescape(result[1]) || ""; 
+}
+
+$(document).ready(function() {
+    <!-- compose actual URLs -->
+    var submitter = getUrlVar("pubid");
+    $(".pubid").html(submitter);
+});
+
+</script>
+</body>
+</html>
