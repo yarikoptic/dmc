@@ -24,10 +24,10 @@
 <noscript>
   <div id="noscript" class="text-center">
     <p>This page requires JavaScript.</p>
-    <p>Yeah, yeah. JavaScript bothers me too. <em>But</em>, I can promise you
-    that we don't do any tracking, sniffing, etc; <em>at all</em>. What we have
-    here is just good-'ol-fashioned make-my-page-sexy.</p>
-    <p>So reload this page with JS enabled; and be prepared.</p>
+    <p>Yeah, yeah; JavaScript bothers me too. <em>But</em>, I can promise you
+    that we don't do any tracking, sniffing, etc &mdash; <em>at all</em>. What
+    we have here is just good-'ol-fashioned make-my-page-sexy.</p>
+    <p>So reload this page with JS enabled, and be prepared.</p>
   </div>
 </noscript>
 <header id="banner">
@@ -359,20 +359,34 @@
           <label for="methods" class="timeline-title control-label">Research Methods</label>
           <p><small id="methods-help" class="text-muted help-block">Select all that apply</small></p>
         </div>
-        <div class="timeline-body">
-           <select id="methods" name="methods[]" aria-describedby="methods-help"
-                   class="form-control"
-                   multiple size="9" required>
-            <option>Behavioral Experiments/Psychophysics</option>
-            <option>Brain Imaging (MRI)</option>
-            <option>Computational Modeling/Simulations</option>
-            <option>Distributed Computing</option>
-            <option>Genetics</option>
-            <option>Invasive Electrophysiology</option>
-            <option>Non-Invasive Electrophysiology</option>
-            <option>Spectroscopy</option>
-            <option>Other</option>
-          </select>
+        <div id="methods" class="timeline-body">
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Behavioral Experiments/Psychophysics"> Behavioral Experiments/Psychophysics
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Brain Imaging (MRI)"> Brain Imaging (MRI)
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Computational Modeling/Simulations"> Computational Modeling/Simulations
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Distributed Computing"> Distributed Computing
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Genetics"> Genetics
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Invasive Electrophysiology"> Invasive Electrophysiology
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Non-Invasive Electrophysiology"> Non-Invasive Electrophysiology
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Spectroscopy"> Spectroscopy
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+               value="Other"> Other
+          </label></div>
           <div class="help-block with-errors"></div>
         </div>
       </div>
@@ -669,7 +683,7 @@
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
           <label for="collaborations_data" class="timeline-title control-label">Exchange of Data</label>
-          <p><small id="collaborations_data-help" class="text-muted help-block">How many of those involved the exchange of research data?</small></p>
+          <p><small id="collaborations_data-help" class="text-muted help-block">How many of those involved the exchange of research data (in either direction)?</small></p>
         </div>
         <div class="timeline-body">
           <input id="collaborations_data" name="collaborations_data" aria-describedby="collaborations_data-help"
@@ -850,29 +864,61 @@
           <label for="tool_languages" class="timeline-title control-label">Languages/Analysis</label>
           <p><small id="tool_languages-help" class="text-muted help-block">What programming languages/analysis environments do you use?</small></p>
         </div>
-        <div class="timeline-body">
-          <select id="tool_languages" name="tool_languages[]" aria-describedby="tool_languages-help"
-                  class="form-control"
-                  multiple size="18" required>
-            <option>C/C++</option>
-            <option>Fortran</option>
-            <option>IDL</option>
-            <option>Java</option>
-            <option>Lua</option>
-            <option>Maple</option>
-            <option>Mathcad</option>
-            <option>Mathematica</option>
-            <option>MATLAB</option>
-            <option>Octave</option>
-            <option>Perl</option>
-            <option>Python</option>
-            <option>R</option>
-            <option>Ruby</option>
-            <option>Scilab</option>
-            <option>Shell scripting</option>
-            <option>SPSS</option>
-            <option>Other</option>
-          </select>
+        <div id="tool_languages" class="timeline-body">
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="C/C++"> C/C++
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Fortran"> Fortran
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="IDL"> IDL
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Java"> Java
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Lua"> Lua
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Maple"> Maple
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Mathcad"> Mathcad
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Mathematica"> Mathematica
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="MATLAB"> MATLAB
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Octave"> Octave
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Perl"> Perl
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Python"> Python
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="R"> R
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Ruby"> Ruby
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Scilab"> Scilab
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Shell Scripting"> Shell Scripting
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="SPSS"> SPSS
+          </label></div>
+          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
+               value="Other"> Other
+          </label></div>
           <div class="help-block with-errors"></div>
         </div>
       </div>
@@ -921,6 +967,31 @@
         </div>
       </div>
     </li>
+    <li id="software_list-group" hidden>
+      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
+      <div class="timeline-panel form-group">
+        <div class="timeline-heading">
+          <label for="software_list_input" class="timeline-title control-label">Software</label>
+          <p><small id="software_list_input-help" class="text-muted help-block">Which research software do you use?</small></p>
+        </div>
+        <div class="timeline-body">
+        <!-- The input field intentionally does not have the "name" attribute.
+             It is only to help building the list. We have no intent to use its
+             contents ever. -->
+          <input id="software_list_input" aria-describedby="software_list_input-help"
+                 class="form-control"
+                 type="text" list="software_list_suggestions" placeholder="Search For/Add Software">
+          <datalist id="software_list_suggestions">
+            <!-- Select is here purely for fallback purposes -->
+            <select style="display: none;">
+            </select>
+          </datalist>
+          <div id="software_list"></div>
+          <p><small class="text-muted help-block">Uncheck to remove an item from the list.</small></p>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+    </li>
     <li id="submit-group" class="timeline-inverted" hidden>
       <div class="timeline-badge"><i class="fa fa-flask"></i></div>
       <div class="timeline-panel form-group">
@@ -935,7 +1006,7 @@
       </div>
     </li>
   </ul>
-</div>
+  </div>
 </main>
 <footer id="site-footer">
   <div class="container">
@@ -950,16 +1021,33 @@
 <script src="js/bootstrap.3.3.5.min.js"></script>
 <script src="js/validator.0.9.0.min.js"></script>
 <script src="js/jquery.serialize-object.2.5.0.min.js"></script>
+<script src="js/subsequence-search.0.3.4.min.js"></script>
+<script src="software_choices.json"></script>
 
 <script>
 $(document).ready(function() {
-  // Allow multi-select without using ctrl
-  $("select[multiple]").mousedown(function(e){
-    e.preventDefault();
-    e.target.selected = !e.target.selected; // invert selected state
-    $(this).trigger("change");
-    $(this).focus();
-  }).mousemove(function(e){ e.preventDefault() }); // prevents bug where all are deselected when both clicking and moving
+  var $input_field = $('#software_list_input');
+  var $software_field = $('#software_list');
+  var $suggestions = $('#software_list_suggestions');
+
+  function addToSoftwareList(item) {
+    $software_field.append('<div class="checkbox"><label>' +
+                           '<input type="checkbox" checked name="software_list[]" onChange="this.parentNode.parentNode.removeChild(this.parentNode);" ' +
+                           'value="' +  item + '"> ' + item + '</label></div>');
+    $input_field.val('');
+  }
+
+  // software_choices is defined in software_choices.js
+  software_choices.forEach(function(i){
+    $suggestions.append('<option value="' + i + '">');
+  });
+
+  $input_field.change(function(e) {
+    if ($(this).val() !== '') {
+      addToSoftwareList($(this).val());
+    }
+  });
+
 
   // Submit form as JSON
   $("#submit").on('click keypress', function(e) {
@@ -1120,9 +1208,9 @@ $(document).ready(function() {
   function nextQuestion($field, delay) {
     var $parent_li = $field.parents('li');
 
-    clearTimeout($field.data('timer'));
-    $field.data('timer', setTimeout(function(){
-      $field.removeData('timer');
+    clearTimeout($parent_li.data('timer'));
+    $parent_li.data('timer', setTimeout(function(){
+      $parent_li.removeData('timer');
 
       if ($field[0].validity.valid) {
         var data_next = $parent_li.attr('data-next');
@@ -1148,29 +1236,24 @@ $(document).ready(function() {
     }, delay));
   }
 
-  $('input').on('input', function(){
+  $('input').on('input', function() {
     var $this = $(this);
 
     if ($this.attr('type') == 'text') {
       // give text inputs a bit more time; might be fixing a typo, etc
-      nextQuestion($(this), 1500);
+      nextQuestion($this, 1500);
     } else {
-      nextQuestion($(this), 1000);
+      nextQuestion($this, 1000);
     }
   });
-  $("select").each(function () {
-    var $this = $(this);
-
-    if ($this.attr('multiple') == undefined) {
-      $this.change(function (e) {
-        nextQuestion($(this), 500);
-      });
-    } else {
-      // for multiple selects, give use more time to click another, before going to next question
-      $this.change(function (e) {
-        nextQuestion($(this), 1500);
-      });
-    }
+  $("select").on('change', function () {
+    nextQuestion($(this), 500);
+  });
+  $("#tool_languages input").on('change', function () {
+    nextQuestion($(this), 2000);
+  });
+  $("#methods input").on('change', function () {
+    nextQuestion($(this), 2000);
   });
 
  /*
@@ -1180,14 +1263,20 @@ $(document).ready(function() {
 
   // on valid/invalid, change the badge color
   $('#survey').on('valid.bs.validator', function (e) {
-    var $parent_li = $('#' + e.relatedTarget.id + '-group');
-    $parent_li.children('.timeline-badge').addClass('success');
-    $parent_li.children('.timeline-badge').removeClass('danger');
+    var field_name = e.relatedTarget.name;
+    var $parent_li = $('#' + field_name.replace('[]', '') + '-group'); // strip if array
+    var $badge = $parent_li.children('.timeline-badge');
+
+    $badge.addClass('success');
+    $badge.removeClass('danger');
   })
   $('#survey').on('invalid.bs.validator', function (e) {
-    var $parent_li = $('#' + e.relatedTarget.id + '-group');
-    $parent_li.children('.timeline-badge').addClass('danger');
-    $parent_li.children('.timeline-badge').removeClass('success');
+    var field_name = e.relatedTarget.name;
+    var $parent_li = $('#' + field_name.replace('[]', '') + '-group'); // strip if array
+    var $badge = $parent_li.children('.timeline-badge');
+
+    $badge.addClass('danger');
+    $badge.removeClass('success');
   })
 });
 </script>
