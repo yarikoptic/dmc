@@ -185,6 +185,7 @@ sw_choices = [
 ]
 provider_choices = [
   "Project website",
+  "Company website",
   "Operating system",
   "BitBucket",
   "Comprehensive Perl Archive Network (CPAN)",
@@ -192,13 +193,14 @@ provider_choices = [
   "Extra Packages for Enterprise Linux (EPEL)",
   "Fink",
   "FreeBSD ports",
-  "Github",
-  "International neuroinformatics Coordinating Facility (INCF) Research Tools",
+  "GitHub",
+  "Homebrew",
+  "International Neuroinformatics Coordinating Facility (INCF) Research Tools",
   "Macports",
   "MATLAB Central",
   "NeuroDebian",
   "Neuroimaging Informatics Tools and Resources Clearinghouse (NITRC)",
   "Python Package Index (PyPi)",
   "Python bundles: Enthought Python, Python(x,y)",
-  "Sourceforge"
+  "SourceForge"
 ]
