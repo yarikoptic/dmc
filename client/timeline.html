@@ -43,7 +43,7 @@
 
 <main class="container">
   <div class="page-header"></div>
-  <div id="survey">
+  <form id="survey">
   <input name="client_version" type="hidden" value="0">
   <ul class="timeline">
     <li id="employer-group">
@@ -993,21 +993,21 @@
         </div>
       </div>
     </li>
-    <li id="submit-group" class="timeline-inverted" hidden>
+    <li id="done-group" class="timeline-inverted">
       <div class="timeline-badge"><i class="fa fa-flask"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
-          <label for="submit" class="timeline-title control-label">All Done!</label>
-          <p><small id="submit-help" class="text-muted help-block">And <em>well done</em>.</small></p>
+          <label for="done" class="timeline-title control-label">All Done!</label>
+          <p><small id="done-help" class="text-muted help-block">And <em>well done</em>.</small></p>
         </div>
         <div class="timeline-body">
-          <button id="submit" class="btn btn-default"><i class="fa fa-arrow-right"></i> Submit</button>
+          <a id="done" class="btn btn-default" role="button"><i class="fa fa-arrow-right"></i> Submit</a>
           <div class="help-block with-errors"></div>
         </div>
       </div>
     </li>
   </ul>
-  </div>
+  </form>
 </main>
 <footer id="site-footer">
   <div class="container">
@@ -1026,6 +1026,10 @@
 
 <script>
 $(document).ready(function() {
+  $('#survey').submit(function(e) {
+    e.preventDefault();
+  });
+
   var $input_field = $('#software_list_input');
   var $software_field = $('#software_list');
   var $suggestions = $('#software_list_suggestions');
@@ -1050,7 +1054,7 @@ $(document).ready(function() {
 
 
   // Submit form as JSON
-  $("#submit").on('click keypress', function(e) {
+  $("#done").on('click keypress', function(e) {
     var json = { json: $('#survey').serializeJSON() };
 
     $.ajax({
