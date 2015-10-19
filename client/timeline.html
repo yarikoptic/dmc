@@ -1368,16 +1368,14 @@ $(document).ready(function() {
 
   // on valid/invalid, change the badge color
   $('#survey').on('valid.bs.validator', function (e) {
-    var field_name = e.relatedTarget.name;
-    var $parent_li = $('#' + field_name.replace('[]', '') + '-group'); // strip if array
+    var $parent_li = $(e.relatedTarget).parents('li');
     var $badge = $parent_li.children('.timeline-badge');
 
     $badge.addClass('success');
     $badge.removeClass('danger');
   })
   $('#survey').on('invalid.bs.validator', function (e) {
-    var field_name = e.relatedTarget.name;
-    var $parent_li = $('#' + field_name.replace('[]', '') + '-group'); // strip if array
+    var $parent_li = $(e.relatedTarget).parents('li');
     var $badge = $parent_li.children('.timeline-badge');
 
     $badge.addClass('danger');
