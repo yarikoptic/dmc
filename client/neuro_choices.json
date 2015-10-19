@@ -183,3 +183,22 @@ sw_choices = [
   "XPPAUT",
   "XPPy"
 ]
+provider_choices = [
+  "Project website",
+  "Operating system",
+  "BitBucket",
+  "Comprehensive Perl Archive Network (CPAN)",
+  "Comprehensive R Archive Network (CRAN)",
+  "Extra Packages for Enterprise Linux (EPEL)",
+  "Fink",
+  "FreeBSD ports",
+  "Github",
+  "International neuroinformatics Coordinating Facility (INCF) Research Tools",
+  "Macports",
+  "MATLAB Central",
+  "NeuroDebian",
+  "Neuroimaging Informatics Tools and Resources Clearinghouse (NITRC)",
+  "Python Package Index (PyPi)",
+  "Python bundles: Enthought Python, Python(x,y)",
+  "Sourceforge"
+]
