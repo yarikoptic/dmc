@@ -53,20 +53,20 @@
 
 <script>
 function getUrlVar(key){
-    var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search); 
-    return result && unescape(result[1]) || ""; 
+  var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search);
+  return result && unescape(result[1]) || "";
 }
 
 $(document).ready(function() {
-    <!-- compose actual URLs -->
-    var priv_url = "http://howdoyouscience.net/?uuid=" + getUrlVar("uuid");
-    var pub_url = "http://howdoyouscience.net/p/?pubid=" + getUrlVar("pubid");
-    $("#uuidurl").html(priv_url);
-    $("#uuidurl").attr("href", priv_url);
-    $("#puburl").html(pub_url);
-    $("#puburl").attr("href", pub_url);
-    $("#uuidqrcode").qrcode({"text": priv_url});
-    $("#pubidqrcode").qrcode({"text": pub_url});
+  // compose actual URLs
+  var priv_url = "http://howdoyouscience.net/?uuid=" + getUrlVar("uuid");
+  var pub_url = "http://howdoyouscience.net/p/?pubid=" + getUrlVar("pubid");
+  $("#uuidurl").html(priv_url);
+  $("#uuidurl").attr("href", priv_url);
+  $("#puburl").html(pub_url);
+  $("#puburl").attr("href", pub_url);
+  $("#uuidqrcode").qrcode({"text": priv_url});
+  $("#pubidqrcode").qrcode({"text": pub_url});
 });
 
 </script>
