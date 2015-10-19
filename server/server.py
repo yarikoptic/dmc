@@ -8,7 +8,7 @@ import datetime
 
 # this is an integer that gets stored in each record; must be incremented
 # whenever the form or the storage changes
-__version__ = 0
+__version__ = 1
 
 opj = os.path.join
 
