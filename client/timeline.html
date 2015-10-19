@@ -968,17 +968,20 @@
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
           <label for="software_list_input" class="timeline-title control-label">Software</label>
-          <p><small id="software_list_input-help" class="text-muted help-block">Which research software do you use?</small></p>
+          <p><small id="software_list_input-help" class="text-muted help-block">
+            Which research software do you use?<br>
+            Use the text input field to build a list. If possible, use the suggested spelling of software names.
+          </small></p>
         </div>
         <div class="timeline-body">
-        <!-- The input field intentionally does not have the "name" attribute.
-             It is only to help building the list. We have no intent to use its
-             contents ever. -->
+          <!-- The input field intentionally does not have the "name" attribute.
+               It is only to help building the list. We have no intent to use
+               its contents ever. -->
           <input id="software_list_input" aria-describedby="software_list_input-help"
                  class="form-control"
-                 type="text" list="software_list_suggestions" placeholder="Search For/Add Software">
+                 type="text" list="software_list_suggestions" placeholder="Software Name">
           <datalist id="software_list_suggestions">
-            <!-- Select is here purely for fallback purposes -->
+            <!-- select is here purely for fallback purposes -->
             <select style="display: none;">
             </select>
           </datalist>
