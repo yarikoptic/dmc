@@ -6,6 +6,10 @@ import json
 import base64
 import datetime
 
+# this is an integer that gets stored in each record; must be incremented
+# whenever the form or the storage changes
+__version__ = 0
+
 opj = os.path.join
 
 priv_id_dirname = 'private/uuids'
@@ -92,6 +96,7 @@ class SurveyDB(object):
         # record submite date -- no time, we don't need that in the
         # public records
         data['submit_date'] = datetime.date.today().isoformat()
+        data['server_version'] = __version__
 
         rec_path = opj(submitters_dir, 'record')
         if os.path.exists(rec_path):
