@@ -20,9 +20,17 @@
 </head>
 
 <body>
-
-<h1>Stats</h1>
-too early still for <span id="pubid"></span>
+<div class="container">
+<div class="row">
+  <div class="col-md-12">
+    <h1>You're too quick!</h1>
+      <p>There are still too few submissions to be able to compute statistics for
+         <strong class="pubid"></strong>.</p>
+      <p>Save this address and please come back early November 2015.</p>
+      <p>Thank you for your patience!</p>
+  </div>
+</div><!-- .row -->
+</div><!-- .container -->
 
 <!-- javascript -->
 <script src="/js/jquery-1.11.3.min.js"></script>
@@ -37,7 +45,7 @@ function getUrlVar(key){
 $(document).ready(function() {
     <!-- compose actual URLs -->
     var submitter = getUrlVar("pubid");
-    $("#pubid").html(submitter);
+    $(".pubid").html(submitter);
 });
 
 </script>
