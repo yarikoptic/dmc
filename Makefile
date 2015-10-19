@@ -1,6 +1,6 @@
 CHERRYPY_URL = https://pypi.python.org/packages/source/C/CherryPy/CherryPy-3.8.0.tar.gz
 
-all: cherrypy public/submitters private/uuids public/records
+all: cherrypy public/submitters private/uuids public/records logs
 
 private/uuids:
 	# store the mapping between public and private ID
@@ -17,6 +17,10 @@ public/submitters:
 
 public/records:
 	# store result records here
+	mkdir -p $@
+
+logs:
+	# store cherrypy logs here
 	mkdir -p $@
 
 cherrypy:

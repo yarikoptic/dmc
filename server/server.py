@@ -152,7 +152,11 @@ if __name__ == '__main__':
         # we are serious
         cherrypy.config.update(
             {'server.socket_host': '0.0.0.0',
-             'server.socket_port': 80})
+             'server.socket_port': 80,
+             'log.screen': False,
+             'log.error_file': os.path.abspath(opj('logs', 'error.log')),
+             'log.access_file': os.path.abspath(opj('logs', 'access.log')),
+             })
         # but we don't need nor want root
         cherrypy.process.plugins.DropPrivileges(
             cherrypy.engine, uid=1000, gid=1000).subscribe()
