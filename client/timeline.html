@@ -963,12 +963,12 @@
         </div>
       </div>
     </li>
-    <li id="software_list-group" hidden>
+    <li id="sw_list-group" hidden>
       <div class="timeline-badge"><i class="fa fa-flask"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
-          <label for="software_list_input" class="timeline-title control-label">Software</label>
-          <p><small id="software_list_input-help" class="text-muted help-block">
+          <label for="sw_list_input" class="timeline-title control-label">Software</label>
+          <p><small id="sw_list_input-help" class="text-muted help-block">
             Which research software do you use?<br>
             Use the text input field to build a list. If possible, use the suggested spelling of software names.
           </small></p>
@@ -977,15 +977,15 @@
           <!-- The input field intentionally does not have the "name" attribute.
                It is only to help building the list. We have no intent to use
                its contents ever. -->
-          <input id="software_list_input" aria-describedby="software_list_input-help"
+          <input id="sw_list_input" aria-describedby="sw_list_input-help"
                  class="form-control"
-                 type="text" list="software_list_suggestions" placeholder="Software Name">
-          <datalist id="software_list_suggestions">
+                 type="text" list="sw_list_suggestions" placeholder="Software Name">
+          <datalist id="sw_list_suggestions">
             <!-- select is here purely for fallback purposes -->
             <select style="display: none;">
             </select>
           </datalist>
-          <div id="software_list"></div>
+          <div id="sw_list"></div>
           <p><small class="text-muted help-block">Uncheck to remove an item from the list.</small></p>
           <div class="help-block with-errors"></div>
         </div>
@@ -1171,23 +1171,23 @@ $(document).ready(function() {
   *  Load data-list, and build checkbox-list of user-selected items
   *  This is ugly. TODO: clean up this mess.
   */
-  var $input_field = $('#software_list_input');
-  var $software_field = $('#software_list');
-  var $suggestions = $('#software_list_suggestions');
+  var $sw_input = $('#sw_list_input');
+  var $sw_field = $('#sw_list');
+  var $sw_suggestions = $('#sw_list_suggestions');
 
   function addToSoftwareList(item) {
-    $software_field.append('<div class="checkbox"><label>' +
-                           '<input type="checkbox" checked name="software_list[]" onChange="this.parentNode.parentNode.removeChild(this.parentNode);" ' +
+    $sw_field.append('<div class="checkbox"><label>' +
+                           '<input type="checkbox" checked name="sw_list[]" onChange="this.parentNode.parentNode.removeChild(this.parentNode);" ' +
                            'value="' +  item + '"> ' + item + '</label></div>');
-    $input_field.val('');
+    $sw_input.val('');
   }
 
-  // software_choices is defined in *_sw_choices.json
+  // sw_choices is defined in *_choices.json
   sw_choices.forEach(function(i){
-    $suggestions.append('<option value="' + i + '">');
+    $sw_suggestions.append('<option value="' + i + '">');
   });
 
-  $input_field.change(function(e) {
+  $sw_input.change(function(e) {
     if ($(this).val() !== '') {
       addToSoftwareList($(this).val());
     }
