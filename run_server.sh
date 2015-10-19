@@ -1,3 +1,4 @@
-#!/bin/bash
+#!/bin/sh
+
 
 PYTHONPATH=cherrypy python server/server.py
