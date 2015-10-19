@@ -1,4 +1,4 @@
-software_choices = [
+sw_choices = [
   "3dslicer",
   "aeskulap",
   "AFNI",
