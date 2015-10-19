@@ -44,6 +44,7 @@
 <main class="container">
   <div class="page-header"></div>
   <div id="survey">
+  <input name="client_version" type="hidden" value="0">
   <ul class="timeline">
     <li id="employer-group">
       <div class="timeline-badge"><i class="fa fa-university"></i></div>
@@ -352,39 +353,39 @@
         </div>
       </div>
     </li>
-    <li id="methods-group" hidden>
+    <li id="neuro_methods-group" hidden>
       <div class="timeline-badge"><i class="fa fa-flask"></i></div>
       <div class="timeline-panel form-group">
         <div class="timeline-heading">
-          <label for="methods" class="timeline-title control-label">Research Methods</label>
-          <p><small id="methods-help" class="text-muted help-block">Select all that apply</small></p>
+          <label for="neuro_methods" class="timeline-title control-label">Research Methods</label>
+          <p><small id="neuro_methods-help" class="text-muted help-block">Select all that apply</small></p>
         </div>
-        <div id="methods" class="timeline-body">
-          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+        <div id="neuro_methods" class="timeline-body">
+          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
                value="Behavioral Experiments/Psychophysics"> Behavioral Experiments/Psychophysics
           </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
                value="Brain Imaging (MRI)"> Brain Imaging (MRI)
           </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
                value="Computational Modeling/Simulations"> Computational Modeling/Simulations
           </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
                value="Distributed Computing"> Distributed Computing
           </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
                value="Genetics"> Genetics
           </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
                value="Invasive Electrophysiology"> Invasive Electrophysiology
           </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
                value="Non-Invasive Electrophysiology"> Non-Invasive Electrophysiology
           </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
                value="Spectroscopy"> Spectroscopy
           </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="methods[]"
+          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
                value="Other"> Other
           </label></div>
           <div class="help-block with-errors"></div>
@@ -1021,7 +1022,6 @@
 <script src="js/bootstrap.3.3.5.min.js"></script>
 <script src="js/validator.0.9.0.min.js"></script>
 <script src="js/jquery.serialize-object.2.5.0.min.js"></script>
-<script src="js/subsequence-search.0.3.4.min.js"></script>
 <script src="neuro_choices.json"></script>
 
 <script>
@@ -1252,7 +1252,7 @@ $(document).ready(function() {
   $("#tool_languages input").on('change', function () {
     nextQuestion($(this), 2000);
   });
-  $("#methods input").on('change', function () {
+  $("#neuro_methods input").on('change', function () {
     nextQuestion($(this), 2000);
   });
 
