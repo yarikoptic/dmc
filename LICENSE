@@ -55,6 +55,10 @@ Files: client/css/bootstrap*,
 Copyright: Bootstrap
 License: MIT
 
+Files: client/js/moderizer*
+Copyright: Modernizer
+License: MIT
+
 Files: client/js/jquery*
 Copyright: jQuery
 License: MIT
