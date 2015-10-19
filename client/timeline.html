@@ -988,6 +988,7 @@
           <div id="sw_list"></div>
           <p><small class="text-muted help-block">Uncheck to remove an item from the list.</small></p>
           <div class="help-block with-errors"></div>
+          <a id="sw_list_next" class="btn btn-default pull-right" role="button"></i> Next Question</a>
         </div>
       </div>
     </li>
@@ -1017,6 +1018,7 @@
           <div id="provider_list"></div>
           <p><small class="text-muted help-block">Uncheck to remove an item from the list.</small></p>
           <div class="help-block with-errors"></div>
+          <a id="provider_list_next" class="btn btn-default pull-right" role="button"></i> Next Question</a>
         </div>
       </div>
     </li>
@@ -1276,18 +1278,6 @@ $(document).ready(function() {
   */
   var $root = $('html, body');
 
-  // take user to first question
-  $("#tell_us").on('click keypress', function() {
-    // allow user-scrolling to win over our scrolling
-    $root.on("scroll mousedown wheel DOMMouseScroll mousewheel touchmove", function(){
-      $root.stop();
-    });
-    $root.animate({ scrollTop: $('#survey').offset().top }, 1000, function(){
-      $root.off("scroll mousedown wheel DOMMouseScroll mousewheel touchmove");
-    });
-    $('#survey').addClass('fadeInLeftBig');
-  });
-
   // shows next question
   // $field = accepts object pointing to field
   // delay == integer of ms since last input/change to wait until firing event
@@ -1298,7 +1288,7 @@ $(document).ready(function() {
     $parent_li.data('timer', setTimeout(function(){
       $parent_li.removeData('timer');
 
-      if ($field[0].validity.valid) {
+      if ($field.is('a') || $field[0].validity.valid) {
         var data_next = $parent_li.attr('data-next');
         var $next_q;
 
@@ -1322,17 +1312,23 @@ $(document).ready(function() {
     }, delay));
   }
 
+  //
+  // one-size-fits-all navigation
+  //
+
   $("select").on('change', function () {
     nextQuestion($(this), 500);
   });
   $('input').on('input', function() {
     var $this = $(this);
 
-    if ($this.attr('type') == 'text') {
-      // give text inputs a bit more time; might be fixing a typo, etc
-      nextQuestion($this, 1500);
-    } else {
-      nextQuestion($this, 1000);
+    if ($this.attr('list') == undefined) { // skip datalist inputs
+      if ($this.attr('type') == 'text') {
+        // give text inputs a bit more time; might be fixing a typo, etc
+        nextQuestion($this, 1500);
+      } else {
+        nextQuestion($this, 1000);
+      }
     }
   });
   $("#tool_languages input").on('change', function () {
@@ -1340,6 +1336,29 @@ $(document).ready(function() {
   });
   $("#neuro_methods input").on('change', function () {
     nextQuestion($(this), 2000);
+  });
+
+  //
+  // target specific buttons for nav
+  //
+
+  // take user to first question
+  $("#tell_us").on('click keypress', function() {
+    // allow user-scrolling to win over our scrolling
+    $root.on("scroll mousedown wheel DOMMouseScroll mousewheel touchmove", function(){
+      $root.stop();
+    });
+    $root.animate({ scrollTop: $('#survey').offset().top }, 1000, function(){
+      $root.off("scroll mousedown wheel DOMMouseScroll mousewheel touchmove");
+    });
+    $('#survey').addClass('fadeInLeftBig');
+  });
+  // make "next" buttons work
+  $("#sw_list_next").on('click keypress', function() {
+    nextQuestion($(this), 0);
+  });
+  $("#provider_list_next").on('click keypress', function() {
+    nextQuestion($(this), 0);
   });
 
  /*
