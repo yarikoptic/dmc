@@ -1021,32 +1021,13 @@
 
 <script>
 $(document).ready(function() {
+ /*
+  *  Form submission
+  */
+  // suppress conventional form submission
   $('#survey').submit(function(e) {
     e.preventDefault();
   });
-
-  var $input_field = $('#software_list_input');
-  var $software_field = $('#software_list');
-  var $suggestions = $('#software_list_suggestions');
-
-  function addToSoftwareList(item) {
-    $software_field.append('<div class="checkbox"><label>' +
-                           '<input type="checkbox" checked name="software_list[]" onChange="this.parentNode.parentNode.removeChild(this.parentNode);" ' +
-                           'value="' +  item + '"> ' + item + '</label></div>');
-    $input_field.val('');
-  }
-
-  // software_choices is defined in *_sw_choices.json
-  sw_choices.forEach(function(i){
-    $suggestions.append('<option value="' + i + '">');
-  });
-
-  $input_field.change(function(e) {
-    if ($(this).val() !== '') {
-      addToSoftwareList($(this).val());
-    }
-  });
-
 
   // Submit form as JSON
   $("#done").on('click keypress', function(e) {
@@ -1184,6 +1165,32 @@ $(document).ready(function() {
   });
 
  /*
+  *  Load data-list, and build checkbox-list of user-selected items
+  *  This is ugly. TODO: clean up this mess.
+  */
+  var $input_field = $('#software_list_input');
+  var $software_field = $('#software_list');
+  var $suggestions = $('#software_list_suggestions');
+
+  function addToSoftwareList(item) {
+    $software_field.append('<div class="checkbox"><label>' +
+                           '<input type="checkbox" checked name="software_list[]" onChange="this.parentNode.parentNode.removeChild(this.parentNode);" ' +
+                           'value="' +  item + '"> ' + item + '</label></div>');
+    $input_field.val('');
+  }
+
+  // software_choices is defined in *_sw_choices.json
+  sw_choices.forEach(function(i){
+    $suggestions.append('<option value="' + i + '">');
+  });
+
+  $input_field.change(function(e) {
+    if ($(this).val() !== '') {
+      addToSoftwareList($(this).val());
+    }
+  });
+
+ /*
   *  Navigation
   *  All inputs, upon completion/validation, will show/scroll-to the next question
   */
@@ -1235,6 +1242,9 @@ $(document).ready(function() {
     }, delay));
   }
 
+  $("select").on('change', function () {
+    nextQuestion($(this), 500);
+  });
   $('input').on('input', function() {
     var $this = $(this);
 
@@ -1244,9 +1254,6 @@ $(document).ready(function() {
     } else {
       nextQuestion($this, 1000);
     }
-  });
-  $("select").on('change', function () {
-    nextQuestion($(this), 500);
   });
   $("#tool_languages input").on('change', function () {
     nextQuestion($(this), 2000);
