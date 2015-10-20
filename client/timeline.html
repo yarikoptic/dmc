@@ -1278,10 +1278,35 @@ $(document).ready(function() {
   */
   var $root = $('html, body');
 
-  // shows next question
+  // $current_q = accepts object pointing to question <li>
+  // duration = ms to fade in and for scrolling to
+  function showNextQuestion($current_q, duration) {
+    var data_next = $current_q.attr('data-next');
+    var $next_q;
+
+    // if there's no next-question explicitly set, then just go to next in DOM
+    if (data_next == undefined) {
+      $next_q = $current_q.next();
+    } else {
+      $next_q = $(data_next);
+    }
+
+    $next_q.fadeIn(duration);
+
+    // allow user-scrolling to win over our scrolling
+    $root.on("scroll mousedown wheel DOMMouseScroll mousewheel touchmove", function(){
+      $root.stop();
+    });
+    $root.animate({ scrollTop: $next_q.offset().top }, duration, function(){
+      $root.off("scroll mousedown wheel DOMMouseScroll mousewheel touchmove");
+    });
+  }
+
   // $field = accepts object pointing to field
-  // delay == integer of ms since last input/change to wait until firing event
-  function nextQuestion($field, delay) {
+  // timer = ms since last input/change to wait before checking if it's time
+  //         to go to the next question
+  // TODO: holy hell this name is long...
+  function watchIfReadyForNextQuestion($field, timer) {
     var $parent_li = $field.parents('li');
 
     clearTimeout($parent_li.data('timer'));
@@ -1289,27 +1314,9 @@ $(document).ready(function() {
       $parent_li.removeData('timer');
 
       if ($field.is('a') || $field[0].validity.valid) {
-        var data_next = $parent_li.attr('data-next');
-        var $next_q;
-
-        // if there's no next-question explicitly set, then just go to next in DOM
-        if (data_next == undefined) {
-          $next_q = $parent_li.next();
-        } else {
-          $next_q = $(data_next);
-        }
-
-        $next_q.fadeIn(2000);
-
-        // allow user-scrolling to win over our scrolling
-        $root.on("scroll mousedown wheel DOMMouseScroll mousewheel touchmove", function(){
-          $root.stop();
-        });
-        $root.animate({ scrollTop: $next_q.offset().top }, 2000, function(){
-          $root.off("scroll mousedown wheel DOMMouseScroll mousewheel touchmove");
-        });
+        showNextQuestion($parent_li, 2000);
       }
-    }, delay));
+    }, timer));
   }
 
   //
@@ -1317,7 +1324,7 @@ $(document).ready(function() {
   //
 
   $("select").on('change', function () {
-    nextQuestion($(this), 500);
+    watchIfReadyForNextQuestion($(this), 500);
   });
   $('input').on('input', function() {
     var $this = $(this);
@@ -1325,17 +1332,17 @@ $(document).ready(function() {
     if ($this.attr('list') == undefined) { // skip datalist inputs
       if ($this.attr('type') == 'text') {
         // give text inputs a bit more time; might be fixing a typo, etc
-        nextQuestion($this, 1500);
+        watchIfReadyForNextQuestion($this, 1500);
       } else {
-        nextQuestion($this, 1000);
+        watchIfReadyForNextQuestion($this, 1000);
       }
     }
   });
   $("#tool_languages input").on('change', function () {
-    nextQuestion($(this), 2000);
+    watchIfReadyForNextQuestion($(this), 2000);
   });
   $("#neuro_methods input").on('change', function () {
-    nextQuestion($(this), 2000);
+    watchIfReadyForNextQuestion($(this), 2000);
   });
 
   //
@@ -1355,10 +1362,10 @@ $(document).ready(function() {
   });
   // make "next" buttons work
   $("#sw_list_next").on('click keypress', function() {
-    nextQuestion($(this), 0);
+    watchIfReadyForNextQuestion($(this), 0);
   });
   $("#provider_list_next").on('click keypress', function() {
-    nextQuestion($(this), 0);
+    watchIfReadyForNextQuestion($(this), 0);
   });
 
  /*
