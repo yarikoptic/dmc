@@ -1252,57 +1252,44 @@ $(document).ready(function() {
   *  Load data-list, and build checkbox-list of user-selected items
   *  This is ugly. TODO: clean up this mess.
   */
+  function addCheckbox(field, name, val) {
+    $(field).append('<div class="checkbox"><label>'
+                  + '<input type="checkbox" checked name="' + name + '" '
+                  +        'onChange="this.parentNode.parentNode.removeChild(this.parentNode);" '
+                  +        'value="' +  val + '"> ' + val + '</label></div>');
+  }
+
+  // if the browser supports the datalist element, build the datalists
+  //   and have inputs build checkbox lists upon enter
   if (Modernizr.datalistelem) {
-    var $sw_input = $('#sw_list_input');
-    var $sw_field = $('#sw_list');
-    var $sw_suggestions = $('#sw_list_suggestions');
-
-    function addToSoftwareList(item) {
-      $sw_field.append('<div class="checkbox"><label>' +
-                             '<input type="checkbox" checked name="sw_list[]" onChange="this.parentNode.parentNode.removeChild(this.parentNode);" ' +
-                             'value="' +  item + '"> ' + item + '</label></div>');
-      $sw_input.val('');
-    }
-
     // sw_choices is defined in *_choices.json
-    sw_choices.forEach(function(i){
-      $sw_suggestions.append('<option value="' + i + '">');
-    });
+    $('#sw_list_suggestions').html(sw_choices);
 
-    $sw_input.change(function(e) {
-      if ($(this).val() !== '') {
-        addToSoftwareList($(this).val());
+    $('#sw_list_input').change(function(e) {
+      var $this = $(this);
+      if ($this.val() !== '') {
+        addCheckbox('#sw_list', 'sw_list[]', $this.val());
+        $this.val('');
       }
     });
 
-    // provider list
-    var $pr_input = $('#provider_list_input');
-    var $pr_field = $('#provider_list');
-    var $pr_suggestions = $('#provider_list_suggestions');
-
-    function addToProviderList(item) {
-      $pr_field.append('<div class="checkbox"><label>' +
-                         '<input type="checkbox" checked name="provider_list[]" onChange="this.parentNode.parentNode.removeChild(this.parentNode);" ' +
-                                'value="' +  item + '"> ' + item + '</label></div>');
-      $pr_input.val('');
-    }
-
     // provider_choices is defined in *_choices.json
-    provider_choices.forEach(function(i){
-      $pr_suggestions.append('<option value="' + i + '">');
-    });
+    $('#provider_list_suggestions').html(provider_choices);
 
-    $pr_input.change(function(e) {
-      if ($(this).val() !== '') {
-        addToProviderList($(this).val());
+    $('#provider_list_input').change(function(e) {
+      var $this = $(this);
+      if ($this.val() !== '') {
+        addCheckbox('#provider_list', 'provider_list[]', $this.val());
+        $this.val('');
       }
     });
   } else {
-    var no_data_list_warning = "<p class='feature_warning'>With a different browser, you would see nifty autosuggestions " +
-      "in the text field below. After you submit your answers, you'll receive get a URL that you can use to update your " +
-      "results with another browser.</p>";
-    $('#provider_list_input').before(no_data_list_warning);
-    $('#sw_list_input').before(no_data_list_warning);
+    var warn_datalist = "<p class='feature_warning'>With a different browser, "
+                      + "you would see nifty autosuggestions in the text field "
+                      + "below. After you submit your survey, you'll get a URL "
+                      + "that you can use to update it — in a different browser.</p>";
+    $('#provider_list_input').before(warn_datalist);
+    $('#sw_list_input').before(warn_datalist);
   }
 
  /*
