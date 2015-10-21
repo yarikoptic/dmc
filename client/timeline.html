@@ -39,7 +39,8 @@
 <main class="container">
   <div class="page-header"></div>
   <form id="survey">
-  <input name="client_version" type="hidden" value="1">
+  <input name="client_version" type="hidden" value="2">
+  <input id="leftovers" name="leftovers" type="hidden" value="">
   <ul class="timeline">
     <li id="employer-group">
       <div class="timeline-badge"><i class="fa fa-university"></i></div>
@@ -1103,6 +1104,25 @@ $(document).ready(function() {
           }
         }
       });
+
+      // these checkbox lists are built by the datalist fields
+      // so it needs to be done manually on load
+      ['sw_list', 'provider_list'].forEach(function(arr) {
+        if (Array.isArray(user_data[arr])) {
+          user_data[arr].forEach(function(val) {
+            addCheckbox('#' + arr, arr + '[]', val);
+          });
+          delete user_data[arr];
+        }
+      });
+
+      // save leftovers, so they'll be submitted back, for paranoia's sake
+      $('#leftovers').val(JSON.stringify(user_data));
+
+    }, "json")
+    .fail(function(user_data) {
+      alert("Failed to load " + uuid + '.\nPlease report this error at:\nhttps://github.com/psychoinformatics-de/dmc/issues\nAnd it shall be fixed.');
+    });
   }
 
  /*
