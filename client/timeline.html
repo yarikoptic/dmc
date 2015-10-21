@@ -1063,12 +1063,45 @@ $(document).ready(function() {
 
   var uuid = getUrlVar("uuid");
   if (uuid) {
-    $.get('u/' + uuid + '/record',
-      function(data) {
-        console.log(data);
-      }, "json")
-      .fail(function(data) {
-        alert("Failed to load " + uuid + '.\nPlease report this error at:\nhttps://github.com/psychoinformatics-de/dmc/issues\nAnd it shall be fixed.');
+    $.get('u/' + uuid + '/record', function(user_data) {
+     /*
+      *  Load (nearly) all JSON into the form
+      */
+      // remove data we don't want written to form
+      delete user_data['client_version'];
+      delete user_data['json_leftovers'];
+
+      $('select, input').each(function() {
+        var $this = $(this);
+        var field_name = $this.attr('name');
+
+        if (field_name !== undefined) {
+          field_name = field_name.replace('[]', ''); // remove array markers
+
+          // if we have user_data for the field in question
+          if (user_data[field_name] !== undefined) {
+            if ($this.is('select')) {
+              var option = $this.find(':contains("' + user_data[field_name] + '")');
+
+              if (option.length) { // only select an option if it exists
+                $(option).prop('selected', true);
+                delete user_data[field_name];
+              }
+            } else {
+              switch($this.attr('type')) {
+                case 'checkbox':
+                  if ($.inArray($this.val(), user_data[field_name])) {
+                    $this.prop('checked', true);
+                    delete user_data[field_name];
+                  }
+                  break;
+                default:
+                  $this.val(user_data[field_name]);
+                  delete user_data[field_name];
+              }
+            }
+          }
+        }
       });
   }
 
