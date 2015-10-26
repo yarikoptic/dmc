@@ -10,7 +10,6 @@ function addCheckbox(field, name, val) {
                 +        'value="' +  val + '"> ' + val + '</label></div>');
 }
 
-
 function getUrlVar(key) {
   var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search);
   return result && unescape(result[1]) || "";
@@ -72,6 +71,33 @@ function populateForm(id, user_data) {
   $('#leftovers').val(JSON.stringify(user_data));
 }
 
+/*
+ *  Mark question as valid or invalid
+ */
+markInvalid = function($field) {
+  var $parent_li = $field.parents('li');
+  var $group = $parent_li.children('.form-group');
+  var $badge = $parent_li.children('.timeline-badge');
+
+  $badge.removeClass('success');
+  $badge.addClass('danger');
+  $group.addClass('has-error');
+
+  $parent_li.find('.help-block.with-errors').html($field[0].validationMessage);
+}
+
+markValid = function($field) {
+  var $parent_li = $field.parents('li');
+  var $group = $parent_li.children('.form-group');
+  var $badge = $parent_li.children('.timeline-badge');
+
+  $badge.removeClass('danger');
+  $badge.addClass('success');
+  $group.removeClass('has-error');
+
+  $parent_li.find('.help-block.with-errors').empty();
+}
+
 // $current_q = accepts object pointing to question <li>
 // duration = ms to fade in and for scrolling to
 function showNextQuestion($current_q, duration) {
@@ -108,7 +134,10 @@ function watchIfReadyForNextQuestion($field, timer) {
     $parent_li.removeData('timer');
 
     if ($field.is('a') || $field[0].validity.valid) {
+      markValid($field);
       showNextQuestion($parent_li, 2000);
+    } else {
+      markInvalid($field);
     }
   }, timer));
 }

@@ -1295,27 +1295,6 @@ $(document).ready(function() {
   $("#provider_list_next").on('click keypress', function() {
     watchIfReadyForNextQuestion($(this), 0);
   });
-
- /*
-  *  Validation
-  */
-  $('#survey').validator({disable: false});
-
-  // on valid/invalid, change the badge color
-  $('#survey').on('valid.bs.validator', function (e) {
-    var $parent_li = $(e.relatedTarget).parents('li');
-    var $badge = $parent_li.children('.timeline-badge');
-
-    $badge.addClass('success');
-    $badge.removeClass('danger');
-  })
-  $('#survey').on('invalid.bs.validator', function (e) {
-    var $parent_li = $(e.relatedTarget).parents('li');
-    var $badge = $parent_li.children('.timeline-badge');
-
-    $badge.addClass('danger');
-    $badge.removeClass('success');
-  })
 });
 </script>
 </body>
