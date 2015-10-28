@@ -134,6 +134,11 @@ function watchIfReadyForNextQuestion($field, timer) {
     $parent_li.removeData('timer');
 
     if ($field.is('a') || $field[0].validity.valid) {
+      var field_name = $field.attr('name');
+      if (custom_functions[field_name] !== undefined) {
+        custom_functions[field_name]($field);
+      }
+
       markValid($field);
       showNextQuestion($parent_li, 2000);
     } else {
