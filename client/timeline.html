@@ -1175,6 +1175,39 @@ $(document).ready(function() {
     });
   }
 
+  // walk through to validate/show the form
+  var questions = $('#survey').children('ul.timeline').children('li');
+  questions.each(function() {
+    var $q = $(this);
+
+    // if the question is hidden, skip it
+    if (!$q.is(":visible")) { return true; }
+
+    $q.find('input, select').each(function() {
+      var $field = $(this);
+      var field_name = $field.attr('name');
+
+      if (field_name !== undefined) {
+        if ($field[0].validity.valid) {
+          // if we have custom functions for the field in question
+          if (custom_functions[field_name] !== undefined) {
+            custom_functions[field_name]($field);
+          }
+          markValid($field);
+          showNextQuestion($q, 0);
+        } else {
+          markInvalid($field);
+          return false;
+        }
+      }
+    });
+
+    // if there's a validation error, break
+    if ($q.children('.form-group').hasClass('has-error')) {
+      return false;
+    }
+  });
+
  /*
   *  Form submission
   */
