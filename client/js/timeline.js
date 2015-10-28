@@ -74,7 +74,7 @@ function populateForm(id, user_data) {
 /*
  *  Mark question as valid or invalid
  */
-markInvalid = function($field) {
+function markInvalid($field) {
   var $parent_li = $field.parents('li');
   var $group = $parent_li.children('.form-group');
   var $badge = $parent_li.children('.timeline-badge');
@@ -86,7 +86,7 @@ markInvalid = function($field) {
   $parent_li.find('.help-block.with-errors').html($field[0].validationMessage);
 }
 
-markValid = function($field) {
+function markValid($field) {
   var $parent_li = $field.parents('li');
   var $group = $parent_li.children('.form-group');
   var $badge = $parent_li.children('.timeline-badge');
