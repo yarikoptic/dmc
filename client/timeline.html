@@ -1167,11 +1167,17 @@ $(document).ready(function() {
 
   var uuid = getUrlVar("uuid");
   if (uuid) {
-    $.get('u/' + uuid + '/record', function(user_data) {
-      populateForm('#survey', user_data);
-    }, "json")
-    .fail(function(user_data) {
-      alert("Failed to load " + uuid + '.\nPlease report this error at:\nhttps://github.com/psychoinformatics-de/dmc/issues\nAnd it shall be fixed.');
+    $.ajax({
+      type: "GET",
+      async: false,
+      dataType: "json",
+      url: 'u/' + uuid + '/record'
+    })
+    .done(function(user_data) { populateForm('#survey', user_data); })
+    .fail(function(user_data) { alert("Failed to load " + uuid
+      + '.\nPlease report this error at: '
+      + '\nhttps://github.com/psychoinformatics-de/dmc/issues'
+      + '\nAnd it shall be fixed.');
     });
   }
 
