@@ -9,7 +9,6 @@
 
   <title>Survey — How Do You Science?</title>
 
-  <link rel="stylesheet" href="css/bootstrap.3.3.5.min.css" />
   <link rel="stylesheet" href="css/timeline.css" />
   <link rel="stylesheet" href="css/font-awesome.4.4.0.min.css">
   <link rel="icon" type="image/png" href="favicon.png?v=1">
@@ -26,21 +25,20 @@
   </div>
 </noscript>
 <header id="banner">
-  <div id="banner_image"></div>
-  <div id="flyer" class="text-center">
+  <div id="splash"></div>
+  <div id="hook">
     <h1>How Do <em>You</em> Science?</h1>
-    <button type="button" id="tell_us" class="btn btn-default btn-lg"><i class="fa fa-chevron-right"></i> Tell Us</button>
+    <a id="tell_us"><i class="fa fa-chevron-right"></i> Tell Us</a>
     <p>Find&nbsp;out&nbsp;how&nbsp;you&nbsp;compare&nbsp;to&nbsp;others
       &bull;&nbsp;It&nbsp;takes&nbsp;just&nbsp;a&nbsp;few&nbsp;minutes
       &bull;&nbsp;No&nbsp;email&nbsp;or&nbsp;account&nbsp;needed<br>(<a href="faq.html">details</a>)</p>
   </div>
 </header>
 
-<main class="container">
-  <div class="page-header"></div>
-  <form id="survey">
-  <input name="client_version" type="hidden" value="3">
-  <input id="leftovers" name="leftovers" type="hidden" value="">
+<main>
+<form id="survey">
+  <input name="client_version" type="hidden" value="3" />
+  <input id="leftovers" name="leftovers" type="hidden" value="" />
   <ul class="timeline">
     <li id="employer-group">
       <div class="timeline-badge"><i class="fa fa-university"></i></div>
@@ -1038,19 +1036,16 @@
       </div>
     </li>
   </ul>
-  </form>
+</form>
 </main>
-<footer id="site-footer">
-  <div class="container">
-    <p class="text-center text-muted"><small>
-      © <a href="http://www.psychoinformatics.de">Psychoinformatics lab</a> 2015 &nbsp;&bull;&nbsp; Code Freely available on <a href="https://github.com/psychoinformatics-de/dmc">GitHub</a>
-    </small></p>
-  </div>
+<footer>
+  <p class="text-center text-muted"><small>
+      © 2015 Alex Waite, <a href="http://www.psychoinformatics.de">Psychoinformatics.de</a> &nbsp;&bull;&nbsp; Code Freely available on <a href="https://github.com/psychoinformatics-de/dmc">GitHub</a>
+  </small></p>
 </footer>
 
 <!-- javascript -->
 <script src="js/jquery-1.11.3.min.js"></script>
-<script src="js/bootstrap.3.3.5.min.js"></script>
 <script src="js/jquery.serialize-object.2.5.0.min.js"></script>
 <script src="js/moderizer_datalist.3.1.0.js"></script>
 <script src="js/timeline.js"></script>

@@ -50,11 +50,6 @@ License: MIT
  THE SOFTWARE.
  -------------------------------------------------------------------------
 
-Files: client/css/bootstrap*,
-       client/js/bootstrap*
-Copyright: Bootstrap
-License: MIT
-
 Files: client/js/moderizer*
 Copyright: Modernizer
 License: MIT

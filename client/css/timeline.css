@@ -51,10 +51,21 @@ main {
 
 body {
   font-family: 'Open Sans', sans-serif;
+  font-size: 0.9em;
+  margin: 0;
 }
 h1, h2, h3, h4, h5, h6, .timeline-title {
   font-family: 'Libre Baskerville', serif;
   letter-spacing: -0.025em;
+}
+footer {
+  text-align: center;
+}
+main {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  margin: 0 auto;
+  width: 70vw;
 }
 
 #noscript {
@@ -88,9 +99,19 @@ h1, h2, h3, h4, h5, h6, .timeline-title {
   }
 }
 
-#banner h1 {
-  font-size: 4em;
-  margin: 20px 10px;
+#banner #hook {
+  text-align: center;
+}
+#banner #hook h1 {
+  font-size: 7vh;
+  line-height: 7vh;
+  margin: 20px 0;
+}
+#banner #hook a#tell_us {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 0.5em;
+  text-align: center;
 }
 #banner p {
   margin-top: 20px;
