@@ -117,12 +117,15 @@ main {
  */
 
 body {
+  color: #333;
   font-family: 'Open Sans', sans-serif;
   font-size: 0.9em;
   margin: 0;
+  width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Libre Baskerville', serif;
+  font-weight: normal;
   letter-spacing: -0.025em;
 }
 footer {
@@ -132,7 +135,19 @@ main {
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   margin: 0 auto;
-  width: 70vw;
+  width: 100%;
+}
+@media screen and (min-width: 1000px) {
+  main { width: 70em; }
+}
+
+input, select {
+  background: white;
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 0.3em 0.4em;
+  max-width: 100%;
 }
 
 #noscript {
