@@ -134,8 +134,10 @@ footer {
 main {
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
-  margin: 0 auto;
-  width: 100%;
+  margin: 0 0 0 4%;
+}
+@media screen and (min-width: 600px) {
+  main { margin: 0 4%; }
 }
 @media screen and (min-width: 1000px) {
   main { width: 70em; }
@@ -212,11 +214,16 @@ p.feature_warning {
   height: 50px;
   line-height: 50px;
   margin: -0.2em 0 0 -25px;
-  position: absolute; left: 50%;
+  position: absolute; right: 1%;
   text-align: center;
   transform: translateY(-0.3em);
   transition: all 1s ease-in-out;
   width: 50px;
+}
+@media screen and (min-width: 600px) { /* side-by-side view */
+  [class^="badge-"]::before, [class*=" badge-"]::before {
+    left: 50%; right: auto;
+  }
 }
 .badge-success::before { background-color: #3f903f !important; }
 .badge-problem::before { background-color: #d9534f !important; }
@@ -225,9 +232,12 @@ p.feature_warning {
   background: linear-gradient(90deg, #eee 3px, white 1px);
   background-position: 100% 0;
   background-repeat: repeat-y;
-  background-size: calc(50% + 1.5px);
+  background-size: calc(26.5px + 1%); /* width of badge + width of line */
   margin: 2em 0;
-  padding: 20px 0 20px;
+  padding: 20px 0 20px 0;
+}
+@media screen and (min-width: 600px) { /* side-by-side view */
+  .timeline { background-size: calc(50% + 1.5px); }
 }
 
 .timeline .tl-panel {
@@ -235,7 +245,7 @@ p.feature_warning {
   border-radius: 2px;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   margin-bottom: 20px;
-  margin-right: calc(50% + 40px);
+  margin-right: calc(65px + 1%); /* badge width + triangle width */
   padding: 1.3em;
 }
 .timeline .tl-panel h2::after {
@@ -243,17 +253,19 @@ p.feature_warning {
   border-left-color: #ddd;
   content: " ";
   pointer-events: none;
-  position: absolute; left: calc(50% - 40px);
+  position: absolute; right: calc(35px + 1%);
 }
 @media screen and (min-width: 600px) { /* side-by-side view */
+  .timeline .tl-panel { margin-right: calc(50% + 40px); }
   .timeline .tl-panel.inverted {
     margin-left: calc(50% + 40px);
     margin-right: unset;
   }
+  .timeline .tl-panel h2::after { left: calc(50% - 40px); right: auto; }
   .timeline .tl-panel.inverted h2::after {
     border-left-color: transparent;
     border-right-color: #ddd;
-    position: absolute; left: calc(50% + 10px);
+    left: calc(50% + 10px);
   }
 }
 
