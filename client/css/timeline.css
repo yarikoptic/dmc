@@ -53,6 +53,66 @@ main {
 }
 
 /*
+ *  Font Icons
+ */
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/fontello.eot?12458826');
+  src: url('../fonts/fontello.eot?12458826#iefix') format('embedded-opentype'),
+       url('../fonts/fontello.woff2?12458826') format('woff2'),
+       url('../fonts/fontello.woff?12458826') format('woff'),
+       url('../fonts/fontello.ttf?12458826') format('truetype'),
+       url('../fonts/fontello.svg?12458826#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-wrench:before, .badge-wrench:before { content: '\e800'; } /* '' */
+.icon-clock:before, .badge-clock:before { content: '\e801'; } /* '' */
+.icon-cogs:before, .badge-cogs:before { content: '\e802'; } /* '' */
+.icon-pencil:before, .badge-pencil:before { content: '\e803'; } /* '' */
+.icon-bullhorn:before, .badge-bullhorn:before { content: '\e804'; } /* '' */
+.icon-users:before, .badge-users:before { content: '\e805'; } /* '' */
+.icon-book:before, .badge-book:before { content: '\e806'; } /* '' */
+.icon-right-open:before, .badge-right-open:before { content: '\e807'; } /* '' */
+.icon-globe:before, .badge-globe::before { content: '\e808'; } /* '' */
+.icon-flask:before, .badge-flask:before { content: '\f0c3'; } /* '' */
+.icon-exchange:before, .badge-exchange:before { content: '\f0ec'; } /* '' */
+.icon-laptop:before, .badge-laptop:before { content: '\f109'; } /* '' */
+.icon-code:before, .badge-code:before { content: '\f121'; } /* '' */
+.icon-linux:before, .badge-linux:before { content: '\f17c'; } /* '' */
+.icon-university:before, .badge-university::before { content: '\f19c'; } /* '' */
+
+
+/*
  *  Element overrides
  */
 
@@ -132,7 +192,7 @@ p.feature_warning {
   background-color: #999;
   border-radius: 50%;
   color: #fff;
-  content: 'H';
+  font-family: "fontello";
   font-size: 1.6em;
   height: 50px;
   line-height: 50px;
@@ -145,11 +205,6 @@ p.feature_warning {
 }
 .badge-success::before { background-color: #3f903f !important; }
 .badge-problem::before { background-color: #d9534f !important; }
-
-.badge-university::before {
-  content: 'U';
-}
-
 
 .timeline {
   background: linear-gradient(90deg, #eee 3px, white 1px);

@@ -10,7 +10,6 @@
   <title>Survey — How Do You Science?</title>
 
   <link rel="stylesheet" href="css/timeline.css" />
-  <link rel="stylesheet" href="css/font-awesome.4.4.0.min.css">
   <link rel="icon" type="image/png" href="favicon.png?v=1">
 </head>
 
@@ -18,17 +17,18 @@
 <noscript>
   <div id="noscript" class="text-center">
     <p>This page requires JavaScript.</p>
-    <p>Yeah, yeah; JavaScript bothers me too. <em>But</em>, I can promise you
-    that we don't do any tracking, sniffing, etc &mdash; <em>at all</em>. What
-    we have here is just good-'ol-fashioned make-my-page-sexy.</p>
-    <p>So reload this page with JS enabled, and be prepared.</p>
+    <p>I know, I know. Sites that require JavaScript bother me too.
+    <em>But</em>, I can promise you that we don't do any tracking, sniffing, etc
+    &mdash; <em>at all</em>. We just need it to determine which questions to ask
+    you. Kinda like "choose your own adventure", JS edition.</p>
   </div>
 </noscript>
+
 <header id="banner">
   <div id="splash"></div>
   <div id="hook">
     <h1>How Do <em>You</em> Science?</h1>
-    <a id="tell_us"><i class="fa fa-chevron-right"></i> Tell Us</a>
+    <a id="tell_us" class='icon-right-open'>Tell Us</a>
     <p>Find&nbsp;out&nbsp;how&nbsp;you&nbsp;compare&nbsp;to&nbsp;others
       &bull;&nbsp;It&nbsp;takes&nbsp;just&nbsp;a&nbsp;few&nbsp;minutes
       &bull;&nbsp;No&nbsp;email&nbsp;or&nbsp;account&nbsp;needed<br>(<a href="faq.html">details</a>)</p>
@@ -41,7 +41,7 @@
   <input id="leftovers" name="leftovers" type="hidden" value="" />
 
   <div class='timeline'>
-    <div id="employer-group" class='tl-panel'>
+    <div id="employer-group" class='tl-panel badge-university'>
       <h2>Employer</h2>
       <p class='subtitle'>Select what fits best</p>
       <select id="employer" name="employer" required>
