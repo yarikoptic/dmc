@@ -75,27 +75,26 @@ function populateForm(id, user_data) {
  *  Mark question as valid or invalid
  */
 function markInvalid($field) {
-  var $parent_li = $field.parents('li');
-  var $group = $parent_li.children('.form-group');
-  var $badge = $parent_li.children('.timeline-badge');
+  var $panel = $field.closest('.tl-panel');
+  //var $group = $parent_li.children('.form-group');
 
-  $badge.removeClass('success');
-  $badge.addClass('danger');
-  $group.addClass('has-error');
+  $panel.removeClass('badge-success').addClass('badge-problem');
+  //$group.addClass('has-error');
+  //TODO: figure out how this form-group validation shit works
 
-  $parent_li.find('.help-block.with-errors').html($field[0].validationMessage);
+  //$parent_li.find('.help-block.with-errors').html($field[0].validationMessage);
 }
 
 function markValid($field) {
-  var $parent_li = $field.parents('li');
-  var $group = $parent_li.children('.form-group');
-  var $badge = $parent_li.children('.timeline-badge');
+  var $panel = $field.closest('.tl-panel');
+  //var $group = $parent_li.children('.form-group');
 
-  $badge.removeClass('danger');
-  $badge.addClass('success');
-  $group.removeClass('has-error');
+  $panel.removeClass('badge-problem').addClass('badge-success');
 
-  $parent_li.find('.help-block.with-errors').empty();
+  //TODO: figure out how this form-group validation shit works
+  //$group.removeClass('has-error');
+
+  //$parent_li.find('.help-block.with-errors').empty();
 }
 
 // $current_q = accepts object pointing to question <li>
@@ -127,11 +126,11 @@ function showNextQuestion($current_q, duration) {
 //         to go to the next question
 // TODO: holy hell this name is long...
 function watchIfReadyForNextQuestion($field, timer) {
-  var $parent_li = $field.parents('li');
+  var $panel = $field.closest('.tl-panel');
 
-  clearTimeout($parent_li.data('timer'));
-  $parent_li.data('timer', setTimeout(function(){
-    $parent_li.removeData('timer');
+  clearTimeout($panel.data('timer'));
+  $panel.data('timer', setTimeout(function(){
+    $panel.removeData('timer');
 
     if ($field.is('a') || $field[0].validity.valid) {
       var field_name = $field.attr('name');
@@ -140,7 +139,7 @@ function watchIfReadyForNextQuestion($field, timer) {
       }
 
       markValid($field);
-      showNextQuestion($parent_li, 2000);
+      showNextQuestion($panel, 2000);
     } else {
       markInvalid($field);
     }
