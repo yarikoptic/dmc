@@ -969,104 +969,104 @@ $(document).ready(function() {
   */
   custom_functions = {
     'personal_OS': function($field) {
-      var $parent_li = $field.parents('li');
+      var $panel = $field.closest('.tl-panel');
 
       if ($field.val() == 'Linux') {
         $("#personal_OS_other-group").hide("slow");
-        $parent_li.attr('data-next', '#personal_OS_linux-group');
+        $panel.attr('data-next', '#personal_OS_linux-group');
       } else if ($field.val() == 'Other') {
         $("#personal_OS_linux-group").hide("slow");
-        $parent_li.attr('data-next', '#personal_OS_other-group');
+        $panel.attr('data-next', '#personal_OS_other-group');
       } else {
         $("#personal_OS_linux-group").hide("slow");
         $("#personal_OS_other-group").hide("slow");
-        $parent_li.attr('data-next', '#maintainer-group');
+        $panel.attr('data-next', '#maintainer-group');
       }
     },
     'maintainer': function($field) {
-      var $parent_li = $field.parents('li');
+      var $panel = $field.closest('.tl-panel');
       if ( $field.val() == 'Yes') {
-        $parent_li.attr('data-next', '#hours-group');
+        $panel.attr('data-next', '#hours-group');
       } else {
         $("#hours-group").hide("slow");
-        $parent_li.attr('data-next', '#institute_device-group');
+        $panel.attr('data-next', '#institute_device-group');
       }
     },
     'institute_device': function($field) {
-      var $parent_li = $field.parents('li');
+      var $panel = $field.closest('.tl-panel');
       if ( $field.val() !== "None") {
-        $parent_li.attr('data-next', '#institute_OS-group');
+        $panel.attr('data-next', '#institute_OS-group');
       } else {
         $("#institute_OS-group").hide("slow");
         $("#institute_OS_linux-group").hide("slow");
         $("#institute_OS_other-group").hide("slow");
         $("#personal_institute_usage-group").hide("slow");
-        $parent_li.attr('data-next', '#publications_number-group');
+        $panel.attr('data-next', '#publications_number-group');
       }
     },
     'institute_OS': function($field) {
-      var $parent_li = $field.parents('li');
+      var $panel = $field.closest('.tl-panel');
 
       if ($field.val() == 'Linux') {
         $("#institute_OS_other-group").hide("slow");
-        $parent_li.attr('data-next', '#institute_OS_linux-group');
+        $panel.attr('data-next', '#institute_OS_linux-group');
       } else if ($field.val() == 'Other') {
         $("#institute_OS_linux-group").hide("slow");
-        $parent_li.attr('data-next', '#institute_OS_other-group');
+        $panel.attr('data-next', '#institute_OS_other-group');
       } else {
         $("#institute_OS_linux-group").hide("slow");
         $("#institute_OS_other-group").hide("slow");
-        $parent_li.attr('data-next', '#personal_institute_usage-group');
+        $panel.attr('data-next', '#personal_institute_usage-group');
       }
     },
     'publications_number': function($field) {
-      var $parent_li = $field.parents('li');
+      var $panel = $field.closest('.tl-panel');
       if ( $field.val() > 0) {
         $("#publications_number_open_access").attr('max', $field.val());
-        $parent_li.attr('data-next', '#publications_number_open_access-group');
+        $panel.attr('data-next', '#publications_number_open_access-group');
       } else {
         $("#publications_number_open_access-group").hide("slow");
-        $parent_li.attr('data-next', '#social_media-group');
+        $panel.attr('data-next', '#social_media-group');
       }
     },
     'collaborations': function($field) {
-      var $parent_li = $field.parents('li');
+      var $panel = $field.closest('.tl-panel');
       if ( $field.val() > 0) {
         $("#collaborations_data").attr('max', $field.val());
-        $parent_li.attr('data-next', '#collaborations_data-group');
+        $panel.attr('data-next', '#collaborations_data-group');
       } else {
         $("#collaborations_data-group").hide("slow");
         $("#collaborations_data_provided-group").hide("slow");
-        $parent_li.attr('data-next', '#data_IRB-group');
+        $panel.attr('data-next', '#data_IRB-group');
       }
     },
     'collaborations_data': function($field) {
-      var $parent_li = $field.parents('li');
+      var $panel = $field.closest('.tl-panel');
       if ( $field.val() > 0) {
         $("#collaborations_data_provided").attr('max', $field.val());
-        $parent_li.attr('data-next', '#collaborations_data_provided-group');
+        $panel.attr('data-next', '#collaborations_data_provided-group');
       } else {
         $("#collaborations_data_provided-group").hide("slow");
-        $parent_li.attr('data-next', '#data_IRB-group');
+        $panel.attr('data-next', '#data_IRB-group');
       }
     },
     'data_shared_publicly_ever': function($field) {
-      var $parent_li = $field.parents('li');
+      var $panel = $field.closest('.tl-panel');
       if ( $field.val() == "Yes") {
-        $parent_li.attr('data-next', '#data_shared_publicly_num-group');
+        $panel.attr('data-next', '#data_shared_publicly_num-group');
       } else {
         $("#data_shared_publicly_num-group").hide("slow");
         $("#data_published_paper-group").hide("slow");
-        $parent_li.attr('data-next', '#data_consumed_public-group');
+        $panel.attr('data-next', '#data_consumed_public-group');
       }
     },
     'code_shared': function($field) {
-      var $parent_li = $field.parents('li');
+      var $panel = $field.closest('.tl-panel');
       if ( $field.val() == "Yes") {
-        $parent_li.attr('data-next', '#code_shared_method-group');
+        $panel.attr('data-next', '#code_shared_method-group');
       } else {
         $("#code_shared_method-group").hide("slow");
-        $parent_li.attr('data-next', '#tool_manuscripts-group');
+        $panel.attr('data-next', '#tool_manuscripts-group');
       }
     }
   };
