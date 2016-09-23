@@ -431,174 +431,112 @@
       <div class="help-block with-errors"></div>
     </div>
 
+    <div id="institute_OS-group" class='tl-panel badge-flask' data-next="#personal_institute_usage-group" hidden>
+      <h2>OS</h2>
+      <p class='subtitle'>What operating system does the above device run?</p>
+      <select id="institute_OS" name="institute_OS" required>
+        <option value="" disabled selected hidden>— Select —</option>
+        <option>Linux</option>
+        <option>OS X</option>
+        <option>Windows</option>
+        <option>Other</option>
+      </select>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="institute_OS_linux-group" class='tl-panel badge-linux' data-next="#personal_institute_usage-group" hidden>
+      <h2>Linux Distro</h2>
+      <p class='subtitle'>It's just like choosing your favorite ice cream —
+         riddled with political implications.</p>
+      <select id="institute_OS_linux" name="institute_OS_linux" required>
+        <option value="" disabled selected hidden>— Select —</option>
+        <option>Debian</option>
+        <option>Ubuntu/Mint</option>
+        <option>RedHat/CentOS/Scientific Linux</option>
+        <option>Fedora</option>
+        <option>Arch</option>
+        <option>Other</option>
+        <option>Don't know</option>
+      </select>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="institute_OS_other-group" class='tl-panel badge-flask' data-next="#personal_institute_usage-group" hidden>
+      <h2>Other OS</h2>
+      <p class='subtitle'><em>Alright.</em> We admit it, you've piqued our
+         curiosity. What is this awesome system you run?</p>
+      <input id="institute_OS_other" name="institute_OS_other" type="text" required>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="personal_institute_usage-group" class='tl-panel badge-flask' hidden>
+      <h2>Usage Pattern</h2>
+      <p class='subtitle'>Percentage of time you use "your device" vs. "shared
+        infrastructure" (for research computing only)</p>
+      <select id="personal_institute_usage" name="personal_institute_usage" required>
+        <option value="" disabled selected hidden >— Select —</option>
+        <option>  0% mine / 100% shared</option>
+        <option> 30% mine /  70% shared</option>
+        <option> 50% mine /  50% shared</option>
+        <option> 70% mine /  30% shared</option>
+        <option>100% mine /   0% shared</option>
+      </select>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="publications_number-group" class='tl-panel inverted badge-pencil' data-next="#social_media-group" hidden>
+      <h2>Publications in the last 5 years</h2>
+      <p class='subtitle'>How many peer-reviewed publications did you
+         (co-)author in the last 5 years?</p>
+      <input id="publications_number" name="publications_number" type="number" min="0" step="1" required>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="publications_number_open_access-group" class='tl-panel inverted badge-flask' hidden>
+      <h2># Open Access</h2>
+      <p class='subtitle'>How many of those are openly/freely available? (as an
+         open access publication or on preprint servers like arXiv.org, etc)</p>
+      <input id="publications_number_open_access" name="publications_number_open_access" type="number" min="0" step="1" required>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="social_media-group" class='tl-panel inverted badge-bullhorn' hidden>
+      <h2>Social Media</h2>
+      <p class='subtitle'>How often do you use social media
+         (blog/Facebook/Google+/etc) to share about your research?</p>
+      <select id="social_media" name="social_media" required>
+        <option value="" disabled selected hidden >— Select —</option>
+        <option>Never</option>
+        <option>Daily</option>
+        <option>Weekly</option>
+        <option>Monthly</option>
+        <option>Yearly</option>
+      </select>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="collaborations-group" class='tl-panel inverted badge-users' data-next="#data_IRB-group" hidden>
+      <h2>Collaborations in the last 5 years</h2>
+      <p class='subtitle'>How many collaborations (outside of your own lab) did
+         you personally have in the last 5 years?</p>
+      <input id="collaborations" name="collaborations" type="number" min="0" step="1" required>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="collaborations_data-group" class='tl-panel badge-exchange' data-next="#data_IRB-group" hidden>
+      <h2>Exchange of Data</h2>
+      <p class='subtitle'>How many of those involved the exchange of research
+         data (in either direction)?</p>
+      <input id="collaborations_data" name="collaborations_data" type="number" min="0" step="1" required>
+      <div class="help-block with-errors"></div>
+    </div>
+
+
+
   </div>
 
 
   <ul class="timeline">
-    <li id="institute_OS-group" data-next="#personal_institute_usage-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="institute_OS" class="timeline-title control-label">OS</label>
-          <p><small id="institute_OS-help" class="text-muted help-block">What operating system does the above device run?</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="institute_OS" name="institute_OS" aria-describedby="institute_OS-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden>— Select —</option>
-            <option>Linux</option>
-            <option>OS X</option>
-            <option>Windows</option>
-            <option>Other</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="institute_OS_linux-group" data-next="#personal_institute_usage-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-linux"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="institute_OS_linux" class="timeline-title control-label">Linux Distro</label>
-          <p><small id="institute_OS_linux-help" class="text-muted help-block">It's just like choosing your favorite ice cream — riddled with political implications.</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="institute_OS_linux" name="institute_OS_linux" aria-describedby="institute_OS_linux-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden>— Select —</option>
-            <option>Debian</option>
-            <option>Ubuntu/Mint</option>
-            <option>RedHat/CentOS/Scientific Linux</option>
-            <option>Fedora</option>
-            <option>Arch</option>
-            <option>Other</option>
-            <option>Don't know</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="institute_OS_other-group" data-next="#personal_institute_usage-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="institute_OS_other" class="timeline-title control-label">Other OS</label>
-          <p><small id="institute_OS_other-help" class="text-muted help-block"><em>Alright.</em> You get righteous-cool-points; we love non-conformists. What is it?</small></p>
-        </div>
-        <div class="timeline-body">
-          <input id="institute_OS_other" name="institute_OS_other" aria-describedby="institute_OS_other-help"
-                 class="form-control"
-                 type="text" required>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="personal_institute_usage-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="personal_institute_usage" class="timeline-title control-label">Usage Pattern</label>
-          <p><small id="personal_institute_usage-help" class="text-muted help-block">Percentage of time you use "your device" vs. "shared infrastructure" (research computing only)</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="personal_institute_usage" name="personal_institute_usage" aria-describedby="personal_institute_usage-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden >— Select —</option>
-            <option>  0% mine /100% shared</option>
-            <option> 30% mine / 70% shared</option>
-            <option> 50% mine / 50% shared</option>
-            <option> 70% mine / 30% shared</option>
-            <option>100% mine /  0% shared</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="publications_number-group" class="timeline-inverted" data-next="#social_media-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-pencil"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="publications_number" class="timeline-title control-label">Publications in the last 5 years</label>
-          <p><small id="publications_number-help" class="text-muted help-block">How many peer-reviewed publications did you (co-)author in the last 5 years?</small></p>
-        </div>
-        <div class="timeline-body">
-          <input id="publications_number" name="publications_number" aria-describedby="publications_number-help"
-                 class="form-control"
-                 type="number" min="0" step="1" required>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="publications_number_open_access-group" class="timeline-inverted" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="publications_number_open_access" class="timeline-title control-label"># Open Access</label>
-          <p><small id="publications_number_open_access-help" class="text-muted help-block">How many of those are openly/freely available? (as an open access publication or on preprint servers like arXiv.org, etc)</small></p>
-        </div>
-        <div class="timeline-body">
-          <input id="publications_number_open_access" name="publications_number_open_access" aria-describedby="publications_number_open_access-help"
-                 class="form-control"
-                 type="number" min="0" step="1" required>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="social_media-group" class="timeline-inverted" hidden>
-      <div class="timeline-badge"><i class="fa fa-bullhorn"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="social_media" class="timeline-title control-label">Social Media</label>
-          <p><small id="social_media-help" class="text-muted help-block">How often do you use social media (blog/Facebook/Google+/etc) to share about your research?</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="social_media" name="social_media" aria-describedby="social_media-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden >— Select —</option>
-            <option>Never</option>
-            <option>Daily</option>
-            <option>Weekly</option>
-            <option>Monthly</option>
-            <option>Yearly</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="collaborations-group" data-next="#data_IRB-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-users"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="collaborations" class="timeline-title control-label">Collaborations in the last 5 years</label>
-          <p><small id="collaborations-help" class="text-muted help-block">How many collaborations (outside of your own lab) did you personally have in the last 5 years?</small></p>
-        </div>
-        <div class="timeline-body">
-          <input id="collaborations" name="collaborations" aria-describedby="collaborations-help"
-                 class="form-control"
-                 type="number" min="0" step="1" required>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="collaborations_data-group" data-next="#data_IRB-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-exchange"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="collaborations_data" class="timeline-title control-label">Exchange of Data</label>
-          <p><small id="collaborations_data-help" class="text-muted help-block">How many of those involved the exchange of research data (in either direction)?</small></p>
-        </div>
-        <div class="timeline-body">
-          <input id="collaborations_data" name="collaborations_data" aria-describedby="collaborations_data-help"
-                 class="form-control"
-                 type="number" min="0" step="1" required>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
     <li id="collaborations_data_provided-group" data-next="#data_IRB-group" hidden>
       <div class="timeline-badge"><i class="fa fa-flask"></i></div>
       <div class="timeline-panel form-group">
