@@ -151,6 +151,12 @@ input, select {
   padding: 0.3em 0.4em;
   max-width: 100%;
 }
+input[type='text'], select {
+  width: 20em;
+}
+input[type='number'] {
+  width: 4em;
+}
 
 #noscript {
   font-size: 16px;
@@ -277,6 +283,15 @@ p.feature_warning {
 .timeline .subtitle {
   margin: 0.7em 0 1em 0;
 }
+
+.timeline .checkboxes label {
+  display: block;
+  margin-left: 20px;
+}
+.timeline .checkboxes input[type='checkbox'] {
+  margin-left: -20px;
+}
+
 
 /*
  *  Animations
