@@ -54,7 +54,7 @@
       <div class="help-block with-errors"></div>
     </div>
 
-    <div id='country-group' class='tl-panel badge-globe inverted' hidden>
+    <div id='country-group' class='tl-panel badge-globe' hidden>
       <h2>Country</h2>
       <p class='subtitle'>In which country is the lab you primarily work for?</p>
       <select id="country" name="country" required>
@@ -307,187 +307,134 @@
       </select>
       <div class="help-block with-errors"></div>
     </div>
+
+    <div id="neuro_methods-group" class='tl-panel badge-flask' hidden>
+      <h2>Research Methods</h2>
+      <p class='subtitle'>Select all that apply</p>
+      <div id="neuro_methods" class='checkboxes'>
+        <label><input type="checkbox" name="neuro_methods[]"
+             value="Behavioral Experiments/Psychophysics"> Behavioral Experiments/Psychophysics
+        </label>
+        <label><input type="checkbox" name="neuro_methods[]"
+             value="Brain Imaging (MRI)"> Brain Imaging (MRI)
+        </label>
+        <label><input type="checkbox" name="neuro_methods[]"
+             value="Computational Modeling/Simulations"> Computational Modeling/Simulations
+        </label>
+        <label><input type="checkbox" name="neuro_methods[]"
+             value="Distributed Computing"> Distributed Computing
+        </label>
+        <label><input type="checkbox" name="neuro_methods[]"
+             value="Genetics"> Genetics
+        </label>
+        <label><input type="checkbox" name="neuro_methods[]"
+             value="Invasive Electrophysiology"> Invasive Electrophysiology
+        </label>
+        <label><input type="checkbox" name="neuro_methods[]"
+             value="Non-Invasive Electrophysiology"> Non-Invasive Electrophysiology
+        </label>
+        <label><input type="checkbox" name="neuro_methods[]"
+             value="Spectroscopy"> Spectroscopy
+        </label>
+        <label><input type="checkbox" name="neuro_methods[]"
+             value="Other"> Other
+        </label>
+        <div class="help-block with-errors"></div>
+      </div>
+    </div>
+
+    <div id="personal_device-group" class='tl-panel inverted badge-laptop' hidden>
+      <h2>Research/Work Device</h2>
+      <p class='subtitle'>Which type of device is "yours" at work to use daily
+         for research-related tasks?</p>
+      <select id="personal_device" name="personal_device" required>
+        <option value="" disabled selected hidden>— Select —</option>
+        <option>Phone/Tablet</option>
+        <option>Laptop</option>
+        <option>Desktop</option>
+        <option>High-performance Workstation</option>
+      </select>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="personal_OS-group" class='tl-panel inverted badge-flask' data-next="#maintainer-group" hidden>
+      <h2>OS</h2>
+      <p class='subtitle'>What operating system does the above device run?</p>
+      <select id="personal_OS" name="personal_OS" required>
+        <option value="" disabled selected hidden>— Select —</option>
+        <option>Android</option>
+        <option>Linux</option>
+        <option>OS X/iOS</option>
+        <option>Windows</option>
+        <option>Other</option>
+      </select>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="personal_OS_linux-group" class='tl-panel inverted badge-linux' data-next="#maintainer-group" hidden>
+      <h2>Linux Distro</h2>
+      <p class='subtitle'>It's just like choosing your favorite ice cream —
+         riddled with political implications.</p>
+      <select id="personal_OS_linux" name="personal_OS_linux" required>
+        <option value="" disabled selected hidden>— Select —</option>
+        <option>Debian</option>
+        <option>Ubuntu/Mint</option>
+        <option>RedHat/CentOS/Scientific Linux</option>
+        <option>Fedora</option>
+        <option>Arch</option>
+        <option>Other</option>
+        <option>Don't know</option>
+      </select>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="personal_OS_other-group" class='tl-panel inverted badge-flask' data-next="#maintainer-group" hidden>
+      <h2>Other OS</h2>
+      <p class='subtitle'><em>Alright.</em> We admit it, you've piqued our
+         curiosity. What is this awesome system you run?</p>
+      <input id="personal_OS_other" name="personal_OS_other" type="text" required>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="maintainer-group" class='tl-panel inverted badge-wrench' data-next="#institute_device-group" hidden>
+      <h2>Maintainer</h2>
+      <p class='subtitle'>Are you the person primarily responsible for
+         maintaining this device?</p>
+      <select id="maintainer" name="maintainer" required>
+        <option value="" disabled selected hidden>— Select —</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="hours-group" class='tl-panel inverted badge-clock' hidden>
+      <h2>Hours/Month</h2>
+      <p class='subtitle'>How many hours per month do you personally spend
+         maintaining this device?</p>
+      <input id="hours" name="hours" type="number" min="0" step="1" required>
+      <div class="help-block with-errors"></div>
+    </div>
+
+    <div id="institute_device-group" class='tl-panel badge-cogs' hidden>
+      <h2>Shared Device</h2>
+      <p class='subtitle'>What type of shared, infrastructural device do you
+         most use for research computing?</p>
+      <select id="institute_device" name="institute_device" required>
+        <option value="" disabled selected hidden>— Select —</option>
+        <option>None</option>
+        <option>Workstation</option>
+        <option>Server/Cluster</option>
+        <option>Cloud/Grid</option>
+        <option>Other</option>
+      </select>
+      <div class="help-block with-errors"></div>
+    </div>
+
   </div>
 
 
   <ul class="timeline">
-    <li id="neuro_methods-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="neuro_methods" class="timeline-title control-label">Research Methods</label>
-          <p><small id="neuro_methods-help" class="text-muted help-block">Select all that apply</small></p>
-        </div>
-        <div id="neuro_methods" class="timeline-body">
-          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
-               value="Behavioral Experiments/Psychophysics"> Behavioral Experiments/Psychophysics
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
-               value="Brain Imaging (MRI)"> Brain Imaging (MRI)
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
-               value="Computational Modeling/Simulations"> Computational Modeling/Simulations
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
-               value="Distributed Computing"> Distributed Computing
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
-               value="Genetics"> Genetics
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
-               value="Invasive Electrophysiology"> Invasive Electrophysiology
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
-               value="Non-Invasive Electrophysiology"> Non-Invasive Electrophysiology
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
-               value="Spectroscopy"> Spectroscopy
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="neuro_methods[]"
-               value="Other"> Other
-          </label></div>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="personal_device-group" class="timeline-inverted" hidden>
-      <div class="timeline-badge"><i class="fa fa-laptop"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="personal_device" class="timeline-title control-label">Research/Work Device</label>
-          <p><small id="personal_device-help" class="text-muted help-block">Which type of device is "yours" at work to use daily for research-related tasks?</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="personal_device" name="personal_device" aria-describedby="personal_device-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden>— Select —</option>
-            <option>Phone/Tablet</option>
-            <option>Laptop</option>
-            <option>Desktop</option>
-            <option>High-performance Workstation</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="personal_OS-group" class="timeline-inverted" data-next="#maintainer-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="personal_OS" class="timeline-title control-label">OS</label>
-          <p><small id="personal_OS-help" class="text-muted help-block">What operating system does the above device run?</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="personal_OS" name="personal_OS" aria-describedby="personal_OS-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden>— Select —</option>
-            <option>Android</option>
-            <option>Linux</option>
-            <option>OS X/iOS</option>
-            <option>Windows</option>
-            <option>Other</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="personal_OS_linux-group" class="timeline-inverted" data-next="#maintainer-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-linux"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="personal_OS_linux" class="timeline-title control-label">Linux Distro</label>
-          <p><small id="personal_OS_linux-help" class="text-muted help-block">It's just like choosing your favorite ice cream — riddled with political implications.</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="personal_OS_linux" name="personal_OS_linux" aria-describedby="personal_OS_linux-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden>— Select —</option>
-            <option>Debian</option>
-            <option>Ubuntu/Mint</option>
-            <option>RedHat/CentOS/Scientific Linux</option>
-            <option>Fedora</option>
-            <option>Arch</option>
-            <option>Other</option>
-            <option>Don't know</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="personal_OS_other-group" class="timeline-inverted" data-next="#maintainer-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="personal_OS_other" class="timeline-title control-label">Other OS</label>
-          <p><small id="personal_OS_other-help" class="text-muted help-block"><em>Alright.</em> You get righteous-cool-points; we love non-conformists. What is it?</small></p>
-        </div>
-        <div class="timeline-body">
-          <input id="personal_OS_other" name="personal_OS_other" aria-describedby="personal_OS_other-help"
-                 class="form-control"
-                 type="text" required>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="maintainer-group" class="timeline-inverted" data-next="#institute_device-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-wrench"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="maintainer" class="timeline-title control-label">Maintainer</label>
-          <p><small id="maintainer-help" class="text-muted help-block">Are you the person primarily responsible for maintaining this device?</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="maintainer" name="maintainer" aria-describedby="maintainer-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden>— Select —</option>
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="hours-group" class="timeline-inverted" hidden>
-      <div class="timeline-badge"><i class="fa fa-clock-o"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="hours" class="timeline-title control-label">Hours/month</label>
-          <p><small id="hours-help" class="text-muted help-block">How many hours per month do you personally spend maintaining this device?</small></p>
-        </div>
-        <div class="timeline-body">
-          <input id="hours" name="hours" aria-describedby="hours-help"
-                 class="form-control"
-                 type="number" min="0" step="1" required>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="institute_device-group" data-next="#publications_number-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-cogs"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="institute_device" class="timeline-title control-label">Shared Device</label>
-          <p><small id="institute_device-help" class="text-muted help-block">What type of shared, infrastructural device do you most use for research computing?</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="institute_device" name="institute_device" aria-describedby="institute_device-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden>— Select —</option>
-            <option>None</option>
-            <option>Workstation</option>
-            <option>Server/Cluster</option>
-            <option>Cloud/Grid</option>
-            <option>Other</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
     <li id="institute_OS-group" data-next="#personal_institute_usage-group" hidden>
       <div class="timeline-badge"><i class="fa fa-flask"></i></div>
       <div class="timeline-panel form-group">
