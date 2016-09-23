@@ -254,7 +254,7 @@ p.feature_warning {
   margin-right: calc(65px + 1%); /* badge width + triangle width */
   padding: 1.3em;
 }
-.timeline .tl-panel h2::after {
+.timeline .tl-panel h2::before {
   border: 15px solid transparent;
   border-left-color: #ddd;
   content: " ";
@@ -267,8 +267,8 @@ p.feature_warning {
     margin-left: calc(50% + 40px);
     margin-right: unset;
   }
-  .timeline .tl-panel h2::after { left: calc(50% - 40px); right: auto; }
-  .timeline .tl-panel.inverted h2::after {
+  .timeline .tl-panel h2::before { left: calc(50% - 40px); right: auto; }
+  .timeline .tl-panel.inverted h2::before {
     border-left-color: transparent;
     border-right-color: #ddd;
     left: calc(50% + 10px);
