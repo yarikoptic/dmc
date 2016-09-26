@@ -107,7 +107,7 @@ function showNextQuestion($current_q, duration) {
   if (data_next == undefined) {
     $next_q = $current_q.next();
   } else {
-    $next_q = $(data_next);
+    $next_q = $(inputs[data_next]).closest('.tl-panel');
   }
 
   $next_q.fadeIn(duration);

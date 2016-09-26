@@ -41,7 +41,7 @@
   <input id="leftovers" name="leftovers" type="hidden" value="" />
 
   <div class='timeline'>
-    <div id="employer-group" class='tl-panel badge-university'>
+    <div class='tl-panel badge-university'>
       <h2>Employer</h2>
       <p>Select what fits best</p>
       <select name="employer" required>
@@ -53,7 +53,7 @@
       </select>
     </div>
 
-    <div id='country-group' class='tl-panel badge-globe' hidden>
+    <div class='tl-panel badge-globe' hidden>
       <h2>Country</h2>
       <p>In which country is the lab you primarily work for?</p>
       <select name="country" required>
@@ -306,7 +306,7 @@
       </select>
     </div>
 
-    <div id="neuro_methods-group" class='tl-panel badge-flask' hidden>
+    <div class='tl-panel badge-flask' hidden>
       <h2>Research Methods</h2>
       <p>Select all that apply</p>
       <div class='checkboxes'>
@@ -340,7 +340,7 @@
       </div>
     </div>
 
-    <div id="personal_device-group" class='tl-panel inverted badge-laptop' hidden>
+    <div class='tl-panel inverted badge-laptop' hidden>
       <h2>Research/Work Device</h2>
       <p>Which type of device is "yours" at work to use daily for
          research-related tasks?</p>
@@ -353,7 +353,7 @@
       </select>
     </div>
 
-    <div id="personal_OS-group" class='tl-panel inverted badge-flask' data-next="#maintainer-group" hidden>
+    <div class='tl-panel inverted badge-flask' data-next="maintainer" hidden>
       <h2>OS</h2>
       <p>What operating system does the above device run?</p>
       <select name="personal_OS" required>
@@ -366,7 +366,7 @@
       </select>
     </div>
 
-    <div id="personal_OS_linux-group" class='tl-panel inverted badge-linux' data-next="#maintainer-group" hidden>
+    <div class='tl-panel inverted badge-linux' data-next="maintainer" hidden>
       <h2>Linux Distro</h2>
       <p>It's just like choosing your favorite ice cream — riddled with
          political implications.</p>
@@ -382,14 +382,14 @@
       </select>
     </div>
 
-    <div id="personal_OS_other-group" class='tl-panel inverted badge-flask' data-next="#maintainer-group" hidden>
+    <div class='tl-panel inverted badge-flask' data-next="maintainer" hidden>
       <h2>Other OS</h2>
       <p><em>Alright.</em> We admit it, you've piqued our curiosity. What is
          this awesome system you run?</p>
       <input name="personal_OS_other" type="text" required>
     </div>
 
-    <div id="maintainer-group" class='tl-panel inverted badge-wrench' data-next="#institute_device-group" hidden>
+    <div class='tl-panel inverted badge-wrench' data-next="institute_device" hidden>
       <h2>Maintainer</h2>
       <p>Are you the person primarily responsible for maintaining this
          device?</p>
@@ -400,14 +400,14 @@
       </select>
     </div>
 
-    <div id="hours-group" class='tl-panel inverted badge-clock' hidden>
+    <div class='tl-panel inverted badge-clock' hidden>
       <h2>Hours/Month</h2>
       <p>How many hours per month do you personally spend maintaining this
          device?</p>
       <input name="hours" type="number" min="0" step="1" required>
     </div>
 
-    <div id="institute_device-group" class='tl-panel badge-cogs' hidden>
+    <div class='tl-panel badge-cogs' hidden>
       <h2>Shared Device</h2>
       <p>What type of shared, infrastructural device do you most use for
          research computing?</p>
@@ -421,7 +421,7 @@
       </select>
     </div>
 
-    <div id="institute_OS-group" class='tl-panel badge-flask' data-next="#personal_institute_usage-group" hidden>
+    <div class='tl-panel badge-flask' data-next="personal_institute_usage" hidden>
       <h2>OS</h2>
       <p>What operating system does the above device run?</p>
       <select name="institute_OS" required>
@@ -433,7 +433,7 @@
       </select>
     </div>
 
-    <div id="institute_OS_linux-group" class='tl-panel badge-linux' data-next="#personal_institute_usage-group" hidden>
+    <div class='tl-panel badge-linux' data-next="personal_institute_usage" hidden>
       <h2>Linux Distro</h2>
       <p>It's just like choosing your favorite ice cream — riddled with
          political implications.</p>
@@ -449,14 +449,14 @@
       </select>
     </div>
 
-    <div id="institute_OS_other-group" class='tl-panel badge-flask' data-next="#personal_institute_usage-group" hidden>
+    <div class='tl-panel badge-flask' data-next="personal_institute_usage" hidden>
       <h2>Other OS</h2>
       <p><em>Alright.</em> We admit it, you've piqued our curiosity. What is
          this awesome system you run?</p>
       <input name="institute_OS_other" type="text" required>
     </div>
 
-    <div id="personal_institute_usage-group" class='tl-panel badge-flask' hidden>
+    <div class='tl-panel badge-flask' hidden>
       <h2>Usage Pattern</h2>
       <p>Percentage of time you use "your device" vs. "shared infrastructure"
          (for research computing only)</p>
@@ -470,21 +470,21 @@
       </select>
     </div>
 
-    <div id="publications_number-group" class='tl-panel inverted badge-pencil' data-next="#social_media-group" hidden>
+    <div class='tl-panel inverted badge-pencil' data-next="social_media" hidden>
       <h2>Publications in the last 5 years</h2>
       <p>How many peer-reviewed publications did you (co-)author in the last 5
          years?</p>
       <input name="publications_number" type="number" min="0" step="1" required>
     </div>
 
-    <div id="publications_number_open_access-group" class='tl-panel inverted badge-flask' hidden>
+    <div class='tl-panel inverted badge-flask' hidden>
       <h2># Open Access</h2>
       <p>How many of those are openly/freely available? (as an open access
          publication or on preprint servers like arXiv.org, etc)</p>
       <input name="publications_number_open_access" type="number" min="0" step="1" required>
     </div>
 
-    <div id="social_media-group" class='tl-panel inverted badge-bullhorn' hidden>
+    <div class='tl-panel inverted badge-bullhorn' hidden>
       <h2>Social Media</h2>
       <p>How often do you use social media (blog/Facebook/Google+/etc) to share
          about your research?</p>
@@ -498,14 +498,14 @@
       </select>
     </div>
 
-    <div id="collaborations-group" class='tl-panel inverted badge-users' data-next="#data_IRB-group" hidden>
+    <div class='tl-panel inverted badge-users' data-next="data_IRB" hidden>
       <h2>Collaborations in the last 5 years</h2>
       <p>How many collaborations (outside of your own lab) did you personally
          have in the last 5 years?</p>
       <input name="collaborations" type="number" min="0" step="1" required>
     </div>
 
-    <div id="collaborations_data-group" class='tl-panel badge-exchange' data-next="#data_IRB-group" hidden>
+    <div class='tl-panel badge-exchange' data-next="data_IRB" hidden>
       <h2>Exchange of Data</h2>
       <p>How many of those involved the exchange of research data (in either
          direction)?</p>
@@ -883,6 +883,8 @@
 
 <script>
 $(document).ready(function() {
+  inputs = document.getElementById("survey").elements;
+
  /*
   *  Field dependencies
   */
@@ -891,101 +893,101 @@ $(document).ready(function() {
       var $panel = $field.closest('.tl-panel');
 
       if ($field.val() == 'Linux') {
-        $("#personal_OS_other-group").hide("slow");
-        $panel.attr('data-next', '#personal_OS_linux-group');
+        $(inputs["personal_OS_other"]).closest('.tl-panel').hide("slow");
+        $panel.attr('data-next', 'personal_OS_linux');
       } else if ($field.val() == 'Other') {
-        $("#personal_OS_linux-group").hide("slow");
-        $panel.attr('data-next', '#personal_OS_other-group');
+        $(inputs["personal_OS_linux"]).closest('.tl-panel').hide("slow");
+        $panel.attr('data-next', 'personal_OS_other');
       } else {
-        $("#personal_OS_linux-group").hide("slow");
-        $("#personal_OS_other-group").hide("slow");
-        $panel.attr('data-next', '#maintainer-group');
+        $(inputs["personal_OS_other"]).closest('.tl-panel').hide("slow");
+        $(inputs["personal_OS_linux"]).closest('.tl-panel').hide("slow");
+        $panel.attr('data-next', 'maintainer');
       }
     },
     'maintainer': function($field) {
       var $panel = $field.closest('.tl-panel');
       if ( $field.val() == 'Yes') {
-        $panel.attr('data-next', '#hours-group');
+        $panel.attr('data-next', 'hours');
       } else {
-        $("#hours-group").hide("slow");
-        $panel.attr('data-next', '#institute_device-group');
+        $(inputs["hours"]).closest('.tl-panel').hide("slow");
+        $panel.attr('data-next', 'institute_device');
       }
     },
     'institute_device': function($field) {
       var $panel = $field.closest('.tl-panel');
       if ( $field.val() !== "None") {
-        $panel.attr('data-next', '#institute_OS-group');
+        $panel.attr('data-next', 'institute_OS');
       } else {
-        $("#institute_OS-group").hide("slow");
-        $("#institute_OS_linux-group").hide("slow");
-        $("#institute_OS_other-group").hide("slow");
-        $("#personal_institute_usage-group").hide("slow");
-        $panel.attr('data-next', '#publications_number-group');
+        $(inputs["institute_OS"]).closest('.tl-panel').hide("slow");
+        $(inputs["institute_OS_linux"]).closest('.tl-panel').hide("slow");
+        $(inputs["institute_OS_other"]).closest('.tl-panel').hide("slow");
+        $(inputs["personal_institute_usage"]).closest('.tl-panel').hide("slow");
+        $panel.attr('data-next', 'publications_number');
       }
     },
     'institute_OS': function($field) {
       var $panel = $field.closest('.tl-panel');
 
       if ($field.val() == 'Linux') {
-        $("#institute_OS_other-group").hide("slow");
-        $panel.attr('data-next', '#institute_OS_linux-group');
+        $(inputs["institute_OS_other"]).closest('.tl-panel').hide("slow");
+        $panel.attr('data-next', 'institute_OS_linux');
       } else if ($field.val() == 'Other') {
-        $("#institute_OS_linux-group").hide("slow");
-        $panel.attr('data-next', '#institute_OS_other-group');
+        $(inputs["institute_OS_linux"]).closest('.tl-panel').hide("slow");
+        $panel.attr('data-next', 'institute_OS_other');
       } else {
-        $("#institute_OS_linux-group").hide("slow");
-        $("#institute_OS_other-group").hide("slow");
-        $panel.attr('data-next', '#personal_institute_usage-group');
+        $(inputs["institute_OS_linux"]).closest('.tl-panel').hide("slow");
+        $(inputs["institute_OS_other"]).closest('.tl-panel').hide("slow");
+        $panel.attr('data-next', 'personal_institute_usage');
       }
     },
     'publications_number': function($field) {
       var $panel = $field.closest('.tl-panel');
       if ( $field.val() > 0) {
-        $("#publications_number_open_access").attr('max', $field.val());
-        $panel.attr('data-next', '#publications_number_open_access-group');
+        $(inputs["publications_number_open_access"]).attr('max', $field.val());
+        $panel.attr('data-next', 'publications_number_open_access');
       } else {
-        $("#publications_number_open_access-group").hide("slow");
-        $panel.attr('data-next', '#social_media-group');
+        $(inputs["publications_number_open_access"]).closest('.tl-panel').hide("slow");
+        $panel.attr('data-next', 'social_media');
       }
     },
     'collaborations': function($field) {
       var $panel = $field.closest('.tl-panel');
       if ( $field.val() > 0) {
-        $("#collaborations_data").attr('max', $field.val());
-        $panel.attr('data-next', '#collaborations_data-group');
+        $(inputs["collaborations_data"]).attr('max', $field.val());
+        $panel.attr('data-next', 'collaborations_data');
       } else {
-        $("#collaborations_data-group").hide("slow");
-        $("#collaborations_data_provided-group").hide("slow");
-        $panel.attr('data-next', '#data_IRB-group');
+        $(inputs["collaborations_data"]).closest('.tl-panel').hide("slow");
+        $(inputs["collaborations_data_provided"]).closest('.tl-panel').hide("slow");
+        $panel.attr('data-next', 'data_IRB');
       }
     },
     'collaborations_data': function($field) {
       var $panel = $field.closest('.tl-panel');
       if ( $field.val() > 0) {
-        $("#collaborations_data_provided").attr('max', $field.val());
-        $panel.attr('data-next', '#collaborations_data_provided-group');
+        $(inputs["collaborations_data_provided"]).attr('max', $field.val());
+        $panel.attr('data-next', 'collaborations_data_provided');
       } else {
-        $("#collaborations_data_provided-group").hide("slow");
-        $panel.attr('data-next', '#data_IRB-group');
+        $(inputs["collaborations_data_provided"]).closest('.tl-panel').hide("slow");
+        $panel.attr('data-next', 'data_IRB');
       }
     },
     'data_shared_publicly_ever': function($field) {
       var $panel = $field.closest('.tl-panel');
       if ( $field.val() == "Yes") {
-        $panel.attr('data-next', '#data_shared_publicly_num-group');
+        $panel.attr('data-next', 'data_shared_publicly_num');
       } else {
-        $("#data_shared_publicly_num-group").hide("slow");
-        $("#data_published_paper-group").hide("slow");
-        $panel.attr('data-next', '#data_consumed_public-group');
+        $(inputs["data_shared_publicly_num"]).closest('.tl-panel').hide("slow");
+        $(inputs["data_published_paper"]).closest('.tl-panel').hide("slow");
+        $panel.attr('data-next', 'data_consumed_public');
       }
     },
     'code_shared': function($field) {
       var $panel = $field.closest('.tl-panel');
       if ( $field.val() == "Yes") {
-        $panel.attr('data-next', '#code_shared_method-group');
+        $panel.attr('data-next', 'code_shared_method');
       } else {
-        $("#code_shared_method-group").hide("slow");
-        $panel.attr('data-next', '#tool_manuscripts-group');
+        $(inputs["code_shared_method"]).closest('.tl-panel').hide("slow");
+        $panel.attr('data-next', 'tool_manuscripts');
       }
     }
   };
