@@ -80,7 +80,12 @@ function markInvalid($field) {
   $panel.removeClass('badge-success').addClass('badge-problem');
   $panel.addClass('has-error');
 
-  $panel.find('.help-block.with-errors').html($field[0].validationMessage);
+  var $error_box = $panel.find('.error-box');
+  if ($error_box.length > 0) { // if there's already an error
+    $error_box.html($field[0].validationMessage);
+  } else {
+    $panel.append('<div class="error-box">' + $field[0].validationMessage + '</div>');
+  }
 }
 
 function markValid($field) {
@@ -89,7 +94,7 @@ function markValid($field) {
   $panel.removeClass('badge-problem').addClass('badge-success');
   $panel.removeClass('has-error');
 
-  $panel.find('.help-block.with-errors').empty();
+  $panel.find('.error-box').remove();
 }
 
 // $current_q = accepts object pointing to question <li>
