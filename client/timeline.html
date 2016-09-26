@@ -44,7 +44,7 @@
     <div id="employer-group" class='tl-panel badge-university'>
       <h2>Employer</h2>
       <p class='subtitle'>Select what fits best</p>
-      <select id="employer" name="employer" required>
+      <select name="employer" required>
           <option value="" disabled selected hidden>— Select —</option>
           <option>University/Higher-Education</option>
           <option>Public Research Institution</option>
@@ -56,7 +56,7 @@
     <div id='country-group' class='tl-panel badge-globe' hidden>
       <h2>Country</h2>
       <p class='subtitle'>In which country is the lab you primarily work for?</p>
-      <select id="country" name="country" required>
+      <select name="country" required>
         <option value="" disabled selected hidden >— Select —</option>
         <option>Afghanistan</option>
         <option>Åland Islands</option>
@@ -309,7 +309,7 @@
     <div id="neuro_methods-group" class='tl-panel badge-flask' hidden>
       <h2>Research Methods</h2>
       <p class='subtitle'>Select all that apply</p>
-      <div id="neuro_methods" class='checkboxes'>
+      <div class='checkboxes'>
         <label><input type="checkbox" name="neuro_methods[]"
              value="Behavioral Experiments/Psychophysics"> Behavioral Experiments/Psychophysics
         </label>
@@ -344,7 +344,7 @@
       <h2>Research/Work Device</h2>
       <p class='subtitle'>Which type of device is "yours" at work to use daily
          for research-related tasks?</p>
-      <select id="personal_device" name="personal_device" required>
+      <select name="personal_device" required>
         <option value="" disabled selected hidden>— Select —</option>
         <option>Phone/Tablet</option>
         <option>Laptop</option>
@@ -356,7 +356,7 @@
     <div id="personal_OS-group" class='tl-panel inverted badge-flask' data-next="#maintainer-group" hidden>
       <h2>OS</h2>
       <p class='subtitle'>What operating system does the above device run?</p>
-      <select id="personal_OS" name="personal_OS" required>
+      <select name="personal_OS" required>
         <option value="" disabled selected hidden>— Select —</option>
         <option>Android</option>
         <option>Linux</option>
@@ -370,7 +370,7 @@
       <h2>Linux Distro</h2>
       <p class='subtitle'>It's just like choosing your favorite ice cream —
          riddled with political implications.</p>
-      <select id="personal_OS_linux" name="personal_OS_linux" required>
+      <select name="personal_OS_linux" required>
         <option value="" disabled selected hidden>— Select —</option>
         <option>Debian</option>
         <option>Ubuntu/Mint</option>
@@ -386,14 +386,14 @@
       <h2>Other OS</h2>
       <p class='subtitle'><em>Alright.</em> We admit it, you've piqued our
          curiosity. What is this awesome system you run?</p>
-      <input id="personal_OS_other" name="personal_OS_other" type="text" required>
+      <input name="personal_OS_other" type="text" required>
     </div>
 
     <div id="maintainer-group" class='tl-panel inverted badge-wrench' data-next="#institute_device-group" hidden>
       <h2>Maintainer</h2>
       <p class='subtitle'>Are you the person primarily responsible for
          maintaining this device?</p>
-      <select id="maintainer" name="maintainer" required>
+      <select name="maintainer" required>
         <option value="" disabled selected hidden>— Select —</option>
         <option>Yes</option>
         <option>No</option>
@@ -404,14 +404,14 @@
       <h2>Hours/Month</h2>
       <p class='subtitle'>How many hours per month do you personally spend
          maintaining this device?</p>
-      <input id="hours" name="hours" type="number" min="0" step="1" required>
+      <input name="hours" type="number" min="0" step="1" required>
     </div>
 
     <div id="institute_device-group" class='tl-panel badge-cogs' hidden>
       <h2>Shared Device</h2>
       <p class='subtitle'>What type of shared, infrastructural device do you
          most use for research computing?</p>
-      <select id="institute_device" name="institute_device" required>
+      <select name="institute_device" required>
         <option value="" disabled selected hidden>— Select —</option>
         <option>None</option>
         <option>Workstation</option>
@@ -424,7 +424,7 @@
     <div id="institute_OS-group" class='tl-panel badge-flask' data-next="#personal_institute_usage-group" hidden>
       <h2>OS</h2>
       <p class='subtitle'>What operating system does the above device run?</p>
-      <select id="institute_OS" name="institute_OS" required>
+      <select name="institute_OS" required>
         <option value="" disabled selected hidden>— Select —</option>
         <option>Linux</option>
         <option>OS X</option>
@@ -437,7 +437,7 @@
       <h2>Linux Distro</h2>
       <p class='subtitle'>It's just like choosing your favorite ice cream —
          riddled with political implications.</p>
-      <select id="institute_OS_linux" name="institute_OS_linux" required>
+      <select name="institute_OS_linux" required>
         <option value="" disabled selected hidden>— Select —</option>
         <option>Debian</option>
         <option>Ubuntu/Mint</option>
@@ -453,14 +453,14 @@
       <h2>Other OS</h2>
       <p class='subtitle'><em>Alright.</em> We admit it, you've piqued our
          curiosity. What is this awesome system you run?</p>
-      <input id="institute_OS_other" name="institute_OS_other" type="text" required>
+      <input name="institute_OS_other" type="text" required>
     </div>
 
     <div id="personal_institute_usage-group" class='tl-panel badge-flask' hidden>
       <h2>Usage Pattern</h2>
       <p class='subtitle'>Percentage of time you use "your device" vs. "shared
         infrastructure" (for research computing only)</p>
-      <select id="personal_institute_usage" name="personal_institute_usage" required>
+      <select name="personal_institute_usage" required>
         <option value="" disabled selected hidden >— Select —</option>
         <option>  0% mine / 100% shared</option>
         <option> 30% mine /  70% shared</option>
@@ -474,21 +474,21 @@
       <h2>Publications in the last 5 years</h2>
       <p class='subtitle'>How many peer-reviewed publications did you
          (co-)author in the last 5 years?</p>
-      <input id="publications_number" name="publications_number" type="number" min="0" step="1" required>
+      <input name="publications_number" type="number" min="0" step="1" required>
     </div>
 
     <div id="publications_number_open_access-group" class='tl-panel inverted badge-flask' hidden>
       <h2># Open Access</h2>
       <p class='subtitle'>How many of those are openly/freely available? (as an
          open access publication or on preprint servers like arXiv.org, etc)</p>
-      <input id="publications_number_open_access" name="publications_number_open_access" type="number" min="0" step="1" required>
+      <input name="publications_number_open_access" type="number" min="0" step="1" required>
     </div>
 
     <div id="social_media-group" class='tl-panel inverted badge-bullhorn' hidden>
       <h2>Social Media</h2>
       <p class='subtitle'>How often do you use social media
          (blog/Facebook/Google+/etc) to share about your research?</p>
-      <select id="social_media" name="social_media" required>
+      <select name="social_media" required>
         <option value="" disabled selected hidden >— Select —</option>
         <option>Never</option>
         <option>Daily</option>
@@ -502,14 +502,14 @@
       <h2>Collaborations in the last 5 years</h2>
       <p class='subtitle'>How many collaborations (outside of your own lab) did
          you personally have in the last 5 years?</p>
-      <input id="collaborations" name="collaborations" type="number" min="0" step="1" required>
+      <input name="collaborations" type="number" min="0" step="1" required>
     </div>
 
     <div id="collaborations_data-group" class='tl-panel badge-exchange' data-next="#data_IRB-group" hidden>
       <h2>Exchange of Data</h2>
       <p class='subtitle'>How many of those involved the exchange of research
          data (in either direction)?</p>
-      <input id="collaborations_data" name="collaborations_data" type="number" min="0" step="1" required>
+      <input name="collaborations_data" type="number" min="0" step="1" required>
     </div>
 
 
@@ -1119,10 +1119,7 @@ $(document).ready(function() {
       }
     }
   });
-  $("#tool_languages input").on('change', function () {
-    watchIfReadyForNextQuestion($(this), 2000);
-  });
-  $("#neuro_methods input").on('change', function () {
+  $('input[type="checkbox"]').on('change', function() {
     watchIfReadyForNextQuestion($(this), 2000);
   });
 
