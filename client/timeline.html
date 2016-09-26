@@ -498,7 +498,7 @@
       </select>
     </div>
 
-    <div class='tl-panel inverted badge-users' data-next="data_IRB" hidden>
+    <div class='tl-panel badge-users' data-next="data_IRB" hidden>
       <h2>Collaborations in the last 5 years</h2>
       <p>How many collaborations (outside of your own lab) did you personally
          have in the last 5 years?</p>
@@ -512,360 +512,208 @@
       <input name="collaborations_data" type="number" min="0" step="1" required>
     </div>
 
+    <div class='tl-panel badge-flask' data-next="data_IRB" hidden>
+      <h2>Provided Data</h2>
+      <p>How many of those involved you <em>providing</em> data?</p>
+      <input name="collaborations_data_provided" type="number" min="0" step="1" required>
+    </div>
 
+    <div class='tl-panel inverted badge-flask' hidden>
+      <h2>Permission to Share?</h2>
+      <p>Does your consent form have provisions for public sharing/deposition of
+         the collected data?</p>
+      <select name="data_IRB" required>
+        <option value="" disabled selected hidden >— Select —</option>
+        <option>Yes</option>
+        <option>No</option>
+        <option>N/A</option>
+      </select>
+    </div>
 
+    <div class='tl-panel inverted badge-flask' hidden>
+      <h2>Publicly Shared Data</h2>
+      <p>Have you ever made your research data publicly available?</p>
+      <select name="data_shared_publicly_ever" required>
+        <option value="" disabled selected hidden >— Select —</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+
+    <div class='tl-panel inverted badge-flask' hidden>
+      <h2>How many in the last 5 years?</h2>
+      <p>How many datasets have you shared publicly in the last 5 years?</p>
+      <input name="data_shared_publicly_num" type="number" min="0" step="1" required>
+    </div>
+
+    <div class='tl-panel inverted badge-book' hidden>
+      <h2>Published Data Papers?</h2>
+      <p>Have you ever published a manuscript solely dedicated to the
+         description of one of your datasets? (data in brief, data descriptor,
+         data note, etc)</p>
+      <select name="data_published_paper" required>
+        <option value="" disabled selected hidden >— Select —</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+
+    <div class='tl-panel inverted badge-flask' hidden>
+      <h2>Data from Public Datasets</h2>
+      <p>How many publicly shared datasets have you used for any purpose
+         (research, teaching, etc)?</p>
+      <input name="data_consumed_public" type="number" min="0" step="1" required>
+    </div>
+
+    <div class='tl-panel badge-code' data-next="tool_manuscripts" hidden>
+      <h2>Share Code?</h2>
+      <p>Have you ever shared software/scripts/algorithms with anyone outside of
+         your own lab?</p>
+      <select name="code_shared" required>
+        <option value="" disabled selected hidden >— Select —</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+
+    <div class='tl-panel badge-flask' hidden>
+      <h2>Sharing Method</h2>
+      <p>What's your preferred method of sharing code?</p>
+      <select name="code_shared_method" required>
+        <option value="" disabled selected hidden >— Select —</option>
+        <option>Compiled code privately (e.g. email)</option>
+        <option>Compiled code publicly (e.g. website)</option>
+        <option>Source code privately (e.g. email)</option>
+        <option>Source code publicly (e.g. GitHub, etc)</option>
+      </select>
+    </div>
+
+    <div class='tl-panel inverted badge-pencil' hidden>
+      <h2>Manuscript Composer</h2>
+      <p>What tool do you primarily use to write manuscripts/reports?</p>
+      <select name="tool_manuscripts" required>
+        <option value="" disabled selected hidden >— Select —</option>
+        <option>Google Docs (or other online suite)</option>
+        <option>LaTeX</option>
+        <option>Libre/OpenOffice</option>
+        <option>Microsoft Word</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class='tl-panel inverted badge-flask' hidden>
+      <h2>Languages/Analysis</h2>
+      <p>What programming languages/analysis environments do you use?</p>
+      <div class="checkboxes">
+        <label><input type="checkbox" name="tool_languages[]"
+          value="C/C++"> C/C++ </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="Fortran"> Fortran </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="IDL"> IDL </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="Java"> Java </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="Lua"> Lua </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="Maple"> Maple </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="Mathcad"> Mathcad </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="Mathematica"> Mathematica </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="MATLAB"> MATLAB </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="Octave"> Octave </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="Perl"> Perl </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="Python"> Python </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="R"> R </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="Ruby"> Ruby </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="Scilab"> Scilab </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="Shell Scripting"> Shell Scripting </label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="SPSS"> SPSS</label>
+        <label><input type="checkbox" name="tool_languages[]"
+          value="Other"> Other</label>
+      </div>
+    </div>
+
+    <div class='tl-panel badge-flask' hidden>
+      <h2>Open Software</h2>
+      <p>How much does the "openness" of a software tool influence your decision
+         to use it</p>
+      <select name="openness_sw" required>
+        <option value="" disabled selected hidden >— Select —</option>
+        <option>Not at all</option>
+        <option>A little</option>
+        <option>Somewhat</option>
+        <option>A lot</option>
+        <option>It's a requirement</option>
+      </select>
+    </div>
+
+    <div class='tl-panel badge-flask' hidden>
+      <h2>Open Hardware</h2>
+      <p>How much does the "openness" of a hardware tool influence your decision
+         to use it</p>
+      <select name="openness_hw" required>
+        <option value="" disabled selected hidden >— Select —</option>
+        <option>Not at all</option>
+        <option>A little</option>
+        <option>Somewhat</option>
+        <option>A lot</option>
+        <option>It's a requirement</option>
+      </select>
+    </div>
+
+    <div class='tl-panel badge-flask' hidden>
+      <h2>Software</h2>
+      <p>Which research software do you use?<br />
+         Use the text input field to build a list. When possible, please use the
+         suggested spelling of software names.</p>
+      <!-- The input field intentionally does not have the "name" attribute.
+           It is only to help building the list. We have no intent to use
+           its contents ever. -->
+      <input id="sw_list_input" type="text" list="sw_list_suggestions" placeholder="Software Name">
+      <datalist id="sw_list_suggestions">
+        <!-- the select is here purely for fallback purposes -->
+        <select style="display: none;"></select>
+      </datalist>
+      <div id="sw_list"></div>
+      <p>Uncheck to remove an item from the list.</p>
+      <a id="sw_list_next" role="button">Next Question</a>
+    </div>
+
+    <div class='tl-panel badge-flask' hidden>
+      <h2>Software Providers</h2>
+      <p>Where/how do you <em>acquire</em> your research software?<br />
+         Use the text input field to build a list. If possible, use the
+         suggested spelling of provider names.</p>
+      <!-- The input field intentionally does not have the "name" attribute.
+           It is only to help building the list. We have no intent to use
+           its contents ever. -->
+      <input id="provider_list_input" type="text" list="provider_list_suggestions" placeholder="Provider Name">
+      <datalist id="provider_list_suggestions">
+        <!-- the select is here purely for fallback purposes -->
+        <select style="display: none;"></select>
+      </datalist>
+      <div id="provider_list"></div>
+      <p>Uncheck to remove an item from the list.</p>
+      <a id="provider_list_next" role="button">Next Question</a>
+    </div>
+
+    <div class='tl-panel inverted badge-flask' hidden>
+      <h2>All Done!</h2>
+      <p>And <em>well done</em>.</p>
+      <a id="done" role="button"><i class="icon-right-open"></i> Submit</a>
+    </div>
   </div>
-
-
-  <ul class="timeline">
-    <li id="collaborations_data_provided-group" data-next="#data_IRB-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="collaborations_data_provided" class="timeline-title control-label">Provided Data</label>
-          <p><small id="collaborations_data_provided-help" class="text-muted help-block">How many of those involved you <em>providing</em> data?</small></p>
-        </div>
-        <div class="timeline-body">
-          <input id="collaborations_data_provided" name="collaborations_data_provided" aria-describedby="collaborations_data_provided-help"
-                 class="form-control"
-                 type="number" min="0" step="1" required>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="data_IRB-group" class="timeline-inverted" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="data_IRB" class="timeline-title control-label">Permission to share?</label>
-          <p><small id="data_IRB-help" class="text-muted help-block">Does your consent form have provisions for public sharing/deposition of the collected data?</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="data_IRB" name="data_IRB" aria-describedby="data_IRB-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden >— Select —</option>
-            <option>Yes</option>
-            <option>No</option>
-            <option>N/A</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="data_shared_publicly_ever-group" class="timeline-inverted" data-next="#data_consumed_public-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="data_shared_publicly_ever" class="timeline-title control-label">Publicly Shared Data</label>
-          <p><small id="data_shared_publicly_ever-help" class="text-muted help-block">Have you ever made your research data publicly available?</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="data_shared_publicly_ever" name="data_shared_publicly_ever" aria-describedby="data_shared_publicly_ever-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden >— Select —</option>
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="data_shared_publicly_num-group" class="timeline-inverted" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="data_shared_publicly_num" class="timeline-title control-label">How many in the last 5 years?</label>
-          <p><small id="data_shared_publicly_num-help" class="text-muted help-block">How many datasets have you shared publicly in the last 5 years?</small></p>
-        </div>
-        <div class="timeline-body">
-          <input id="data_shared_publicly_num" name="data_shared_publicly_num" aria-describedby="data_shared_publicly_num-help"
-                 class="form-control"
-                 type="number" min="0" step="1" required>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="data_published_paper-group" class="timeline-inverted" hidden>
-      <div class="timeline-badge"><i class="fa fa-book"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="data_published_paper" class="timeline-title control-label">Published Data Papers?</label>
-          <p><small id="data_published_paper-help" class="text-muted help-block">Have you ever published a manuscript solely dedicated to the description of one of your datasets? (data in brief, data descriptor, data note, etc)</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="data_published_paper" name="data_published_paper" aria-describedby="data_published_paper-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden >— Select —</option>
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="data_consumed_public-group" class="timeline-inverted" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="data_consumed_public" class="timeline-title control-label">Data from Public Datasets</label>
-          <p><small id="data_consumed_public-help" class="text-muted help-block">How many publicly shared datasets have you used for any purpose (research, teaching, etc)?</small></p>
-        </div>
-        <div class="timeline-body">
-          <input id="data_consumed_public" name="data_consumed_public" aria-describedby="data_consumed_public-help"
-                 class="form-control"
-                 type="number" min="0" step="1" required>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="code_shared-group" data-next="#tool_manuscripts-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-code"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="code_shared" class="timeline-title control-label">Share Code?</label>
-          <p><small id="code_shared-help" class="text-muted help-block">Have you ever shared software/scripts/algorithms with anyone outside of your own lab?</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="code_shared" name="code_shared" aria-describedby="code_shared-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden >— Select —</option>
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="code_shared_method-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="code_shared_method" class="timeline-title control-label">Sharing Method</label>
-          <p><small id="code_shared_method-help" class="text-muted help-block">What's your preferred method of sharing code?</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="code_shared_method" name="code_shared_method" aria-describedby="code_shared_method-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden >— Select —</option>
-            <option>Compiled code privately (e.g. email)</option>
-            <option>Compiled code publicly (e.g. website)</option>
-            <option>Source code privately (e.g. email)</option>
-            <option>Source code publicly (e.g. GitHub, etc)</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="tool_manuscripts-group" class="timeline-inverted" hidden>
-      <div class="timeline-badge"><i class="fa fa-pencil"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="tool_manuscripts" class="timeline-title control-label">Manuscript Composer</label>
-          <p><small id="tool_manuscripts-help" class="text-muted help-block">What tool do you primarily use to write manuscripts/reports?</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="tool_manuscripts" name="tool_manuscripts" aria-describedby="tool_manuscripts-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden >— Select —</option>
-            <option>Google Docs (or other online suite)</option>
-            <option>LaTeX</option>
-            <option>Libre/OpenOffice</option>
-            <option>Microsoft Word</option>
-            <option>Other</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="tool_languages-group" class="timeline-inverted" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="tool_languages" class="timeline-title control-label">Languages/Analysis</label>
-          <p><small id="tool_languages-help" class="text-muted help-block">What programming languages/analysis environments do you use?</small></p>
-        </div>
-        <div id="tool_languages" class="timeline-body">
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="C/C++"> C/C++
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="Fortran"> Fortran
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="IDL"> IDL
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="Java"> Java
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="Lua"> Lua
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="Maple"> Maple
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="Mathcad"> Mathcad
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="Mathematica"> Mathematica
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="MATLAB"> MATLAB
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="Octave"> Octave
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="Perl"> Perl
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="Python"> Python
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="R"> R
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="Ruby"> Ruby
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="Scilab"> Scilab
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="Shell Scripting"> Shell Scripting
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="SPSS"> SPSS
-          </label></div>
-          <div class="checkbox"><label><input type="checkbox" name="tool_languages[]"
-               value="Other"> Other
-          </label></div>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="openness_sw-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="openness_sw" class="timeline-title control-label">Open Software</label>
-          <p><small id="openness_sw-help" class="text-muted help-block">How much does the "openness" of a software tool influence your decision to use it?</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="openness_sw" name="openness_sw" aria-describedby="openness_sw-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden >— Select —</option>
-            <option>Not at all</option>
-            <option>A little</option>
-            <option>Somewhat</option>
-            <option>A lot</option>
-            <option>It's a requirement</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="openness_hw-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="openness_hw" class="timeline-title control-label">Open Hardware</label>
-          <p><small id="openness_hw-help" class="text-muted help-block">How much does the "openness" of a hardware tool influence your decision to <em>purchase</em> it?</small></p>
-        </div>
-        <div class="timeline-body">
-          <select id="openness_hw" name="openness_hw" aria-describedby="openness_hw-help"
-                  class="form-control"
-                  required>
-            <option value="" disabled selected hidden >— Select —</option>
-            <option>Not at all</option>
-            <option>A little</option>
-            <option>Somewhat</option>
-            <option>A lot</option>
-            <option>It's a requirement</option>
-          </select>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-    <li id="sw_list-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="sw_list_input" class="timeline-title control-label">Software</label>
-          <p><small id="sw_list_input-help" class="text-muted help-block">
-            Which research software do you use?<br>
-            Use the text input field to build a list. If possible, use the suggested spelling of software names.
-          </small></p>
-        </div>
-        <div class="timeline-body">
-          <!-- The input field intentionally does not have the "name" attribute.
-               It is only to help building the list. We have no intent to use
-               its contents ever. -->
-          <input id="sw_list_input" aria-describedby="sw_list_input-help"
-                 class="form-control"
-                 type="text" list="sw_list_suggestions" placeholder="Software Name">
-          <datalist id="sw_list_suggestions">
-            <!-- select is here purely for fallback purposes -->
-            <select style="display: none;">
-            </select>
-          </datalist>
-          <div id="sw_list"></div>
-          <p><small class="text-muted help-block">Uncheck to remove an item from the list.</small></p>
-          <div class="help-block with-errors"></div>
-          <a id="sw_list_next" class="btn btn-default pull-right" role="button"></i> Next Question</a>
-        </div>
-      </div>
-    </li>
-    <li id="provider_list-group" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="provider_list_input" class="timeline-title control-label">Software Providers</label>
-          <p><small id="provider_list_input-help" class="text-muted help-block">
-            Where/how do you <em>acquire</em> your research software?<br>
-            Use the text input field to build a list. If possible, use the
-            suggested spelling of provider names.
-          </small></p>
-        </div>
-        <div class="timeline-body">
-          <!-- The input field intentionally does not have the "name" attribute.
-               It is only to help building the list. We have no intent to use
-               its contents ever. -->
-          <input id="provider_list_input" aria-describedby="provider_list_input-help"
-                 class="form-control"
-                 type="text" list="provider_list_suggestions" placeholder="Provider Name">
-          <datalist id="provider_list_suggestions">
-            <!-- select is here purely for fallback purposes -->
-            <select style="display: none;">
-            </select>
-          </datalist>
-          <div id="provider_list"></div>
-          <p><small class="text-muted help-block">Uncheck to remove an item from the list.</small></p>
-          <div class="help-block with-errors"></div>
-          <a id="provider_list_next" class="btn btn-default pull-right" role="button"></i> Next Question</a>
-        </div>
-      </div>
-    </li>
-    <li id="done-group" class="timeline-inverted" hidden>
-      <div class="timeline-badge"><i class="fa fa-flask"></i></div>
-      <div class="timeline-panel form-group">
-        <div class="timeline-heading">
-          <label for="done" class="timeline-title control-label">All Done!</label>
-          <p><small id="done-help" class="text-muted help-block">And <em>well done</em>.</small></p>
-        </div>
-        <div class="timeline-body">
-          <a id="done" class="btn btn-default" role="button"><i class="fa fa-arrow-right"></i> Submit</a>
-          <div class="help-block with-errors"></div>
-        </div>
-      </div>
-    </li>
-  </ul>
 </form>
 </main>
 <footer>
