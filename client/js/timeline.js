@@ -76,25 +76,20 @@ function populateForm(id, user_data) {
  */
 function markInvalid($field) {
   var $panel = $field.closest('.tl-panel');
-  //var $group = $parent_li.children('.form-group');
 
   $panel.removeClass('badge-success').addClass('badge-problem');
-  //$group.addClass('has-error');
-  //TODO: figure out how this form-group validation shit works
+  $panel.addClass('has-error');
 
-  //$parent_li.find('.help-block.with-errors').html($field[0].validationMessage);
+  $panel.find('.help-block.with-errors').html($field[0].validationMessage);
 }
 
 function markValid($field) {
   var $panel = $field.closest('.tl-panel');
-  //var $group = $parent_li.children('.form-group');
 
   $panel.removeClass('badge-problem').addClass('badge-success');
+  $panel.removeClass('has-error');
 
-  //TODO: figure out how this form-group validation shit works
-  //$group.removeClass('has-error');
-
-  //$parent_li.find('.help-block.with-errors').empty();
+  $panel.find('.help-block.with-errors').empty();
 }
 
 // $current_q = accepts object pointing to question <li>

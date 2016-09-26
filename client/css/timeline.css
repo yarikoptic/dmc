@@ -292,6 +292,17 @@ p.feature_warning {
   margin-left: -20px;
 }
 
+.has-error {
+  color: #a94442;
+}
+.has-error input, .has-error select {
+  border-color: #a94442;
+}
+
+.help-block {
+  margin-top: 0.3em;
+}
+
 
 /*
  *  Animations

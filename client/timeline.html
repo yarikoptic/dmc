@@ -1053,7 +1053,7 @@ $(document).ready(function() {
     });
 
     // if there's a validation error, break
-    if ($q.children('.form-group').hasClass('has-error')) {
+    if ($q.hasClass('has-error')) {
       return false;
     }
   });
