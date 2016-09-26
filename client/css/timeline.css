@@ -280,8 +280,8 @@ p.feature_warning {
   font-size: 1.5em;
 }
 
-.timeline .subtitle {
-  margin: 0.7em 0 1em 0;
+.timeline h2 > p {
+  margin: 0.3em 0 1em 0;
 }
 
 .timeline .checkboxes label {
