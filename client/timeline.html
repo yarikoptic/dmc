@@ -731,7 +731,8 @@
 
 <script>
 $(document).ready(function() {
-  inputs = document.getElementById("survey").elements;
+  survey = document.getElementById("survey");
+  inputs = survey.elements;
 
  /*
   *  Field dependencies
@@ -851,37 +852,33 @@ $(document).ready(function() {
   }
 
   // walk through to validate/show the form
-  var questions = $('#survey').children('.timeline').children('div');
-  questions.each(function() {
-    var $q = $(this);
-
+  var questions = survey.querySelectorAll('div.tl-panel');
+  for (var q of questions) {
     // if the question is hidden, skip it
-    if (!$q.is(":visible")) { return true; }
+    if (! q.classList.contains('visible')) { continue; }
 
-    $q.find('input, select').each(function() {
-      var $field = $(this);
-      var field_name = $field.attr('name');
+    var fields = q.querySelectorAll('input select');
+    for (var f of fields) {
+      var field_name = f.getAttribute('name');
 
       if (field_name !== undefined) {
-        if ($field[0].validity.valid) {
+        if (f.validity.valid) {
           // if we have custom functions for the field in question
           if (custom_functions[field_name] !== undefined) {
-            custom_functions[field_name]($field[0]);
+            custom_functions[field_name](f);
           }
-          markValid($field[0]);
-          showNextQuestion($q, 0);
+          markValid(f);
+          showNextQuestion(q, 0);
         } else {
-          markInvalid($field[0]);
-          return false;
+          markInvalid(f);
+          break;
         }
       }
-    });
+    }
 
     // if there's a validation error, break
-    if ($q.hasClass('has-error')) {
-      return false;
-    }
-  });
+    if (q.classList.contains('has-error')) { break; }
+  }
 
  /*
   *  Form submission
@@ -952,10 +949,8 @@ $(document).ready(function() {
     watchIfReadyForNextQuestion(this, 500);
   });
   $('input').on('input', function() {
-    var $this = $(this);
-
-    if ($this.attr('list') == undefined) { // skip datalist inputs
-      if ($this.attr('type') == 'text') {
+    if (this.getAttribute('list') == undefined) { // skip datalist inputs
+      if (this.getAttribute('type') == 'text') {
         // give text inputs a bit more time; might be fixing a typo, etc
         watchIfReadyForNextQuestion(this, 1500);
       } else {

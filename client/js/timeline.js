@@ -23,38 +23,39 @@ function populateForm(id, user_data) {
   delete user_data['client_version'];
   delete user_data['json_leftovers'];
 
-  $(id).find('select, input').each(function() {
-    var $this = $(this);
-    var field_name = $this.attr('name');
+  for (var f of inputs) {
+    var field_name = f.getAttribute('name');
 
     if (field_name !== undefined) {
       field_name = field_name.replace('[]', ''); // remove array markers
 
       // if we have user_data for the field in question
       if (user_data[field_name] !== undefined) {
-        if ($this.is('select')) {
-          var option = $this.find(':contains("' + user_data[field_name] + '")');
-
-          if (option.length) { // only select an option if it exists
-            $(option).prop('selected', true);
-            delete user_data[field_name];
+        if (f.nodeName == 'SELECT') {
+          var options = f.querySelectorAll('option');
+          for (var o of options) {
+            if (o.value = user_data[field_name]) {
+              o.setAttribute('selected', true);
+              delete user_data[field_name];
+              break;
+            }
           }
         } else {
-          switch($this.attr('type')) {
+          switch(f.getAttribute('type')) {
             case 'checkbox':
-              if ($.inArray($this.val(), user_data[field_name])) {
-                $this.prop('checked', true);
+              if (user_data[field_name].indexOf(f.value) > -1) {
+                f.setAttribute('checked', true);
                 delete user_data[field_name];
               }
               break;
             default:
-              $this.val(user_data[field_name]);
+              f.value = user_data[field_name];
               delete user_data[field_name];
           }
         }
       }
     }
-  });
+  }
 
   // these checkbox lists are built by the datalist fields
   // so it needs to be done manually on load
@@ -68,7 +69,7 @@ function populateForm(id, user_data) {
   });
 
   // save leftovers, so they'll be submitted back, for paranoia's sake
-  $('#leftovers').val(JSON.stringify(user_data));
+  survey.getElementById('leftovers').value = JSON.stringify(user_data);
 }
 
 /*
@@ -180,7 +181,6 @@ function hidePanel() {
 function showPanel() {
   for (var i = 0; i < arguments.length; i++) {
     var panel = isPanel(arguments[i]) ? arguments[i] : getPanel(arguments[i]);
-
     panel.classList.add('visible');
   }
 }
