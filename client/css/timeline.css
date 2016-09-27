@@ -232,7 +232,7 @@ p.feature_warning {
   }
 }
 .badge-success::before { background-color: #3f903f !important; }
-.badge.has-error::before { background-color: #d9534f !important; }
+.has-error::before { background-color: #d9534f !important; }
 
 .timeline {
   background: linear-gradient(90deg, #eee 3px, white 1px);
