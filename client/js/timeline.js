@@ -110,7 +110,7 @@ function showNextQuestion($current_q, duration) {
     $next_q = $(inputs[data_next]).closest('.tl-panel');
   }
 
-  $next_q.fadeIn(duration);
+  $next_q[0].removeAttribute('hidden');
 
   // allow user-scrolling to win over our scrolling
   $root.on("scroll mousedown wheel DOMMouseScroll mousewheel touchmove", function(){
@@ -135,7 +135,7 @@ function watchIfReadyForNextQuestion($field, timer) {
     if ($field.is('a') || $field[0].validity.valid) {
       var field_name = $field.attr('name');
       if (custom_functions[field_name] !== undefined) {
-        custom_functions[field_name]($field);
+        custom_functions[field_name]($field[0]);
       }
 
       markValid($field);

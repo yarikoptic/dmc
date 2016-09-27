@@ -737,105 +737,99 @@ $(document).ready(function() {
   *  Field dependencies
   */
   custom_functions = {
-    'personal_OS': function($field) {
-      var $panel = $field.closest('.tl-panel');
+    'personal_OS': function(field) {
+      var panel = getPanel(field);
 
-      if ($field.val() == 'Linux') {
-        $(inputs["personal_OS_other"]).closest('.tl-panel').hide("slow");
-        $panel.attr('data-next', 'personal_OS_linux');
-      } else if ($field.val() == 'Other') {
-        $(inputs["personal_OS_linux"]).closest('.tl-panel').hide("slow");
-        $panel.attr('data-next', 'personal_OS_other');
+      if (field.value == 'Linux') {
+        hidePanel(inputs['personal_OS_other']);
+        panel.setAttribute('data-next', 'personal_OS_linux');
+      } else if (field.value == 'Other') {
+        hidePanel(inputs['personal_OS_linux']);
+        panel.setAttribute('data-next', 'personal_OS_other');
       } else {
-        $(inputs["personal_OS_other"]).closest('.tl-panel').hide("slow");
-        $(inputs["personal_OS_linux"]).closest('.tl-panel').hide("slow");
-        $panel.attr('data-next', 'maintainer');
+        hidePanel(inputs['personal_OS_other'], inputs['personal_OS_linux']);
+        panel.setAttribute('data-next', 'maintainer');
       }
     },
-    'maintainer': function($field) {
-      var $panel = $field.closest('.tl-panel');
-      if ( $field.val() == 'Yes') {
-        $panel.attr('data-next', 'hours');
+    'maintainer': function(field) {
+      var panel = getPanel(field);
+      if (field.value == 'Yes') {
+        panel.setAttribute('data-next', 'hours');
       } else {
-        $(inputs["hours"]).closest('.tl-panel').hide("slow");
-        $panel.attr('data-next', 'institute_device');
+        hidePanel(inputs["hours"]);
+        panel.setAttribute('data-next', 'institute_device');
       }
     },
-    'institute_device': function($field) {
-      var $panel = $field.closest('.tl-panel');
-      if ( $field.val() !== "None") {
-        $panel.attr('data-next', 'institute_OS');
+    'institute_device': function(field) {
+      var panel = getPanel(field);
+      if (field.value !== "None") {
+        panel.setAttribute('data-next', 'institute_OS');
       } else {
-        $(inputs["institute_OS"]).closest('.tl-panel').hide("slow");
-        $(inputs["institute_OS_linux"]).closest('.tl-panel').hide("slow");
-        $(inputs["institute_OS_other"]).closest('.tl-panel').hide("slow");
-        $(inputs["personal_institute_usage"]).closest('.tl-panel').hide("slow");
-        $panel.attr('data-next', 'publications_number');
+        hidePanel(inputs["institute_OS"], inputs["institute_OS_linux"],
+                  inputs["institute_OS_other"], inputs["personal_institute_usage"]);
+        panel.setAttribute('data-next', 'publications_number');
       }
     },
-    'institute_OS': function($field) {
-      var $panel = $field.closest('.tl-panel');
+    'institute_OS': function(field) {
+      var panel = getPanel(field);
 
-      if ($field.val() == 'Linux') {
-        $(inputs["institute_OS_other"]).closest('.tl-panel').hide("slow");
-        $panel.attr('data-next', 'institute_OS_linux');
-      } else if ($field.val() == 'Other') {
-        $(inputs["institute_OS_linux"]).closest('.tl-panel').hide("slow");
-        $panel.attr('data-next', 'institute_OS_other');
+      if (field.value == 'Linux') {
+        hidePanel(inputs["institute_OS_other"]);
+        panel.setAttribute('data-next', 'institute_OS_linux');
+      } else if (field.value == 'Other') {
+        hidePanel(inputs["institute_OS_linux"]);
+        panel.setAttribute('data-next', 'institute_OS_other');
       } else {
-        $(inputs["institute_OS_linux"]).closest('.tl-panel').hide("slow");
-        $(inputs["institute_OS_other"]).closest('.tl-panel').hide("slow");
-        $panel.attr('data-next', 'personal_institute_usage');
+        hidePanel(inputs["institute_OS_linux"], inputs["institute_OS_other"]);
+        panel.setAttribute('data-next', 'personal_institute_usage');
       }
     },
-    'publications_number': function($field) {
-      var $panel = $field.closest('.tl-panel');
-      if ( $field.val() > 0) {
-        $(inputs["publications_number_open_access"]).attr('max', $field.val());
-        $panel.attr('data-next', 'publications_number_open_access');
+    'publications_number': function(field) {
+      var panel = getPanel(field);
+      if (field.value > 0) {
+        inputs["publications_number_open_access"].setAttribute('max', field.value);
+        panel.setAttribute('data-next', 'publications_number_open_access');
       } else {
-        $(inputs["publications_number_open_access"]).closest('.tl-panel').hide("slow");
-        $panel.attr('data-next', 'social_media');
+        hidePanel(inputs["publications_number_open_access"]);
+        panel.setAttribute('data-next', 'social_media');
       }
     },
-    'collaborations': function($field) {
-      var $panel = $field.closest('.tl-panel');
-      if ( $field.val() > 0) {
-        $(inputs["collaborations_data"]).attr('max', $field.val());
-        $panel.attr('data-next', 'collaborations_data');
+    'collaborations': function(field) {
+      var panel = getPanel(field);
+      if (field.value > 0) {
+        inputs["collaborations_data"].setAttribute('max', field.value);
+        panel.setAttribute('data-next', 'collaborations_data');
       } else {
-        $(inputs["collaborations_data"]).closest('.tl-panel').hide("slow");
-        $(inputs["collaborations_data_provided"]).closest('.tl-panel').hide("slow");
-        $panel.attr('data-next', 'data_IRB');
+        hidePanel(inputs["collaborations_data"], inputs["collaborations_data_provided"]);
+        panel.setAttribute('data-next', 'data_IRB');
       }
     },
-    'collaborations_data': function($field) {
-      var $panel = $field.closest('.tl-panel');
-      if ( $field.val() > 0) {
-        $(inputs["collaborations_data_provided"]).attr('max', $field.val());
-        $panel.attr('data-next', 'collaborations_data_provided');
+    'collaborations_data': function(field) {
+      var panel = getPanel(field);
+      if (field.value > 0) {
+        inputs["collaborations_data_provided"].setAttribute('max', field.value);
+        panel.setAttribute('data-next', 'collaborations_data_provided');
       } else {
-        $(inputs["collaborations_data_provided"]).closest('.tl-panel').hide("slow");
-        $panel.attr('data-next', 'data_IRB');
+        hidePanel(inputs["collaborations_data_provided"]);
+        panel.setAttribute('data-next', 'data_IRB');
       }
     },
-    'data_shared_publicly_ever': function($field) {
-      var $panel = $field.closest('.tl-panel');
-      if ( $field.val() == "Yes") {
-        $panel.attr('data-next', 'data_shared_publicly_num');
+    'data_shared_publicly_ever': function(field) {
+      var panel = getPanel(field);
+      if (field.value == "Yes") {
+        panel.setAttribute('data-next', 'data_shared_publicly_num');
       } else {
-        $(inputs["data_shared_publicly_num"]).closest('.tl-panel').hide("slow");
-        $(inputs["data_published_paper"]).closest('.tl-panel').hide("slow");
-        $panel.attr('data-next', 'data_consumed_public');
+        hidePanel(inputs["data_shared_publicly_num"], inputs["data_published_paper"]);
+        panel.setAttribute('data-next', 'data_consumed_public');
       }
     },
-    'code_shared': function($field) {
-      var $panel = $field.closest('.tl-panel');
-      if ( $field.val() == "Yes") {
-        $panel.attr('data-next', 'code_shared_method');
+    'code_shared': function(field) {
+      var panel = getPanel(field);
+      if (field.value == "Yes") {
+        panel.setAttribute('data-next', 'code_shared_method');
       } else {
-        $(inputs["code_shared_method"]).closest('.tl-panel').hide("slow");
-        $panel.attr('data-next', 'tool_manuscripts');
+        hidePanel(inputs["code_shared_method"]);
+        panel.setAttribute('data-next', 'tool_manuscripts');
       }
     }
   };
@@ -872,7 +866,7 @@ $(document).ready(function() {
         if ($field[0].validity.valid) {
           // if we have custom functions for the field in question
           if (custom_functions[field_name] !== undefined) {
-            custom_functions[field_name]($field);
+            custom_functions[field_name]($field[0]);
           }
           markValid($field);
           showNextQuestion($q, 0);
