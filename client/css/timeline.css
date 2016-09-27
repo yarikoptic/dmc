@@ -250,9 +250,20 @@ p.feature_warning {
   border: 1px solid #d4d4d4;
   border-radius: 2px;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  display: none;
   margin-bottom: 20px;
   margin-right: calc(65px + 1%); /* badge width + triangle width */
   padding: 1.3em;
+  transition: all 0.3s linear;
+}
+.timeline .tl-panel.visible {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  display: block;
 }
 .timeline .tl-panel h2::before {
   border: 15px solid transparent;
@@ -308,37 +319,11 @@ p.feature_warning {
  *  Animations
  *  Credit to Animate.css
  */
-@-webkit-keyframes fadeInLeftBig {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(-2000px, 0, 0);
-    transform: translate3d(-2000px, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-@keyframes fadeInLeftBig {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(-2000px, 0, 0);
-    transform: translate3d(-2000px, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-.fadeInLeftBig {
-  -webkit-animation-name: fadeInLeftBig;
-  animation-name: fadeInLeftBig;
-  -webkit-animation-duration: 1.5s;
-  animation-duration: 1.5s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

@@ -114,7 +114,7 @@ function showNextQuestion(panel, duration) {
     next_panel = getPanel(inputs[data_next]);
   }
 
-  next_panel.removeAttribute('hidden');
+  showPanel(next_panel);
 
   // allow user-scrolling to win over our scrolling
   //$root.on("scroll mousedown wheel DOMMouseScroll mousewheel touchmove", function(){
@@ -161,17 +161,26 @@ function getPanel(el) {
   return null;
 };
 
+function isPanel(el) {
+  if (el.nodeType === 1 && el.classList.contains('tl-panel')) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 // Hide the parent panel of any element passed
 function hidePanel() {
   for (var i = 0; i < arguments.length; i++) {
     var panel = getPanel(arguments[i]);
-    panel.setAttribute('hidden', true);
+    panel.classList.remove('visible');
   }
 }
 // show the parent panel of any element passed
 function showPanel() {
   for (var i = 0; i < arguments.length; i++) {
-    var panel = getPanel(arguments[i]);
-    panel.removeAttribute('hidden');
+    var panel = isPanel(arguments[i]) ? arguments[i] : getPanel(arguments[i]);
+
+    panel.classList.add('visible');
   }
 }
