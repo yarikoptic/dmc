@@ -101,53 +101,54 @@ function markValid(field) {
   }
 }
 
-// $current_q = accepts object pointing to question <li>
+// panel = accepts a panel element
 // duration = ms to fade in and for scrolling to
-function showNextQuestion($current_q, duration) {
-  var data_next = $current_q.attr('data-next');
-  var $next_q;
+function showNextQuestion(panel, duration) {
+  var data_next = panel.getAttribute('data-next');
+  var next_panel;
 
   // if there's no next-question explicitly set, then just go to next in DOM
   if (data_next == undefined) {
-    $next_q = $current_q.next();
+    next_panel = panel.nextElementSibling;
   } else {
-    $next_q = $(inputs[data_next]).closest('.tl-panel');
+    next_panel = getPanel(inputs[data_next]);
   }
 
-  $next_q[0].removeAttribute('hidden');
+  next_panel.removeAttribute('hidden');
 
   // allow user-scrolling to win over our scrolling
-  $root.on("scroll mousedown wheel DOMMouseScroll mousewheel touchmove", function(){
-    $root.stop();
-  });
-  $root.animate({ scrollTop: $next_q.offset().top }, duration, function(){
-    $root.off("scroll mousedown wheel DOMMouseScroll mousewheel touchmove");
-  });
+  //$root.on("scroll mousedown wheel DOMMouseScroll mousewheel touchmove", function(){
+  //  $root.stop();
+  //});
+  //$root.animate({ scrollTop: $next_q.offset().top }, duration, function(){
+  //  $root.off("scroll mousedown wheel DOMMouseScroll mousewheel touchmove");
+  //});
 }
 
-// $field = accepts object pointing to field
+// field = accepts object pointing to field
 // timer = ms since last input/change to wait before checking if it's time
 //         to go to the next question
 // TODO: holy hell this name is long...
-function watchIfReadyForNextQuestion($field, timer) {
-  var $panel = $field.closest('.tl-panel');
+function watchIfReadyForNextQuestion(field, timer) {
+  var panel = getPanel(field);
 
-  clearTimeout($panel.data('timer'));
-  $panel.data('timer', setTimeout(function(){
-    $panel.removeData('timer');
+  clearTimeout(panel.timer);
+  panel.timer = setTimeout(function(){
+    panel.timer = undefined;
 
-    if ($field.is('a') || $field[0].validity.valid) {
-      var field_name = $field.attr('name');
+    // TODO: verify, later, if this nodeName check works as expected
+    if (field.nodeName == 'A' || field.validity.valid) {
+      var field_name = field.getAttribute('name');
       if (custom_functions[field_name] !== undefined) {
-        custom_functions[field_name]($field[0]);
+        custom_functions[field_name](field);
       }
 
-      markValid($field[0]);
-      showNextQuestion($panel, 2000);
+      markValid(field);
+      showNextQuestion(panel, 2000);
     } else {
-      markInvalid($field[0]);
+      markInvalid(field);
     }
-  }, timer));
+  }, timer);
 }
 
 // Get the enclosing panel

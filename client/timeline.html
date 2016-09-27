@@ -949,7 +949,7 @@ $(document).ready(function() {
 
   // one-size-fits-all navigation
   $("select").on('change', function () {
-    watchIfReadyForNextQuestion($(this), 500);
+    watchIfReadyForNextQuestion(this, 500);
   });
   $('input').on('input', function() {
     var $this = $(this);
@@ -957,14 +957,14 @@ $(document).ready(function() {
     if ($this.attr('list') == undefined) { // skip datalist inputs
       if ($this.attr('type') == 'text') {
         // give text inputs a bit more time; might be fixing a typo, etc
-        watchIfReadyForNextQuestion($this, 1500);
+        watchIfReadyForNextQuestion(this, 1500);
       } else {
-        watchIfReadyForNextQuestion($this, 1000);
+        watchIfReadyForNextQuestion(this, 1000);
       }
     }
   });
   $('input[type="checkbox"]').on('change', function() {
-    watchIfReadyForNextQuestion($(this), 2000);
+    watchIfReadyForNextQuestion(this, 2000);
   });
 
   //
