@@ -146,3 +146,27 @@ function watchIfReadyForNextQuestion($field, timer) {
   }, timer));
 }
 
+// Get the enclosing panel
+function getPanel(el) {
+  for (; el !== document && el.nodeType === 1; el = el.parentNode) {
+    if (el.classList.contains('tl-panel')) {
+      return el;
+    }
+  }
+  return null;
+};
+
+// Hide the parent panel of any element passed
+function hidePanel() {
+  for (var i = 0; i < arguments.length; i++) {
+    var panel = getPanel(arguments[i]);
+    panel.setAttribute('hidden', true);
+  }
+}
+// show the parent panel of any element passed
+function showPanel() {
+  for (var i = 0; i < arguments.length; i++) {
+    var panel = getPanel(arguments[i]);
+    panel.removeAttribute('hidden');
+  }
+}
