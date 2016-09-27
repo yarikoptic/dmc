@@ -74,27 +74,31 @@ function populateForm(id, user_data) {
 /*
  *  Mark question as valid or invalid
  */
-function markInvalid($field) {
-  var $panel = $field.closest('.tl-panel');
+function markInvalid(field) {
+  var panel = getPanel(field);
 
-  $panel.removeClass('badge-success').addClass('badge-problem');
-  $panel.addClass('has-error');
+  panel.classList.remove('badge-success');
+  panel.classList.add('has-error');
 
-  var $error_box = $panel.find('.error-box');
-  if ($error_box.length > 0) { // if there's already an error
-    $error_box.html($field[0].validationMessage);
-  } else {
-    $panel.append('<div class="error-box">' + $field[0].validationMessage + '</div>');
+  var error_box = panel.querySelector('div.error-box');
+  if (error_box == null) {
+    error_box = document.createElement('div');
+    error_box.classList.add('error-box');
+    panel.appendChild(error_box);
   }
+  error_box.textContent = field.validationMessage;
 }
 
-function markValid($field) {
-  var $panel = $field.closest('.tl-panel');
+function markValid(field) {
+  var panel = getPanel(field);
 
-  $panel.removeClass('badge-problem').addClass('badge-success');
-  $panel.removeClass('has-error');
+  panel.classList.remove('has-error');
+  panel.classList.add('badge-success');
 
-  $panel.find('.error-box').remove();
+  var error_box = panel.querySelector('div.error-box');
+  if (error_box !== null) {
+    panel.removeChild(error_box);
+  }
 }
 
 // $current_q = accepts object pointing to question <li>
@@ -138,10 +142,10 @@ function watchIfReadyForNextQuestion($field, timer) {
         custom_functions[field_name]($field[0]);
       }
 
-      markValid($field);
+      markValid($field[0]);
       showNextQuestion($panel, 2000);
     } else {
-      markInvalid($field);
+      markInvalid($field[0]);
     }
   }, timer));
 }

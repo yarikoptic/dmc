@@ -868,10 +868,10 @@ $(document).ready(function() {
           if (custom_functions[field_name] !== undefined) {
             custom_functions[field_name]($field[0]);
           }
-          markValid($field);
+          markValid($field[0]);
           showNextQuestion($q, 0);
         } else {
-          markInvalid($field);
+          markInvalid($field[0]);
           return false;
         }
       }
