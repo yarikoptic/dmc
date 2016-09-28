@@ -687,7 +687,7 @@
       </datalist>
       <div class='checkboxes'></div>
       <p>Uncheck to remove an item from the list.</p>
-      <a id="sw_list_next" role="button">Next Question</a>
+      <a id="sw_list_next" role="button"><i class="icon-right-open"></i>Next Question</a>
     </div>
 
     <div class='tl-panel badge-flask'>
@@ -705,13 +705,13 @@
       </datalist>
       <div class='checkboxes'></div>
       <p>Uncheck to remove an item from the list.</p>
-      <a id="provider_list_next" role="button">Next Question</a>
+      <a id="provider_list_next" role="button"><i class="icon-right-open"></i>Next Question</a>
     </div>
 
     <div class='tl-panel inverted badge-flask'>
       <h2>All Done!</h2>
       <p>And <em>well done</em>.</p>
-      <a id="done" role="button"><i class="icon-right-open"></i> Submit</a>
+      <a id="done" role="button"><i class="icon-right-open"></i>Submit</a>
     </div>
   </div>
 </form>
@@ -959,12 +959,11 @@ $(document).ready(function() {
     $('#survey').addClass('fadeInLeftBig');
   });
   // make "next" buttons work
-  $("#sw_list_next").on('click keypress', function() {
-    watchIfReadyForNextQuestion($(this), 0);
-  });
-  $("#provider_list_next").on('click keypress', function() {
-    watchIfReadyForNextQuestion($(this), 0);
-  });
+  for (var b of survey.querySelectorAll('#sw_list_next, #provider_list_next')) {
+    b.addEventListener('click', watchIfReadyForNextQuestion);
+    b.addEventListener('keypress', watchIfReadyForNextQuestion);
+  }
+
 });
 </script>
 </body>

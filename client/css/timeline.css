@@ -116,6 +116,13 @@ main {
  *  Element overrides
  */
 
+a[role='button'] {
+  border: 1px solid #ccc;
+  border-radius: 0.2em;
+  cursor: pointer;
+  padding: 0.4em;
+}
+
 body {
   color: #333;
   font-family: 'Open Sans', sans-serif;
