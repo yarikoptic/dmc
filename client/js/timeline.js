@@ -3,11 +3,18 @@ var $root = $('html, body');
 /*
  *  Load data-list, and build checkbox-list of user-selected items
  */
-function addCheckbox(field, name, val) {
-  $(field).append('<div class="checkbox"><label>'
-                + '<input type="checkbox" checked name="' + name + '" '
-                +        'onChange="this.parentNode.parentNode.removeChild(this.parentNode);" '
-                +        'value="' +  val + '"> ' + val + '</label></div>');
+function addCheckbox(event) {
+  var field = event.target;
+  var dest = field.parentElement.querySelector('.checkboxes');
+
+  if (field.value !== '') {
+    var label = document.createElement('label');
+    label.innerHTML = '<input type="checkbox" checked name="' + field.id + '[]"'
+                    + ' onChange="this.parentNode.parentNode.removeChild(this.parentNode);"'
+                    + ' value="' +  field.value + '"> ' + field.value + '</label>';
+    dest.appendChild(label);
+    field.value = '';
+  }
 }
 
 function getUrlVar(key) {
@@ -59,14 +66,15 @@ function populateForm(id, user_data) {
 
   // these checkbox lists are built by the datalist fields
   // so it needs to be done manually on load
-  ['sw_list', 'provider_list'].forEach(function(arr) {
-    if (Array.isArray(user_data[arr])) {
-      user_data[arr].forEach(function(val) {
-        addCheckbox('#' + arr, arr + '[]', val);
-      });
-      delete user_data[arr];
+  for (var dl of ['sw_list', 'provider_list']) {
+    if (Array.isArray(user_data[dl])) {
+      for (var val of user_data[dl]) {
+        //TODO: doesn't work with new function :-/
+        addCheckbox('#' + dl, dl + '[]', val);
+      }
+      delete user_data[dl];
     }
-  });
+  }
 
   // save leftovers, so they'll be submitted back, for paranoia's sake
   survey.getElementById('leftovers').value = JSON.stringify(user_data);

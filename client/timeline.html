@@ -680,12 +680,12 @@
       <!-- The input field intentionally does not have the "name" attribute.
            It is only to help building the list. We have no intent to use
            its contents ever. -->
-      <input id="sw_list_input" type="text" list="sw_list_suggestions" placeholder="Software Name">
+      <input id="sw_list" type="text" list="sw_list_suggestions" placeholder="Software Name">
       <datalist id="sw_list_suggestions">
         <!-- the select is here purely for fallback purposes -->
         <select style="display: none;"></select>
       </datalist>
-      <div id="sw_list"></div>
+      <div class='checkboxes'></div>
       <p>Uncheck to remove an item from the list.</p>
       <a id="sw_list_next" role="button">Next Question</a>
     </div>
@@ -698,12 +698,12 @@
       <!-- The input field intentionally does not have the "name" attribute.
            It is only to help building the list. We have no intent to use
            its contents ever. -->
-      <input id="provider_list_input" type="text" list="provider_list_suggestions" placeholder="Provider Name">
+      <input id="provider_list" type="text" list="provider_list_suggestions" placeholder="Provider Name">
       <datalist id="provider_list_suggestions">
         <!-- the select is here purely for fallback purposes -->
         <select style="display: none;"></select>
       </datalist>
-      <div id="provider_list"></div>
+      <div class='checkboxes'></div>
       <p>Uncheck to remove an item from the list.</p>
       <a id="provider_list_next" role="button">Next Question</a>
     </div>
@@ -911,32 +911,18 @@ $(document).ready(function() {
   if (Modernizr.datalistelem) {
     // sw_choices is defined in *_choices.json
     $('#sw_list_suggestions').html(sw_choices);
-
-    $('#sw_list_input').change(function(e) {
-      var $this = $(this);
-      if ($this.val() !== '') {
-        addCheckbox('#sw_list', 'sw_list[]', $this.val());
-        $this.val('');
-      }
-    });
+    document.getElementById('sw_list').addEventListener('change', addCheckbox);
 
     // provider_choices is defined in *_choices.json
     $('#provider_list_suggestions').html(provider_choices);
-
-    $('#provider_list_input').change(function(e) {
-      var $this = $(this);
-      if ($this.val() !== '') {
-        addCheckbox('#provider_list', 'provider_list[]', $this.val());
-        $this.val('');
-      }
-    });
+    document.getElementById('provider_list').addEventListener('change', addCheckbox);
   } else {
     var warn_datalist = "<p class='feature_warning'>With a different browser, "
                       + "you would see nifty autosuggestions in the text field "
                       + "below. After you submit your survey, you'll get a URL "
                       + "that you can use to update it — in a different browser.</p>";
-    $('#provider_list_input').before(warn_datalist);
-    $('#sw_list_input').before(warn_datalist);
+    $('#provider_list').before(warn_datalist);
+    $('#sw_list').before(warn_datalist);
   }
 
  /*
