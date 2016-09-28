@@ -929,24 +929,19 @@ $(document).ready(function() {
   *  Navigation
   *  All inputs, upon completion/validation, will show/scroll-to the next question
   */
-
-  // one-size-fits-all navigation
-  $("select").on('change', function () {
-    watchIfReadyForNextQuestion(this, 500);
-  });
-  $('input').on('input', function() {
-    if (this.getAttribute('list') == undefined) { // skip datalist inputs
-      if (this.getAttribute('type') == 'text') {
-        // give text inputs a bit more time; might be fixing a typo, etc
-        watchIfReadyForNextQuestion(this, 1500);
-      } else {
-        watchIfReadyForNextQuestion(this, 1000);
+  for (var f of inputs) {
+    if (f.nodeName == 'SELECT') {
+      f.addEventListener('change', watchIfReadyForNextQuestion);
+    } else if (f.nodeName == 'INPUT') {
+      if (f.getAttribute('list') == undefined) { // no datalist inputs
+        if (f.getAttribute('type') == 'checkbox') {
+          f.addEventListener('change', watchIfReadyForNextQuestion);
+        } else if (f.getAttribute('type') !== 'hidden') {
+          f.addEventListener('input', watchIfReadyForNextQuestion);
+        }
       }
     }
-  });
-  $('input[type="checkbox"]').on('change', function() {
-    watchIfReadyForNextQuestion(this, 2000);
-  });
+  }
 
   //
   // target-specific buttons for nav

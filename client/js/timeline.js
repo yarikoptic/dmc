@@ -134,18 +134,30 @@ function showNextQuestion(panel, duration) {
   //});
 }
 
-// field = accepts object pointing to field
-// timer = ms since last input/change to wait before checking if it's time
-//         to go to the next question
+// event = fired from onchange/input event
 // TODO: holy hell this name is long...
-function watchIfReadyForNextQuestion(field, timer) {
+function watchIfReadyForNextQuestion(event) {
+  var field = event.target;
   var panel = getPanel(field);
+  var timer = 0;
+
+  if (field.nodeName == 'SELECT') {
+    timer = 500;
+  } else if (field.nodeName == 'INPUT') {
+    switch (field.getAttribute('type')) {
+      case 'checkbox':
+        timer = 2000; break;
+      case 'text':
+        timer = 1500; break;
+      default:
+        timer = 1000;
+    }
+  }
 
   clearTimeout(panel.timer);
   panel.timer = setTimeout(function(){
     panel.timer = undefined;
 
-    // TODO: verify, later, if this nodeName check works as expected
     if (field.nodeName == 'A' || field.validity.valid) {
       var field_name = field.getAttribute('name');
       if (custom_functions[field_name] !== undefined) {
