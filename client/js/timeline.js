@@ -1,5 +1,3 @@
-var $root = $('html, body');
-
 /*
  *  Load data-list, and build checkbox-list of user-selected items
  */
@@ -124,14 +122,6 @@ function showNextQuestion(panel, duration) {
   }
 
   showPanel(next_panel);
-
-  // allow user-scrolling to win over our scrolling
-  //$root.on("scroll mousedown wheel DOMMouseScroll mousewheel touchmove", function(){
-  //  $root.stop();
-  //});
-  //$root.animate({ scrollTop: $next_q.offset().top }, duration, function(){
-  //  $root.off("scroll mousedown wheel DOMMouseScroll mousewheel touchmove");
-  //});
 }
 
 // event = fired from onchange/input event
