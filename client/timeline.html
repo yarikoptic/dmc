@@ -730,7 +730,7 @@
 <script src="neuro_choices.json"></script>
 
 <script>
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
   survey = document.getElementById("survey");
   inputs = survey.elements;
 
@@ -837,18 +837,21 @@ $(document).ready(function() {
 
   var uuid = getUrlVar("uuid");
   if (uuid) {
-    $.ajax({
-      type: "GET",
-      async: false,
-      dataType: "json",
-      url: 'u/' + uuid + '/record'
-    })
-    .done(function(user_data) { populateForm(user_data); })
-    .fail(function(user_data) { alert("Failed to load " + uuid
-      + '.\nPlease report this error at: '
-      + '\nhttps://github.com/psychoinformatics-de/dmc/issues'
-      + '\nAnd it shall be fixed.');
-    });
+    var request = new XMLHttpRequest();
+    request.open('GET', 'u/' + uuid + '/record', true);
+
+    request.onload = function() {
+      if (this.status >= 200 && this.status < 400) {
+        var user_data = JSON.parse(this.response);
+        populateForm(user_data);
+      } else {
+        alert("Failed to load " + uuid
+          + '.\nPlease report this error at: '
+          +  '\nhttps://github.com/psychoinformatics-de/dmc/issues');
+      }
+    };
+
+    request.send();
   }
 
   // walk through to validate/show the form
@@ -884,45 +887,38 @@ $(document).ready(function() {
   *  Form submission
   */
   // suppress conventional form submission
-  $('#survey').submit(function(e) {
-    e.preventDefault();
-  });
+  survey.addEventListener('submit', function(e){ e.preventDefault(); });
 
   // Submit form as JSON
-  $("#done").on('click keypress', function(e) {
-    var json = { json: $('#survey').serializeJSON() };
+  var done = survey.querySelector('#done');
+  var events = ['click', 'keypress'];
+  for (var e of events) {
+    done.addEventListener(e,
+      function() {
+        //TODO: serializeJSON() -> FormData
+        var json = { json: survey.serializeJSON() };
 
-    $.ajax({
-      type: "POST",
-      contentType: 'application/json',
-      url: "/submit",
-      data: JSON.stringify(json),
-      success: function(data) {
-        window.location = data;
-      },
-      error: function(xhr, ajaxOptions, thrownError) {
-        alert("Keanu 'Whoa'. '" + xhr.status + "' error; that's /not/ supposed to happen.\nPlease report this error at:\nhttps://github.com/psychoinformatics-de/dmc/issues\nAnd it shall be fixed.");
+        var request = new XMLHttpRequest();
+        request.open('POST', '/submit', true);
+        request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        request.send(JSON.stringify(json));
       }
-    });
-  });
+    );
+  }
 
   // if the browser supports the datalist element, build the datalists
   //   and have inputs build checkbox lists upon enter
   if (Modernizr.datalistelem) {
     // sw_choices is defined in *_choices.json
-    $('#sw_list_suggestions').html(sw_choices);
-    document.getElementById('sw_list').addEventListener('change', addCheckbox);
+    survey.querySelector('#sw_list_suggestions').innerHTML = sw_choices;
+    survey.querySelector('#sw_list').addEventListener('change', addCheckbox);
 
     // provider_choices is defined in *_choices.json
-    $('#provider_list_suggestions').html(provider_choices);
-    document.getElementById('provider_list').addEventListener('change', addCheckbox);
+    survey.querySelector('#provider_list_suggestions').innerHTML = provider_choices;
+    survey.querySelector('#provider_list').addEventListener('change', addCheckbox);
   } else {
-    var warn_datalist = "<p class='feature_warning'>With a different browser, "
-                      + "you would see nifty autosuggestions in the text field "
-                      + "below. After you submit your survey, you'll get a URL "
-                      + "that you can use to update it — in a different browser.</p>";
-    $('#provider_list').before(warn_datalist);
-    $('#sw_list').before(warn_datalist);
+    // TODO: warn user upon loading the page.
+    console.log('Consider yeself forewarned! Yarrr!');
   }
 
  /*
