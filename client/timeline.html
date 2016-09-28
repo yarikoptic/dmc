@@ -843,7 +843,7 @@ $(document).ready(function() {
       dataType: "json",
       url: 'u/' + uuid + '/record'
     })
-    .done(function(user_data) { populateForm('#survey', user_data); })
+    .done(function(user_data) { populateForm(user_data); })
     .fail(function(user_data) { alert("Failed to load " + uuid
       + '.\nPlease report this error at: '
       + '\nhttps://github.com/psychoinformatics-de/dmc/issues'

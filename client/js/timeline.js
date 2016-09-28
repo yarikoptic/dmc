@@ -23,7 +23,7 @@ function getUrlVar(key) {
 /*
  *  Load (nearly) all JSON into the form
  */
-function populateForm(id, user_data) {
+function populateForm(user_data) {
   // remove data we don't want written to form
   delete user_data['client_version'];
   delete user_data['json_leftovers'];
