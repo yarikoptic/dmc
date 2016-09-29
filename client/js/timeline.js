@@ -1,3 +1,56 @@
+// easing functions http://goo.gl/5HLl8
+Math.easeInOutQuad = function (t, b, c, d) {
+  t /= d/2;
+  if (t < 1) {
+    return c/2*t*t + b
+  }
+  t--;
+  return -c/2 * (t*(t-2) - 1) + b;
+};
+
+// any user input should win over the scrollTo() animation.
+scrolling = undefined;
+var events = ['mousedown', 'wheel', 'touchmove'];
+for (var e of events) {
+  document.querySelector('html').addEventListener(e, function() {
+    if (scrolling != undefined) { cancelAnimationFrame(scrolling); scrolling = undefined; }
+  });
+}
+
+function scrollTo(to) {
+  // because it's so fucking difficult to detect the scrolling element, just move them all
+  // "someday" document.scrollingElement can be used instead.
+  function move(amount) {
+    document.documentElement.scrollTop = amount;
+    document.body.parentNode.scrollTop = amount;
+    document.body.scrollTop = amount;
+  }
+  function position() {
+    return document.documentElement.scrollTop || document.body.parentNode.scrollTop || document.body.scrollTop;
+  }
+  function getOffset(el) {
+    return el.getBoundingClientRect().top + window.scrollY;
+  }
+
+  var start = position(),
+    dest = getOffset(to) - start,
+    currentTime = 0,
+    increment = 20,
+    duration = 3000;
+
+  var animateScroll = function() {
+    currentTime += increment;
+    move(Math.easeInOutQuad(currentTime, start, dest, duration));
+    if (currentTime < duration) { // do the animation unless its over
+      scrolling = requestAnimationFrame(animateScroll);
+    } else {
+      scrolling = undefined;
+    }
+  };
+  scrolling = animateScroll();
+}
+
+
 /*
  *  Load data-list, and build checkbox-list of user-selected items
  */
@@ -122,6 +175,7 @@ function showNextQuestion(panel, duration) {
   }
 
   showPanel(next_panel);
+  scrollTo(next_panel);
 }
 
 // event = fired from onchange/input event

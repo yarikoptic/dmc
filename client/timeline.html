@@ -28,7 +28,7 @@
   <div id="splash"></div>
   <div id="hook">
     <h1>How Do <em>You</em> Science?</h1>
-    <a id="tell_us" class='icon-right-open'>Tell Us</a>
+    <a id="tell_us" class='icon-right-open' role='button'>Tell Us</a>
     <p>Find&nbsp;out&nbsp;how&nbsp;you&nbsp;compare&nbsp;to&nbsp;others
       &bull;&nbsp;It&nbsp;takes&nbsp;just&nbsp;a&nbsp;few&nbsp;minutes
       &bull;&nbsp;No&nbsp;email&nbsp;or&nbsp;account&nbsp;needed<br>(<a href="faq.html">details</a>)</p>
@@ -942,6 +942,12 @@ document.addEventListener("DOMContentLoaded", function() {
   //
   // target-specific buttons for nav
   //
+
+  var tell_us = document.getElementById('tell_us');
+  var events = ['click', 'keypress'];
+  for (var e of events) {
+    tell_us.addEventListener(e, function() { scrollTo(survey.querySelector('.tl-panel.visible')); });
+  }
 
   // make "next" buttons work
   for (var b of survey.querySelectorAll('#sw_list_next, #provider_list_next')) {
