@@ -723,8 +723,6 @@
 </footer>
 
 <!-- javascript -->
-<script src="js/jquery-1.11.3.min.js"></script>
-<script src="js/jquery.serialize-object.2.5.0.min.js"></script>
 <script src="js/moderizer_datalist.3.1.0.js"></script>
 <script src="js/timeline.js"></script>
 <script src="neuro_choices.json"></script>
@@ -893,17 +891,23 @@ document.addEventListener("DOMContentLoaded", function() {
   var done = survey.querySelector('#done');
   var events = ['click', 'keypress'];
   for (var e of events) {
-    done.addEventListener(e,
-      function() {
-        //TODO: serializeJSON() -> FormData
-        var json = { json: survey.serializeJSON() };
-
-        var request = new XMLHttpRequest();
-        request.open('POST', '/submit', true);
-        request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-        request.send(JSON.stringify(json));
+    done.addEventListener(e, function() {
+      var form = new FormData(survey);
+      var json = {};
+      for (field of form) {
+        if (field[0].substr(-2) === '[]') { // checkboxes
+          json[field[0]] = json[field[0]] || []; // instantiate as array if needed
+          json[field[0]].push(field[1]);
+        } else {
+          json[field[0]] = field[1];
+        }
       }
-    );
+
+      var request = new XMLHttpRequest();
+      request.open('POST', '/submit', true);
+      request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+      request.send(JSON.stringify({ 'json': json }));
+    });
   }
 
   // if the browser supports the datalist element, build the datalists
