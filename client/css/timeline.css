@@ -153,8 +153,9 @@ input, select {
   color: #555;
   border: 1px solid #ccc;
   border-radius: 2px;
-  padding: 0.3em 0.4em;
+  line-height: 1.5em;
   max-width: 100%;
+  padding: 0.3em 0.4em;
 }
 input[type='text'], select {
   width: 20em;
@@ -181,20 +182,16 @@ input[list] {
 /*
  *  Styling
  */
-#banner_image {
-  min-height: 80vh;
+#banner #splash {
+  height: 75vh;
   background-image: url('../img/cigar_man_mobile.jpg');
   background-size: cover;
 }
 @media screen and (min-width: 480px) {
-  #banner_image {
-    background-image: url('../img/cigar_man.jpg');
-  }
+  #banner #splash { background-image: url('../img/cigar_man.jpg'); }
 }
 @media screen and (max-aspect-ratio: 8/9) {
-  #banner_image {
-    min-height: 50vh;
-  }
+  #banner #splash { height: 50vh; }
 }
 
 #banner #hook {
@@ -212,7 +209,7 @@ input[list] {
   text-align: center;
 }
 #banner p {
-  margin-top: 20px;
+  margin: 20px;
 }
 
 p.feature_warning {
