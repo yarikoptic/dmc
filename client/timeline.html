@@ -896,8 +896,9 @@ document.addEventListener("DOMContentLoaded", function() {
       var json = {};
       for (field of form) {
         if (field[0].substr(-2) === '[]') { // checkboxes
-          json[field[0]] = json[field[0]] || []; // instantiate as array if needed
-          json[field[0]].push(field[1]);
+          var field_name = field[0].slice(0, -2);
+          json[field_name] = json[field_name] || []; // instantiate as array if needed
+          json[field_name].push(field[1]);
         } else {
           json[field[0]] = field[1];
         }
