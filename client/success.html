@@ -22,9 +22,15 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  .col { flex-basis: 100%; }
+  main > div { flex-basis: 100%; }
   @media screen and (min-width: 1000px) {
-    .col { flex-basis: 50%; }
+    main > div { flex-basis: 50%; }
+    main > div:nth-child(2) { order: 3 ;}
+    main > div:nth-child(4) { order: 4 ;}
+  }
+
+  svg {
+    width: 80%;
   }
   </style>
 </head>
@@ -35,24 +41,22 @@
   <p>Your submission has been received. Here are your results:</p>
 </header>
 <main>
-  <div class="col">
+  <div>
     <h2><i class="icon-secret"></i> Private Record</h2>
-    <div id="updateinfo">
-        <p>Use this URL to update your record in the future.<br>
-           Don't share it. Keep it secret... keep it safe!</p>
-        <i class="fa fa-pencil"></i> <a href="" id="uuid_link"></a>
-        <div title="Scan to get URL" id="uuid_qrcode"></div>
-    </div>
-  </div><!-- .col -->
-  <div class="col">
+    <p>Use this URL to update your record in the future.<br />
+       Don't share it. Keep it secret... keep it safe!<br />
+       <i class="icon-pencil"></i><a href="" id="uuid_link"></a>
+    </p>
+  </div>
+  <div title="Scan to get URL" id="uuid_qrcode"></div>
+  <div>
     <h2><i class="icon-users"></i> Show and Tell</h2>
-    <div id="retrieveinfo">
-        <p>Use this URL to see how you &ldquo;science&rdquo; compared to others.<br>
-           Share it with anyone you like!</p>
-        <i class="fa fa-share-alt"></i> <a href="" id="public_link"></a>
-        <div title="Scan to get URL" id="public_qrcode"></div>
-    </div>
-  </div><!-- .col -->
+    <p>Use this URL to see how your &ldquo;science&rdquo; compares to others.<br>
+       Share it with anyone you like!<br />
+       <i class="icon-share"></i><a href="" id="public_link"></a>
+    </p>
+  </div>
+  <div title="Scan to get URL" id="public_qrcode"></div>
 </main>
 <footer>
   <p class="text-center text-muted"><small>
