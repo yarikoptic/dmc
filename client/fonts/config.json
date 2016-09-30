@@ -95,6 +95,12 @@
       "css": "globe",
       "code": 59400,
       "src": "fontawesome"
+    },
+    {
+      "uid": "f9c8ea86275ca16128235c6452b67b8e",
+      "css": "secret",
+      "code": 61979,
+      "src": "fontawesome"
     }
   ]
 }

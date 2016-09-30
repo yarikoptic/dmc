@@ -57,12 +57,8 @@ main {
  */
 @font-face {
   font-family: 'fontello';
-  src: url('../fonts/fontello.eot?12458826');
-  src: url('../fonts/fontello.eot?12458826#iefix') format('embedded-opentype'),
-       url('../fonts/fontello.woff2?12458826') format('woff2'),
-       url('../fonts/fontello.woff?12458826') format('woff'),
-       url('../fonts/fontello.ttf?12458826') format('truetype'),
-       url('../fonts/fontello.svg?12458826#fontello') format('svg');
+  src: url('../fonts/fontello.woff2?80189218') format('woff2'),
+       url('../fonts/fontello.woff?80189218') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -110,6 +106,7 @@ main {
 .icon-code:before, .badge-code:before { content: '\f121'; } /* '' */
 .icon-linux:before, .badge-linux:before { content: '\f17c'; } /* '' */
 .icon-university:before, .badge-university::before { content: '\f19c'; } /* '' */
+.icon-secret:before, .badge-secret:before { content: '\f21b'; } /* '' */
 
 
 /*
