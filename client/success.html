@@ -61,8 +61,7 @@
 </footer>
 
 <!-- javascript -->
-<script src="js/jquery-1.11.3.min.js"></script>
-<script src="js/jquery.qrcode.min.js"></script>
+<script src="js/qrcode.js"></script>
 
 <script>
 function getUrlVar(key){
@@ -78,13 +77,14 @@ document.addEventListener("DOMContentLoaded", function() {
   var priv_link = document.getElementById('uuid_link');
   priv_link.innerHTML = priv_url;
   priv_link.setAttribute('href', priv_url);
+  var qrcode = new QRCode(priv_url);
+  document.getElementById('uuid_qrcode').innerHTML = qrcode.svg();
 
   var pub_link = document.getElementById('public_link');
   pub_link.innerHTML = pub_url;
   pub_link.setAttribute('href', pub_url);
-
-  $("#uuid_qrcode").qrcode({"text": priv_url});
-  $("#public_qrcode").qrcode({"text": pub_url});
+  var qrcode = new QRCode(pub_url);
+  document.getElementById('public_qrcode').innerHTML = qrcode.svg();
 });
 
 </script>
