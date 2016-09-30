@@ -5,45 +5,60 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="How-do-you-science survey" />
-  <meta name="author" content="Psychoinformatics lab" />
+  <meta name="author" content="Psychoinformatics Lab" />
 
-  <title>Data access — How Do You Science?</title>
+  <title>Victory! — How Do You Science?</title>
 
   <link rel="stylesheet" href="css/timeline.css" />
-  <link rel="stylesheet" href="css/font-awesome.4.4.0.min.css">
   <link rel="icon" type="image/png" href="favicon.png?v=1">
+
+  <style>
+  header {
+    text-align: center;
+  }
+  main {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .col { flex-basis: 100%; }
+  @media screen and (min-width: 1000px) {
+    .col { flex-basis: 50%; }
+  }
+  </style>
 </head>
 
 <body>
-<div class="container">
-<div class="row">
-  <div class="col-md-12">
-    <h1>Victory!</h1>
-    <p>Your submission has been received. Here are your results:</p>
-  </div>
-</div><!-- .row -->
-<div class="row">
-  <div class="col-md-6">
-    <h3><i class="fa fa-user-secret"></i> Private Record</h3>
+<header>
+  <h1>Victory!</h1>
+  <p>Your submission has been received. Here are your results:</p>
+</header>
+<main>
+  <div class="col">
+    <h2><i class="icon-secret"></i> Private Record</h2>
     <div id="updateinfo">
         <p>Use this URL to update your record in the future.<br>
            Don't share it. Keep it secret... keep it safe!</p>
-        <i class="fa fa-pencil"></i> <a href="" id="uuidurl"></a>
-        <div title="Scan to get URL" id="uuidqrcode"></div>
+        <i class="fa fa-pencil"></i> <a href="" id="uuid_link"></a>
+        <div title="Scan to get URL" id="uuid_qrcode"></div>
     </div>
   </div><!-- .col -->
-  <div class="col-md-6">
-    <h3><i class="fa fa-users"></i> Show and Tell</h3>
+  <div class="col">
+    <h2><i class="icon-users"></i> Show and Tell</h2>
     <div id="retrieveinfo">
         <p>Use this URL to see how you &ldquo;science&rdquo; compared to others.<br>
            Share it with anyone you like!</p>
-        <i class="fa fa-share-alt"></i> <a href="" id="puburl"></a>
-        <div title="Scan to get URL" id="pubidqrcode"></div>
+        <i class="fa fa-share-alt"></i> <a href="" id="public_link"></a>
+        <div title="Scan to get URL" id="public_qrcode"></div>
     </div>
   </div><!-- .col -->
-</div><!-- .row -->
-</div><!-- .container -->
-
+</main>
+<footer>
+  <p class="text-center text-muted"><small>
+      © 2015 Alex Waite, <a href="http://www.psychoinformatics.de">Psychoinformatics.de</a> &nbsp;&bull;&nbsp; Code Freely available on <a href="https://github.com/psychoinformatics-de/dmc">GitHub</a>
+  </small></p>
+</footer>
 
 <!-- javascript -->
 <script src="js/jquery-1.11.3.min.js"></script>
@@ -55,16 +70,21 @@ function getUrlVar(key){
   return result && unescape(result[1]) || "";
 }
 
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
   // compose actual URLs
   var priv_url = "http://howdoyouscience.net/?uuid=" + getUrlVar("uuid");
   var pub_url = "http://howdoyouscience.net/p/?pubid=" + getUrlVar("pubid");
-  $("#uuidurl").html(priv_url);
-  $("#uuidurl").attr("href", priv_url);
-  $("#puburl").html(pub_url);
-  $("#puburl").attr("href", pub_url);
-  $("#uuidqrcode").qrcode({"text": priv_url});
-  $("#pubidqrcode").qrcode({"text": pub_url});
+
+  var priv_link = document.getElementById('uuid_link');
+  priv_link.innerHTML = priv_url;
+  priv_link.setAttribute('href', priv_url);
+
+  var pub_link = document.getElementById('public_link');
+  pub_link.innerHTML = pub_url;
+  pub_link.setAttribute('href', pub_url);
+
+  $("#uuid_qrcode").qrcode({"text": priv_url});
+  $("#public_qrcode").qrcode({"text": pub_url});
 });
 
 </script>
