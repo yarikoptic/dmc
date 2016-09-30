@@ -835,10 +835,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   var uuid = getUrlVar("uuid");
   if (uuid) {
-    var request = new XMLHttpRequest();
-    request.open('GET', 'u/' + uuid + '/record', true);
-
-    request.onload = function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'u/' + uuid + '/record', true);
+    xhr.onload = function() {
       if (this.status >= 200 && this.status < 400) {
         var user_data = JSON.parse(this.response);
         populateForm(user_data);
@@ -848,8 +847,7 @@ document.addEventListener("DOMContentLoaded", function() {
           +  '\nhttps://github.com/psychoinformatics-de/dmc/issues');
       }
     };
-
-    request.send();
+    xhr.send();
   }
 
   // walk through to validate/show the form

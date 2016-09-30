@@ -91,22 +91,22 @@ main {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-wrench:before, .badge-wrench:before { content: '\e800'; } /* '' */
-.icon-clock:before, .badge-clock:before { content: '\e801'; } /* '' */
-.icon-cogs:before, .badge-cogs:before { content: '\e802'; } /* '' */
-.icon-pencil:before, .badge-pencil:before { content: '\e803'; } /* '' */
-.icon-bullhorn:before, .badge-bullhorn:before { content: '\e804'; } /* '' */
-.icon-users:before, .badge-users:before { content: '\e805'; } /* '' */
-.icon-book:before, .badge-book:before { content: '\e806'; } /* '' */
-.icon-right-open:before, .badge-right-open:before { content: '\e807'; } /* '' */
-.icon-globe:before, .badge-globe::before { content: '\e808'; } /* '' */
-.icon-flask:before, .badge-flask:before { content: '\f0c3'; } /* '' */
-.icon-exchange:before, .badge-exchange:before { content: '\f0ec'; } /* '' */
-.icon-laptop:before, .badge-laptop:before { content: '\f109'; } /* '' */
-.icon-code:before, .badge-code:before { content: '\f121'; } /* '' */
-.icon-linux:before, .badge-linux:before { content: '\f17c'; } /* '' */
-.icon-university:before, .badge-university::before { content: '\f19c'; } /* '' */
-.icon-secret:before, .badge-secret:before { content: '\f21b'; } /* '' */
+.icon-wrench::before, .badge-wrench::before { content: '\e800'; } /* '' */
+.icon-clock::before, .badge-clock::before { content: '\e801'; } /* '' */
+.icon-cogs::before, .badge-cogs::before { content: '\e802'; } /* '' */
+.icon-pencil::before, .badge-pencil::before { content: '\e803'; } /* '' */
+.icon-bullhorn::before, .badge-bullhorn::before { content: '\e804'; } /* '' */
+.icon-users::before, .badge-users::before { content: '\e805'; } /* '' */
+.icon-book::before, .badge-book::before { content: '\e806'; } /* '' */
+.icon-right-open::before, .badge-right-open::before { content: '\e807'; } /* '' */
+.icon-globe::before, .badge-globe::before { content: '\e808'; } /* '' */
+.icon-flask::before, .badge-flask::before { content: '\f0c3'; } /* '' */
+.icon-exchange::before, .badge-exchange::before { content: '\f0ec'; } /* '' */
+.icon-laptop::before, .badge-laptop::before { content: '\f109'; } /* '' */
+.icon-code::before, .badge-code::before { content: '\f121'; } /* '' */
+.icon-linux::before, .badge-linux::before { content: '\f17c'; } /* '' */
+.icon-university::before, .badge-university::before { content: '\f19c'; } /* '' */
+.icon-secret::before, .badge-secret::before { content: '\f21b'; } /* '' */
 
 
 /*
