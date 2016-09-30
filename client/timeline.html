@@ -904,10 +904,21 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       }
 
-      var request = new XMLHttpRequest();
-      request.open('POST', '/submit', true);
-      request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-      request.send(JSON.stringify({ 'json': json }));
+      var data = JSON.stringify({ 'json': json });
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/submit', true);
+      xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+      xhr.onload = function() {
+        if (this.status === 200) {
+          window.location = this.responseText; // redirect to where we're told
+        } else {
+          console.log(data);
+          alert("Keanu 'Whoa' " + this.status + " error; and that's not supposed to happen."
+              + "\n\nWould you please report this error at"
+              +   "\nhttps://github.com/psychoinformatics-de/dmc/issues");
+        }
+      };
+      xhr.send(data);
     });
   }
 
