@@ -1,116 +1,4 @@
 /*
- *  Hacks/bug workarounds
- */
-
-/* IE9->11 "support" HTML5 and arbitrary tags, and yet fail on <main>. Classic. */
-main {
-  display: block;
-}
-
-/*
- *  Fonts
- */
-@font-face { /* License: OFL 1.1 */
-  font-family: 'Libre Baskerville';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Libre Baskerville'), local('LibreBaskerville-Regular'),
-       url('../fonts/libre-baskerville-v4-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/libre-baskerville-v4-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-@font-face {
-  font-family: 'Libre Baskerville';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Libre Baskerville Italic'), local('LibreBaskerville-Italic'),
-       url('../fonts/libre-baskerville-v4-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/libre-baskerville-v4-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-@font-face { /* License: Apache 2.0 */
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Open Sans'), local('OpenSans'),
-       url('../fonts/open-sans-v13-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/open-sans-v13-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Open Sans Italic'), local('OpenSans-Italic'),
-       url('../fonts/open-sans-v13-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/open-sans-v13-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Open Sans Bold'), local('OpenSans-Bold'),
-       url('../fonts/open-sans-v13-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/open-sans-v13-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/*
- *  Font Icons
- */
-@font-face {
-  font-family: 'fontello';
-  src: url('../fonts/fontello.woff2?39096255') format('woff2'),
-       url('../fonts/fontello.woff?39096255') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-[class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: .2em;
-
-  /* Font smoothing. That was taken from TWBS */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-wrench::before, .badge-wrench::before { content: '\e800'; } /* '' */
-.icon-clock::before, .badge-clock::before { content: '\e801'; } /* '' */
-.icon-cogs::before, .badge-cogs::before { content: '\e802'; } /* '' */
-.icon-pencil::before, .badge-pencil::before { content: '\e803'; } /* '' */
-.icon-bullhorn::before, .badge-bullhorn::before { content: '\e804'; } /* '' */
-.icon-users::before, .badge-users::before { content: '\e805'; } /* '' */
-.icon-book::before, .badge-book::before { content: '\e806'; } /* '' */
-.icon-right-open::before, .badge-right-open::before { content: '\e807'; } /* '' */
-.icon-globe::before, .badge-globe::before { content: '\e808'; } /* '' */
-.icon-flask::before, .badge-flask::before { content: '\f0c3'; } /* '' */
-.icon-exchange::before, .badge-exchange::before { content: '\f0ec'; } /* '' */
-.icon-laptop::before, .badge-laptop::before { content: '\f109'; } /* '' */
-.icon-code::before, .badge-code::before { content: '\f121'; } /* '' */
-.icon-linux::before, .badge-linux::before { content: '\f17c'; } /* '' */
-.icon-university::before, .badge-university::before { content: '\f19c'; } /* '' */
-.icon-share::before, .badge-share::before { content: '\f1e0'; } /* '' */
-.icon-secret::before, .badge-secret::before { content: '\f21b'; } /* '' */
-
-
-/*
  *  Element overrides
  */
 
@@ -121,21 +9,6 @@ a[role='button'] {
   padding: 0.4em;
 }
 
-body {
-  color: #333;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 0.9em;
-  margin: 0;
-  width: 100%;
-}
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Libre Baskerville', serif;
-  font-weight: normal;
-  letter-spacing: -0.025em;
-}
-footer {
-  text-align: center;
-}
 main {
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
@@ -165,18 +38,6 @@ input[type='number'] {
 }
 input[list] {
   margin-bottom: 1em;
-}
-
-#noscript {
-  font-size: 16px;
-  margin: 0 auto;
-  padding: 20px 0;
-  max-width: 50vw;
-}
-@media screen and (max-width: 600px) {
-  #noscript {
-    max-width: 90vw;
-  }
 }
 
 /*
@@ -319,11 +180,6 @@ p.feature_warning {
   margin-top: 0.3em;
 }
 
-
-/*
- *  Animations
- *  Credit to Animate.css
- */
 @-webkit-keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
