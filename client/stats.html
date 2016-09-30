@@ -5,42 +5,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="How-do-you-science survey" />
-  <meta name="author" content="Psychoinformatics lab" />
+  <meta name="author" content="Psychoinformatics Lab" />
 
   <title>Stats — How Do You Science?</title>
 
   <link rel="stylesheet" href="/css/timeline.css" />
-  <link rel="stylesheet" href="/css/font-awesome.4.4.0.min.css">
 </head>
 
 <body>
-<div class="container">
-<div class="row">
-  <div class="col-md-12">
-    <h1>You're too quick!</h1>
-      <p>There are still too few submissions to be able to compute statistics for
-         <strong class="pubid"></strong>.</p>
-      <p>Save this address and please come back early November 2015.</p>
-      <p>Thank you for your patience!</p>
-  </div>
-</div><!-- .row -->
-</div><!-- .container -->
-
-<!-- javascript -->
-<script src="/js/jquery-1.11.3.min.js"></script>
+<h1>You're too quick!</h1>
+<p>There are still too few submissions to be able to compute statistics for
+  <strong id="pubid"></strong>.</p>
+<p>Save this address and please come back later.</p>
+<p>Thank you for your patience!</p>
 
 <script>
 function getUrlVar(key){
-    var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search); 
-    return result && unescape(result[1]) || "";
+  var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search);
+  return result && unescape(result[1]) || "";
 }
 
-$(document).ready(function() {
-    <!-- compose actual URLs -->
-    var submitter = getUrlVar("pubid");
-    $(".pubid").html(submitter);
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById('pubid').innerHTML = getUrlVar("pubid");
 });
-
 </script>
 </body>
 </html>
