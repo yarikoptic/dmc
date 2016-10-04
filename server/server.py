@@ -132,7 +132,7 @@ if __name__ == '__main__':
         '/': {'tools.staticdir.on': True,
               'tools.staticdir.root': os.path.abspath(os.curdir),
               'tools.staticdir.dir': 'client',
-              'tools.staticdir.index': 'timeline.html'},
+              'tools.staticdir.index': 'survey.html'},
         # submission landing page (reuse same dir)
         '/s': {'tools.staticdir.on': True,
                'tools.staticdir.root': os.path.abspath(os.curdir),
