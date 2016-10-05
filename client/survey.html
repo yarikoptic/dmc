@@ -933,11 +933,11 @@ document.addEventListener("DOMContentLoaded", function() {
   if (Modernizr.datalistelem) {
     // sw_choices is defined in *_choices.json
     survey.querySelector('#sw_list_suggestions').innerHTML = sw_choices;
-    survey.querySelector('#sw_list').addEventListener('change', addCheckbox);
+    survey.querySelector('#sw_list').addEventListener('change', function() { addCheckbox(this, this.value); });
 
     // provider_choices is defined in *_choices.json
     survey.querySelector('#provider_list_suggestions').innerHTML = provider_choices;
-    survey.querySelector('#provider_list').addEventListener('change', addCheckbox);
+    survey.querySelector('#provider_list').addEventListener('change', function() { addCheckbox(this, this.value); });
   } else {
     // TODO: warn user upon loading the page.
     console.log('Consider yeself forewarned! Yarrr!');

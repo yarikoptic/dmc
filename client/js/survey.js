@@ -51,21 +51,19 @@ function scrollTo(to) {
 }
 
 
-/*
- *  Load data-list, and build checkbox-list of user-selected items
- */
-function addCheckbox(event) {
-  var field = event.target;
+// Accepts an input field a value (or a list of of values) to add
+function addCheckbox(field, values) {
+  if (! Array.isArray(values)) { values = [ values ]; }
   var dest = field.parentElement.querySelector('.checkboxes');
 
-  if (field.value !== '') {
+  for (var v of values) {
     var label = document.createElement('label');
     label.innerHTML = '<input type="checkbox" checked name="' + field.id + '[]"'
                     + ' onChange="this.parentNode.parentNode.removeChild(this.parentNode);"'
-                    + ' value="' +  field.value + '"> ' + field.value + '</label>';
+                    + ' value="' +  v + '"> ' + v + '</label>';
     dest.appendChild(label);
-    field.value = '';
   }
+  field.value = '';
 }
 
 function getUrlVar(key) {
@@ -115,13 +113,12 @@ function populateForm(user_data) {
     }
   }
 
-  // these checkbox lists are built by the datalist fields
-  // so it needs to be done manually on load
+  // build checkbox lists for the datalist fields
   for (var dl of ['sw_list', 'provider_list']) {
     if (Array.isArray(user_data[dl])) {
+      var field = document.getElementById(dl);
       for (var val of user_data[dl]) {
-        //TODO: doesn't work with new function :-/
-        addCheckbox('#' + dl, dl + '[]', val);
+        addCheckbox(field, val);
       }
       delete user_data[dl];
     }
