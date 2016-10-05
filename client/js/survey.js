@@ -71,61 +71,44 @@ function getUrlVar(key) {
   return result && unescape(result[1]) || "";
 }
 
-/*
- *  Load (nearly) all JSON into the form
- */
-function populateForm(user_data) {
-  // remove data we don't want written to form
-  delete user_data['client_version'];
-  delete user_data['json_leftovers'];
+// populate form with values from json
+function populateForm(json) {
+  delete json['client_version']; // don't apply form-specific data
+  delete json['json_leftovers'];
 
-  for (var f of inputs) {
-    var field_name = f.getAttribute('name');
-
-    if (field_name != undefined) {
-      field_name = field_name.replace('[]', ''); // remove array markers
-
-      // if we have user_data for the field in question
-      if (user_data[field_name] !== undefined) {
-        if (f.nodeName == 'SELECT') {
-          var options = f.querySelectorAll('option');
-          for (var o of options) {
-            if (o.value == user_data[field_name]) {
-              o.setAttribute('selected', true);
-              delete user_data[field_name];
-              break;
-            }
-          }
-        } else {
-          switch(f.getAttribute('type')) {
-            case 'checkbox':
-              if (user_data[field_name].indexOf(f.value) > -1) {
-                f.setAttribute('checked', true);
-                delete user_data[field_name];
-              }
-              break;
-            default:
-              f.value = user_data[field_name];
-              delete user_data[field_name];
-          }
-        }
-      }
-    }
+  // construct the user-built checkbox lists
+  for (var key of ['sw_list[]', 'provider_list[]']) {
+    if (json[key] == undefined) { continue; }
+    addCheckbox(inputs[key.slice(0, -2)], json[key]);
+    delete json[key];
   }
 
-  // build checkbox lists for the datalist fields
-  for (var dl of ['sw_list', 'provider_list']) {
-    if (Array.isArray(user_data[dl])) {
-      var field = document.getElementById(dl);
-      for (var val of user_data[dl]) {
-        addCheckbox(field, val);
+  // now loop over the rest
+  for (var key in json) {
+    if (inputs[key] == undefined) { continue; } // field doesn't exist
+
+    if (Array.isArray(json[key])) { // checkboxes
+      for (var cbox of inputs[key]) {
+        if (json[key].indexOf(cbox.value) > -1) {
+          cbox.setAttribute('checked', true);
+        }
       }
-      delete user_data[dl];
+    } else if (inputs[key].nodeName == 'SELECT') { // select
+      for (var option of inputs[key].children) {
+        if (option.value == json[key]) {
+          option.setAttribute('selected', true);
+          break;
+        }
+      }
+    } else { // everything else
+      inputs[key].value = json[key];
     }
+
+    delete json[key];
   }
 
   // save leftovers, so they'll be submitted back, for paranoia's sake
-  inputs['leftovers'].value = JSON.stringify(user_data);
+  inputs['leftovers'].value = JSON.stringify(json);
 }
 
 /*
