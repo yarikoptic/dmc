@@ -84,7 +84,7 @@ function populateForm(user_data) {
   for (var f of inputs) {
     var field_name = f.getAttribute('name');
 
-    if (field_name !== undefined) {
+    if (field_name != undefined) {
       field_name = field_name.replace('[]', ''); // remove array markers
 
       // if we have user_data for the field in question
@@ -92,7 +92,7 @@ function populateForm(user_data) {
         if (f.nodeName == 'SELECT') {
           var options = f.querySelectorAll('option');
           for (var o of options) {
-            if (o.value = user_data[field_name]) {
+            if (o.value == user_data[field_name]) {
               o.setAttribute('selected', true);
               delete user_data[field_name];
               break;
@@ -128,7 +128,7 @@ function populateForm(user_data) {
   }
 
   // save leftovers, so they'll be submitted back, for paranoia's sake
-  survey.getElementById('leftovers').value = JSON.stringify(user_data);
+  inputs['leftovers'].value = JSON.stringify(user_data);
 }
 
 /*
