@@ -746,7 +746,6 @@ document.addEventListener("DOMContentLoaded", function() {
   custom_functions = {
     'personal_OS': function(field) {
       var panel = getPanel(field);
-
       if (field.value == 'Linux') {
         hidePanel(inputs['personal_OS_other']);
         panel.dataset.nextPanel = 'personal_OS_linux';
@@ -779,7 +778,6 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     'institute_OS': function(field) {
       var panel = getPanel(field);
-
       if (field.value == 'Linux') {
         hidePanel(inputs["institute_OS_other"]);
         panel.dataset.nextPanel = 'institute_OS_linux';

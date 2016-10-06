@@ -8,7 +8,7 @@ Math.easeInOutQuad = function (t, b, c, d) {
   return -c/2 * (t*(t-2) - 1) + b;
 };
 
-// any user input should win over the scrollTo() animation.
+// the user should win over the scrollTo() animation
 scrolling = undefined;
 var events = ['mousedown', 'wheel', 'touchmove'];
 for (var e of events) {
@@ -41,7 +41,7 @@ function scrollTo(to) {
   var animateScroll = function() {
     currentTime += increment;
     move(Math.easeInOutQuad(currentTime, start, dest, duration));
-    if (currentTime < duration) { // do the animation unless its over
+    if (currentTime < duration) { // animate unless finished
       scrolling = requestAnimationFrame(animateScroll);
     } else {
       scrolling = undefined;
