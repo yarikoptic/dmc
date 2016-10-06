@@ -22,7 +22,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       survey = document.getElementById("survey");
-      inputs = survey.elements;
+      fields = survey.elements;
     });
   </script>
 </head>
@@ -379,16 +379,16 @@
         <option>Other</option>
       </select>
       <script>document.addEventListener("DOMContentLoaded", function() {
-        inputs['personal_OS'].postValidation = function() {
+        fields['personal_OS'].postValidation = function() {
           var panel = getPanel(this);
           if (this.value == 'Linux') {
-            hidePanel(inputs['personal_OS_other']);
+            hidePanel(fields['personal_OS_other']);
             panel.dataset.nextPanel = 'personal_OS_linux';
           } else if (this.value == 'Other') {
-            hidePanel(inputs['personal_OS_linux']);
+            hidePanel(fields['personal_OS_linux']);
             panel.dataset.nextPanel = 'personal_OS_other';
           } else {
-            hidePanel(inputs['personal_OS_other'], inputs['personal_OS_linux']);
+            hidePanel(fields['personal_OS_other'], fields['personal_OS_linux']);
             panel.dataset.nextPanel = 'maintainer';
           }
         }
@@ -428,12 +428,12 @@
         <option>No</option>
       </select>
       <script>document.addEventListener("DOMContentLoaded", function() {
-        inputs['maintainer'].postValidation = function() {
+        fields['maintainer'].postValidation = function() {
           var panel = getPanel(this);
           if (this.value == 'Yes') {
             panel.dataset.nextPanel = 'hours';
           } else {
-            hidePanel(inputs["hours"]);
+            hidePanel(fields['hours']);
             panel.dataset.nextPanel = 'institute_device';
           }
         }
@@ -460,13 +460,13 @@
         <option>Other</option>
       </select>
       <script>document.addEventListener("DOMContentLoaded", function() {
-        inputs['institute_device'].postValidation = function() {
+        fields['institute_device'].postValidation = function() {
           var panel = getPanel(this);
           if (this.value !== "None") {
             panel.dataset.nextPanel = 'institute_OS';
           } else {
-            hidePanel(inputs["institute_OS"], inputs["institute_OS_linux"],
-                      inputs["institute_OS_other"], inputs["personal_institute_usage"]);
+            hidePanel(fields['institute_OS'], fields['institute_OS_linux'],
+                      fields['institute_OS_other'], fields['personal_institute_usage']);
             panel.dataset.nextPanel = 'publications_number';
           }
         }
@@ -484,16 +484,16 @@
         <option>Other</option>
       </select>
       <script>document.addEventListener("DOMContentLoaded", function() {
-        inputs['institute_OS'].postValidation = function() {
+        fields['institute_OS'].postValidation = function() {
           var panel = getPanel(this);
           if (this.value == 'Linux') {
-            hidePanel(inputs["institute_OS_other"]);
+            hidePanel(fields['institute_OS_other']);
             panel.dataset.nextPanel = 'institute_OS_linux';
           } else if (this.value == 'Other') {
-            hidePanel(inputs["institute_OS_linux"]);
+            hidePanel(fields['institute_OS_linux']);
             panel.dataset.nextPanel = 'institute_OS_other';
           } else {
-            hidePanel(inputs["institute_OS_linux"], inputs["institute_OS_other"]);
+            hidePanel(fields['institute_OS_linux'], fields['institute_OS_other']);
             panel.dataset.nextPanel = 'personal_institute_usage';
           }
         }
@@ -543,13 +543,13 @@
          years?</p>
       <input name="publications_number" type="number" min="0" step="1" required>
       <script>document.addEventListener("DOMContentLoaded", function() {
-        inputs['publications_number'].postValidation = function() {
+        fields['publications_number'].postValidation = function() {
           var panel = getPanel(this);
           if (this.value > 0) {
-            inputs["publications_number_open_access"].setAttribute('max', this.value);
+            fields['publications_number_open_access'].setAttribute('max', this.value);
             panel.dataset.nextPanel = 'publications_number_open_access';
           } else {
-            hidePanel(inputs["publications_number_open_access"]);
+            hidePanel(fields['publications_number_open_access']);
             panel.dataset.nextPanel = 'social_media';
           }
         }
@@ -583,13 +583,13 @@
          have in the last 5 years?</p>
       <input name="collaborations" type="number" min="0" step="1" required>
       <script>document.addEventListener("DOMContentLoaded", function() {
-        inputs['collaborations'].postValidation = function() {
+        fields['collaborations'].postValidation = function() {
           var panel = getPanel(this);
           if (this.value > 0) {
-            inputs["collaborations_data"].setAttribute('max', this.value);
+            fields['collaborations_data'].setAttribute('max', this.value);
             panel.dataset.nextPanel = 'collaborations_data';
           } else {
-            hidePanel(inputs["collaborations_data"], inputs["collaborations_data_provided"]);
+            hidePanel(fields['collaborations_data'], fields['collaborations_data_provided']);
             panel.dataset.nextPanel = 'data_IRB';
           }
         }
@@ -602,13 +602,13 @@
          direction)?</p>
       <input name="collaborations_data" type="number" min="0" step="1" required>
       <script>document.addEventListener("DOMContentLoaded", function() {
-        inputs['collaborations_data'].postValidation = function() {
+        fields['collaborations_data'].postValidation = function() {
           var panel = getPanel(this);
           if (this.value > 0) {
-            inputs["collaborations_data_provided"].setAttribute('max', this.value);
+            fields['collaborations_data_provided'].setAttribute('max', this.value);
             panel.dataset.nextPanel = 'collaborations_data_provided';
           } else {
-            hidePanel(inputs["collaborations_data_provided"]);
+            hidePanel(fields['collaborations_data_provided']);
             panel.dataset.nextPanel = 'data_IRB';
           }
         }
@@ -642,12 +642,12 @@
         <option>No</option>
       </select>
       <script>document.addEventListener("DOMContentLoaded", function() {
-        inputs['data_shared_publicly_ever'].postValidation = function() {
+        fields['data_shared_publicly_ever'].postValidation = function() {
           var panel = getPanel(this);
           if (this.value == "Yes") {
             panel.dataset.nextPanel = 'data_shared_publicly_num';
           } else {
-            hidePanel(inputs["data_shared_publicly_num"], inputs["data_published_paper"]);
+            hidePanel(fields['data_shared_publicly_num'], fields['data_published_paper']);
             panel.dataset.nextPanel = 'data_consumed_public';
           }
         }
@@ -689,12 +689,12 @@
         <option>No</option>
       </select>
       <script>document.addEventListener("DOMContentLoaded", function() {
-        inputs['code_shared'].postValidation = function() {
+        fields['code_shared'].postValidation = function() {
           var panel = getPanel(this);
           if (this.value == "Yes") {
             panel.dataset.nextPanel = 'code_shared_method';
           } else {
-            hidePanel(inputs["code_shared_method"]);
+            hidePanel(fields['code_shared_method']);
             panel.dataset.nextPanel = 'tool_manuscripts';
           }
         }
@@ -946,13 +946,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
  /*
   *  Navigation
-  *  All inputs, upon completion/validation, will show/scroll-to the next question
+  *  All fields, upon completion/validation, will show/scroll-to the next question
   */
-  for (var f of inputs) {
+  for (var f of fields) {
     if (f.nodeName == 'SELECT') {
       f.addEventListener('change', watchIfReadyForNextQuestion);
     } else if (f.nodeName == 'INPUT') {
-      if (f.getAttribute('list') == undefined) { // no datalist inputs
+      if (f.getAttribute('list') == undefined) { // no datalist fields
         if (f.getAttribute('type') == 'checkbox') {
           f.addEventListener('change', watchIfReadyForNextQuestion);
         } else if (f.getAttribute('type') !== 'hidden') {
