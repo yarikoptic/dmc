@@ -141,19 +141,20 @@ function markValid(field) {
   }
 }
 
+function nextPanel(panel) {
+  var next = panel.dataset.nextPanel;
+
+  if (next == undefined) { // if none, then simply go to next in DOM
+    return panel.nextElementSibling;
+  } else {
+    return getPanel(inputs[next]);
+  }
+
+}
 // panel = accepts a panel element
 // duration = ms to fade in and for scrolling to
 function showNextQuestion(panel, duration) {
-  var data_next = panel.dataset.nextPanel;
-  var next_panel;
-
-  // if there's no next-question explicitly set, then just go to next in DOM
-  if (data_next == undefined) {
-    next_panel = panel.nextElementSibling;
-  } else {
-    next_panel = getPanel(inputs[data_next]);
-  }
-
+  var next_panel = nextPanel(panel);
   showPanel(next_panel);
   scrollTo(next_panel);
 }
