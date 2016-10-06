@@ -197,35 +197,25 @@ function watchIfReadyForNextQuestion(event) {
   }, timer);
 }
 
-// Get the enclosing panel
+// Get the enclosing panel of an element
 function getPanel(el) {
-  for (; el !== document && el.nodeType === 1; el = el.parentNode) {
-    if (el.classList.contains('tl-panel')) {
-      return el;
-    }
+  while (el !== document) {
+    if (el.classList.contains('tl-panel')) { return el; } else { el = el.parentNode; }
   }
   return null;
 };
 
-function isPanel(el) {
-  if (el.nodeType === 1 && el.classList.contains('tl-panel')) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-// Hide the parent panel of any element passed
+// hide the panel (or parent panel of the passed element)
 function hidePanel() {
   for (var i = 0; i < arguments.length; i++) {
     var panel = getPanel(arguments[i]);
     panel.classList.remove('visible');
   }
 }
-// show the parent panel of any element passed
+// show the panel (or parent panel of the passed element)
 function showPanel() {
   for (var i = 0; i < arguments.length; i++) {
-    var panel = isPanel(arguments[i]) ? arguments[i] : getPanel(arguments[i]);
+    var panel = getPanel(arguments[i]);
     panel.classList.add('visible');
   }
 }
