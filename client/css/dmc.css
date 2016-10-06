@@ -117,8 +117,12 @@ body {
   color: #333;
   font-family: 'Open Sans', sans-serif;
   font-size: 0.9em;
-  margin: 0;
-  width: 100%;
+  line-height: 1.8em;
+  margin: 0 auto;
+  width: 92%;
+}
+@media screen and (min-width: 600px) {
+  body { width: 70%; }
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Libre Baskerville', serif;

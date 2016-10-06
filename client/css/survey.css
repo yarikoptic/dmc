@@ -9,6 +9,11 @@ a[role='button'] {
   padding: 0.4em;
 }
 
+body {
+  margin: 0;
+  width: 100%;
+}
+
 main {
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
