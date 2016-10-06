@@ -124,6 +124,25 @@ body {
 @media screen and (min-width: 600px) {
   body { width: 70%; }
 }
+
+blockquote {
+  background: #f9f9f9;
+  border: 1px solid #f0f0f0;
+  border-left: 10px solid #ccc;
+  margin: 1.5em auto;
+  max-width: 40em;
+  padding: 0.5em;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote::before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 5em;
+  line-height: 0em;
+  margin-right: 0.1em;
+  vertical-align: -0.4em;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Libre Baskerville', serif;
   font-weight: normal;
