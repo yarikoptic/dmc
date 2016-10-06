@@ -19,6 +19,12 @@
   <link rel="mask-icon" href="/safari-pinned-tab.svg?v2" color="#5bbad5">
   <link rel="shortcut icon" href="/favicon.ico?v2">
   <meta name="theme-color" content="#ffffff">
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      survey = document.getElementById("survey");
+      inputs = survey.elements;
+    });
+  </script>
 </head>
 
 <body>
@@ -372,6 +378,21 @@
         <option>Windows</option>
         <option>Other</option>
       </select>
+      <script>document.addEventListener("DOMContentLoaded", function() {
+        inputs['personal_OS'].postValidation = function() {
+          var panel = getPanel(this);
+          if (this.value == 'Linux') {
+            hidePanel(inputs['personal_OS_other']);
+            panel.dataset.nextPanel = 'personal_OS_linux';
+          } else if (this.value == 'Other') {
+            hidePanel(inputs['personal_OS_linux']);
+            panel.dataset.nextPanel = 'personal_OS_other';
+          } else {
+            hidePanel(inputs['personal_OS_other'], inputs['personal_OS_linux']);
+            panel.dataset.nextPanel = 'maintainer';
+          }
+        }
+      });</script>
     </div>
 
     <div class='tl-panel inverted badge-linux' data-next-panel="maintainer">
@@ -406,6 +427,17 @@
         <option>Yes</option>
         <option>No</option>
       </select>
+      <script>document.addEventListener("DOMContentLoaded", function() {
+        inputs['maintainer'].postValidation = function() {
+          var panel = getPanel(this);
+          if (this.value == 'Yes') {
+            panel.dataset.nextPanel = 'hours';
+          } else {
+            hidePanel(inputs["hours"]);
+            panel.dataset.nextPanel = 'institute_device';
+          }
+        }
+      });</script>
     </div>
 
     <div class='tl-panel inverted badge-clock'>
@@ -427,6 +459,18 @@
         <option>Cloud/Grid</option>
         <option>Other</option>
       </select>
+      <script>document.addEventListener("DOMContentLoaded", function() {
+        inputs['institute_device'].postValidation = function() {
+          var panel = getPanel(this);
+          if (this.value !== "None") {
+            panel.dataset.nextPanel = 'institute_OS';
+          } else {
+            hidePanel(inputs["institute_OS"], inputs["institute_OS_linux"],
+                      inputs["institute_OS_other"], inputs["personal_institute_usage"]);
+            panel.dataset.nextPanel = 'publications_number';
+          }
+        }
+      });</script>
     </div>
 
     <div class='tl-panel badge-flask' data-next-panel="personal_institute_usage">
@@ -439,6 +483,21 @@
         <option>Windows</option>
         <option>Other</option>
       </select>
+      <script>document.addEventListener("DOMContentLoaded", function() {
+        inputs['institute_OS'].postValidation = function() {
+          var panel = getPanel(this);
+          if (this.value == 'Linux') {
+            hidePanel(inputs["institute_OS_other"]);
+            panel.dataset.nextPanel = 'institute_OS_linux';
+          } else if (this.value == 'Other') {
+            hidePanel(inputs["institute_OS_linux"]);
+            panel.dataset.nextPanel = 'institute_OS_other';
+          } else {
+            hidePanel(inputs["institute_OS_linux"], inputs["institute_OS_other"]);
+            panel.dataset.nextPanel = 'personal_institute_usage';
+          }
+        }
+      });</script>
     </div>
 
     <div class='tl-panel badge-linux' data-next-panel="personal_institute_usage">
@@ -483,6 +542,18 @@
       <p>How many peer-reviewed publications did you (co-)author in the last 5
          years?</p>
       <input name="publications_number" type="number" min="0" step="1" required>
+      <script>document.addEventListener("DOMContentLoaded", function() {
+        inputs['publications_number'].postValidation = function() {
+          var panel = getPanel(this);
+          if (this.value > 0) {
+            inputs["publications_number_open_access"].setAttribute('max', this.value);
+            panel.dataset.nextPanel = 'publications_number_open_access';
+          } else {
+            hidePanel(inputs["publications_number_open_access"]);
+            panel.dataset.nextPanel = 'social_media';
+          }
+        }
+      });</script>
     </div>
 
     <div class='tl-panel inverted badge-flask'>
@@ -511,6 +582,18 @@
       <p>How many collaborations (outside of your own lab) did you personally
          have in the last 5 years?</p>
       <input name="collaborations" type="number" min="0" step="1" required>
+      <script>document.addEventListener("DOMContentLoaded", function() {
+        inputs['collaborations'].postValidation = function() {
+          var panel = getPanel(this);
+          if (this.value > 0) {
+            inputs["collaborations_data"].setAttribute('max', this.value);
+            panel.dataset.nextPanel = 'collaborations_data';
+          } else {
+            hidePanel(inputs["collaborations_data"], inputs["collaborations_data_provided"]);
+            panel.dataset.nextPanel = 'data_IRB';
+          }
+        }
+      });</script>
     </div>
 
     <div class='tl-panel badge-exchange' data-next-panel="data_IRB">
@@ -518,6 +601,18 @@
       <p>How many of those involved the exchange of research data (in either
          direction)?</p>
       <input name="collaborations_data" type="number" min="0" step="1" required>
+      <script>document.addEventListener("DOMContentLoaded", function() {
+        inputs['collaborations_data'].postValidation = function() {
+          var panel = getPanel(this);
+          if (this.value > 0) {
+            inputs["collaborations_data_provided"].setAttribute('max', this.value);
+            panel.dataset.nextPanel = 'collaborations_data_provided';
+          } else {
+            hidePanel(inputs["collaborations_data_provided"]);
+            panel.dataset.nextPanel = 'data_IRB';
+          }
+        }
+      });</script>
     </div>
 
     <div class='tl-panel badge-flask' data-next-panel="data_IRB">
@@ -546,6 +641,17 @@
         <option>Yes</option>
         <option>No</option>
       </select>
+      <script>document.addEventListener("DOMContentLoaded", function() {
+        inputs['data_shared_publicly_ever'].postValidation = function() {
+          var panel = getPanel(this);
+          if (this.value == "Yes") {
+            panel.dataset.nextPanel = 'data_shared_publicly_num';
+          } else {
+            hidePanel(inputs["data_shared_publicly_num"], inputs["data_published_paper"]);
+            panel.dataset.nextPanel = 'data_consumed_public';
+          }
+        }
+      });</script>
     </div>
 
     <div class='tl-panel inverted badge-flask'>
@@ -582,6 +688,17 @@
         <option>Yes</option>
         <option>No</option>
       </select>
+      <script>document.addEventListener("DOMContentLoaded", function() {
+        inputs['code_shared'].postValidation = function() {
+          var panel = getPanel(this);
+          if (this.value == "Yes") {
+            panel.dataset.nextPanel = 'code_shared_method';
+          } else {
+            hidePanel(inputs["code_shared_method"]);
+            panel.dataset.nextPanel = 'tool_manuscripts';
+          }
+        }
+      });</script>
     </div>
 
     <div class='tl-panel badge-flask'>
@@ -737,104 +854,6 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  survey = document.getElementById("survey");
-  inputs = survey.elements;
-
-  // apply postValidation() to fields which have some post-mojo (usually which panel is next)
-  inputs['personal_OS'].postValidation = function() {
-    var panel = getPanel(this);
-    if (this.value == 'Linux') {
-      hidePanel(inputs['personal_OS_other']);
-      panel.dataset.nextPanel = 'personal_OS_linux';
-    } else if (this.value == 'Other') {
-      hidePanel(inputs['personal_OS_linux']);
-      panel.dataset.nextPanel = 'personal_OS_other';
-    } else {
-      hidePanel(inputs['personal_OS_other'], inputs['personal_OS_linux']);
-      panel.dataset.nextPanel = 'maintainer';
-    }
-  }
-  inputs['maintainer'].postValidation = function() {
-    var panel = getPanel(this);
-    if (this.value == 'Yes') {
-      panel.dataset.nextPanel = 'hours';
-    } else {
-      hidePanel(inputs["hours"]);
-      panel.dataset.nextPanel = 'institute_device';
-    }
-  }
-  inputs['institute_device'].postValidation = function() {
-    var panel = getPanel(this);
-    if (this.value !== "None") {
-      panel.dataset.nextPanel = 'institute_OS';
-    } else {
-      hidePanel(inputs["institute_OS"], inputs["institute_OS_linux"],
-                inputs["institute_OS_other"], inputs["personal_institute_usage"]);
-      panel.dataset.nextPanel = 'publications_number';
-    }
-  }
-  inputs['institute_OS'].postValidation = function() {
-    var panel = getPanel(this);
-    if (this.value == 'Linux') {
-      hidePanel(inputs["institute_OS_other"]);
-      panel.dataset.nextPanel = 'institute_OS_linux';
-    } else if (this.value == 'Other') {
-      hidePanel(inputs["institute_OS_linux"]);
-      panel.dataset.nextPanel = 'institute_OS_other';
-    } else {
-      hidePanel(inputs["institute_OS_linux"], inputs["institute_OS_other"]);
-      panel.dataset.nextPanel = 'personal_institute_usage';
-    }
-  }
-  inputs['publications_number'].postValidation = function() {
-    var panel = getPanel(this);
-    if (this.value > 0) {
-      inputs["publications_number_open_access"].setAttribute('max', this.value);
-      panel.dataset.nextPanel = 'publications_number_open_access';
-    } else {
-      hidePanel(inputs["publications_number_open_access"]);
-      panel.dataset.nextPanel = 'social_media';
-    }
-  }
-  inputs['collaborations'].postValidation = function() {
-    var panel = getPanel(this);
-    if (this.value > 0) {
-      inputs["collaborations_data"].setAttribute('max', this.value);
-      panel.dataset.nextPanel = 'collaborations_data';
-    } else {
-      hidePanel(inputs["collaborations_data"], inputs["collaborations_data_provided"]);
-      panel.dataset.nextPanel = 'data_IRB';
-    }
-  }
-  inputs['collaborations_data'].postValidation = function() {
-    var panel = getPanel(this);
-    if (this.value > 0) {
-      inputs["collaborations_data_provided"].setAttribute('max', this.value);
-      panel.dataset.nextPanel = 'collaborations_data_provided';
-    } else {
-      hidePanel(inputs["collaborations_data_provided"]);
-      panel.dataset.nextPanel = 'data_IRB';
-    }
-  }
-  inputs['data_shared_publicly_ever'].postValidation = function() {
-    var panel = getPanel(this);
-    if (this.value == "Yes") {
-      panel.dataset.nextPanel = 'data_shared_publicly_num';
-    } else {
-      hidePanel(inputs["data_shared_publicly_num"], inputs["data_published_paper"]);
-      panel.dataset.nextPanel = 'data_consumed_public';
-    }
-  }
-  inputs['code_shared'].postValidation = function() {
-    var panel = getPanel(this);
-    if (this.value == "Yes") {
-      panel.dataset.nextPanel = 'code_shared_method';
-    } else {
-      hidePanel(inputs["code_shared_method"]);
-      panel.dataset.nextPanel = 'tool_manuscripts';
-    }
-  }
-
   var uuid = getUrlVar("uuid");
   if (uuid) {
     var xhr = new XMLHttpRequest();
