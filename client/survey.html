@@ -847,6 +847,25 @@ document.addEventListener("DOMContentLoaded", function() {
       if (this.status >= 200 && this.status < 400) {
         var user_data = JSON.parse(this.response);
         populateForm(user_data);
+
+        var panel = survey.querySelector('div.visible');
+        scrollTo(panel);
+
+        while (panel != undefined) {
+          for (var f of panel.querySelectorAll('input,select')) {
+            if (! f.checkValidity()) {
+              markInvalid(f);
+              break;
+            }
+          }
+          try {
+            custom_functions[f.getAttribute('name')](f);
+          } catch(e) { /* pass */ }
+
+          if (! panel.classList.contains('has-error')) { markValid(f); }
+          panel = nextPanel(panel);
+          if (panel) { showPanel(panel); }
+        }
       } else {
         alert("Failed to load " + uuid
           + '.\nPlease report this error at: '
@@ -856,34 +875,6 @@ document.addEventListener("DOMContentLoaded", function() {
     xhr.send();
   }
 
-  // walk through to validate/show the form
-  var questions = survey.querySelectorAll('div.tl-panel');
-  for (var q of questions) {
-    // if the question is hidden, skip it
-    if (! q.classList.contains('visible')) { continue; }
-
-    var fields = q.querySelectorAll('input select');
-    for (var f of fields) {
-      var field_name = f.getAttribute('name');
-
-      if (field_name !== undefined) {
-        if (f.validity.valid) {
-          // if we have custom functions for the field in question
-          if (custom_functions[field_name] !== undefined) {
-            custom_functions[field_name](f);
-          }
-          markValid(f);
-          showNextQuestion(q, 0);
-        } else {
-          markInvalid(f);
-          break;
-        }
-      }
-    }
-
-    // if there's a validation error, break
-    if (q.classList.contains('has-error')) { break; }
-  }
 
  /*
   *  Form submission
