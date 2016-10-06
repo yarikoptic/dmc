@@ -740,104 +740,100 @@ document.addEventListener("DOMContentLoaded", function() {
   survey = document.getElementById("survey");
   inputs = survey.elements;
 
- /*
-  *  Field dependencies
-  */
-  custom_functions = {
-    'personal_OS': function(field) {
-      var panel = getPanel(field);
-      if (field.value == 'Linux') {
-        hidePanel(inputs['personal_OS_other']);
-        panel.dataset.nextPanel = 'personal_OS_linux';
-      } else if (field.value == 'Other') {
-        hidePanel(inputs['personal_OS_linux']);
-        panel.dataset.nextPanel = 'personal_OS_other';
-      } else {
-        hidePanel(inputs['personal_OS_other'], inputs['personal_OS_linux']);
-        panel.dataset.nextPanel = 'maintainer';
-      }
-    },
-    'maintainer': function(field) {
-      var panel = getPanel(field);
-      if (field.value == 'Yes') {
-        panel.dataset.nextPanel = 'hours';
-      } else {
-        hidePanel(inputs["hours"]);
-        panel.dataset.nextPanel = 'institute_device';
-      }
-    },
-    'institute_device': function(field) {
-      var panel = getPanel(field);
-      if (field.value !== "None") {
-        panel.dataset.nextPanel = 'institute_OS';
-      } else {
-        hidePanel(inputs["institute_OS"], inputs["institute_OS_linux"],
-                  inputs["institute_OS_other"], inputs["personal_institute_usage"]);
-        panel.dataset.nextPanel = 'publications_number';
-      }
-    },
-    'institute_OS': function(field) {
-      var panel = getPanel(field);
-      if (field.value == 'Linux') {
-        hidePanel(inputs["institute_OS_other"]);
-        panel.dataset.nextPanel = 'institute_OS_linux';
-      } else if (field.value == 'Other') {
-        hidePanel(inputs["institute_OS_linux"]);
-        panel.dataset.nextPanel = 'institute_OS_other';
-      } else {
-        hidePanel(inputs["institute_OS_linux"], inputs["institute_OS_other"]);
-        panel.dataset.nextPanel = 'personal_institute_usage';
-      }
-    },
-    'publications_number': function(field) {
-      var panel = getPanel(field);
-      if (field.value > 0) {
-        inputs["publications_number_open_access"].setAttribute('max', field.value);
-        panel.dataset.nextPanel = 'publications_number_open_access';
-      } else {
-        hidePanel(inputs["publications_number_open_access"]);
-        panel.dataset.nextPanel = 'social_media';
-      }
-    },
-    'collaborations': function(field) {
-      var panel = getPanel(field);
-      if (field.value > 0) {
-        inputs["collaborations_data"].setAttribute('max', field.value);
-        panel.dataset.nextPanel = 'collaborations_data';
-      } else {
-        hidePanel(inputs["collaborations_data"], inputs["collaborations_data_provided"]);
-        panel.dataset.nextPanel = 'data_IRB';
-      }
-    },
-    'collaborations_data': function(field) {
-      var panel = getPanel(field);
-      if (field.value > 0) {
-        inputs["collaborations_data_provided"].setAttribute('max', field.value);
-        panel.dataset.nextPanel = 'collaborations_data_provided';
-      } else {
-        hidePanel(inputs["collaborations_data_provided"]);
-        panel.dataset.nextPanel = 'data_IRB';
-      }
-    },
-    'data_shared_publicly_ever': function(field) {
-      var panel = getPanel(field);
-      if (field.value == "Yes") {
-        panel.dataset.nextPanel = 'data_shared_publicly_num';
-      } else {
-        hidePanel(inputs["data_shared_publicly_num"], inputs["data_published_paper"]);
-        panel.dataset.nextPanel = 'data_consumed_public';
-      }
-    },
-    'code_shared': function(field) {
-      var panel = getPanel(field);
-      if (field.value == "Yes") {
-        panel.dataset.nextPanel = 'code_shared_method';
-      } else {
-        hidePanel(inputs["code_shared_method"]);
-        panel.dataset.nextPanel = 'tool_manuscripts';
-      }
+  // apply postValidation() to fields which have some post-mojo (usually which panel is next)
+  inputs['personal_OS'].postValidation = function() {
+    var panel = getPanel(this);
+    if (this.value == 'Linux') {
+      hidePanel(inputs['personal_OS_other']);
+      panel.dataset.nextPanel = 'personal_OS_linux';
+    } else if (this.value == 'Other') {
+      hidePanel(inputs['personal_OS_linux']);
+      panel.dataset.nextPanel = 'personal_OS_other';
+    } else {
+      hidePanel(inputs['personal_OS_other'], inputs['personal_OS_linux']);
+      panel.dataset.nextPanel = 'maintainer';
     }
-  };
+  }
+  inputs['maintainer'].postValidation = function() {
+    var panel = getPanel(this);
+    if (this.value == 'Yes') {
+      panel.dataset.nextPanel = 'hours';
+    } else {
+      hidePanel(inputs["hours"]);
+      panel.dataset.nextPanel = 'institute_device';
+    }
+  }
+  inputs['institute_device'].postValidation = function() {
+    var panel = getPanel(this);
+    if (this.value !== "None") {
+      panel.dataset.nextPanel = 'institute_OS';
+    } else {
+      hidePanel(inputs["institute_OS"], inputs["institute_OS_linux"],
+                inputs["institute_OS_other"], inputs["personal_institute_usage"]);
+      panel.dataset.nextPanel = 'publications_number';
+    }
+  }
+  inputs['institute_OS'].postValidation = function() {
+    var panel = getPanel(this);
+    if (this.value == 'Linux') {
+      hidePanel(inputs["institute_OS_other"]);
+      panel.dataset.nextPanel = 'institute_OS_linux';
+    } else if (this.value == 'Other') {
+      hidePanel(inputs["institute_OS_linux"]);
+      panel.dataset.nextPanel = 'institute_OS_other';
+    } else {
+      hidePanel(inputs["institute_OS_linux"], inputs["institute_OS_other"]);
+      panel.dataset.nextPanel = 'personal_institute_usage';
+    }
+  }
+  inputs['publications_number'].postValidation = function() {
+    var panel = getPanel(this);
+    if (this.value > 0) {
+      inputs["publications_number_open_access"].setAttribute('max', this.value);
+      panel.dataset.nextPanel = 'publications_number_open_access';
+    } else {
+      hidePanel(inputs["publications_number_open_access"]);
+      panel.dataset.nextPanel = 'social_media';
+    }
+  }
+  inputs['collaborations'].postValidation = function() {
+    var panel = getPanel(this);
+    if (this.value > 0) {
+      inputs["collaborations_data"].setAttribute('max', this.value);
+      panel.dataset.nextPanel = 'collaborations_data';
+    } else {
+      hidePanel(inputs["collaborations_data"], inputs["collaborations_data_provided"]);
+      panel.dataset.nextPanel = 'data_IRB';
+    }
+  }
+  inputs['collaborations_data'].postValidation = function() {
+    var panel = getPanel(this);
+    if (this.value > 0) {
+      inputs["collaborations_data_provided"].setAttribute('max', this.value);
+      panel.dataset.nextPanel = 'collaborations_data_provided';
+    } else {
+      hidePanel(inputs["collaborations_data_provided"]);
+      panel.dataset.nextPanel = 'data_IRB';
+    }
+  }
+  inputs['data_shared_publicly_ever'].postValidation = function() {
+    var panel = getPanel(this);
+    if (this.value == "Yes") {
+      panel.dataset.nextPanel = 'data_shared_publicly_num';
+    } else {
+      hidePanel(inputs["data_shared_publicly_num"], inputs["data_published_paper"]);
+      panel.dataset.nextPanel = 'data_consumed_public';
+    }
+  }
+  inputs['code_shared'].postValidation = function() {
+    var panel = getPanel(this);
+    if (this.value == "Yes") {
+      panel.dataset.nextPanel = 'code_shared_method';
+    } else {
+      hidePanel(inputs["code_shared_method"]);
+      panel.dataset.nextPanel = 'tool_manuscripts';
+    }
+  }
 
   var uuid = getUrlVar("uuid");
   if (uuid) {
@@ -858,9 +854,7 @@ document.addEventListener("DOMContentLoaded", function() {
               break;
             }
           }
-          try {
-            custom_functions[f.getAttribute('name')](f);
-          } catch(e) { /* pass */ }
+          try { f.postValidation(); } catch(e) { /* pass */ }
 
           if (! panel.classList.contains('has-error')) { markValid(f); }
           panel = nextPanel(panel);

@@ -184,10 +184,7 @@ function watchIfReadyForNextQuestion(event) {
     panel.timer = undefined;
 
     if (field.nodeName == 'A' || field.validity.valid) {
-      var field_name = field.getAttribute('name');
-      if (custom_functions[field_name] !== undefined) {
-        custom_functions[field_name](field);
-      }
+      try { field.postValidation(); } catch (e) { /* pass */ }
 
       markValid(field);
       showNextQuestion(panel, 2000);
