@@ -864,7 +864,7 @@ document.addEventListener("DOMContentLoaded", function() {
         populateForm(user_data);
 
         var panel = survey.querySelector('div.visible');
-        scrollTo(panel);
+        scrollTo(panel, 1500);
 
         while (panel != undefined) {
           for (var f of panel.querySelectorAll('input,select')) {
@@ -965,11 +965,10 @@ document.addEventListener("DOMContentLoaded", function() {
   //
   // target-specific buttons for nav
   //
-
   var tell_us = document.getElementById('tell_us');
   var events = ['click', 'keypress'];
   for (var e of events) {
-    tell_us.addEventListener(e, function() { scrollTo(survey.querySelector('.tl-panel.visible')); });
+    tell_us.addEventListener(e, function() { scrollTo(survey.querySelector('.tl-panel.visible'), 1500); });
   }
 
   // make "next" buttons work

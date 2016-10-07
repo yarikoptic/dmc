@@ -17,7 +17,7 @@ for (var e of events) {
   });
 }
 
-function scrollTo(to) {
+function scrollTo(to, duration) {
   // because it's so fucking difficult to detect the scrolling element, just move them all
   // "someday" document.scrollingElement can be used instead.
   function move(amount) {
@@ -35,8 +35,7 @@ function scrollTo(to) {
   var start = position(),
     dest = getOffset(to) - start,
     currentTime = 0,
-    increment = 20,
-    duration = 3000;
+    increment = 20;
 
   var animateScroll = function() {
     currentTime += increment;
@@ -156,7 +155,7 @@ function nextPanel(panel) {
 function showNextQuestion(panel, duration) {
   var next_panel = nextPanel(panel);
   showPanel(next_panel);
-  scrollTo(next_panel);
+  scrollTo(next_panel, 3000);
 }
 
 // event = fired from onchange/input event
