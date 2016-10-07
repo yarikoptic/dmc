@@ -91,6 +91,9 @@ header p {
   text-align: center;
   width: 100%;
 }
+@media screen and (max-width: 500px) {
+  header .break { display: block; }
+}
 
 p.feature_warning {
   padding-bottom: 20px;
