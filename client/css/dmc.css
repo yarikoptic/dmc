@@ -155,15 +155,3 @@ footer {
 @media screen and (max-width: 500px) {
   footer .break { display: block; }
 }
-
-#noscript {
-  font-size: 16px;
-  margin: 0 auto;
-  padding: 20px 0;
-  max-width: 50vw;
-}
-@media screen and (max-width: 600px) {
-  #noscript {
-    max-width: 90vw;
-  }
-}
