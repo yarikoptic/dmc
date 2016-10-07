@@ -58,7 +58,7 @@ header {
   background-size: cover;
   height: 100vh;
 }
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 641px), screen and (min-height: 641px) {
   header { background-image: url('../img/cigar_man.jpg'); }
 }
 @media screen and (max-aspect-ratio: 8/9) {
