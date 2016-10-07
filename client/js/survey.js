@@ -10,13 +10,12 @@ Math.easeInOutQuad = function (t, b, c, d) {
 
 // the user should win over the scrollTo() animation
 scrolling = undefined;
-var events = ['mousedown', 'wheel', 'touchmove'];
-for (var e of events) {
-  document.querySelector('html').addEventListener(e, function() {
-    if (scrolling != undefined) { cancelAnimationFrame(scrolling); scrolling = undefined; }
-  });
+function scrollStop() {
+  cancelAnimationFrame(scrolling);
+  for (var e of ['mousedown', 'wheel', 'touchmove']) {
+    document.querySelector('html').removeEventListener(e, scrollStop);
+  }
 }
-
 function scrollTo(to, duration) {
   // because it's so fucking difficult to detect the scrolling element, just move them all
   // "someday" document.scrollingElement can be used instead.
@@ -32,6 +31,10 @@ function scrollTo(to, duration) {
     return el.getBoundingClientRect().top + window.scrollY;
   }
 
+  for (var e of ['mousedown', 'wheel', 'touchmove']) {
+    document.querySelector('html').addEventListener(e, scrollStop);
+  }
+
   var start = position(),
     dest = getOffset(to) - start,
     currentTime = 0,
@@ -43,7 +46,7 @@ function scrollTo(to, duration) {
     if (currentTime < duration) { // animate unless finished
       scrolling = requestAnimationFrame(animateScroll);
     } else {
-      scrolling = undefined;
+      scrollStop();
     }
   };
   scrolling = animateScroll();
