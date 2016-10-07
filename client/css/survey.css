@@ -68,6 +68,7 @@ header {
 header h1 {
   background-color: rgba(94, 233, 247, 0.8);
   border-radius: 1vmin;
+  box-shadow: 6px 3px 3px rgba(0, 0, 0, 0.3);
   color: #fff;
   font-size: 9vmin;
   line-height: 9vmin;
@@ -79,10 +80,18 @@ header a#tell_us {
   background-color: rgba(255, 255, 255, 0.9);
   border: 1px solid #ddd;
   border-radius: 0.3em;
+  box-shadow: 6px 3px 3px rgba(0, 0, 0, 0.3);
   font-size: 1.5em;
   margin: 2vh 0 25vh 0;
   padding: 0.5em;
   text-align: center;
+  transition: all .2s linear;
+}
+header a#tell_us:hover, header a#tell_us:active {
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.3);
+  font-size: 1.8em;
+  margin: 1vh 0 24vh 0;
+  padding: calc(0.5em + 1vh);
 }
 header p {
   background-color: rgba(255, 255, 255, 0.8);
