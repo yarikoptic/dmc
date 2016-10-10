@@ -88,10 +88,8 @@ header a#tell_us {
   transition: all .2s linear;
 }
 header a#tell_us:hover, header a#tell_us:active {
-  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.3);
-  font-size: 1.8em;
-  margin: 1vh 0 24vh 0;
-  padding: calc(0.5em + 1vh);
+  margin-top: 2.5vh;
+  transform: scale(1.4);
 }
 header p {
   background-color: rgba(255, 255, 255, 0.8);
