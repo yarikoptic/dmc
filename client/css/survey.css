@@ -68,7 +68,7 @@ header {
 header h1 {
   background-color: rgba(94, 233, 247, 0.8);
   border-radius: 1vmin;
-  box-shadow: 6px 3px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 20px -20px rgba(0, 0, 0, 0.5);
   color: #fff;
   font-size: 10vmin;
   font-style: italic;
@@ -81,7 +81,7 @@ header a#tell_us {
   background-color: rgba(255, 255, 255, 0.9);
   border: 1px solid #ddd;
   border-radius: 0.3em;
-  box-shadow: 6px 3px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 20px -20px rgba(0, 0, 0, 0.5);
   font-size: 1.5em;
   margin: 2vh 0 25vh 0;
   padding: 0.5em;
