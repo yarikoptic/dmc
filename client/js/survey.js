@@ -151,7 +151,7 @@ function watchIfReadyForNextQuestion(event) {
   }, timer);
 }
 
-// Get the enclosing panel of an element
+// get the parent panel of an element
 function getPanel(el) {
   while (el !== document) {
     if (el.classList.contains('tl-panel')) { return el; } else { el = el.parentNode; }
@@ -159,14 +159,14 @@ function getPanel(el) {
   return null;
 };
 
-// hide the panel (or parent panel of the passed element)
+// hide the panel(s) (or parent panel(s) of the passed element(s))
 function hidePanel() {
   for (var i = 0; i < arguments.length; i++) {
     var panel = getPanel(arguments[i]);
     panel.classList.remove('visible');
   }
 }
-// show the panel (or parent panel of the passed element)
+// show the panel(s) (or parent panel(s) of the passed element(s))
 function showPanel() {
   for (var i = 0; i < arguments.length; i++) {
     var panel = getPanel(arguments[i]);
