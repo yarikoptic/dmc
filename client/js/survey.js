@@ -52,22 +52,6 @@ function scrollTo(to, duration) {
   scrolling = animateScroll();
 }
 
-
-// Accepts an input field a value (or a list of of values) to add
-function addCheckbox(field, values) {
-  if (! Array.isArray(values)) { values = [ values ]; }
-  var dest = field.parentElement.querySelector('.checkboxes');
-
-  for (var v of values) {
-    var label = document.createElement('label');
-    label.innerHTML = '<input type="checkbox" checked name="' + field.id + '[]"'
-                    + ' onChange="this.parentNode.parentNode.removeChild(this.parentNode);"'
-                    + ' value="' +  v + '"> ' + v + '</label>';
-    dest.appendChild(label);
-  }
-  field.value = '';
-}
-
 /*
  *  Mark question as valid or invalid
  */

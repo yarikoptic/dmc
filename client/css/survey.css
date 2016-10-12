@@ -219,6 +219,10 @@ p.feature_warning {
 .timeline .checkboxes input[type='checkbox'] {
   margin-left: -20px;
 }
+.timeline .checkboxes input[type='checkbox'] + input[type='text'] {
+  margin-bottom: 1em;
+  max-width: 94%;
+}
 
 .has-error {
   color: #a94442;

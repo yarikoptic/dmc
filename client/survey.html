@@ -55,7 +55,7 @@
 
 <main>
 <form id="survey">
-  <input name="client_version" type="hidden" value="3" />
+  <input name='client_version' type='hidden' value='4' />
 
   <div class='timeline'>
     <div class='tl-panel badge-university visible'>
@@ -802,37 +802,455 @@
 
     <div class='tl-panel badge-list'>
       <h2>Software</h2>
-      <p>Which research software do you use?<br />
-         Use the text input field to build a list. When possible, please use the
-         suggested spelling of software names.</p>
-      <!-- The input field intentionally does not have the "name" attribute.
-           It is only to help building the list. We have no intent to use
-           its contents ever. -->
-      <input id="sw_list" type="text" list="sw_list_suggestions" placeholder="Software Name">
-      <datalist id="sw_list_suggestions">
-        <!-- the select is here purely for fallback purposes -->
-        <select style="display: none;"></select>
-      </datalist>
-      <div class='checkboxes'></div>
-      <p>Uncheck to remove an item from the list.</p>
+      <p>Which research software do you use?</p>
+      <div class='checkboxes build-em'>
+        <label><input type='checkbox' name='sw_list[]'
+          value='3dslicer'> 3dslicer</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='aeskulap'> aeskulap</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='AFNI'> AFNI</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='AMIDE'> AMIDE</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Analyze'> Analyze</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Apple'> Apple</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Xgrid'> Xgrid</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='ASA'> ASA</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='ASF'> ASF</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='AUTO'> AUTO</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='BCILAB'> BCILAB</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='BESA'> BESA</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='bioimgsuite'> bioimgsuite</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='biosig'> biosig</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='BIRN'> BIRN</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='brainmap'> brainmap</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='BrainRT'> BrainRT</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='BrainSight'> BrainSight</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Brainstorm'> Brainstorm</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='brainsuite'> brainsuite</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='brainvisa'> brainvisa</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='BrainVision'> BrainVision</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Analyzer'> Analyzer</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Brainvox'> Brainvox</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='BrainVoyager'> BrainVoyager</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Camino'> Camino</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Caret'> Caret</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='cartool'> cartool</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='CED'> CED</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Spike'> Spike</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='chronus'> chronus</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='CIGAL'> CIGAL</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='cmtk'> cmtk</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Cogent'> Cogent</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='ConnectomViewer'> ConnectomViewer</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='ConSole'> ConSole</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='cortex'> cortex</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='CRS'> CRS</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Toolbox'> Toolbox</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='CUDA'> CUDA</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Curry'> Curry</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='DataRiver'> DataRiver</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Dexterit-E'> Dexterit-E</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='DMDX'> DMDX</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='DSI'> DSI</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='DTI-Query'> DTI-Query</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='DTIStudio'> DTIStudio</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='DTItk'> DTItk</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='EEGLab'> EEGLab</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='EGI'> EGI</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Net'> Net</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Station'> Station</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Electrophysiologyg'> Electrophysiologyg</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='(Neuroscope)'> (Neuroscope)</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Elekta'> Elekta</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='EMEGS'> EMEGS</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='EMSE'> EMSE</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='EPrime'> EPrime</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='ERPLAB'> ERPLAB</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Fieldtrip'> Fieldtrip</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='fiji'> fiji</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='FMAToolbox'> FMAToolbox</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Freesurfer'> Freesurfer</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='FSL'> FSL</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Gephi'> Gephi</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='GLOBUS'> GLOBUS</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='GNUPlot'> GNUPlot</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='GSL'> GSL</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='hmatrix'> hmatrix</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='hsignal'> hsignal</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='hstatistics'> hstatistics</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='HTCondor'> HTCondor</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='ImageJ'> ImageJ</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Invesalius'> Invesalius</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='IPython'> IPython</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='ITK'> ITK</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='ITKSNAP'> ITKSNAP</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Jabref'> Jabref</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='joblib'> joblib</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Kaleidagraph'> Kaleidagraph</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='klustakwik'> klustakwik</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Klusters'> Klusters</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='LABview'> LABview</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='LAN'> LAN</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='toolbox'> toolbox</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='LENS'> LENS</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Lipsia'> Lipsia</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='lisrel'> lisrel</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='LONI'> LONI</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Loreta'> Loreta</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='LORIS'> LORIS</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Magnetic'> Magnetic</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Source'> Source</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Locator'> Locator</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='(MSL)'> (MSL)</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Mango'> Mango</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Matplotlib'> Matplotlib</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Mayavi'> Mayavi</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='mclust'> mclust</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='MDP'> MDP</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='med-pc'> med-pc</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='MEG'> MEG</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Processor'> Processor</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='meg_plotter'> meg_plotter</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='mendeley'> mendeley</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='MICIS'> MICIS</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='miind'> miind</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Mind-ware'> Mind-ware</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='mipav'> mipav</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='MNE'> MNE</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='MNI'> MNI</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='monkeylogic'> monkeylogic</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='MovAlyzer'> MovAlyzer</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='MPI'> MPI</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='mricrogl'> mricrogl</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='mricron'> mricron</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='MRtools'> MRtools</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='mrtrix'> mrtrix</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='NDManager'> NDManager</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='neuroanalysis.org'> neuroanalysis.org</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='toolkit'> toolkit</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='neuroConstruct'> neuroConstruct</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='neuroexplorer'> neuroexplorer</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='NeuroML'> NeuroML</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Neuronvisio'> Neuronvisio</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Neuroscan'> Neuroscan</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='NeuroScope'> NeuroScope</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='neuroshare'> neuroshare</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='NeuroTools'> NeuroTools</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='nibabel'> nibabel</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='nipy'> nipy</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='nordic'> nordic</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Aktiva'> Aktiva</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='nordic'> nordic</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='ICE'> ICE</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='NPXLab'> NPXLab</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='numpy'> numpy</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='NUTMEG'> NUTMEG</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='observer'> observer</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='OpenClinica'> OpenClinica</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='OpenElectrophy'> OpenElectrophy</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='OpenGL'> OpenGL</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='OpenMEEG'> OpenMEEG</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Opensesame'> Opensesame</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Paradigm'> Paradigm</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Paraview'> Paraview</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='plexon'> plexon</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='plot-gtk'> plot-gtk</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='PostgreSQL'> PostgreSQL</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='PRANA'> PRANA</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Presentation'> Presentation</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='PROBID'> PROBID</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Psignifit'> Psignifit</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='PsychoPy'> PsychoPy</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Psychtoolbox'> Psychtoolbox</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='psyscope'> psyscope</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='psytoolkit'> psytoolkit</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='pyepl'> pyepl</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='PyGame'> PyGame</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='PyMVPA'> PyMVPA</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='pytables'> pytables</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='RELACS'> RELACS</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='rest'> rest</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='rtxi'> rtxi</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='sc/zoom'> sc/zoom</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='scikit-learn'> scikit-learn</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='SciPy'> SciPy</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='scirun'> scirun</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='SGE'> SGE</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Signal'> Signal</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Solar'> Solar</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='SPM'> SPM</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='SPSS'> SPSS</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Spyder'> Spyder</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Stanford'> Stanford</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='vistasoft'> vistasoft</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='tools'> tools</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='STAT'> STAT</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Stata'> Stata</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='statistica'> statistica</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='stim2'> stim2</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Superlab'> Superlab</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='SymPy'> SymPy</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Tetrad'> Tetrad</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='theano'> theano</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Torque'> Torque</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Trackvis'> Trackvis</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='trellis'> trellis</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='tscope'> tscope</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='v3d'> v3d</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='ViSaGe'> ViSaGe</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='visionegg'> visionegg</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Visor'> Visor</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='Voxbo'> Voxbo</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='VTK'> VTK</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='xmedcon'> xmedcon</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='xmgrace'> xmgrace</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='XPP'> XPP</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='XPPAUT'> XPPAUT</label>
+        <label><input type='checkbox' name='sw_list[]'
+          value='XPPy'> XPPy</label>
+      </div>
       <a id="sw_list_next" role="button"><i class="icon-right-open"></i>Next Question</a>
     </div>
 
     <div class='tl-panel badge-list'>
       <h2>Software Providers</h2>
-      <p>Where/how do you <em>acquire</em> your research software?<br />
-         Use the text input field to build a list. If possible, use the
-         suggested spelling of provider names.</p>
-      <!-- The input field intentionally does not have the "name" attribute.
-           It is only to help building the list. We have no intent to use
-           its contents ever. -->
-      <input id="provider_list" type="text" list="provider_list_suggestions" placeholder="Provider Name">
-      <datalist id="provider_list_suggestions">
-        <!-- the select is here purely for fallback purposes -->
-        <select style="display: none;"></select>
-      </datalist>
-      <div class='checkboxes'></div>
-      <p>Uncheck to remove an item from the list.</p>
+      <p>Where/how do you <em>acquire</em> your research software?</p>
+      <div class='checkboxes build-em'>
+        <label><input type='checkbox' name='provider_list[]'
+          value='Project website'> Project website</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='Company website'> Company website</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='Operating system'> Operating system</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='BitBucket'> BitBucket</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='Comprehensive Perl Archive Network (CPAN)'> Comprehensive Perl Archive Network (CPAN)</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='Comprehensive R Archive Network (CRAN)'> Comprehensive R Archive Network (CRAN)</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='Extra Packages for Enterprise Linux (EPEL)'> Extra Packages for Enterprise Linux (EPEL)</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='Fink'> Fink</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='FreeBSD ports'> FreeBSD ports</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='GitHub'> GitHub</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='Homebrew'> Homebrew</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='International Neuroinformatics Coordinating Facility (INCF) Research Tools'> International Neuroinformatics Coordinating Facility (INCF) Research Tools</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='Macports'> Macports</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='MATLAB Central'> MATLAB Central</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='NeuroDebian'> NeuroDebian</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='Neuroimaging Informatics Tools and Resources Clearinghouse (NITRC)'> Neuroimaging Informatics Tools and Resources Clearinghouse (NITRC)</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='Python Package Index (PyPi)'> Python Package Index (PyPi)</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='Python bundles: Enthought Python, Python(x,y)'> Python bundles: Enthought Python, Python(x,y)</label>
+        <label><input type='checkbox' name='provider_list[]'
+          value='SourceForge'> SourceForge</label>
+      </div>
       <a id="provider_list_next" role="button"><i class="icon-right-open"></i>Next Question</a>
     </div>
 
@@ -852,9 +1270,7 @@
   </small></p>
 </footer>
 
-<script src="js/moderizer_datalist.3.1.0.js"></script>
 <script src="js/survey.js"></script>
-<script src="neuro_choices.json"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -890,27 +1306,12 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
           console.log(data);
           alert("Keanu 'Whoa' " + this.status + " error; and that's not supposed to happen."
-              + "\n\nWould you please report this error at"
-              +   "\nhttps://github.com/psychoinformatics-de/dmc/issues");
+          + "\n\nWould you please report this error at"
+          +   "\nhttps://github.com/psychoinformatics-de/dmc/issues");
         }
       };
       xhr.send(data);
     });
-  }
-
-  // if the browser supports the datalist element, build the datalists
-  //   and have inputs build checkbox lists upon enter
-  if (Modernizr.datalistelem) {
-    // sw_choices is defined in *_choices.json
-    survey.querySelector('#sw_list_suggestions').innerHTML = sw_choices;
-    survey.querySelector('#sw_list').addEventListener('change', function() { addCheckbox(this, this.value); });
-
-    // provider_choices is defined in *_choices.json
-    survey.querySelector('#provider_list_suggestions').innerHTML = provider_choices;
-    survey.querySelector('#provider_list').addEventListener('change', function() { addCheckbox(this, this.value); });
-  } else {
-    // TODO: warn user upon loading the page.
-    console.log('Consider yeself forewarned! Yarrr!');
   }
 
  /*
@@ -921,12 +1322,10 @@ document.addEventListener("DOMContentLoaded", function() {
     if (f.nodeName == 'SELECT') {
       f.addEventListener('change', watchIfReadyForNextQuestion);
     } else if (f.nodeName == 'INPUT') {
-      if (f.getAttribute('list') == undefined) { // no datalist fields
-        if (f.getAttribute('type') == 'checkbox') {
-          f.addEventListener('change', watchIfReadyForNextQuestion);
-        } else if (f.getAttribute('type') !== 'hidden') {
-          f.addEventListener('input', watchIfReadyForNextQuestion);
-        }
+      if (f.getAttribute('type') == 'checkbox') {
+        f.addEventListener('change', watchIfReadyForNextQuestion);
+      } else if (f.getAttribute('type') !== 'hidden') {
+        f.addEventListener('input', watchIfReadyForNextQuestion);
       }
     }
   }
@@ -938,6 +1337,19 @@ document.addEventListener("DOMContentLoaded", function() {
   var events = ['click', 'keypress'];
   for (var e of events) {
     tell_us.addEventListener(e, function() { scrollTo(survey.querySelector('.tl-panel.visible'), 1500); });
+  }
+
+  for (var b of survey.querySelectorAll('.build-em')) {
+    var l2 = document.createElement('label');
+    l2.innerHTML = "<input type='checkbox' disabled> <input type='text' placeholder='custom'>";
+    l2.lastChild.addEventListener('change', function() {
+      var newb = this.parentNode.previousElementSibling.cloneNode(true);
+      newb.firstChild.checked = true; newb.firstChild.value = this.value;
+      newb.lastChild.data = ' ' + this.value;
+      this.parentNode.parentNode.insertBefore(newb, this.parentNode);
+      this.value = '';
+    });
+    b.appendChild(l2);
   }
 
   // make "next" buttons work
