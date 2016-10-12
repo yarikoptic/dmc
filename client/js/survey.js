@@ -68,51 +68,6 @@ function addCheckbox(field, values) {
   field.value = '';
 }
 
-function getUrlVar(key) {
-  var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search);
-  return result && unescape(result[1]) || "";
-}
-
-// populate form with values from json
-function populateForm(json) {
-  delete json['client_version']; // don't apply form-specific data
-  delete json['json_leftovers'];
-
-  // construct the user-built checkbox lists
-  for (var key of ['sw_list[]', 'provider_list[]']) {
-    if (json[key] == undefined) { continue; }
-    addCheckbox(fields[key.slice(0, -2)], json[key]);
-    delete json[key];
-  }
-
-  // now loop over the rest
-  for (var key in json) {
-    if (fields[key] == undefined) { continue; } // field doesn't exist
-
-    if (Array.isArray(json[key])) { // checkboxes
-      for (var cbox of fields[key]) {
-        if (json[key].indexOf(cbox.value) > -1) {
-          cbox.setAttribute('checked', true);
-        }
-      }
-    } else if (fields[key].nodeName == 'SELECT') { // select
-      for (var option of fields[key].children) {
-        if (option.value == json[key]) {
-          option.setAttribute('selected', true);
-          break;
-        }
-      }
-    } else { // everything else
-      fields[key].value = json[key];
-    }
-
-    delete json[key];
-  }
-
-  // save leftovers, so they'll be submitted back, for paranoia's sake
-  fields['leftovers'].value = JSON.stringify(json);
-}
-
 /*
  *  Mark question as valid or invalid
  */

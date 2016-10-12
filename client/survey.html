@@ -56,7 +56,6 @@
 <main>
 <form id="survey">
   <input name="client_version" type="hidden" value="3" />
-  <input id="leftovers" name="leftovers" type="hidden" value="" />
 
   <div class='timeline'>
     <div class='tl-panel badge-university visible'>
@@ -860,41 +859,6 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  var uuid = getUrlVar("uuid");
-  if (uuid) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'u/' + uuid + '/record', true);
-    xhr.onload = function() {
-      if (this.status >= 200 && this.status < 400) {
-        var user_data = JSON.parse(this.response);
-        populateForm(user_data);
-
-        var panel = survey.querySelector('div.visible');
-        scrollTo(panel, 1500);
-
-        while (panel != undefined) {
-          for (var f of panel.querySelectorAll('input,select')) {
-            if (! f.checkValidity()) {
-              markInvalid(f);
-              break;
-            }
-          }
-          try { f.postValidation(); } catch(e) { /* pass */ }
-
-          if (! panel.classList.contains('has-error')) { markValid(f); }
-          panel = nextPanel(panel);
-          if (panel) { showPanel(panel); }
-        }
-      } else {
-        alert("Failed to load " + uuid
-          + '.\nPlease report this error at: '
-          +  '\nhttps://github.com/psychoinformatics-de/dmc/issues');
-      }
-    };
-    xhr.send();
-  }
-
-
  /*
   *  Form submission
   */
