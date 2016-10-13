@@ -90,11 +90,9 @@ function nextPanel(panel) {
   } else {
     return getPanel(fields[next]);
   }
-
 }
-// panel = accepts a panel element
-// duration = ms to fade in and for scrolling to
-function showNextQuestion(panel, duration) {
+
+function scrollToNextPanel(panel) {
   var next_panel = nextPanel(panel);
   showPanel(next_panel);
   scrollTo(next_panel, 3000);
@@ -128,7 +126,7 @@ function watchIfReadyForNextQuestion(event) {
       try { field.postValidation(); } catch (e) { /* pass */ }
 
       markValid(field);
-      showNextQuestion(panel, 2000);
+      scrollToNextPanel(panel);
     } else {
       markInvalid(field);
     }
