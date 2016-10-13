@@ -1,22 +1,46 @@
-all: prep public/submitters private/uuids public/records
+BASEDIR=$(CURDIR)
+PRIVDIR=$(BASEDIR)/private
+PUBDIR=$(BASEDIR)/public
+OUTPUTDIR=$(BASEDIR)/output
 
-prep:
-	git submodule init
-	git submodule update
+SSH_HOST=kumo.ovgu.de
+SSH_PORT=22
+SSH_USER=
+SSH_TARGET_DIR=/var/www/howdoyouscience
 
-private/uuids: prep
-	# store the mapping between public and private ID
-	# THIS DIRECTORY SHOULD NOT BE EXPOSED
-	mkdir -p $@
 
-public/submitters: prep
-	# store public reference to latest record for a submitter here
-	# (subdir per submitter)
-	mkdir -p $@
-	ln -fs ../../client/stats.html $@/stats.html
+help:
+	@echo 'She blinded me with Makefile!                                             '
+	@echo '                                                                          '
+	@echo 'Usage:                                                                    '
+	@echo '   make html                           (re)generate the web site          '
+	@echo '   make clean                          remove the generated files         '
+	@echo '   make records                        create the base records directories'
+	@echo '   make rsync_upload                   upload the web site via rsync+ssh  '
+	@echo '                                                                          '
 
-public/records: prep
-	# store result records here
-	mkdir -p $@
+html: records
+	[ -d $(OUTPUTDIR) ] || mkdir -p $(OUTPUTDIR)
+	rsync -r --delete $(BASEDIR)/www/ $(OUTPUTDIR)/www/
+	rsync -r --delete $(BASEDIR)/server/ $(OUTPUTDIR)/server/
+	rsync -r $(BASEDIR)/records/ $(OUTPUTDIR)/records/
 
-.PHONY: prep
+clean:
+	[ -d $(OUTPUTDIR) ] && rm -rf $(OUTPUTDIR)
+
+records:
+	[ -d $(PRIVDIR) ] || mkdir -p $(PRIVDIR)
+	[ -d $(PUBDIR) ] || mkdir -p $(PUBDIR)
+
+rsync_upload: html
+ifdef SSH_USER
+	rsync -e "ssh -p $(SSH_PORT)" -rv --delete $(OUTPUTDIR)/www/ $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)/www
+	rsync -e "ssh -p $(SSH_PORT)" -rv --delete $(OUTPUTDIR)/server/ $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)/server
+	rsync -e "ssh -p $(SSH_PORT)" -rv $(OUTPUTDIR)/records/ $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)/records
+else
+	rsync -e "ssh -p $(SSH_PORT)" -rv --delete $(OUTPUTDIR)/www/ $(SSH_HOST):$(SSH_TARGET_DIR)/www
+	rsync -e "ssh -p $(SSH_PORT)" -rv --delete $(OUTPUTDIR)/server/ $(SSH_HOST):$(SSH_TARGET_DIR)/server
+	rsync -e "ssh -p $(SSH_PORT)" -rv $(OUTPUTDIR)/records/ $(SSH_HOST):$(SSH_TARGET_DIR)/records
+endif
+
+.PHONY: help html clean rsync_upload
