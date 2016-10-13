@@ -1,6 +1,4 @@
-CHERRYPY_URL = https://pypi.python.org/packages/source/C/CherryPy/CherryPy-3.8.0.tar.gz
-
-all: cherrypy prep public/submitters private/uuids public/records logs
+all: prep public/submitters private/uuids public/records
 
 prep:
 	git submodule init
@@ -20,16 +18,5 @@ public/submitters: prep
 public/records: prep
 	# store result records here
 	mkdir -p $@
-
-logs:
-	# store cherrypy logs here
-	mkdir -p $@
-
-cherrypy:
-	wget -O cherrypy.tar.gz $(CHERRYPY_URL)
-	tar --transform 's,[A-Za-Z0-9\.-]*,cherrypy,' -xvf cherrypy.tar.gz
-
-distclean:
-	-rm -rf cherrypy cherrypy.tar.gz
 
 .PHONY: prep
