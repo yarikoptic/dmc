@@ -1,6 +1,9 @@
 // TODO: pass this as an object
 function initSurvey(survey_name, survey, submit_button) {
-  var enhanced_checkboxes = survey.querySelectorAll('.checkboxes.enhanced');
+  var enhanced_checkboxes = [];
+  for (var ec of survey.querySelectorAll('.checkboxes.enhanced')) {
+    enhanced_checkboxes.push(ec.querySelector('[type=checkbox]').name);
+  }
 
   // suppress conventional form submission
   survey.addEventListener('submit', function(e){ e.preventDefault(); });
@@ -45,8 +48,9 @@ function initSurvey(survey_name, survey, submit_button) {
       f.addEventListener('change', watchIfReadyForNextQuestion);
     } else if (f.nodeName == 'INPUT') {
       if (f.type == 'checkbox') {
-        // TODO: don't apply to enhanced_checkboxes
-        f.addEventListener('change', watchIfReadyForNextQuestion);
+        if (enhanced_checkboxes.indexOf(f.name) < 0) { // skip over "enhanced" checkboxes
+          f.addEventListener('change', watchIfReadyForNextQuestion);
+        }
       } else if (f.type !== 'hidden') {
         f.addEventListener('input', watchIfReadyForNextQuestion);
       }
@@ -54,6 +58,7 @@ function initSurvey(survey_name, survey, submit_button) {
   }
 
   for (var ec of enhanced_checkboxes) {
+    var panel = getPanel(fields[ec]);
     var l = document.createElement('label');
     l.innerHTML = "<input type='checkbox' disabled> <input type='text' placeholder='custom'>";
     l.lastChild.addEventListener('change', function() {
@@ -63,7 +68,7 @@ function initSurvey(survey_name, survey, submit_button) {
       this.parentNode.parentNode.insertBefore(noob, this.parentNode);
       this.value = '';
     });
-    ec.appendChild(l);
+    panel.querySelector('.checkboxes.enhanced').appendChild(l);
     // TODO: insert "Next" buttons dynamically
   }
 }
