@@ -135,6 +135,7 @@ function watchIfReadyForNextQuestion(event) {
 
 // get the parent panel of an element
 function getPanel(el) {
+  var el = el.nodeName ? el : el[0]; // if a list, choose first item
   while (el !== document) {
     if (el.classList.contains('tl-panel')) { return el; } else { el = el.parentNode; }
   }
