@@ -432,7 +432,7 @@
     <div class='tl-panel badge-list'>
       <h2>Colors of Shoestrings You'd be Willing To Wear</h2>
       <p>Wear those funky shoestrings.</p>
-      <div class='checkboxes build-em'>
+      <div class='checkboxes enhanced'>
         <label><input type='checkbox' name='shoestring_colors[]'
           value='Red'> Red</label>
         <label><input type='checkbox' name='shoestring_colors[]'
@@ -516,13 +516,16 @@ document.addEventListener("DOMContentLoaded", function() {
   *  Navigation
   *  All fields, upon completion/validation, will show/scroll-to the next question
   */
+  enhanced_checkboxes = survey.querySelectorAll('.checkboxes.enhanced');
+
   for (var f of fields) {
     if (f.nodeName == 'SELECT') {
       f.addEventListener('change', watchIfReadyForNextQuestion);
     } else if (f.nodeName == 'INPUT') {
-      if (f.getAttribute('type') == 'checkbox') {
+      if (f.type == 'checkbox') {
+        // TODO: don't apply to enhanced_checkboxes
         f.addEventListener('change', watchIfReadyForNextQuestion);
-      } else if (f.getAttribute('type') !== 'hidden') {
+      } else if (f.type !== 'hidden') {
         f.addEventListener('input', watchIfReadyForNextQuestion);
       }
     }
@@ -537,23 +540,24 @@ document.addEventListener("DOMContentLoaded", function() {
     tell_us.addEventListener(e, function() { scrollTo(survey.querySelector('.tl-panel.visible'), 1500); });
   }
 
-  for (var b of survey.querySelectorAll('.build-em')) {
-    var l2 = document.createElement('label');
-    l2.innerHTML = "<input type='checkbox' disabled> <input type='text' placeholder='custom'>";
-    l2.lastChild.addEventListener('change', function() {
-      var newb = this.parentNode.previousElementSibling.cloneNode(true);
-      newb.firstChild.checked = true; newb.firstChild.value = this.value;
-      newb.lastChild.data = ' ' + this.value;
-      this.parentNode.parentNode.insertBefore(newb, this.parentNode);
+  for (var ec of enhanced_checkboxes) {
+    var l = document.createElement('label');
+    l.innerHTML = "<input type='checkbox' disabled> <input type='text' placeholder='custom'>";
+    l.lastChild.addEventListener('change', function() {
+      var noob = this.parentNode.previousElementSibling.cloneNode(true);
+      noob.firstChild.checked = true; noob.firstChild.value = this.value;
+      noob.lastChild.data = ' ' + this.value;
+      this.parentNode.parentNode.insertBefore(noob, this.parentNode);
       this.value = '';
     });
-    b.appendChild(l2);
+    eb.appendChild(l);
+    // TODO: insert "Next" button dynamically
   }
 
   // make "next" buttons work
-  for (var b of survey.querySelectorAll('#sw_list_next, #provider_list_next')) {
-    b.addEventListener('click', watchIfReadyForNextQuestion);
-    b.addEventListener('keypress', watchIfReadyForNextQuestion);
+  for (var b of survey.querySelectorAll('#shoestring_colors_next')) {
+    b.addEventListener('click', function() { markValid(this); scrollToNextPanel(this); });
+    b.addEventListener('keypress', function() { markValid(this); scrollToNextPanel(this); });
   }
 });
 </script>

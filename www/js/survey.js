@@ -55,8 +55,8 @@ function scrollTo(to, duration) {
 /*
  *  Mark question as valid or invalid
  */
-function markInvalid(field) {
-  var panel = getPanel(field);
+function markInvalid(el) {
+  var panel = getPanel(el);
 
   panel.classList.remove('badge-success');
   panel.classList.add('has-error');
@@ -67,11 +67,18 @@ function markInvalid(field) {
     error_box.classList.add('error-box');
     panel.appendChild(error_box);
   }
-  error_box.textContent = field.validationMessage;
+
+  var message = ''
+  for (f of panel.querySelectorAll('input,select')) {
+    if (f.validationMessage != undefined) {
+      message += f.validationMessage;
+    }
+  }
+  error_box.textContent = message;
 }
 
-function markValid(field) {
-  var panel = getPanel(field);
+function markValid(el) {
+  var panel = getPanel(el);
 
   panel.classList.remove('has-error');
   panel.classList.add('badge-success');
@@ -82,7 +89,8 @@ function markValid(field) {
   }
 }
 
-function nextPanel(panel) {
+function nextPanel(el) {
+  var panel = getPanel(el);
   var next = panel.dataset.nextPanel;
 
   if (next == undefined) { // if none, then simply go to next in DOM
@@ -92,8 +100,8 @@ function nextPanel(panel) {
   }
 }
 
-function scrollToNextPanel(panel) {
-  var next_panel = nextPanel(panel);
+function scrollToNextPanel(el) {
+  var next_panel = nextPanel(el);
   showPanel(next_panel);
   scrollTo(next_panel, 3000);
 }
@@ -123,12 +131,12 @@ function watchIfReadyForNextQuestion(event) {
     panel.timer = undefined;
 
     if (field.nodeName == 'A' || field.validity.valid) {
-      try { field.postValidation(); } catch (e) { /* pass */ }
+      try { field.postValidation(); } catch(e) { /* pass */ }
 
-      markValid(field);
+      markValid(panel);
       scrollToNextPanel(panel);
     } else {
-      markInvalid(field);
+      markInvalid(panel);
     }
   }, timer);
 }
