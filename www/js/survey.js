@@ -6,11 +6,10 @@ function initSurvey(survey_name, survey, submit_button) {
   }
 
   // suppress conventional form submission
-  survey.addEventListener('submit', function(e){ e.preventDefault(); });
+  survey.addEventListener('submit', function(e) { e.preventDefault(); });
 
   // submit form as JSON
-  var events = ['click', 'keypress'];
-  for (var e of events) {
+  for (var e of ['click', 'keypress']) {
     submit_button.addEventListener(e, function() {
       var form = new FormData(survey);
       var json = {};
@@ -83,7 +82,7 @@ function initSurvey(survey_name, survey, submit_button) {
 }
 
 // easing functions http://goo.gl/5HLl8
-Math.easeInOutQuad = function (t, b, c, d) {
+Math.easeInOutQuad = function(t, b, c, d) {
   t /= d/2;
   if (t < 1) {
     return c/2*t*t + b
@@ -211,7 +210,7 @@ function watchIfReadyForNextQuestion(event) {
   }
 
   clearTimeout(panel.timer);
-  panel.timer = setTimeout(function(){
+  panel.timer = setTimeout(function() {
     panel.timer = undefined;
 
     if (field.nodeName == 'A' || field.validity.valid) {
