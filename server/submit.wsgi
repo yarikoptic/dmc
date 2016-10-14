@@ -13,7 +13,6 @@ opj = os.path.join
 cwd = os.path.dirname(__file__)
 private_dir = opj(cwd, '../records/private')
 public_dir = opj(cwd, '../records/public')
-success_url = opj(cwd, 'success.html')
 
 utc_now = datetime.datetime.now().strftime('%Y.%m.%d-%H.%M.%S')
 
@@ -91,7 +90,7 @@ def application(environ, start_response):
             with open(opj(survey_priv_dir, record_id), 'w') as _file:
                 _file.write(json.dumps({ 'ip': client_ip, 'dt': utc_now }))
 
-            output = success_url
+            output = 'success.html'
         else:
             status = '400 Bad Request'
             # TODO: should be an error of some kind
