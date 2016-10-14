@@ -69,7 +69,16 @@ function initSurvey(survey_name, survey, submit_button) {
       this.value = '';
     });
     panel.querySelector('.checkboxes.enhanced').appendChild(l);
-    // TODO: insert "Next" buttons dynamically
+
+    var next_button = document.createElement('a');
+    next_button.setAttribute('role', 'button');
+    next_button.innerHTML = "<i class='icon-right-open'></i>Next Question</a>";
+
+    for (var e of ['click', 'keypress']) {
+      next_button.addEventListener(e, function() { markValid(this); scrollToNextPanel(this); });
+    }
+
+    panel.appendChild(next_button);
   }
 }
 

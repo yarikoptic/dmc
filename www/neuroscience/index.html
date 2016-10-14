@@ -1205,7 +1205,6 @@
         <label><input type='checkbox' name='sw_list[]'
           value='XPPy'> XPPy</label>
       </div>
-      <a id="sw_list_next" role="button"><i class="icon-right-open"></i>Next Question</a>
     </div>
 
     <div class='tl-panel badge-list'>
@@ -1251,7 +1250,6 @@
         <label><input type='checkbox' name='provider_list[]'
           value='SourceForge'> SourceForge</label>
       </div>
-      <a id="provider_list_next" role="button"><i class="icon-right-open"></i>Next Question</a>
     </div>
 
     <div class='tl-panel inverted badge-glass'>
@@ -1283,13 +1281,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var first_panel = survey.querySelector('.tl-panel.visible');
   for (var e of ['click', 'keypress']) {
     tell_us.addEventListener(e, function() { scrollTo(first_panel, 1500); });
-  }
-
-  // TODO: the button should be inserted dynamically
-  // make "next" buttons work
-  for (var b of survey.querySelectorAll('#sw_list_next, #provider_list_next')) {
-    b.addEventListener('click', function() { markValid(this); scrollToNextPanel(this); });
-    b.addEventListener('keypress', function() { markValid(this); scrollToNextPanel(this); });
   }
 });
 </script>

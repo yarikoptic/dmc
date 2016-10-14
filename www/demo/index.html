@@ -448,7 +448,6 @@
         <label><input type='checkbox' name='shoestring_colors[]'
           value='Rainbow'> Rainbow</label>
       </div>
-      <a id='shoestring_colors_next' role='button'><i class='icon-right-open'></i>Next Question</a>
     </div>
 
     <div class='tl-panel inverted badge-glass'>
@@ -480,13 +479,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var first_panel = survey.querySelector('.tl-panel.visible');
   for (var e of ['click', 'keypress']) {
     tell_us.addEventListener(e, function() { scrollTo(first_panel, 1500); });
-  }
-
-  // TODO: the button should be inserted dynamically
-  // make "next" buttons work
-  for (var b of survey.querySelectorAll('#shoestring_colors_next')) {
-    b.addEventListener('click', function() { markValid(this); scrollToNextPanel(this); });
-    b.addEventListener('keypress', function() { markValid(this); scrollToNextPanel(this); });
   }
 });
 </script>
