@@ -33,7 +33,7 @@ def generate_record_id(data, ip):
 def is_valid_submission(d):
     """Perform all possible tests and return flag"""
     if 'survey_name' in d:
-        if d['survey_name'] not in ['neuroscience', 'datascience']:
+        if d['survey_name'] not in ['neuroscience', 'datascience', 'demo']:
             # we only play with stuff we know...
             return False
 
