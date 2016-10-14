@@ -803,7 +803,7 @@
     <div class='tl-panel badge-list'>
       <h2>Software</h2>
       <p>Which research software do you use?</p>
-      <div class='checkboxes build-em'>
+      <div class='checkboxes enhanced'>
         <label><input type='checkbox' name='sw_list[]'
           value='3dslicer'> 3dslicer</label>
         <label><input type='checkbox' name='sw_list[]'
@@ -1211,7 +1211,7 @@
     <div class='tl-panel badge-list'>
       <h2>Software Providers</h2>
       <p>Where/how do you <em>acquire</em> your research software?</p>
-      <div class='checkboxes build-em'>
+      <div class='checkboxes enhanced'>
         <label><input type='checkbox' name='provider_list[]'
           value='Project website'> Project website</label>
         <label><input type='checkbox' name='provider_list[]'
@@ -1274,89 +1274,22 @@
 <script src="/js/survey.js"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
- /*
-  *  Form submission
-  */
-  // suppress conventional form submission
-  survey.addEventListener('submit', function(e){ e.preventDefault(); });
+document.addEventListener('DOMContentLoaded', function() {
+  // init the survey
+  initSurvey('neuroscience', survey, survey.querySelector('#done'));
 
-  // Submit form as JSON
-  var done = survey.querySelector('#done');
-  var events = ['click', 'keypress'];
-  for (var e of events) {
-    done.addEventListener(e, function() {
-      var form = new FormData(survey);
-      var json = {};
-      for (field of form) {
-        if (field[0].substr(-2) === '[]') { // checkbox
-          json[field[0]] = json[field[0]] || []; // instantiate as array if needed
-          json[field[0]].push(field[1]);
-        } else {
-          json[field[0]] = field[1];
-        }
-      }
-
-      var data = JSON.stringify({ 'content': json, 'survey_name': 'neuroscience' });
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/submit', true);
-      xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-      xhr.onload = function() {
-        if (this.status === 200) {
-          window.location = this.responseText; // redirect to where we're told
-        } else {
-          console.log(data);
-          alert("Keanu 'Whoa' " + this.status + " error; and that's not supposed to happen."
-          + "\n\nWould you please report this error at"
-          +   "\nhttps://github.com/psychoinformatics-de/dmc/issues");
-        }
-      };
-      xhr.send(data);
-    });
-  }
-
- /*
-  *  Navigation
-  *  All fields, upon completion/validation, will show/scroll-to the next question
-  */
-  for (var f of fields) {
-    if (f.nodeName == 'SELECT') {
-      f.addEventListener('change', watchIfReadyForNextQuestion);
-    } else if (f.nodeName == 'INPUT') {
-      if (f.getAttribute('type') == 'checkbox') {
-        f.addEventListener('change', watchIfReadyForNextQuestion);
-      } else if (f.getAttribute('type') !== 'hidden') {
-        f.addEventListener('input', watchIfReadyForNextQuestion);
-      }
-    }
-  }
-
-  //
-  // target-specific buttons for nav
-  //
+  // landing button
   var tell_us = document.getElementById('tell_us');
-  var events = ['click', 'keypress'];
-  for (var e of events) {
-    tell_us.addEventListener(e, function() { scrollTo(survey.querySelector('.tl-panel.visible'), 1500); });
+  var first_panel = survey.querySelector('.tl-panel.visible');
+  for (var e of ['click', 'keypress']) {
+    tell_us.addEventListener(e, function() { scrollTo(first_panel, 1500); });
   }
 
-  for (var b of survey.querySelectorAll('.build-em')) {
-    var l2 = document.createElement('label');
-    l2.innerHTML = "<input type='checkbox' disabled> <input type='text' placeholder='custom'>";
-    l2.lastChild.addEventListener('change', function() {
-      var newb = this.parentNode.previousElementSibling.cloneNode(true);
-      newb.firstChild.checked = true; newb.firstChild.value = this.value;
-      newb.lastChild.data = ' ' + this.value;
-      this.parentNode.parentNode.insertBefore(newb, this.parentNode);
-      this.value = '';
-    });
-    b.appendChild(l2);
-  }
-
+  // TODO: the button should be inserted dynamically
   // make "next" buttons work
   for (var b of survey.querySelectorAll('#sw_list_next, #provider_list_next')) {
-    b.addEventListener('click', watchIfReadyForNextQuestion);
-    b.addEventListener('keypress', watchIfReadyForNextQuestion);
+    b.addEventListener('click', function() { markValid(this); scrollToNextPanel(this); });
+    b.addEventListener('keypress', function() { markValid(this); scrollToNextPanel(this); });
   }
 });
 </script>

@@ -1,3 +1,73 @@
+// TODO: pass this as an object
+function initSurvey(survey_name, survey, submit_button) {
+  var enhanced_checkboxes = survey.querySelectorAll('.checkboxes.enhanced');
+
+  // suppress conventional form submission
+  survey.addEventListener('submit', function(e){ e.preventDefault(); });
+
+  // submit form as JSON
+  var events = ['click', 'keypress'];
+  for (var e of events) {
+    submit_button.addEventListener(e, function() {
+      var form = new FormData(survey);
+      var json = {};
+      for (field of form) {
+        if (field[0].substr(-2) === '[]') { // checkbox
+          json[field[0]] = json[field[0]] || []; // instantiate as array if needed
+          json[field[0]].push(field[1]);
+        } else {
+          json[field[0]] = field[1];
+        }
+      }
+
+      var data = JSON.stringify({ 'content': json, 'survey_name': survey_name });
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/submit', true);
+      xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+      xhr.onload = function() {
+        if (this.status === 200) {
+          window.location = this.responseText; // redirect to where we're told
+        } else {
+          console.log(data);
+          alert("Keanu 'Whoa' " + this.status + " error; and that's not supposed to happen."
+          + "\n\nWould you please report this error at"
+          +   "\nhttps://github.com/psychoinformatics-de/dmc/issues");
+        }
+      };
+      xhr.send(data);
+    });
+  }
+
+  // TODO: would be nice if "fields" wasn't a global var
+  // fields, upon completion/validation, will show/scroll-to the next question
+  for (var f of fields) {
+    if (f.nodeName == 'SELECT') {
+      f.addEventListener('change', watchIfReadyForNextQuestion);
+    } else if (f.nodeName == 'INPUT') {
+      if (f.type == 'checkbox') {
+        // TODO: don't apply to enhanced_checkboxes
+        f.addEventListener('change', watchIfReadyForNextQuestion);
+      } else if (f.type !== 'hidden') {
+        f.addEventListener('input', watchIfReadyForNextQuestion);
+      }
+    }
+  }
+
+  for (var ec of enhanced_checkboxes) {
+    var l = document.createElement('label');
+    l.innerHTML = "<input type='checkbox' disabled> <input type='text' placeholder='custom'>";
+    l.lastChild.addEventListener('change', function() {
+      var noob = this.parentNode.previousElementSibling.cloneNode(true);
+      noob.firstChild.checked = true; noob.firstChild.value = this.value;
+      noob.lastChild.data = ' ' + this.value;
+      this.parentNode.parentNode.insertBefore(noob, this.parentNode);
+      this.value = '';
+    });
+    ec.appendChild(l);
+    // TODO: insert "Next" buttons dynamically
+  }
+}
+
 // easing functions http://goo.gl/5HLl8
 Math.easeInOutQuad = function (t, b, c, d) {
   t /= d/2;
