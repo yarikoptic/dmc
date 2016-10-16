@@ -70,7 +70,7 @@ function initSurvey(survey_name, survey, submit_button) {
     panel.querySelector('.checkboxes.enhanced').appendChild(l);
 
     var next_button = document.createElement('a');
-    next_button.setAttribute('role', 'button');
+    next_button.classList.add('button');
     next_button.innerHTML = "<i class='icon-right-open'></i>Next Question</a>";
 
     for (var e of ['click', 'keypress']) {

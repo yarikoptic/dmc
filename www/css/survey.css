@@ -2,13 +2,6 @@
  *  Element overrides
  */
 
-a[role='button'] {
-  border: 1px solid #ccc;
-  border-radius: 0.2em;
-  cursor: pointer;
-  padding: 0.4em;
-}
-
 body {
   margin: 0;
   width: 100%;
@@ -48,6 +41,17 @@ input[list] {
 /*
  *  Styling
  */
+a.button, a[role='button'] {
+  border: 1px solid #ddd;
+  border-radius: 0.3em;
+  color: #333;
+  cursor: pointer;
+  padding: 0.4em;
+}
+a.button::after, a[role='button']::after {
+  content: unset; /* suppress underlining effect */
+}
+
 header {
   display: flex;
   align-items: center;
@@ -79,10 +83,7 @@ header h1 {
 }
 header a#tell_us {
   background-color: rgba(255, 255, 255, 0.9);
-  border: 1px solid #ddd;
-  border-radius: 0.3em;
   box-shadow: 0 20px 20px -20px rgba(0, 0, 0, 0.5);
-  color: #333;
   font-size: 1.5em;
   margin: 2vh 0 25vh 0;
   padding: 0.5em;
@@ -92,9 +93,6 @@ header a#tell_us {
 header a#tell_us:hover, header a#tell_us:active {
   margin-top: 2.5vh;
   transform: scale(1.4);
-}
-header a#tell_us::after {
-  content: unset;
 }
 header p {
   background-color: rgba(255, 255, 255, 0.8);
