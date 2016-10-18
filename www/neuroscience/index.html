@@ -70,6 +70,22 @@
       </select>
     </div>
 
+    <div class='tl-panel badge-university'>
+      <h2>Position</h2>
+      <p>Select what fits best</p>
+      <select name='position' required>
+          <option value='' disabled selected hidden>— Select —</option>
+          <option>Undergraduate student</option>
+          <option>PhD student</option>
+          <option>Postdoc</option>
+          <option>Professor/Supervisor</option>
+          <option>Research assistant</option>
+          <option>Other researcher</option>
+          <option>System administrator</option>
+          <option>Other</option>
+      </select>
+    </div>
+
     <div class='tl-panel badge-globe'>
       <h2>Country</h2>
       <p>In which country is the lab you primarily work for?</p>
@@ -578,108 +594,6 @@
         <option>Monthly</option>
         <option>Yearly</option>
       </select>
-    </div>
-
-    <div class='tl-panel badge-users' data-next-panel="data_IRB">
-      <h2>Collaborations in the last 5 years</h2>
-      <p>How many collaborations (outside of your own lab) did you personally
-         have in the last 5 years?</p>
-      <input name="collaborations" type="number" min="0" step="1" required>
-      <script>document.addEventListener("DOMContentLoaded", function() {
-        fields['collaborations'].postValidation = function() {
-          var panel = getPanel(this);
-          if (this.value > 0) {
-            fields['collaborations_data'].setAttribute('max', this.value);
-            panel.dataset.nextPanel = 'collaborations_data';
-          } else {
-            hidePanel(fields['collaborations_data'], fields['collaborations_data_provided']);
-            panel.dataset.nextPanel = 'data_IRB';
-          }
-        }
-      });</script>
-    </div>
-
-    <div class='tl-panel badge-database' data-next-panel='data_IRB'>
-      <h2>Exchange of Data</h2>
-      <p>How many of those involved the exchange of research data (in either
-         direction)?</p>
-      <input name="collaborations_data" type="number" min="0" step="1" required>
-      <script>document.addEventListener("DOMContentLoaded", function() {
-        fields['collaborations_data'].postValidation = function() {
-          var panel = getPanel(this);
-          if (this.value > 0) {
-            fields['collaborations_data_provided'].setAttribute('max', this.value);
-            panel.dataset.nextPanel = 'collaborations_data_provided';
-          } else {
-            hidePanel(fields['collaborations_data_provided']);
-            panel.dataset.nextPanel = 'data_IRB';
-          }
-        }
-      });</script>
-    </div>
-
-    <div class='tl-panel badge-upload' data-next-panel='data_IRB'>
-      <h2>Provided Data</h2>
-      <p>How many of those involved you <em>providing</em> data?</p>
-      <input name="collaborations_data_provided" type="number" min="0" step="1" required>
-    </div>
-
-    <div class='tl-panel inverted badge-form'>
-      <h2>Permission to Share?</h2>
-      <p>Does your consent form have provisions for public sharing/deposition of
-         the collected data?</p>
-      <select name="data_IRB" required>
-        <option value="" disabled selected hidden>— Select —</option>
-        <option>Yes</option>
-        <option>No</option>
-        <option>N/A</option>
-      </select>
-    </div>
-
-    <div class='tl-panel inverted badge-upload-cloud'>
-      <h2>Publicly Shared Data</h2>
-      <p>Have you ever made your research data publicly available?</p>
-      <select name="data_shared_publicly_ever" required>
-        <option value="" disabled selected hidden>— Select —</option>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
-      <script>document.addEventListener("DOMContentLoaded", function() {
-        fields['data_shared_publicly_ever'].postValidation = function() {
-          var panel = getPanel(this);
-          if (this.value == "Yes") {
-            panel.dataset.nextPanel = 'data_shared_publicly_num';
-          } else {
-            hidePanel(fields['data_shared_publicly_num'], fields['data_published_paper']);
-            panel.dataset.nextPanel = 'data_consumed_public';
-          }
-        }
-      });</script>
-    </div>
-
-    <div class='tl-panel inverted badge-hash'>
-      <h2>How many in the last 5 years?</h2>
-      <p>How many datasets have you shared publicly in the last 5 years?</p>
-      <input name="data_shared_publicly_num" type="number" min="0" step="1" required>
-    </div>
-
-    <div class='tl-panel inverted badge-book'>
-      <h2>Published Data Papers?</h2>
-      <p>Have you ever published a manuscript solely dedicated to the
-         description of one of your datasets? (data in brief, data descriptor,
-         data note, etc)</p>
-      <select name="data_published_paper" required>
-        <option value="" disabled selected hidden>— Select —</option>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
-    </div>
-
-    <div class='tl-panel inverted badge-download-cloud'>
-      <h2>Data from Public Datasets</h2>
-      <p>How many publicly shared datasets have you used for any purpose
-         (research, teaching, etc)?</p>
-      <input name="data_consumed_public" type="number" min="0" step="1" required>
     </div>
 
     <div class='tl-panel badge-code' data-next-panel="tool_manuscripts">
