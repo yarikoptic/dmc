@@ -79,6 +79,7 @@ header h1 {
   line-height: 9vmin;
   margin: 0 3vw;
   padding: 4vmin;
+  text-align: center;
   text-shadow: 0px 0px 25px #777;
 }
 header a#tell_us {
