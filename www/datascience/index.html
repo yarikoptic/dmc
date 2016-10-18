@@ -70,7 +70,7 @@
       </select>
     </div>
 
-    <div class='tl-panel badge-university'>
+    <div class='tl-panel badge-user'>
       <h2>Position</h2>
       <p>Select what fits best</p>
       <select name='position' required>
@@ -219,7 +219,7 @@
       <input name='data_consumed_public' type='number' min='0' step='1' required>
     </div>
 
-    <div class='tl-panel badge-code' data-next-panel='vcs_code'>
+    <div class='tl-panel badge-database' data-next-panel='vcs_code'>
       <h2>Neuroimaging Atlases</h2>
       <p>Do you use neuroimaging atlases (e.g. from AFNI or FSL)?</p>
       <select name='atlases' required>
@@ -240,7 +240,7 @@
       });</script>
     </div>
 
-    <div class='tl-panel badge-exchange'>
+    <div class='tl-panel badge-database'>
       <h2>Which Atlases</h2>
       <p>Which atlases do you use?</p>
       <div class='checkboxes enhanced'>
@@ -251,7 +251,7 @@
       </div>
     </div>
 
-    <div class='tl-panel badge-exchange'>
+    <div class='tl-panel badge-cloud'>
       <h2>Data Portals</h2>
       <p>Which data portals do you <strong>know</strong>?</p>
       <div class='checkboxes enhanced'>
@@ -262,7 +262,7 @@
       </div>
     </div>
 
-    <div class='tl-panel badge-exchange'>
+    <div class='tl-panel badge-download-cloud'>
       <h2>Data Portal Use</h2>
       <p>Which data portals have you <strong>used</strong>?</p>
       <div class='checkboxes enhanced'>
@@ -295,7 +295,7 @@
       });</script>
     </div>
 
-    <div class='tl-panel inverted badge-exchange' data-next-panel='vcs_data'>
+    <div class='tl-panel inverted badge-code' data-next-panel='vcs_data'>
       <h2>Which VCSs</h2>
       <p>Which version control systems do you use?</p>
       <div class='checkboxes enhanced'>
@@ -310,7 +310,7 @@
       </div>
     </div>
 
-    <div class='tl-panel inverted badge-exchange'>
+    <div class='tl-panel inverted badge-code'>
       <h2>Why Not?</h2>
       <p>Why don't you use a version control system?</p>
       <div class='checkboxes'>
@@ -351,7 +351,7 @@
       });</script>
     </div>
 
-    <div class='tl-panel inverted badge-exchange' data-next-panel='neurovault_uploads'>
+    <div class='tl-panel inverted badge-code' data-next-panel='neurovault_uploads'>
       <h2>Which VCSs</h2>
       <p>Which data version control systems do you use?</p>
       <div class='checkboxes enhanced'>
@@ -374,7 +374,7 @@
       </div>
     </div>
 
-    <div class='tl-panel inverted badge-exchange'>
+    <div class='tl-panel inverted badge-code'>
       <h2>Why Not?</h2>
       <p>Why don't you use a data version control system?</p>
       <div class='checkboxes'>
@@ -393,7 +393,7 @@
       </div>
     </div>
 
-    <div class='tl-panel badge-code'>
+    <div class='tl-panel badge-upload-cloud'>
       <h2>NeuroVault Uploads</h2>
       <p>Do you upload statistical maps to NeuroVault?</p>
       <select name='neurovault_uploads' required>
@@ -403,7 +403,7 @@
       </select>
     </div>
 
-    <div class='tl-panel badge-code'>
+    <div class='tl-panel badge-search'>
       <h2>NeuroVault Search</h2>
       <p>Do use search on NeuroVault for published results?</p>
       <select name='neurovault_search' required>
@@ -413,7 +413,7 @@
       </select>
     </div>
 
-    <div class='tl-panel inverted badge-code'>
+    <div class='tl-panel inverted badge-form'>
       <h2>BIDS</h2>
       <p>Are you familiar with BIDS (Brain Imaging Data Standard)?</p>
       <select name='bids' required>
@@ -423,7 +423,7 @@
       </select>
     </div>
 
-    <div class='tl-panel inverted badge-code' data-next-panel='data_download_difficult'>
+    <div class='tl-panel inverted badge-search' data-next-panel='data_download_difficult'>
       <h2>Data Search</h2>
       <p>Have you ever searched for data online?</p>
       <select name='data_search' required>
@@ -444,7 +444,7 @@
       });</script>
     </div>
 
-    <div class='tl-panel inverted badge-code'>
+    <div class='tl-panel inverted badge-heart'>
       <h2>Useful Data</h2>
       <p>Did you use the data you found?</p>
       <select name='data_search_use' required>
@@ -454,10 +454,10 @@
       </select>
     </div>
 
-    <div class='tl-panel inverted badge-code'>
+    <div class='tl-panel inverted badge-warning'>
       <h2>Downloading Public Data</h2>
       <p>Do difficulties in obtaining public datasets actively inhibit your
-      use of them?</p>
+         use of them?</p>
       <select name='data_download_difficult' required>
         <option value='' disabled selected hidden>— Select —</option>
         <option>Yes</option>
@@ -465,7 +465,7 @@
       </select>
     </div>
 
-    <div class='tl-panel inverted badge-code'>
+    <div class='tl-panel inverted badge-warning'>
       <h2>Publishing Data</h2>
       <p>If publishing data was as easy as sharing code, would you
          publish more data?</p>
