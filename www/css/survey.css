@@ -1,7 +1,6 @@
 /*
  *  Element overrides
  */
-
 body {
   margin: 0;
   width: 100%;
@@ -223,14 +222,14 @@ p.feature_warning {
   margin: 0.3em 0 1em 0;
 }
 
-.timeline .checkboxes label {
+.checkboxes label {
   display: block;
   margin-left: 20px;
 }
-.timeline .checkboxes input[type='checkbox'] {
+.checkboxes input[type='checkbox'] {
   margin-left: -20px;
 }
-.timeline .checkboxes input[type='checkbox'] + input[type='text'] {
+.checkboxes input[type='checkbox'] + input[type='text'] {
   margin-bottom: 1em;
   max-width: 94%;
 }
