@@ -71,7 +71,7 @@ function initSurvey(survey_name, survey, submit_button) {
 
     var next_button = document.createElement('a');
     next_button.classList.add('button');
-    next_button.href = '';
+    next_button.setAttribute('tabindex', '0');
     next_button.innerHTML = "<i class='icon-right-open'></i>Next Question</a>";
 
     for (var e of ['click', 'keypress']) {
