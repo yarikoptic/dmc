@@ -51,6 +51,10 @@ a.button {
   color: #333;
   cursor: pointer;
   padding: 0.4em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 a.button::after {
   content: unset; /* suppress underlining effect */
