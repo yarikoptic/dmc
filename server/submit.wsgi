@@ -13,8 +13,8 @@ opj = os.path.join
 cwd = os.path.dirname(__file__)
 private_dir = opj(cwd, '../records/private')
 public_dir = opj(cwd, '../records/public')
-
 utc_now = datetime.datetime.now().strftime('%Y.%m.%d-%H.%M.%S')
+valid_surveys = ['neuroscience', 'datascience', 'demo']
 
 
 def get_client_ip(environ):
@@ -32,7 +32,7 @@ def generate_record_id(data, ip):
 def is_valid_submission(d):
     """Perform all possible tests and return flag"""
     if 'survey_name' in d:
-        if d['survey_name'] not in ['neuroscience', 'datascience', 'demo']:
+        if d['survey_name'] not in valid_surveys:
             # we only play with stuff we know...
             return False
 
