@@ -506,8 +506,8 @@ them, would have no clue how to start using them.
     <div class='tl-panel badge-glass'>
       <h2>All Done!</h2>
       <p>And <em>well done</em>.</p>
+      <a id='done' class='button' role='button' href=''><i class='icon-right-open'></i>Submit</a>
       <input name='done' type='hidden' />
-      <a id='done' role='button'><i class='icon-right-open'></i>Submit</a>
     </div>
   </div>
 </form>
@@ -532,7 +532,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var tell_us = document.getElementById('tell_us');
   var first_panel = survey.querySelector('.tl-panel.visible');
   for (var e of ['click', 'keypress']) {
-    tell_us.addEventListener(e, function() { scrollTo(first_panel, 1500); });
+    tell_us.addEventListener(e, function() {
+      scrollTo(first_panel, 1500);
+      first_panel.querySelector('input,select').focus();
+    });
   }
 });
 </script>

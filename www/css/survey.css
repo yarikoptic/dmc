@@ -37,18 +37,22 @@ input[type='number'] {
 input[list] {
   margin-bottom: 1em;
 }
+input:focus, select:focus, a.button:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
 
 /*
  *  Styling
  */
-a.button, a[role='button'] {
+a.button {
   border: 1px solid #ddd;
   border-radius: 0.3em;
   color: #333;
   cursor: pointer;
   padding: 0.4em;
 }
-a.button::after, a[role='button']::after {
+a.button::after {
   content: unset; /* suppress underlining effect */
 }
 

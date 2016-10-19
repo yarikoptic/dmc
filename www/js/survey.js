@@ -71,6 +71,7 @@ function initSurvey(survey_name, survey, submit_button) {
 
     var next_button = document.createElement('a');
     next_button.classList.add('button');
+    next_button.href = '';
     next_button.innerHTML = "<i class='icon-right-open'></i>Next Question</a>";
 
     for (var e of ['click', 'keypress']) {
@@ -187,6 +188,7 @@ function scrollToNextPanel(el) {
   var next_panel = nextPanel(el);
   showPanel(next_panel);
   scrollTo(next_panel, 3000);
+  next_panel.querySelector('input,select,a.button').focus();
 }
 
 // event = fired from onchange/input event
