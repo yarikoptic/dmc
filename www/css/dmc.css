@@ -57,8 +57,8 @@ main {
  */
 @font-face {
   font-family: 'fontello';
-  src: url('../fonts/fontello.woff2?89344235') format('woff2'),
-       url('../fonts/fontello.woff?89344235') format('woff'); /* <= IE 11 and Safari 9.1 */
+  src: url('../fonts/fontello.woff2?48658638') format('woff2'),
+       url('../fonts/fontello.woff?48658638') format('woff'); /* <= IE 11 and Safari 9.1 */
   font-weight: normal;
   font-style: normal;
 }
@@ -106,6 +106,7 @@ main {
 .icon-cloud::before, .badge-cloud::before { content: '\e80c'; }
 .icon-search::before, .badge-search::before { content: '\e80d'; }
 .icon-heart::before, .badge-heart::before { content: '\e80e'; }
+.icon-plus::before, .badge-plus::before { content: '\e80f'; }
 .icon-flask::before, .badge-flask::before { content: '\f0c3'; }
 .icon-list::before, .badge-list::before { content: '\f0ca'; }
 .icon-exchange::before, .badge-exchange::before { content: '\f0ec'; }
