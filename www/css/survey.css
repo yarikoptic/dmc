@@ -134,6 +134,20 @@ noscript p {
   max-width: 35em;
 }
 
+p.blurb {
+  border: 1px solid #eee;
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  margin: 2em 4vw 0 0;
+  padding: 0.5em;
+  text-align: center;
+}
+@media screen and (min-width: 600px) {
+  p.blurb {
+    margin: 2em auto 0 auto;
+    max-width: 40em;
+  }
+}
+
 p.feature_warning {
   padding-bottom: 20px;
 }
