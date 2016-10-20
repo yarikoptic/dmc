@@ -56,29 +56,49 @@ function initSurvey(survey_name, survey, submit_button) {
     }
   }
 
+  // clone previous label/checkbox; insert
+  function extendCheckboxList(el) {
+    var val = el.value.trim();
+    if (val != '') {
+      var newCbox = el.parentNode.previousElementSibling.cloneNode(true);
+      newCbox.firstChild.checked = true; newCbox.firstChild.value = val;
+      newCbox.lastChild.data = ' ' + val;
+      el.parentNode.parentNode.insertBefore(newCbox, el.parentNode);
+    }
+    el.value = '';
+  }
+
+  // TODO: it might just be better to have the HTML in the doc to begin with
+  // build and insert extendable checkbox input field and "next" button
   for (var ec of extendable_checkbox_lists) {
     var panel = getPanel(fields[ec]);
     var l = document.createElement('label');
-    l.innerHTML = "<input type='checkbox' disabled> <input type='text' placeholder='custom'>";
-    l.lastChild.addEventListener('change', function() {
-      var noob = this.parentNode.previousElementSibling.cloneNode(true);
-      noob.firstChild.checked = true; noob.firstChild.value = this.value;
-      noob.lastChild.data = ' ' + this.value;
-      this.parentNode.parentNode.insertBefore(noob, this.parentNode);
-      this.value = '';
-    });
+    var c = document.createElement('input'); c.type = 'checkbox'; c.disabled = true;
+    var i = document.createElement('input'); i.type = 'text'; i.placeholder = 'custom';
+        i.classList.add('extend');
+        i.onkeydown = function(e) { e.keyCode == 13 && extendCheckboxList(this); };
+    var a = document.createElement('a'); a.tabIndex = '0'; a.classList.add('icon-plus', 'button');
+      for (var e of ['click', 'keypress']) {
+        a.addEventListener(e, function() { extendCheckboxList(this.previousElementSibling); });
+      }
+
+    l.appendChild(c); l.appendChild(i); l.appendChild(a);
     panel.querySelector('.checkboxes.extendable').appendChild(l);
 
-    var next_button = document.createElement('a');
-    next_button.classList.add('button');
-    next_button.setAttribute('tabindex', '0');
-    next_button.innerHTML = "<i class='icon-right-open'></i>Next Question</a>";
+    var button = document.createElement('a');
+    button.classList.add('button');
+    button.tabIndex = 0;
+    button.innerHTML = "<i class='icon-right-open'></i>Next Question";
 
     for (var e of ['click', 'keypress']) {
-      next_button.addEventListener(e, function() { markValid(this); scrollToNextPanel(this); });
+      button.addEventListener(e, function() {
+        extendCheckboxList(getPanel(this).querySelector('input.extend'));
+        markValid(this);
+        scrollToNextPanel(this);
+      });
     }
 
-    panel.appendChild(next_button);
+    panel.appendChild(button);
   }
 }
 

@@ -229,9 +229,13 @@ p.feature_warning {
 .checkboxes input[type='checkbox'] {
   margin-left: -20px;
 }
-.checkboxes input[type='checkbox'] + input[type='text'] {
+.extendable input.extend {
   margin-bottom: 1em;
-  max-width: 94%;
+  max-width: 75%;
+}
+.extendable label a.button { /* "+" button for extendable checkbox lists */
+  border: 0;
+  vertical-align: middle;
 }
 
 .has-error {
