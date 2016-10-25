@@ -90,7 +90,7 @@
 
     <div class='tl-panel badge-keyboard' data-next-panel='collaborations'>
       <h2>OS</h2>
-      <p>Which operating system do you primarily use?</p>
+      <p>Which computer operating system do you primarily use?</p>
       <select name='OS' required>
         <option value='' disabled selected hidden>— Select —</option>
         <option>Android</option>
@@ -222,20 +222,20 @@
     </div>
 
     <div class='tl-panel badge-database' data-next-panel='vcs_code'>
-      <h2>Neuroimaging Atlases</h2>
-      <p>Do you use neuroimaging atlases (e.g. from AFNI or FSL)?</p>
-      <select name='atlases' required>
+      <h2>Research Data Products</h2>
+      <p>Do you use research data products, such as brain atlases?</p>
+      <select name='data_products' required>
         <option value='' disabled selected hidden>— Select —</option>
         <option>Yes</option>
         <option>No</option>
       </select>
       <script>document.addEventListener('DOMContentLoaded', function() {
-        fields['atlases'].postValidation = function() {
+        fields['data_products'].postValidation = function() {
           var panel = getPanel(this);
           if (this.value == 'Yes') {
-            panel.dataset.nextPanel = 'atlas_list[]';
+            panel.dataset.nextPanel = 'product_list[]';
           } else {
-            hidePanel(fields['atlas_list[]']);
+            hidePanel(fields['product_list[]']);
             panel.dataset.nextPanel = 'vcs_code';
           }
         }
@@ -243,13 +243,13 @@
     </div>
 
     <div class='tl-panel badge-database'>
-      <h2>Which Atlases</h2>
-      <p>Which atlases do you use?</p>
+      <h2>Which Products</h2>
+      <p>Which products do you use?</p>
       <div class='checkboxes extendable'>
-        <label><input type='checkbox' name='atlas_list[]'
-          value='AFNI'> AFNI</label>
-        <label><input type='checkbox' name='atlas_list[]'
-          value='FSL'> FSL</label>
+        <label><input type='checkbox' name='product_list[]'
+          value='AFNI atlases'> AFNI atlases</label>
+        <label><input type='checkbox' name='product_list[]'
+          value='FSL atlases'> FSL atlases</label>
       </div>
     </div>
 
@@ -353,7 +353,7 @@
       });</script>
     </div>
 
-    <div class='tl-panel inverted badge-code' data-next-panel='neurovault_uploads'>
+    <div class='tl-panel inverted badge-code' data-next-panel='result_uploads'>
       <h2>Which VCSs</h2>
       <p>Which data version control systems do you use?</p>
       <div class='checkboxes extendable'>
@@ -396,9 +396,10 @@
     </div>
 
     <div class='tl-panel badge-upload-cloud'>
-      <h2>NeuroVault Uploads</h2>
-      <p>Do you upload statistical maps to NeuroVault?</p>
-      <select name='neurovault_uploads' required>
+      <h2>Result Sharing</h2>
+      <p>Apart from manuscripts and data, do you share research results
+      on online platforms, such as NeuroVault, or ModelDB?</p>
+      <select name='result_uploads' required>
         <option value='' disabled selected hidden>— Select —</option>
         <option>Yes</option>
         <option>No</option>
@@ -406,9 +407,10 @@
     </div>
 
     <div class='tl-panel badge-search'>
-      <h2>NeuroVault Search</h2>
-      <p>Do use search on NeuroVault for published results?</p>
-      <select name='neurovault_search' required>
+      <h2>Result Search</h2>
+      <p>Do you search for research results, other than manuscripts or data,
+      on online services, such as NeuroVault, NeuroSynth, or ModelDB?</p>
+      <select name='result_search' required>
         <option value='' disabled selected hidden>— Select —</option>
         <option>Yes</option>
         <option>No</option>
@@ -416,9 +418,10 @@
     </div>
 
     <div class='tl-panel inverted badge-form'>
-      <h2>BIDS</h2>
-      <p>Are you familiar with BIDS (Brain Imaging Data Standard)?</p>
-      <select name='bids' required>
+      <h2>Data Description Standards</h2>
+      <p>Do you use common data description standards in your research
+      workflows?</p>
+      <select name='common_description' required>
         <option value='' disabled selected hidden>— Select —</option>
         <option>Yes</option>
         <option>No</option>
