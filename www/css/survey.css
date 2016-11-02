@@ -89,7 +89,7 @@ header h1 {
   text-align: center;
   text-shadow: 0px 0px 25px #777;
 }
-header a#tell_us {
+header a#start {
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 20px 20px -20px rgba(0, 0, 0, 0.5);
   font-size: 1.5em;
@@ -98,7 +98,7 @@ header a#tell_us {
   text-align: center;
   transition: all .2s linear;
 }
-header a#tell_us:hover, header a#tell_us:active {
+header a#start:hover, header a#start:active {
   margin-top: 2.5vh;
   transform: scale(1.4);
 }

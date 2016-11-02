@@ -25,7 +25,7 @@
       fields = survey.elements;
     });
   </script>
-  <noscript><style>#survey, #tell_us { display: none; }</style></noscript>
+  <noscript><style>#survey, #start { display: none; }</style></noscript>
 </head>
 
 <body>
@@ -46,7 +46,7 @@
 
 <header>
   <h1>How Do <strong>You</strong> Science?</h1>
-  <a id='tell_us' class='icon-right-open button'>Demo Baby!</a>
+  <a id='start' class='icon-right-open button'>Demo Baby!</a>
   <p>find&nbsp;out&nbsp;how&nbsp;you&nbsp;compare
      <span class='break'>&mdash;&nbsp;<a href='faq.html'>FAQ</a>&nbsp;&mdash;</span>
      no&nbsp;email&nbsp;or&nbsp;account&nbsp;required
@@ -476,10 +476,10 @@ document.addEventListener('DOMContentLoaded', function() {
   initSurvey('demo', survey, survey.querySelector('#done'));
 
   // landing button
-  var tell_us = document.getElementById('tell_us');
+  var start = document.getElementById('start');
   var first_panel = survey.querySelector('.tl-panel.visible');
   for (var e of ['click', 'keypress']) {
-    tell_us.addEventListener(e, function() { scrollTo(first_panel, 1500); });
+    start.addEventListener(e, function() { scrollTo(first_panel, 1500); });
   }
 });
 </script>
