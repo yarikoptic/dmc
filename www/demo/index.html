@@ -47,13 +47,14 @@
 <header>
   <h1>How Do <strong>You</strong> Science?</h1>
   <a id='start' class='icon-right-open button'>Demo Baby!</a>
-  <p>find&nbsp;out&nbsp;how&nbsp;you&nbsp;compare
-     <span class='break'>&mdash;&nbsp;<a href='faq.html'>FAQ</a>&nbsp;&mdash;</span>
-     no&nbsp;email&nbsp;or&nbsp;account&nbsp;required
-  </p>
+  <p>no&nbsp;email&nbsp;or&nbsp;account&nbsp;required</p>
 </header>
 
 <main>
+<p id='blurb'>
+  Tell us about your attitudes and experiences. With attitude.<br />
+  Conducted by Alex Waite, Michael Hanke, and a ferocious wombat.
+</p>
 <form id='survey' autocomplete='off'>
   <input name='client_version' type='hidden' value='1' />
 
@@ -477,9 +478,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // landing button
   var start = document.getElementById('start');
+  var blurb = document.getElementById('blurb');
   var first_panel = survey.querySelector('.tl-panel.visible');
   for (var e of ['click', 'keypress']) {
-    start.addEventListener(e, function() { scrollTo(first_panel, 1500); });
+    start.addEventListener(e, function() {
+      scrollTo(blurb, 1500);
+      first_panel.querySelector('input,select').focus();
+    });
   }
 });
 </script>

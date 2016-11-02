@@ -47,13 +47,15 @@
 <header>
   <h1>How Do <strong>You</strong> Science?</h1>
   <a id='start' class='icon-right-open button'>Take the Survey</a>
-  <p>find&nbsp;out&nbsp;how&nbsp;you&nbsp;compare
-     <span class='break'>&mdash;&nbsp;<a href="faq.html">FAQ</a>&nbsp;&mdash;</span>
-     no&nbsp;email&nbsp;or&nbsp;account&nbsp;required
-  </p>
+  <p>no&nbsp;email&nbsp;or&nbsp;account&nbsp;required</p>
 </header>
 
 <main>
+<p id='blurb'>
+  Tell us about your attitudes and experiences with neuroscience.<br />
+  Conducted by <a href='http://psychoinformatics.de'>Michael Hanke</a> and
+  <a href='http://haxbylab.dartmouth.edu/ppl/yarik.html'>Yarik Halchenko</a>.
+</p>
 <form id='survey' autocomplete='off'>
   <input name='client_version' type='hidden' value='4' />
 
@@ -1193,9 +1195,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // landing button
   var start = document.getElementById('start');
+  var blurb = document.getElementById('blurb');
   var first_panel = survey.querySelector('.tl-panel.visible');
   for (var e of ['click', 'keypress']) {
-    start.addEventListener(e, function() { scrollTo(first_panel, 1500); });
+    start.addEventListener(e, function() {
+      scrollTo(blurb, 1500);
+      first_panel.querySelector('input,select').focus();
+    });
   }
 });
 </script>
