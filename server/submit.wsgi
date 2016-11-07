@@ -23,6 +23,11 @@ def get_client_ip(environ):
     except KeyError:
         return environ['REMOTE_ADDR']
 
+def get_client_agent(environ):
+    try:
+        return environ['HTTP_USER_AGENT']
+    except KeyError:
+        return 'unknown'
 
 def generate_record_id(data, ip):
     rid = hashlib.md5('%s%s%s' % (data, utc_now, ip)).hexdigest()
@@ -79,6 +84,7 @@ def application(environ, start_response):
 
             # get/generate the needed info to save
             client_ip = get_client_ip(environ)
+            client_agent = get_client_agent(environ)
             record_id = generate_record_id(data, client_ip)
             record = json.dumps(data)
 
@@ -88,7 +94,7 @@ def application(environ, start_response):
 
             # save private file (ip and date/time)
             with open(opj(survey_priv_dir, record_id), 'w') as _file:
-                _file.write(json.dumps({ 'ip': client_ip, 'dt': utc_now }))
+                _file.write(json.dumps({ 'ip': client_ip, 'agent': client_agent, 'dt': utc_now }))
 
             output = 'success.html'
         else:
