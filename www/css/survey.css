@@ -217,7 +217,7 @@ p.feature_warning {
   .timeline .tl-panel { margin-right: calc(50% + 40px); }
   .timeline .tl-panel.inverted {
     margin-left: calc(50% + 40px);
-    margin-right: unset;
+    margin-right: 0;
   }
   .timeline .tl-panel h2::before { left: calc(50% - 40px); right: auto; }
   .timeline .tl-panel.inverted h2::before {
