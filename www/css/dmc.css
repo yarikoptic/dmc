@@ -186,6 +186,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.025em;
 }
 footer {
+  font-size: 1rem;
   line-height: 1.2em;
   text-align: center;
 }
