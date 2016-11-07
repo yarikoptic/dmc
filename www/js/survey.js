@@ -10,7 +10,8 @@ function initSurvey(survey_name, survey, submit_button) {
   survey.addEventListener('submit', function(e) { e.preventDefault(); });
 
   // submit form as JSON
-  for (var e of ['click', 'keypress']) {
+  var events = ['click', 'keypress'];
+  for (var i = 0, e; e = events[i++];) {
     submit_button.addEventListener(e, function() {
       var form = new FormData(survey);
       var json = {};
@@ -69,21 +70,22 @@ function initSurvey(survey_name, survey, submit_button) {
     el.value = '';
   }
 
-  // TODO: it might just be better to have the HTML in the doc to begin with
+  // TODO: it might just be better to have the HTML in the doc to begin with.
   // build and insert extendable checkbox input field and "next" button
-  for (var ec of extendable_checkbox_lists) {
+  for (var i = 0, ec; ec = extendable_checkbox_lists[i++];) {
     var panel = getPanel(fields[ec]);
     var l = document.createElement('label');
     var c = document.createElement('input'); c.type = 'checkbox'; c.disabled = true;
-    var i = document.createElement('input'); i.type = 'text'; i.placeholder = 'custom';
-        i.classList.add('extend');
-        i.onkeydown = function(e) { e.keyCode == 13 && extendCheckboxList(this); };
+    var t = document.createElement('input'); t.type = 'text'; t.placeholder = 'custom';
+        t.classList.add('extend');
+        t.onkeydown = function(e) { e.keyCode == 13 && extendCheckboxList(this); };
     var a = document.createElement('a'); a.tabIndex = '0'; a.classList.add('icon-plus', 'button');
-      for (var e of ['click', 'keypress']) {
+      var events = ['click', 'keypress'];
+      for (var j = 0, e; e = events[j++];) {
         a.addEventListener(e, function() { extendCheckboxList(this.previousElementSibling); });
       }
 
-    l.appendChild(c); l.appendChild(i); l.appendChild(a);
+    l.appendChild(c); l.appendChild(t); l.appendChild(a);
     panel.querySelector('.checkboxes.extendable').appendChild(l);
 
     var button = document.createElement('a');
@@ -91,7 +93,8 @@ function initSurvey(survey_name, survey, submit_button) {
     button.tabIndex = 0;
     button.innerHTML = "<i class='icon-right-open'></i>Next Question";
 
-    for (var e of ['click', 'keypress']) {
+    var events = ['click', 'keypress'];
+    for (var j = 0, e; e = events[j++];) {
       button.addEventListener(e, function() {
         extendCheckboxList(getPanel(this).querySelector('input.extend'));
         markValid(this);
@@ -117,7 +120,8 @@ Math.easeInOutQuad = function(t, b, c, d) {
 scrolling = undefined;
 function scrollStop() {
   cancelAnimationFrame(scrolling);
-  for (var e of ['mousedown', 'wheel', 'touchmove']) {
+  var events = ['mousedown', 'wheel', 'touchmove'];
+  for (var i = 0, e; e = events[i++];) {
     document.querySelector('html').removeEventListener(e, scrollStop);
   }
 }
@@ -136,7 +140,8 @@ function scrollTo(to, duration) {
     return el.getBoundingClientRect().top + window.scrollY;
   }
 
-  for (var e of ['mousedown', 'wheel', 'touchmove']) {
+  var events = ['mousedown', 'wheel', 'touchmove'];
+  for (var i = 0, e; e = events[i++];) {
     document.querySelector('html').addEventListener(e, scrollStop);
   }
 

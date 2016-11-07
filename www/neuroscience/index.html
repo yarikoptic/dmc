@@ -1197,7 +1197,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var start = document.getElementById('start');
   var blurb = document.getElementById('blurb');
   var first_panel = survey.querySelector('.tl-panel.visible');
-  for (var e of ['click', 'keypress']) {
+  var events = ['click', 'keypress'];
+  for (var i = 0, e; e = events[i++];) {
     start.addEventListener(e, function() {
       scrollTo(blurb, 1500);
       first_panel.querySelector('input,select').focus();
