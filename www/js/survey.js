@@ -1,7 +1,8 @@
 // TODO: pass this as an object
 function initSurvey(survey_name, survey, submit_button) {
   var extendable_checkbox_lists = [];
-  for (var ec of survey.querySelectorAll('.checkboxes.extendable')) {
+  var ecl_divs = survey.querySelectorAll('div.checkboxes.extendable');
+  for (var i = 0, ec; ec = ecl_divs[i++];) {
     extendable_checkbox_lists.push(ec.querySelector('[type=checkbox]').name);
   }
 
@@ -13,7 +14,7 @@ function initSurvey(survey_name, survey, submit_button) {
     submit_button.addEventListener(e, function() {
       var form = new FormData(survey);
       var json = {};
-      for (field of form) {
+      for (var i = 0, field; field = form[i++];) {
         if (field[0].substr(-2) === '[]') { // checkbox
           json[field[0]] = json[field[0]] || []; // instantiate as array if needed
           json[field[0]].push(field[1]);
@@ -40,9 +41,9 @@ function initSurvey(survey_name, survey, submit_button) {
     });
   }
 
-  // TODO: would be nice if "fields" wasn't a global var
+  // TODO: would be nice if "fields" wasn't a global var.
   // fields, upon completion/validation, will show/scroll-to the next question
-  for (var f of fields) {
+  for (var i = 0, f; f = fields[i++];) {
     if (f.nodeName == 'SELECT') {
       f.addEventListener('change', watchIfReadyForNextQuestion);
     } else if (f.nodeName == 'INPUT') {
@@ -173,7 +174,8 @@ function markInvalid(el) {
   }
 
   var message = ''
-  for (f of panel.querySelectorAll('input,select')) {
+  var panel_fields = panel.querySelectorAll('input,select');
+  for (var i = 0, f; f = panel_fields[i++];) {
     if (f.validationMessage != undefined) {
       message += f.validationMessage;
     }
