@@ -126,6 +126,9 @@ function scrollStop() {
   }
 }
 function scrollTo(to, duration) {
+  // bail on IE (but not Edge); the auto-scrolling doesn't work well there
+  if (window.navigator.userAgent.indexOf('Trident') > 0) { return true; }
+
   // because it's so fucking difficult to detect the scrolling element, just move them all
   // "someday" document.scrollingElement can be used instead.
   function move(amount) {
